@@ -1,11 +1,12 @@
 import React from "react";
 
 type RegionVariant = "light" | "dark" | "bridge";
-type RegionSize = "hero" | "section" | "tight";
+type RegionTone = "base" | "alt" | "surface";
 
 type RegionProps = {
   variant?: RegionVariant;
-  size?: RegionSize;
+  tone?: RegionTone;
+  withDividers?: boolean;
   children: React.ReactNode;
   className?: string;
   containerClassName?: string;
@@ -17,12 +18,10 @@ function cn(...parts: Array<string | undefined | null | false>) {
   return parts.filter(Boolean).join(" ");
 }
 
-const NOISE_DATA_URL =
-  "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"140\" viewBox=\"0 0 140 140\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"2\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"140\" height=\"140\" filter=\"url(%23n)\" opacity=\"0.35\"/%3E%3C/svg%3E";
-
 export default function Region({
   variant = "light",
-  size = "section",
+  tone = "base",
+  withDividers = true,
   children,
   className,
   containerClassName,
@@ -31,78 +30,37 @@ export default function Region({
 }: RegionProps) {
   const Comp: any = as;
 
-  const isDark = variant === "dark";
-  const isBridge = variant === "bridge";
+  const toneClass =
+    tone === "alt"
+      ? "bg-[rgb(var(--opny-bg-alt))]"
+      : tone === "surface"
+        ? "bg-[rgb(var(--opny-surface))]"
+        : "bg-[rgb(var(--opny-bg))]";
 
-  const sizeClasses =
-    size === "hero"
-      ? "py-8 sm:py-10"
-      : size === "tight"
-        ? "py-4 sm:py-6"
-        : "py-10 sm:py-12";
+  const dividerClass = withDividers
+    ? "border-y border-[color:rgb(var(--opny-border)/0.2)]"
+    : "";
+
+  const themeClass = variant === "dark" ? "theme-dark" : "theme-light";
+  const textClass =
+    variant === "dark" ? "text-text-primary-dark" : "text-text-primary-light";
 
   const regionBase = cn(
     "relative w-full",
-    sizeClasses,
-    "overflow-hidden",
-    isDark ? "theme-dark" : "theme-light",
+    toneClass,
+    textClass,
+    themeClass,
+    dividerClass,
     className,
   );
 
-  const regionBg = isDark
-    ? "bg-[rgb(var(--region-dark))] text-text-primary-dark"
-    : isBridge
-      ? "bg-[linear-gradient(180deg,rgb(var(--bg))_0%,rgba(246,247,251,0.98)_100%)] text-text-primary-light"
-      : "bg-[rgb(var(--bg))] text-text-primary-light";
-
   const container = cn(
-    "relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8",
+    "relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-14 md:py-20",
     containerClassName,
   );
 
-  const lightOverlays = !isDark && !isBridge ? (
-    <>
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-40 [background-image:linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `url("${NOISE_DATA_URL}")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "180px 180px",
-        }}
-      />
-    </>
-  ) : null;
-
-  const bridgeOverlay = isBridge ? (
-    <>
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(900px_280px_at_50%_0%,rgba(15,23,42,0.03),transparent_65%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-px bg-border-subtle-light/30" />
-    </>
-  ) : null;
-
-  const darkOverlays = isDark ? (
-    <>
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-60 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.08]"
-        style={{
-          backgroundImage: `url("${NOISE_DATA_URL}")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "180px 180px",
-        }}
-      />
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-70 [background:radial-gradient(1200px_600px_at_20%_20%,rgba(110,231,183,0.08),transparent_60%),radial-gradient(900px_500px_at_80%_30%,rgba(255,255,255,0.05),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-16 bg-[linear-gradient(180deg,rgb(var(--bg))_0%,rgba(11,18,32,0.6)_60%,transparent_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-16 bg-[linear-gradient(0deg,rgb(var(--bg))_0%,rgba(11,18,32,0.6)_60%,transparent_100%)]" />
-    </>
-  ) : null;
-
   return (
-    <Comp id={id} className={cn(regionBase, regionBg)}>
-      {lightOverlays}
-      {bridgeOverlay}
-      {darkOverlays}
+    <Comp id={id} className={regionBase}>
       <div className={container}>{children}</div>
     </Comp>
   );

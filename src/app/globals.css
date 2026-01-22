@@ -3,22 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --bg: 246 247 251;
-  --fg: 15 23 42;
-  --muted: 71 85 105;
-  --card: 252 253 255;
-  --border: 203 213 225;
+  --opny-bg: 247 249 252;
+  --opny-bg-alt: 241 245 251;
+  --opny-surface: 255 255 255;
+  --opny-border: 203 213 225;
+  --opny-text: 15 23 42;
+  --opny-muted: 71 85 105;
+
+  --bg: var(--opny-bg);
+  --fg: var(--opny-text);
+  --muted: var(--opny-muted);
+  --card: var(--opny-surface);
+  --border: var(--opny-border);
   --bg-light: var(--bg);
   --bg-dark: 11 18 32;
-  --page-bg: var(--bg);
+  --page-bg: var(--opny-bg);
   --region-dark: 11 18 32;
   --card-light: var(--card);
   --card-dark: 17 24 39;
   --border-subtle: var(--border);
   --shadow-subtle: 0 12px 28px -22px rgba(15, 23, 42, 0.18);
-  --surface-light: 255 255 255;
+  --surface-light: var(--opny-surface);
   --surface-dark: 13 20 34;
-  --elevated-light: 255 255 255;
+  --elevated-light: var(--opny-surface);
   --elevated-dark: 17 24 39;
   --text-primary-light: var(--fg);
   --text-secondary-light: 51 65 85;
@@ -29,7 +36,7 @@
   --border-light: var(--border);
   --border-dark: 255 255 255;
   --accent: 110 231 183;
-  --surface-bg-light: 243 243 239;
+  --surface-bg-light: var(--opny-bg-alt);
   --surface-bg-dark: 11 18 32;
   --surface-border-light: 20 20 25;
   --surface-border-dark: 255 255 255;
@@ -56,12 +63,12 @@
   --radius-card: 1.25rem;
   --radius-button: 999px;
   --grid-size: 72px;
-  --grid-opacity: 0.05;
+  --grid-opacity: 0;
   --grid-color: 20 20 25;
   --grid-mask: radial-gradient(ellipse at top, black, transparent 78%);
-  --noise-opacity: 0.08;
-  --page-grid-opacity: 0.02;
-  --page-noise-opacity: 0.04;
+  --noise-opacity: 0;
+  --page-grid-opacity: 0;
+  --page-noise-opacity: 0;
   --hero-border-opacity: 0.11;
   --shadow-hero:
     0 40px 120px -80px rgba(15, 23, 42, 0.6),
@@ -72,8 +79,8 @@
 
 @media (max-width: 640px) {
   :root {
-    --grid-opacity: 0.03;
-    --noise-opacity: 0.05;
+    --grid-opacity: 0;
+    --noise-opacity: 0;
   }
 
   .section-shell {
@@ -91,7 +98,7 @@ body {
 }
 
 body {
-  background: rgb(var(--bg));
+  background: rgb(var(--opny-bg));
   color: rgb(var(--fg));
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -105,7 +112,7 @@ body > * {
 @layer components {
   .theme-dark {
     --grid-color: 255 255 255;
-    --grid-opacity: 0.035;
+    --grid-opacity: 0;
     --border-shell: var(--border-dark);
     --surface-bg: var(--surface-bg-dark);
     --surface-border: var(--surface-border-dark);
@@ -118,7 +125,7 @@ body > * {
 
   .theme-light {
     --grid-color: 15 23 42;
-    --grid-opacity: 0.05;
+    --grid-opacity: 0;
     --border-shell: var(--border-light);
     --surface-bg: var(--surface-bg-light);
     --surface-border: var(--surface-border-light);
