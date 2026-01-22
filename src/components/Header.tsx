@@ -23,7 +23,7 @@ export default function Header() {
             <img
               src="/images/brand/opny-logo.png"
               alt="Opny"
-              className="h-8 w-auto md:h-10 block"
+              className="h-5 w-auto md:h-6 block"
               draggable={false}
             />
             <span className="sr-only">opny.ai</span>

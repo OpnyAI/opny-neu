@@ -514,7 +514,10 @@ export default function Home() {
       </Region>
 
       {/* PLATFORM */}
-      <section id="ressourcen" className="bg-slate-900 py-24">
+      <section
+        id="ressourcen"
+        className="bg-[linear-gradient(to_bottom,rgb(10_12_18),rgb(6_8_12))] py-24"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-left sm:text-center">
             <div className="text-xs font-semibold uppercase tracking-widest text-slate-400">
@@ -532,7 +535,7 @@ export default function Home() {
               {["Policies", "Routing & Fallback", "Observability"].map((pill) => (
                 <span
                   key={pill}
-                  className="rounded-full bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200"
+                  className="rounded-full bg-[rgb(18_22_30)] px-4 py-2 text-xs font-semibold text-slate-200"
                 >
                   {pill}
                 </span>
@@ -603,9 +606,9 @@ export default function Home() {
             ].map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-xl border border-slate-700/60 bg-slate-800 p-6"
+                className="rounded-xl border border-[rgba(255,255,255,0.06)] bg-[rgb(18_22_30)] p-6"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-slate-700/60 bg-slate-800">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgb(18_22_30)]">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-medium text-white">
