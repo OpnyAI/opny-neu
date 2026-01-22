@@ -10,7 +10,7 @@ export default function Header() {
   const nav = [
     { label: "Produkt", href: "/#produkt" },
     { label: "Lösungen", href: "/#loesungen" },
-    { label: "KI-Sicherheit", href: "/#sicherheit" },
+    { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
     { label: "Ressourcen", href: "/#ressourcen" },
     { label: "Unternehmen", href: "/#unternehmen" },
   ];
@@ -82,8 +82,8 @@ export default function Header() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         links={nav}
-        cta={{ label: "Demo anfragen", href: "#demo" }}
-        secondaryCta={{ label: "Anmelden", href: "#demo" }}
+        cta={{ label: "Demo anfragen", href: "/#demo" }}
+        secondaryCta={{ label: "Anmelden", href: "/#demo" }}
       />
     </>
   );

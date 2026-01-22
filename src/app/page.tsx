@@ -271,7 +271,7 @@ export default function Home() {
       <AiGatewaySection />
 
       {/* SECURITY */}
-      <Region variant="light" tone="base" id="sicherheit">
+      <Region variant="light" tone="base" id="ki-sicherheit">
         <div className="relative space-y-6">
           <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
             Security & Governance
@@ -623,6 +623,7 @@ export default function Home() {
 
       {/* FINAL CTA */}
       <Region variant="light" tone="alt" id="unternehmen">
+        <span id="demo" className="sr-only" />
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
             Nutzen Sie KI mit Kontrolle, Klarheit und Vertrauen.

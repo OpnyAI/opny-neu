@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 type MobileNavLink = {
   label: string;
@@ -24,10 +24,8 @@ export default function MobileNav({
   cta = { label: "Demo anfragen", href: "/#demo" },
   secondaryCta = { label: "Anmelden", href: "/#demo" },
 }: MobileNavProps) {
-  const pathname = usePathname();
   const dialogRef = useRef<HTMLDivElement>(null);
   const [animateIn, setAnimateIn] = useState(false);
-  const [openItem, setOpenItem] = useState<string | null>(null);
 
   // 1) Body scroll lock
   useEffect(() => {
@@ -117,10 +115,6 @@ export default function MobileNav({
     };
   }, [open]);
 
-  const toggleItem = (href: string) => {
-    setOpenItem((prev) => (prev === href ? null : href));
-  };
-
   if (!open) return null;
 
   return (
@@ -143,9 +137,14 @@ export default function MobileNav({
         <div className="flex h-full flex-col px-5 pb-6 pt-[max(16px,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-sm font-semibold text-text-primary-light">
-                opny.ai
-              </span>
+              <Image
+                src="/images/brand/opny-logo.png"
+                alt="Opny"
+                width={140}
+                height={40}
+                priority
+                className="h-6 w-auto"
+              />
               <span className="text-xs font-semibold tracking-[0.28em] text-text-secondary-light">
                 MENÜ
               </span>
@@ -160,52 +159,17 @@ export default function MobileNav({
 
           <nav className="mt-6 flex-1 overflow-y-auto">
             <ul className="space-y-2">
-              {links.map((l) => {
-                const active =
-                  pathname === l.href ||
-                  (l.href !== "/" && pathname?.startsWith(l.href));
-                const expanded = openItem === l.href;
-                const panelId = `mobile-panel-${l.href.replace(/[^a-z0-9]/gi, "-")}`;
-
-                return (
-                  <li key={l.href} className="rounded-2xl border border-border-subtle-light/20 bg-elevated-light/60">
-                    <button
-                      type="button"
-                      onClick={() => toggleItem(l.href)}
-                      aria-expanded={expanded}
-                      aria-controls={panelId}
-                      className="flex w-full items-center justify-between px-4 py-4 text-left text-base font-medium text-text-primary-light"
-                    >
-                      <span>{l.label}</span>
-                      <span className="text-text-secondary-light">
-                        {expanded ? "−" : "+"}
-                      </span>
-                    </button>
-                    <div
-                      id={panelId}
-                      className={
-                        expanded
-                          ? "px-4 pb-4"
-                          : "px-4 pb-4 hidden"
-                      }
-                    >
-                      <Link
-                        href={l.href}
-                        onClick={onClose}
-                        className={[
-                          "flex items-center justify-between rounded-xl border border-border-subtle-light/20 bg-white/80 px-4 py-3 text-sm",
-                          active ? "ring-1 ring-border-subtle-light/40" : "",
-                        ].join(" ")}
-                      >
-                        <span className="font-medium text-text-primary-light">
-                          {l.label}
-                        </span>
-                        <span className="text-text-secondary-light">→</span>
-                      </Link>
-                    </div>
-                  </li>
-                );
-              })}
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={onClose}
+                    className="block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 

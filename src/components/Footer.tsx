@@ -3,7 +3,7 @@ import Link from "next/link";
 const productLinks = [
   { label: "KI-Workspace", href: "#produkt" },
   { label: "AI Gateway", href: "#plattform" },
-  { label: "Security & Governance", href: "#sicherheit" },
+  { label: "Security & Governance", href: "#ki-sicherheit" },
 ];
 
 const resourceLinks = [
