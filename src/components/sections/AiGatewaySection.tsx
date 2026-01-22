@@ -38,12 +38,18 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
               <span>Observability für Prompts, Outputs und Kosten</span>
             </li>
           </ul>
+
           <div className="flex flex-wrap gap-4">
-            <Button href="/#demo" variant="primary" theme="light">
+            <Button
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai&body=Hallo%20Opny%20Team,%0D%0A%0D%0AIch%20m%C3%B6chte%20eine%20kurze%20Demo%20anfragen.%0D%0A%0D%0AUnternehmen:%20%0D%0AUse-Case:%20%0D%0AAnzahl%20User:%20%0D%0ATech-Stack:%20%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe"
+              variant="primary"
+              theme="light"
+            >
               Demo anfragen
             </Button>
+
             <Button href="/#ki-sicherheit" variant="secondary" theme="light">
-              Security & Governance →
+              Security &amp; Governance →
             </Button>
           </div>
         </div>
@@ -71,11 +77,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
                     status: "Secondary",
                     tag: "Latency 420ms",
                   },
-                  {
-                    label: "Llama",
-                    status: "Fallback",
-                    tag: "Latency 510ms",
-                  },
+                  { label: "Llama", status: "Fallback", tag: "Latency 510ms" },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -99,7 +101,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
 
             <Card theme="light" className="p-5">
               <div className="flex items-center justify-between text-xs text-text-secondary-light">
-                <span>Fallback & Traffic</span>
+                <span>Fallback &amp; Traffic</span>
                 <span>Week 32</span>
               </div>
               <div className="mt-4 space-y-3">
@@ -138,7 +140,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
           <div className="grid gap-6 md:grid-cols-2">
             <Card theme="light" className="p-5">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-                Usage & Cost
+                Usage &amp; Cost
               </div>
               <div className="mt-4 flex h-20 items-end gap-2">
                 {[45, 70, 40, 85, 55].map((height, index) => (
@@ -155,18 +157,16 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
                 Policy checks
               </div>
               <div className="mt-4 space-y-3 text-sm text-text-muted-light">
-                {[
-                  "PII redaction",
-                  "File type rules",
-                  "Output constraints",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle-light/25 text-[10px] text-accent">
-                      ✓
-                    </span>
-                    <span>{item}</span>
-                  </div>
-                ))}
+                {["PII redaction", "File type rules", "Output constraints"].map(
+                  (item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle-light/25 text-[10px] text-accent">
+                        ✓
+                      </span>
+                      <span>{item}</span>
+                    </div>
+                  ),
+                )}
               </div>
             </Card>
           </div>
