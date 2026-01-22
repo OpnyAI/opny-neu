@@ -11,7 +11,7 @@ type RegionProps = {
   className?: string;
   containerClassName?: string;
   id?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 };
 
 function cn(...parts: Array<string | undefined | null | false>) {
@@ -28,7 +28,7 @@ export default function Region({
   id,
   as = "section",
 }: RegionProps) {
-  const Comp: any = as;
+  const Comp = as;
 
   const toneClass =
     tone === "alt"
