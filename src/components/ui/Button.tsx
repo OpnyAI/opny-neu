@@ -1,4 +1,5 @@
 import type React from "react";
+import Link from "next/link";
 
 type ButtonVariant = "primary" | "secondary";
 type ButtonTheme = "dark" | "light";
@@ -45,6 +46,19 @@ export default function Button({
   const styles = cn(baseClasses, variantClasses[theme][variant], className);
 
   if (href) {
+    const isExternal =
+      href.startsWith("http") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:");
+
+    if (!isExternal) {
+      return (
+        <Link href={href} className={styles} {...props}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
       <a href={href} className={styles} {...props}>
         {children}

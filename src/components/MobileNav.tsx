@@ -21,8 +21,8 @@ export default function MobileNav({
   open,
   onClose,
   links,
-  cta = { label: "Demo anfragen", href: "#demo" },
-  secondaryCta = { label: "Anmelden", href: "/login" },
+  cta = { label: "Demo anfragen", href: "/#demo" },
+  secondaryCta = { label: "Anmelden", href: "/#demo" },
 }: MobileNavProps) {
   const pathname = usePathname();
   const dialogRef = useRef<HTMLDivElement>(null);

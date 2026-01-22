@@ -1,31 +1,35 @@
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Region from "@/components/Region";
+import ProductivitySection from "@/components/sections/ProductivitySection";
+import MidPageCtaSection from "@/components/sections/MidPageCtaSection";
+import AiGatewaySection from "@/components/sections/AiGatewaySection";
+import { GovernanceControlLayerDiagram } from "@/components/diagrams/GovernanceControlLayerDiagram";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* HERO */}
-      <Region variant="light" tone="base" id="product">
+      <Region variant="light" tone="base" id="produkt">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle-light/30 bg-elevated-light/90 px-4 py-1 text-xs text-text-secondary-light">
-              Neue Plattform für kontrollierte KI-Workflows
+              KI-Orchestrierung
             </div>
             <div className="space-y-4">
               <h1 className="text-4xl font-semibold leading-tight tracking-tight text-text-primary-light sm:text-5xl">
                 Eine KI-Plattform. Volle Kontrolle. Keine Komplexität.
               </h1>
               <p className="text-base leading-relaxed text-text-muted-light sm:text-lg">
-                opny.ai verbindet Modelle, Daten und Richtlinien zu produktiven
-                Workflows – sicher, beobachtbar und umsetzbar.
+                All-in-One-Plattform für sichere, skalierbare und intelligente
+                KI-Integration.
               </p>
             </div>
             <ul className="space-y-3 text-sm text-text-muted-light sm:text-base">
               {[
-                "Model Routing & Fallback (Always-on)",
-                "Rollen, Policies & Guardrails",
-                "RAG-ready: Wissen aus Dokumenten & Systemen",
+                "Für Tech Leader: Policies, Guardrails und Observability zentral steuern.",
+                "Für Teams: KI produktiv nutzen – sicher, nachvollziehbar und auditierbar.",
+                "Für Entwickler: Eine robuste KI-API bauen und zuverlässig skalieren.",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <span className="h-2 w-2 rounded-full bg-accent" />
@@ -34,10 +38,10 @@ export default function Home() {
               ))}
             </ul>
             <div className="flex flex-wrap gap-4">
-              <Button href="#demo" variant="primary" theme="light">
+              <Button href="/#demo" variant="primary" theme="light">
                 Demo anfragen
               </Button>
-              <Button href="#platform" variant="secondary" theme="light">
+              <Button href="/#produkt" variant="secondary" theme="light">
                 Plattform ansehen
               </Button>
             </div>
@@ -47,10 +51,10 @@ export default function Home() {
             <div className="space-y-5">
               <div>
                 <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-secondary-light">
-                  Models
+                  Modelle
                 </div>
                 <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {["OpenAI", "Anthropic", "Open Source"].map((model) => (
+                  {["OpenAI", "Gemini", "Llama"].map((model) => (
                     <div
                       key={model}
                       className="rounded-2xl border border-border-subtle-light/30 bg-elevated-light/70 px-3 py-2 text-xs font-medium text-text-primary-light"
@@ -118,21 +122,20 @@ export default function Home() {
             <div className="grid gap-8 sm:grid-cols-2">
               {[
                 {
-                  value: "90%",
+                  value: "91,5%",
                   label: "KI wird genutzt – oft ohne zentrale Steuerung.",
                 },
                 {
-                  value: "35%",
-                  label: "Teams haben keine klaren KI-Richtlinien.",
-                },
-                {
-                  value: "28%",
+                  value: "28,1%",
                   label: "Kosten werden zum Engpass bei Skalierung.",
                 },
                 {
-                  value: "23%",
-                  label:
-                    "Performance & Verfügbarkeit bremsen Produktivbetrieb.",
+                  value: "24,7%",
+                  label: "Teams haben unklare KI-Richtlinien.",
+                },
+                {
+                  value: "—",
+                  label: "Fragmentierte Innovation durch Tool-Wildwuchs.",
                 },
               ].map((stat) => (
                 <Card key={stat.value} theme="light" className="h-full p-5">
@@ -152,250 +155,123 @@ export default function Home() {
         </div>
       </Region>
 
-      {/* CONSEQUENCES */}
-      <Region variant="light" tone="base">
-        <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-text-primary-light">
-              Die Folge: Schatten-KI, Tool-Wildwuchs und riskante Workarounds.
-            </h3>
-            <p className="text-sm leading-relaxed text-text-muted-light">
-              Ohne Governance und Observability entsteht ein Mix aus Tools,
-              Modellen und Datenwegen – schwer auditierbar, teuer und unsicher.
+      {/* GOVERNANCE & SECURITY */}
+      <Region variant="light" tone="surface" id="governance">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Governance & Security
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
+              Zentrale Governance & Security
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Steuerung, Richtlinien und Audits in einem Layer – damit Teams
+              schneller liefern, ohne Compliance- oder Sicherheitsrisiken.
             </p>
-            <ul className="space-y-2 text-sm text-text-muted-light">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                <span>Keine Transparenz über Prompts, Datenabflüsse und Outputs</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                <span>Kein Routing/Fallback, wenn ein Modell ausfällt</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                <span>Kein einheitlicher Policy-Layer für Teams</span>
-              </li>
+            <ul className="space-y-3 text-sm text-text-muted-light">
+              {[
+                "Zentrale Policies für Modelle, Daten und Rollen.",
+                "Nachvollziehbarkeit von Prompts, Dateien und Kosten.",
+                "Sichere Freigaben für Teams, Projekte und Workflows.",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <Card
-            theme="light"
-            className="flex h-full flex-col items-start justify-between p-5"
-          >
-            <span className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-xs font-semibold text-text-secondary-light">
-              Security-first
-            </span>
-            <Button href="#platform" variant="secondary" theme="light">
-              So löst opny.ai das →
-            </Button>
+          <div className="rounded-2xl border border-border-subtle-light/20 bg-white p-4 shadow-sm">
+            <GovernanceControlLayerDiagram className="h-auto w-full" />
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Card theme="light" className="p-6">
+            <div className="text-lg font-semibold text-text-primary-light">
+              KI-Workspace
+            </div>
+            <ul className="mt-4 space-y-2 text-sm text-text-muted-light">
+              {[
+                "Chat",
+                "Modellvergleich",
+                "Assistenten",
+                "Projekte",
+                "Integrationen",
+                "Browser Extension",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 text-xs text-text-secondary-light">
+              Ziel: Produktivität steigern und Zusammenarbeit ermöglichen.
+            </div>
+          </Card>
+
+          <Card theme="light" className="p-6">
+            <div className="text-lg font-semibold text-text-primary-light">
+              KI-Gateway
+            </div>
+            <ul className="mt-4 space-y-2 text-sm text-text-muted-light">
+              {[
+                "Einheitliche API",
+                "Intelligentes Routing",
+                "Fallback-Logik",
+                "RAG-Architektur",
+                "Observability",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 text-xs text-text-secondary-light">
+              Ziel: Entwicklung beschleunigen und Stabilität sichern.
+            </div>
           </Card>
         </div>
       </Region>
 
-      {/* CONTROL LAYER / GATEWAY */}
-      <Region variant="light" tone="alt" id="platform">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-6">
-            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              AI Gateway
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
-              Baue und skaliere zuverlässige KI-Systeme – mit Kontrolle statt
-              Chaos.
-            </h2>
-            <p className="text-base leading-relaxed text-text-muted-light">
-              opny.ai bündelt Modelle, Daten und Richtlinien in einem zentralen
-              Gateway. Teams integrieren KI über einen Endpoint, behalten
-              Policies im Griff und gewinnen Transparenz über Kosten, Nutzung
-              und Outputs. So entsteht produktiver Betrieb – ohne Tool-Wildwuchs
-              oder Vendor-Lock-in.
-            </p>
-            <ul className="space-y-3 text-sm text-text-muted-light">
-              <li className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span>Ein Endpoint für mehrere LLMs (Routing + Fallback)</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span>Policy-Layer für Teams, Rollen und Datenzugriffe</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span>Observability für Prompts, Outputs und Kosten</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Button href="#demo" variant="primary" theme="light">
-                Demo anfragen
-              </Button>
-              <Button href="#security" variant="secondary" theme="light">
-                Security & Governance →
-              </Button>
-            </div>
-          </div>
+      <ProductivitySection />
+      <MidPageCtaSection />
 
-          <div className="space-y-6">
-            <Card theme="light">
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-text-primary-light">
-                  Model routing
-                </h3>
-                <span className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-xs text-text-secondary-light">
-                  Policy
-                </span>
-              </div>
-              <div className="mt-4 space-y-3">
-                {[
-                  { label: "OpenAI", status: "Primary", tag: "Latency 380ms" },
-                  {
-                    label: "Anthropic",
-                    status: "Secondary",
-                    tag: "Latency 420ms",
-                  },
-                  {
-                    label: "Open Source",
-                    status: "Fallback",
-                    tag: "Latency 510ms",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center justify-between rounded-xl border border-border-subtle-light/20 bg-elevated-light/80 px-3 py-2"
-                  >
-                    <div>
-                      <div className="text-sm text-text-muted-light">
-                        {item.label}
-                      </div>
-                      <div className="text-xs text-text-secondary-light">
-                        {item.status}
-                      </div>
-                    </div>
-                    <span className="rounded-full border border-border-subtle-light/25 px-2 py-1 text-[10px] text-text-secondary-light">
-                      {item.tag}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Card theme="light" className="p-5">
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold text-text-primary-light">
-                    Fallback model
-                  </div>
-                  <span className="text-xs text-accent">Policy</span>
-                </div>
-                <div className="mt-4 space-y-3">
-                  {[
-                    { label: "OpenAI", status: "Primary" },
-                    { label: "Anthropic", status: "Secondary" },
-                    { label: "Open Source", status: "Fallback" },
-                  ].map((entry) => (
-                    <div
-                      key={entry.label}
-                      className="flex items-center justify-between rounded-xl border border-border-subtle-light/30 bg-elevated-light/90 px-3 py-2"
-                    >
-                      <span className="text-sm text-text-muted-light">
-                        {entry.label}
-                      </span>
-                      <span className="text-xs text-text-secondary-light">
-                        {entry.status}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-
-              <Card theme="light" className="p-5">
-                <div className="flex items-center justify-between text-xs text-text-secondary-light">
-                  <span>Traffic distribution</span>
-                  <span>Week 32</span>
-                </div>
-                <div className="mt-4 flex h-24 items-end gap-2">
-                  {[60, 40, 80, 30, 70, 55].map((height, index) => (
-                    <div
-                      key={`${height}-${index}`}
-                      className="w-6 rounded-md bg-accent"
-                      style={{ height: `${height}%` }}
-                    >
-                      <span className="sr-only">Bar {index + 1}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Card theme="light" className="p-5">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-                  Usage & cost
-                </div>
-                <div className="mt-4 flex h-20 items-end gap-2">
-                  {[45, 70, 40, 85, 55].map((height, index) => (
-                    <div
-                      key={`${height}-${index}`}
-                      className="w-4 rounded-md bg-accent"
-                      style={{ height: `${height}%` }}
-                    />
-                  ))}
-                </div>
-              </Card>
-              <Card theme="light" className="p-5">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-                  Policy checks
-                </div>
-                <div className="mt-4 space-y-3 text-sm text-text-muted-light">
-                  {[
-                    "PII redaction",
-                    "File type rules",
-                    "Output constraints",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle-light/25 text-[10px] text-accent">
-                        ✓
-                      </span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-8 md:grid-cols-2">
-          {[
-            {
-              title: "Plug-and-play API Access",
-              text: "Integriere KI in Apps und Prozesse über einen zentralen Endpoint – mit Schlüssel- und Rollensteuerung.",
-            },
-            {
-              title: "RAG-ready Architektur",
-              text: "Verbinde Modelle mit internem Wissen aus Dokumenten und Systemen – kontrolliert und auditierbar.",
-            },
-            {
-              title: "Private Workloads",
-              text: "Isoliere sensible Anwendungsfälle durch private Deployments und restriktive Zugriffskontrollen.",
-            },
-            {
-              title: "Secure File Storage",
-              text: "Uploads und Outputs zentral verwalten – mit Retention, Zugriffspfaden und Compliance-Optionen.",
-            },
-          ].map((card) => (
-            <Card key={card.title} theme="light">
-              <h3 className="text-lg font-semibold text-text-primary-light">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm text-text-muted-light">{card.text}</p>
-            </Card>
-          ))}
+      {/* CONSEQUENCES */}
+      <Region variant="light" tone="base">
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-text-primary-light">
+            Die Folge: Schatten-KI, Tool-Wildwuchs und riskante Workarounds.
+          </h3>
+          <p className="text-sm leading-relaxed text-text-muted-light">
+            Ohne Governance und Observability entsteht ein Mix aus Tools,
+            Modellen und Datenwegen – schwer auditierbar, teuer und unsicher.
+          </p>
+          <ul className="space-y-2 text-sm text-text-muted-light">
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Keine Transparenz über Prompts, Datenabflüsse und Outputs</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Kein Routing/Fallback, wenn ein Modell ausfällt</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Kein einheitlicher Policy-Layer für Teams</span>
+            </li>
+          </ul>
         </div>
       </Region>
 
+      <AiGatewaySection />
+
       {/* SECURITY */}
-      <Region variant="light" tone="base" id="security">
+      <Region variant="light" tone="base" id="sicherheit">
         <div className="relative space-y-6">
           <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
             Security & Governance
@@ -509,18 +385,18 @@ export default function Home() {
           </Card>
         </div>
 
-        <div className="mt-6 flex justify-center gap-4" id="demo">
-          <Button href="#demo" variant="primary" theme="light">
+        <div className="mt-6 flex justify-center gap-4">
+          <Button href="/#demo" variant="primary" theme="light">
             Demo anfragen
           </Button>
-          <Button href="#platform" variant="secondary" theme="light">
+          <Button href="/#produkt" variant="secondary" theme="light">
             Plattform ansehen →
           </Button>
         </div>
       </Region>
 
       {/* USE-CASES */}
-      <Region variant="light" tone="alt" id="use-cases">
+      <Region variant="light" tone="alt" id="loesungen">
         <div className="mx-auto max-w-6xl">
           <div className="space-y-4 text-left sm:space-y-5">
             <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
@@ -638,112 +514,128 @@ export default function Home() {
       </Region>
 
       {/* PLATFORM */}
-      <Region variant="light" tone="base" id="resources">
-        <div className="text-left sm:text-center">
-          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-text-secondary-light">
-            Plattform
+      <section id="ressourcen" className="bg-slate-900 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-left sm:text-center">
+            <div className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Plattform
+            </div>
+            <p className="mt-4 text-3xl font-semibold text-white md:text-4xl">
+              Hinter jedem erfolgreichen Anwendungsfall steht eine stabile
+              Plattform.
+            </p>
+            <p className="mt-3 text-sm text-slate-300 sm:text-base">
+              Policies, Routing und Observability bilden das Fundament für
+              skalierbare KI-Workflows.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-start gap-3 sm:justify-center">
+              {["Policies", "Routing & Fallback", "Observability"].map((pill) => (
+                <span
+                  key={pill}
+                  className="rounded-full bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-200"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
           </div>
-          <p className="mt-4 text-2xl font-semibold tracking-tight text-text-primary-light sm:text-3xl">
-            Hinter jedem erfolgreichen Anwendungsfall steht eine stabile
-            Plattform.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-start gap-3 sm:justify-center">
-            {["Policies", "Routing & Fallback", "Observability"].map((pill) => (
-              <span
-                key={pill}
-                className="rounded-full border border-border-subtle-light/20 bg-elevated-light/90 px-4 py-2 text-xs font-semibold text-text-secondary-light shadow-card-light"
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Multimodale Uploads",
+                text: "Dokumente, Tabellen und Medien zentral ingestieren.",
+                icon: (
+                  <svg
+                    className="h-5 w-5 text-slate-300"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path
+                      d="M7 7h10v10H7z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path d="M3 3h4M17 3h4M3 21h4M17 21h4" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Workspace Control Panel",
+                text: "Teams, Rollen und Kosten mit klaren Policies steuern.",
+                icon: (
+                  <svg
+                    className="h-5 w-5 text-slate-300"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path
+                      d="M4 7h16M4 12h16M4 17h10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                title: "Input/Output Guardrails",
+                text: "Safety-Checks und Regeln auf jeder Anfrage.",
+                icon: (
+                  <svg
+                    className="h-5 w-5 text-slate-300"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path
+                      d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ),
+              },
+            ].map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-xl border border-slate-700/60 bg-slate-800 p-6"
               >
-                {pill}
-              </span>
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-slate-700/60 bg-slate-800">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-medium text-white">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-300">{feature.text}</p>
+              </div>
             ))}
           </div>
         </div>
-
-        <div className="mt-8 grid gap-8 md:grid-cols-3">
-          <Card theme="light">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-elevated-light/70">
-              <svg
-                className="h-5 w-5 text-text-muted-light"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  d="M7 7h10v10H7z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path d="M3 3h4M17 3h4M3 21h4M17 21h4" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-text-primary-light">
-              Multimodale Uploads
-            </h3>
-            <p className="mt-2 text-sm text-text-muted-light">
-              Dokumente, Tabellen und Medien zentral ingestieren.
-            </p>
-          </Card>
-
-          <Card theme="light">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-elevated-light/70">
-              <svg
-                className="h-5 w-5 text-text-muted-light"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  d="M4 7h16M4 12h16M4 17h10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-text-primary-light">
-              Workspace Control Panel
-            </h3>
-            <p className="mt-2 text-sm text-text-muted-light">
-              Teams, Rollen und Kosten mit klaren Policies steuern.
-            </p>
-          </Card>
-
-          <Card theme="light">
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-elevated-light/70">
-              <svg
-                className="h-5 w-5 text-text-muted-light"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-text-primary-light">
-              Input/Output Guardrails
-            </h3>
-            <p className="mt-2 text-sm text-text-muted-light">
-              Safety-Checks und Regeln auf jeder Anfrage.
-            </p>
-          </Card>
-        </div>
-      </Region>
+      </section>
 
       {/* FINAL CTA */}
-      <Region variant="light" tone="alt" id="company">
+      <Region variant="light" tone="alt" id="unternehmen">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
-          <Button href="#demo" variant="primary" theme="light">
-            Demo anfragen
-          </Button>
-          <Button href="#platform" variant="secondary" theme="light">
-            Plattform ansehen →
-          </Button>
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
+            Nutzen Sie KI mit Kontrolle, Klarheit und Vertrauen.
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-text-muted-light">
+            Vereinfachen Sie KI-Operationen, sichern Sie DSGVO-Compliance und
+            skalieren Sie sicher.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button href="/#demo" variant="primary" theme="light">
+              Demo anfragen
+            </Button>
+            <Button href="/#produkt" variant="secondary" theme="light">
+              Plattform ansehen
+            </Button>
+          </div>
         </div>
       </Region>
     </div>
