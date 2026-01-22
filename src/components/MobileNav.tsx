@@ -21,7 +21,10 @@ export default function MobileNav({
   open,
   onClose,
   links,
-  cta = { label: "Demo anfragen", href: "/#demo" },
+  cta = {
+    label: "Demo anfragen",
+    href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+  },
   secondaryCta = { label: "Anmelden", href: "/#demo" },
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -174,13 +177,12 @@ export default function MobileNav({
           </nav>
 
           <div className="mt-6 space-y-3">
-            <Link
+            <a
               href={cta.href}
-              onClick={onClose}
               className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
             >
               {cta.label}
-            </Link>
+            </a>
             <Link
               href={secondaryCta.href}
               onClick={onClose}

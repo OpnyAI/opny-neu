@@ -40,13 +40,12 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
           </ul>
 
           <div className="flex flex-wrap gap-4">
-            <Button
-              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai&body=Hallo%20Opny%20Team,%0D%0A%0D%0AIch%20m%C3%B6chte%20eine%20kurze%20Demo%20anfragen.%0D%0A%0D%0AUnternehmen:%20%0D%0AUse-Case:%20%0D%0AAnzahl%20User:%20%0D%0ATech-Stack:%20%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe"
-              variant="primary"
-              theme="light"
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
             >
               Demo anfragen
-            </Button>
+            </a>
 
             <Button href="/#ki-sicherheit" variant="secondary" theme="light">
               Security &amp; Governance →

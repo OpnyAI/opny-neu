@@ -48,21 +48,21 @@ export default function Header() {
             >
               Anmelden
             </Link>
-            <Link
-              href="/#demo"
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
               className="rounded-full bg-[#0b1220] px-4 py-2 text-sm font-semibold text-white"
             >
               Demo anfragen
-            </Link>
+            </a>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <Link
-              href="/#demo"
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
               className="rounded-full bg-[#0b1220] px-3 py-2 text-xs font-semibold text-white"
             >
               Demo anfragen
-            </Link>
+            </a>
             <button
               onClick={() => setMobileOpen(true)}
               className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3 py-2 text-xs font-semibold text-text-primary-light shadow-card-light"
@@ -82,7 +82,10 @@ export default function Header() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         links={nav}
-        cta={{ label: "Demo anfragen", href: "/#demo" }}
+        cta={{
+          label: "Demo anfragen",
+          href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+        }}
         secondaryCta={{ label: "Anmelden", href: "/#demo" }}
       />
     </>
