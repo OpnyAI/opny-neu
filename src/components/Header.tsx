@@ -11,8 +11,8 @@ export default function Header() {
     { label: "Produkt", href: "/#produkt" },
     { label: "Lösungen", href: "/#loesungen" },
     { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
-    { label: "Ressourcen", href: "/#ressourcen" },
-    { label: "Unternehmen", href: "/#unternehmen" },
+    { label: "Plattform", href: "#plattform" },
+    { label: "Über Opny", href: "/#unternehmen" },
   ];
 
   return (
@@ -50,7 +50,7 @@ export default function Header() {
             </Link>
             <a
               href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
-              className="rounded-full bg-[#0b1220] px-4 py-2 text-sm font-semibold text-white"
+              className="rounded-full bg-[#0b1220] px-4 py-2.5 text-sm font-semibold text-white"
             >
               Demo anfragen
             </a>
@@ -59,16 +59,16 @@ export default function Header() {
           <div className="flex items-center gap-2 md:hidden">
             <a
               href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
-              className="rounded-full bg-[#0b1220] px-3 py-2 text-xs font-semibold text-white"
+              className="rounded-full bg-[#0b1220] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
               Demo anfragen
             </a>
             <button
               onClick={() => setMobileOpen(true)}
-              className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3 py-2 text-xs font-semibold text-text-primary-light shadow-card-light"
+              className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
               aria-label="Menü öffnen"
             >
-              <span className="text-xs font-semibold">Menu</span>
+              <span className="text-sm font-semibold">Menu</span>
               <span className="flex flex-col gap-1">
                 <span className="h-0.5 w-4 rounded-full bg-text-primary-light/80" />
                 <span className="h-0.5 w-3 rounded-full bg-text-primary-light/80" />

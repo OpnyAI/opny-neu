@@ -9,13 +9,13 @@ type AiGatewaySectionProps = {
 
 export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
   return (
-    <Region variant="light" tone="surface" id="plattform" className={className}>
+    <Region variant="light" tone="surface" className={className}>
       <div className="grid gap-10 md:grid-cols-12">
         <div className="space-y-6 md:col-span-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
             AI Gateway
           </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
             Baue und skaliere zuverlässige KI-Systeme – mit Kontrolle statt
             Chaos.
           </h2>
@@ -24,7 +24,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
             Gateway. Teams integrieren KI über einen Endpoint, behalten Policies
             im Griff und gewinnen Transparenz über Kosten, Nutzung und Outputs.
           </p>
-          <ul className="space-y-3 text-sm text-text-muted-light">
+          <ul className="space-y-3 text-base text-text-muted-light">
             <li className="flex items-center gap-3">
               <span className="h-2 w-2 rounded-full bg-accent" />
               <span>Ein Endpoint für mehrere LLMs (Routing + Fallback)</span>
@@ -64,7 +64,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
                 <div className="text-sm font-semibold text-text-primary-light">
                   Model routing
                 </div>
-                <span className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-xs text-text-secondary-light">
+                <span className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-sm text-text-secondary-light">
                   Policy
                 </span>
               </div>
@@ -86,11 +86,11 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
                       <div className="text-sm text-text-muted-light">
                         {item.label}
                       </div>
-                      <div className="text-xs text-text-secondary-light">
+                      <div className="text-sm text-text-secondary-light">
                         {item.status}
                       </div>
                     </div>
-                    <span className="rounded-full border border-border-subtle-light/25 px-2 py-1 text-[10px] text-text-secondary-light">
+                    <span className="rounded-full border border-border-subtle-light/25 px-2 py-1 text-sm text-text-secondary-light">
                       {item.tag}
                     </span>
                   </div>
@@ -99,7 +99,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
             </Card>
 
             <Card theme="light" className="p-5">
-              <div className="flex items-center justify-between text-xs text-text-secondary-light">
+              <div className="flex items-center justify-between text-sm text-text-secondary-light">
                 <span>Fallback &amp; Traffic</span>
                 <span>Week 32</span>
               </div>
@@ -116,7 +116,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
                     <span className="text-sm text-text-muted-light">
                       {entry.label}
                     </span>
-                    <span className="text-xs text-text-secondary-light">
+                    <span className="text-sm text-text-secondary-light">
                       {entry.status}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
 
           <div className="grid gap-6 md:grid-cols-2">
             <Card theme="light" className="p-5">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 Usage &amp; Cost
               </div>
               <div className="mt-4 flex h-20 items-end gap-2">
@@ -152,14 +152,14 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
               </div>
             </Card>
             <Card theme="light" className="p-5">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 Policy checks
               </div>
               <div className="mt-4 space-y-3 text-sm text-text-muted-light">
                 {["PII redaction", "File type rules", "Output constraints"].map(
                   (item) => (
                     <div key={item} className="flex items-center gap-2">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle-light/25 text-[10px] text-accent">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle-light/25 text-xs text-accent">
                         ✓
                       </span>
                       <span>{item}</span>
@@ -192,10 +192,10 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
           },
         ].map((card) => (
           <Card key={card.title} theme="light">
-            <h3 className="text-lg font-semibold text-text-primary-light">
+            <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
               {card.title}
             </h3>
-            <p className="mt-2 text-sm text-text-muted-light">{card.text}</p>
+            <p className="mt-2 text-base text-text-muted-light">{card.text}</p>
           </Card>
         ))}
       </div>

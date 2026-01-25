@@ -10,10 +10,10 @@ export default function ImpressumPage() {
     <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
       <div className="space-y-8">
         <div className="space-y-3">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
             Impressum
           </div>
-          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
             Anbieterkennzeichnung
           </h1>
           <p className="text-base leading-relaxed text-text-muted-light">
@@ -21,8 +21,8 @@ export default function ImpressumPage() {
           </p>
         </div>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Opny AI
           </h2>
           <p>
@@ -48,8 +48,8 @@ export default function ImpressumPage() {
           <p>Umsatzsteuer-ID: DE367221694</p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Verantwortlich für den Inhalt
           </h2>
           <p>
@@ -58,8 +58,8 @@ export default function ImpressumPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Online-Streitbeilegung
           </h2>
           <p>

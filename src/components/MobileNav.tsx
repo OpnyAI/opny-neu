@@ -148,7 +148,7 @@ export default function MobileNav({
                 priority
                 className="h-6 w-auto"
               />
-              <span className="text-xs font-semibold tracking-[0.28em] text-text-secondary-light">
+              <span className="text-sm font-semibold uppercase tracking-[0.22em] text-text-secondary-light">
                 MENÜ
               </span>
             </div>

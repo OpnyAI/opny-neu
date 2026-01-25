@@ -100,7 +100,6 @@ body {
 body {
   background: rgb(var(--opny-bg));
   color: rgb(var(--fg));
-  font-family: Arial, Helvetica, sans-serif;
   position: relative;
 }
 

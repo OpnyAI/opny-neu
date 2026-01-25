@@ -15,7 +15,7 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
 
           <div className="relative grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-4">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
                 Nächster Schritt
               </div>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
@@ -33,7 +33,7 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
                   Demo anfragen
                 </a>
                 <Button
-                  href="/#produkt"
+                  href="/#plattform"
                   variant="secondary"
                   theme="light"
                   className="rounded-full border border-white/20 bg-transparent text-white hover:border-white/35 hover:bg-white/5"

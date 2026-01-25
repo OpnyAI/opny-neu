@@ -63,8 +63,17 @@ export default function Button({
       href.startsWith("http") ||
       href.startsWith("mailto:") ||
       href.startsWith("tel:");
+    const isHashLink = href.startsWith("#") || href.startsWith("/#");
+    const normalizedHash = href.startsWith("/#") ? href.replace("/#", "#") : href;
 
     if (!isExternal) {
+      if (isHashLink) {
+        return (
+          <a href={normalizedHash} className={styles} {...(props as any)}>
+            {children}
+          </a>
+        );
+      }
       return (
         <Link href={href} className={styles} {...(props as any)}>
           {children}

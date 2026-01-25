@@ -11,10 +11,10 @@ export default function DatenschutzPage() {
     <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
       <div className="space-y-8">
         <div className="space-y-3">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
             Datenschutz
           </div>
-          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
             Hinweise zum Datenschutz
           </h1>
           <p className="text-base leading-relaxed text-text-muted-light">
@@ -24,8 +24,8 @@ export default function DatenschutzPage() {
           </p>
         </div>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Verantwortlicher
           </h2>
           <p>
@@ -43,8 +43,8 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Allgemeine Hinweise
           </h2>
           <p>
@@ -54,8 +54,8 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Hosting bei Vercel
           </h2>
           <p>
@@ -85,8 +85,8 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Kontaktaufnahme
           </h2>
           <p>
@@ -96,8 +96,8 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Einsatz von OpenAI
           </h2>
           <p>
@@ -117,8 +117,8 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Ihre Rechte
           </h2>
           <ul className="list-disc space-y-2 pl-5">
@@ -131,8 +131,8 @@ export default function DatenschutzPage() {
           </ul>
         </section>
 
-        <section className="space-y-3 text-sm text-text-muted-light">
-          <h2 className="text-lg font-semibold text-text-primary-light">
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Kontakt für Datenschutzanfragen
           </h2>
           <p>
@@ -144,7 +144,7 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <div className="text-xs text-text-secondary-light">Stand: Januar 2026</div>
+        <div className="text-sm text-text-secondary-light">Stand: Januar 2026</div>
       </div>
     </main>
   );
