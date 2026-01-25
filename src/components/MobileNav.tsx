@@ -154,9 +154,10 @@ export default function MobileNav({
             </div>
             <button
               onClick={onClose}
-              className="rounded-full border border-border-subtle-light/25 bg-white px-4 py-2 text-sm font-medium text-text-primary-light shadow-card-light"
+              aria-label="Close menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-white text-xl text-text-secondary-light transition hover:text-text-primary-light"
             >
-              Close
+              ×
             </button>
           </div>
 
