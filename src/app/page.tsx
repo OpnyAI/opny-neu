@@ -13,33 +13,29 @@ export default function Home() {
     <div className="flex flex-col">
       {/* HERO */}
       <Region variant="light" tone="base" id="produkt">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="space-y-6 md:col-span-1">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle-light/30 bg-elevated-light/90 px-4 py-1 text-sm text-text-secondary-light">
-              KI-Orchestrierung
-            </div>
+        <div className="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
+          <div className="space-y-6 md:col-span-1 max-w-[520px]">
             <div className="space-y-4">
               <h1 className="text-4xl font-semibold leading-tight tracking-tight text-text-primary-light md:text-6xl">
                 Eine KI-Plattform. Volle Kontrolle. Keine Komplexität.
               </h1>
-              <p className="text-lg leading-relaxed text-text-muted-light md:text-xl">
-                All-in-One-Plattform für sichere, skalierbare und intelligente
-                KI-Integration.
+              <p className="text-lg leading-relaxed text-text-muted-light md:text-xl max-w-[46ch]">
+                All-in-One-Plattform für sichere, skalierbare KI-Integration in
+                Unternehmen.
               </p>
             </div>
-            <ul className="space-y-3 text-base text-text-muted-light md:text-lg">
+            <ul className="mt-6 space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">
               {[
-                "Für Tech Leader: Policies, Guardrails und Observability zentral steuern.",
-                "Für Teams: KI produktiv nutzen – sicher, nachvollziehbar und auditierbar.",
-                "Für Entwickler: Eine robuste KI-API bauen und zuverlässig skalieren.",
+                "Produktiv für Teams. Kontrolliert für IT & Compliance.",
+                "Eine API für Entwickler – mit Governance, Routing und Transparenz.",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
                 className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
@@ -52,8 +48,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 md:col-span-1 md:mt-0">
-            <HeroChatMock />
+          <div className="mt-10 flex justify-center md:col-span-1 md:mt-0 lg:justify-end">
+            <div className="self-center">
+              <HeroChatMock />
+            </div>
           </div>
         </div>
       </Region>
@@ -368,10 +366,8 @@ export default function Home() {
               KI dort einsetzen, wo sie echten Mehrwert bringt.
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
-              opny.ai wird dort eingesetzt, wo Teams produktiver arbeiten müssen
-              – unter klaren Richtlinien und mit messbarem Nutzen. Statt
-              isolierter Tools entstehen kontrollierte KI-Workflows, die sich in
-              bestehende Prozesse integrieren.
+              Opny hilft Teams, KI sicher und messbar in Prozesse zu bringen –
+              statt Tool-Wildwuchs und Insellösungen.
             </p>
           </div>
 
@@ -380,43 +376,35 @@ export default function Home() {
               {[
                 {
                   title: "Produkt- & Entwicklungsteams",
-                  text: "Beschleunige Produktentwicklung und interne Tools – ohne Sicherheits- oder Kostenkontrollverlust.",
+                  text: "Schneller entwickeln – mit kontrollierten Copilots und sauberem Zugriff auf Wissen.",
                   bullets: [
-                    "Interne Copilots für Code, Doku & Reviews",
-                    "RAG-Workflows mit technischem Wissen",
-                    "Automatisierte QA- und Analyse-Pipelines",
+                    "Copilots für Code, Doku & Reviews",
+                    "RAG mit technischem Know-how",
                   ],
-                  subline: "Typische Nutzer: Produkt, Engineering, Data",
                 },
                 {
                   title: "Operations & Fachbereiche",
-                  text: "Automatisiere wiederkehrende Aufgaben in Fachabteilungen – nachvollziehbar und steuerbar.",
+                  text: "Wiederkehrende Aufgaben automatisieren – nachvollziehbar, steuerbar, auditierbar.",
                   bullets: [
-                    "Dokumentenverarbeitung & Zusammenfassungen",
-                    "E-Mail-, Ticket- und Anfrage-Automatisierung",
-                    "KI-gestützte Entscheidungsunterstützung",
+                    "Dokumente, E-Mails & Tickets automatisieren",
+                    "Entscheidungen mit klaren Policies unterstützen",
                   ],
-                  subline: "Typische Nutzer: Operations, Support, Finance",
                 },
                 {
                   title: "Compliance, Legal & Risiko",
-                  text: "Nutze KI unter klaren Leitplanken – ohne Schatten-IT oder Audit-Risiken.",
+                  text: "KI nutzen, ohne Audit- und Datenschutzrisiken zu erzeugen.",
                   bullets: [
-                    "Richtlinien-konforme KI-Nutzung",
-                    "Auditierbare Prompt- & Output-Historien",
-                    "Kontrollierte Datenflüsse",
+                    "Policy-konforme Nutzung & Freigaben",
+                    "Auditierbare Prompt- und Output-Historie",
                   ],
-                  subline: "Typische Nutzer: Legal, Compliance, Risk",
                 },
                 {
                   title: "Regulierte Branchen",
-                  text: "Setze KI auch dort ein, wo Datenschutz und Regulierung höchste Priorität haben.",
+                  text: "Kontrolle bei sensiblen Daten – auch unter strengen Vorgaben.",
                   bullets: [
-                    "Pharma & Life Sciences",
-                    "Banken & Versicherungen",
-                    "Chemie & industrielle Unternehmen",
+                    "Pharma, Banken, Industrie",
+                    "Governance, Nachvollziehbarkeit, Sicherheit",
                   ],
-                  subline: "Fokus: Sicherheit, Nachvollziehbarkeit, Governance",
                 },
               ].map((card) => (
                 <div key={card.title} className="space-y-3">
@@ -426,9 +414,6 @@ export default function Home() {
                   <p className="text-base leading-relaxed text-text-muted-light">
                     {card.text}
                   </p>
-                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-                    Typische Anwendungsfälle
-                  </div>
                   <ul className="space-y-2 text-base text-text-muted-light">
                     {card.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3">
@@ -437,39 +422,8 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <div className="text-sm text-text-muted-light">
-                    {card.subline}
-                  </div>
                 </div>
               ))}
-            </div>
-
-            <div className="border-t border-border-subtle-light/15 pt-6">
-              <div className="grid gap-8 md:grid-cols-3">
-                {[
-                  {
-                    title: "Reduzierter Tool-Wildwuchs",
-                    text: "Ein Gateway statt paralleler KI-Tools.",
-                  },
-                  {
-                    title: "Kontrollierte Skalierung",
-                    text: "Mehr Nutzung – ohne Kosten- oder Compliance-Schock.",
-                  },
-                  {
-                    title: "Schnellere Umsetzung",
-                    text: "Produktiver Einsatz statt Proof-of-Concepts.",
-                  },
-                ].map((outcome) => (
-                  <div key={outcome.title} className="space-y-2">
-                    <div className="text-xl font-semibold text-text-primary-light md:text-2xl">
-                      {outcome.title}
-                    </div>
-                    <div className="text-base text-text-muted-light">
-                      {outcome.text}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
