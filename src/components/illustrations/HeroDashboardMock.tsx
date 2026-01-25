@@ -11,7 +11,7 @@ const kpis = [
   { label: "Anfragen (24h)", value: "20.480" },
   { label: "Durchschnittliche Latenz", value: "715 ms" },
   { label: "Fehlerrate", value: "1,2 %" },
-  { label: "Kosten (heute)", value: "€ 935" },
+  { label: "Kosten (heute)", value: "€ 9,35" },
 ];
 
 const requests = [

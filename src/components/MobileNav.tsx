@@ -126,7 +126,7 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-0 z-[999] lg:hidden"
+      className="fixed inset-x-0 bottom-0 top-16 z-[999] lg:hidden"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />

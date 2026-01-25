@@ -46,7 +46,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
         <div className="flex items-center justify-between gap-3 rounded-2xl border border-black/10 bg-white/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-slate-900 dark:text-white">
-              opny Workspace
+              Opny Workspace
             </span>
             <span className="rounded-full border border-black/10 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-200">
               EU
@@ -142,7 +142,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
 
             <input
               type="text"
-              placeholder="Nachricht an opny…"
+              placeholder="Nachricht an Opny…"
               className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none dark:text-white dark:placeholder:text-slate-400"
             />
 

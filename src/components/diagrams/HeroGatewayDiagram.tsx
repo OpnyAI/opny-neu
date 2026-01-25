@@ -128,7 +128,7 @@ export default function HeroGatewayDiagram({
             fill="rgb(var(--opny-text))"
             fontFamily="Arial, Helvetica, sans-serif"
           >
-            opny AI Gateway
+            Opny AI Gateway
           </text>
 
           {[

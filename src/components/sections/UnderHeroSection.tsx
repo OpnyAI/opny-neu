@@ -7,7 +7,7 @@ export default function UnderHeroSection() {
       <div className="space-y-4">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            So funktioniert opny im Alltag
+            So funktioniert Opny im Alltag
           </h2>
           <p className="text-base leading-relaxed text-text-muted-light">
             Ein Chat-Interface für Teams – mit Policies und Multi-Model-Routing
@@ -28,7 +28,7 @@ export default function UnderHeroSection() {
             },
             {
               title: "Model Switch & Auto-Routing",
-              text: "Wechsle Modelle flexibel oder lasse opny automatisch das beste Routing wählen.",
+              text: "Wechsle Modelle flexibel oder lasse Opny automatisch das beste Routing wählen.",
               bullets: [
                 "Auto-Auswahl pro Request",
                 "Fallback bei Ausfällen",
