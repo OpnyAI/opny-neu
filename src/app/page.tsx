@@ -4,15 +4,17 @@ import Region from "@/components/Region";
 import ProductivitySection from "@/components/sections/ProductivitySection";
 import MidPageCtaSection from "@/components/sections/MidPageCtaSection";
 import AiGatewaySection from "@/components/sections/AiGatewaySection";
+import UnderHeroSection from "@/components/sections/UnderHeroSection";
 import { GovernanceControlLayerDiagram } from "@/components/diagrams/GovernanceControlLayerDiagram";
+import HeroChatMock from "@/components/mocks/HeroChatMock";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* HERO */}
       <Region variant="light" tone="base" id="produkt">
-        <div className="grid items-center gap-10">
-          <div className="space-y-6">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          <div className="space-y-6 md:col-span-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle-light/30 bg-elevated-light/90 px-4 py-1 text-sm text-text-secondary-light">
               KI-Orchestrierung
             </div>
@@ -50,8 +52,13 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="mt-10 md:col-span-1 md:mt-0">
+            <HeroChatMock />
+          </div>
         </div>
       </Region>
+
+      <UnderHeroSection />
 
       {/* REALITÄT */}
       <Region variant="light" tone="alt">
