@@ -11,7 +11,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* HERO */}
       <Region variant="light" tone="base" id="produkt">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-10">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle-light/30 bg-elevated-light/90 px-4 py-1 text-sm text-text-secondary-light">
               KI-Orchestrierung
@@ -50,57 +50,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-border-subtle-light/40 bg-white p-6 shadow-card-light">
-            <div className="space-y-5">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.24em] text-text-secondary-light">
-                  Modelle
-                </div>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {["OpenAI", "Gemini", "Llama"].map((model) => (
-                    <div
-                      key={model}
-                      className="rounded-2xl border border-border-subtle-light/30 bg-elevated-light/70 px-3 py-2 text-sm font-medium text-text-primary-light"
-                    >
-                      {model}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-border-subtle-light/30 bg-white px-4 py-4 shadow-card-light">
-                <div className="text-sm font-semibold uppercase tracking-[0.24em] text-text-secondary-light">
-                  Opny Control Layer
-                </div>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {["Policies", "Routing", "Observability"].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-border-subtle-light/25 bg-elevated-light/80 px-3 py-2 text-sm font-medium text-text-primary-light"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.24em] text-text-secondary-light">
-                  Teams / Apps
-                </div>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {["Product", "Ops", "Compliance"].map((team) => (
-                    <div
-                      key={team}
-                      className="rounded-2xl border border-border-subtle-light/30 bg-elevated-light/70 px-3 py-2 text-sm font-medium text-text-primary-light"
-                    >
-                      {team}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </Region>
 
