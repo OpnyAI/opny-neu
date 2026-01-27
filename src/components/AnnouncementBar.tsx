@@ -11,7 +11,7 @@ export default function AnnouncementBar() {
         </span>
         <a
           className="flex-shrink-0 text-text-primary-dark transition hover:text-text-primary-dark/80"
-          href="#"
+          href="/#produkt"
         >
           Mehr erfahren →
         </a>

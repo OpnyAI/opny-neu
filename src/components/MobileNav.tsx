@@ -1,8 +1,10 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 type MobileNavLink = {
   label: string;
@@ -29,6 +31,78 @@ export default function MobileNav({
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const [animateIn, setAnimateIn] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleHashLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("/#")) return;
+
+    event.preventDefault();
+    onClose();
+
+    const id = href.slice(2);
+
+    if (pathname === "/") {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    router.push(href);
+
+    let frame = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      frame += 1;
+      if (frame < 40) requestAnimationFrame(tryScroll);
+    };
+    requestAnimationFrame(tryScroll);
+  };
+
+  const renderNavLink = (link: MobileNavLink) => {
+    const isExternal =
+      link.href.startsWith("http") ||
+      link.href.startsWith("mailto:") ||
+      link.href.startsWith("tel:");
+    const isHashLink = link.href.startsWith("/#");
+
+    const baseClass =
+      "block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5";
+
+    if (isExternal) {
+      return (
+        <a href={link.href} className={baseClass}>
+          {link.label}
+        </a>
+      );
+    }
+
+    if (isHashLink) {
+      return (
+        <Link
+          href={link.href}
+          onClick={(event) => handleHashLinkClick(event, link.href)}
+          className={baseClass}
+        >
+          {link.label}
+        </Link>
+      );
+    }
+
+    return (
+      <Link href={link.href} onClick={onClose} className={baseClass}>
+        {link.label}
+      </Link>
+    );
+  };
 
   // 1) Body scroll lock
   useEffect(() => {
@@ -64,7 +138,7 @@ export default function MobileNav({
       if (e.key !== "Tab") return;
 
       const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
       );
       if (!focusables || focusables.length === 0) return;
 
@@ -89,7 +163,7 @@ export default function MobileNav({
     if (!open) return;
 
     const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
     );
     focusables?.[0]?.focus();
 
@@ -119,6 +193,11 @@ export default function MobileNav({
   }, [open]);
 
   if (!open) return null;
+
+  const secondaryOnClick = secondaryCta.href.startsWith("/#")
+    ? (event: React.MouseEvent<HTMLAnchorElement>) =>
+        handleHashLinkClick(event, secondaryCta.href)
+    : onClose;
 
   return (
     <div
@@ -164,15 +243,7 @@ export default function MobileNav({
           <nav className="mt-6 flex-1 overflow-y-auto">
             <ul className="space-y-2">
               {links.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    onClick={onClose}
-                    className="block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
+                <li key={l.href}>{renderNavLink(l)}</li>
               ))}
             </ul>
           </nav>
@@ -184,9 +255,10 @@ export default function MobileNav({
             >
               {cta.label}
             </a>
+
             <Link
               href={secondaryCta.href}
-              onClick={onClose}
+              onClick={secondaryOnClick}
               className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
             >
               {secondaryCta.label}

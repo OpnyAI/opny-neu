@@ -1,19 +1,52 @@
 "use client";
 
+import type React from "react";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import MobileNav from "@/components/MobileNav";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleHashLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href || !href.startsWith("/#")) return;
+
+    event.preventDefault();
+    const id = href.slice(2);
+
+    if (pathname === "/") {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    router.push(href);
+
+    let frame = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      frame += 1;
+      if (frame < 40) requestAnimationFrame(tryScroll);
+    };
+    requestAnimationFrame(tryScroll);
+  };
 
   const nav = [
     { label: "Produkt", href: "/#produkt" },
     { label: "Lösungen", href: "/#loesungen" },
     { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
-    { label: "Plattform", href: "#plattform" },
+    { label: "Plattform", href: "/#plattform" },
+    { label: "AI Gateway", href: "/ai-gateway" },
+    { label: "KI Governance", href: "/ki-governance" },
     { label: "Über Opny", href: "/#unternehmen" },
   ];
 
@@ -35,7 +68,7 @@ export default function Header() {
             <img
               src="/images/brand/opny-logo.png"
               alt="Opny"
-              className="h-5 w-auto md:h-6 block"
+              className="block h-5 w-auto md:h-6"
               draggable={false}
             />
             <span className="sr-only">opny.ai</span>
@@ -46,6 +79,9 @@ export default function Header() {
               <Link
                 key={n.label}
                 href={n.href}
+                onClick={
+                  n.href.startsWith("/#") ? handleHashLinkClick : undefined
+                }
                 className="text-sm text-text-muted-light hover:text-text-primary-light"
               >
                 {n.label}
@@ -57,6 +93,7 @@ export default function Header() {
             <Link
               href="/#demo"
               className="text-sm text-text-muted-light hover:text-text-primary-light"
+              onClick={handleHashLinkClick}
             >
               Anmelden
             </Link>

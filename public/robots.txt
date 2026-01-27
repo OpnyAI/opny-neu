@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://opny.ai/sitemap.xml

@@ -22,8 +22,8 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
                 Kontrollierte KI – live in Ihrer Realität.
               </h2>
               <p className="text-base leading-relaxed text-white/70">
-                Sehen Sie, wie Opny Governance, Routing und Observability in einem
-                Layer verbindet – ohne Teams auszubremsen.
+                Sehen Sie, wie Opny KI Governance, Routing und Observability in
+                einem Layer verbindet – ohne Teams auszubremsen.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -46,7 +46,7 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
               {[
                 "Schneller Proof in echten Use-Cases",
                 "Transparenz über Kosten, Nutzung und Qualität",
-                "Governance ohne zusätzlichen Prozessballast",
+                "KI Governance ohne zusätzlichen Prozessballast",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-white/50" />

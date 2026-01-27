@@ -16,18 +16,20 @@ export default function Home() {
         <div className="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
           <div className="space-y-6 md:col-span-1 max-w-[520px]">
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-text-primary-light md:text-6xl">
-                Eine KI-Plattform. Volle Kontrolle. Keine Komplexität.
+              <h1 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
+                Künstliche Intelligenz (KI) für Unternehmen. KI Plattform für
+                Unternehmen mit Kontrolle.
               </h1>
               <p className="text-lg leading-relaxed text-text-muted-light md:text-xl max-w-[46ch]">
-                All-in-One-Plattform für sichere, skalierbare KI-Integration in
-                Unternehmen.
+                opny.ai ist die Enterprise KI Plattform für kontrollierte KI
+                und sichere KI Nutzung – mit KI Governance, KI Compliance und
+                AI Gateway.
               </p>
             </div>
             <ul className="mt-6 space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">
               {[
                 "Produktiv für Teams. Kontrolliert für IT & Compliance.",
-                "Eine API für Entwickler – mit Governance, Routing und Transparenz.",
+                "Eine API für Entwickler – mit KI Governance, AI Routing & Fallback und Transparenz.",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
@@ -117,14 +119,14 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              Governance & Security
+              KI Governance & Sicherheit
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Zentrale Governance & Security
+              Zentrale KI Governance & Sicherheit
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
-              Steuerung, Richtlinien und Audits in einem Layer – damit Teams
-              schneller liefern, ohne Compliance- oder Sicherheitsrisiken.
+              Steuerung, LLM Governance und Audits in einem Layer – damit Teams
+              schneller liefern, ohne KI Compliance oder Sicherheitsrisiken.
             </p>
             <ul className="space-y-3 text-base text-text-muted-light">
               {[
@@ -148,7 +150,7 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <Card theme="light" className="p-6">
             <div className="text-lg font-semibold text-text-primary-light">
-              KI-Workspace
+              AI Workspace
             </div>
             <ul className="mt-4 space-y-2 text-base text-text-muted-light">
               {[
@@ -172,7 +174,7 @@ export default function Home() {
 
           <Card theme="light" className="p-6">
             <div className="text-lg font-semibold text-text-primary-light">
-              KI-Gateway
+              AI Gateway
             </div>
             <ul className="mt-4 space-y-2 text-base text-text-muted-light">
               {[
@@ -205,7 +207,7 @@ export default function Home() {
             Die Folge: Schatten-KI, Tool-Wildwuchs und riskante Workarounds.
           </h3>
           <p className="text-base leading-relaxed text-text-muted-light">
-            Ohne Governance und Observability entsteht ein Mix aus Tools,
+            Ohne KI Governance und Observability entsteht ein Mix aus Tools,
             Modellen und Datenwegen – schwer auditierbar, teuer und unsicher.
           </p>
           <ul className="space-y-2 text-base text-text-muted-light">
@@ -231,7 +233,7 @@ export default function Home() {
       <Region variant="light" tone="base" id="ki-sicherheit">
         <div className="relative space-y-6">
           <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-            Security & Governance
+            KI-Sicherheit & KI Governance
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
             KI produktiv nutzen – ohne Risiko, ohne Wildwuchs.
@@ -240,7 +242,8 @@ export default function Home() {
             opny.ai setzt Richtlinien direkt an der Schnittstelle durch: vor der
             Anfrage, nach der Antwort und bei jedem Datei-Upload. So bleiben
             Daten, Rollen und Outputs kontrollierbar – auch wenn Teams
-            unterschiedliche Modelle und Workflows nutzen.
+            unterschiedliche Modelle und Workflows nutzen. Fokus: KI-Sicherheit
+            in Unternehmen, klare Verantwortung und nachvollziehbare Prozesse.
           </p>
         </div>
 
@@ -290,7 +293,7 @@ export default function Home() {
         <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-              Governance, die Teams nicht ausbremst.
+              KI Governance, die Teams nicht ausbremst.
             </h3>
             <p className="text-base leading-relaxed text-text-muted-light">
               Richtlinien werden als Produkt-Default umgesetzt – nicht als PDF.
@@ -403,7 +406,7 @@ export default function Home() {
                   text: "Kontrolle bei sensiblen Daten – auch unter strengen Vorgaben.",
                   bullets: [
                     "Pharma, Banken, Industrie",
-                    "Governance, Nachvollziehbarkeit, Sicherheit",
+                    "KI Governance, Nachvollziehbarkeit, Sicherheit",
                   ],
                 },
               ].map((card) => (
@@ -444,11 +447,11 @@ export default function Home() {
               Plattform.
             </p>
             <p className="mt-3 text-base text-slate-300">
-              Policies, Routing und Observability bilden das Fundament für
-              skalierbare KI-Workflows.
+              KI Orchestrierung, AI Routing & Fallback und Observability bilden
+              das Fundament für skalierbare KI-Workflows.
             </p>
             <div className="mt-6 flex flex-wrap justify-start gap-3 sm:justify-center">
-              {["Policies", "Routing & Fallback", "Observability"].map((pill) => (
+              {["Policies", "AI Routing & Fallback", "Observability"].map((pill) => (
                 <span
                   key={pill}
                   className="rounded-full bg-[rgb(18_22_30)] px-4 py-2 text-sm font-semibold text-slate-200"

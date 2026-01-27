@@ -52,7 +52,7 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
             </a>
 
             <Button href="/#ki-sicherheit" variant="secondary" theme="light">
-              Security &amp; Governance →
+              KI Governance &amp; Sicherheit →
             </Button>
           </div>
         </div>

@@ -1,15 +1,16 @@
 import Link from "next/link";
 
 const productLinks = [
-  { label: "KI-Workspace", href: "/#produkt" },
-  { label: "AI Gateway", href: "/#plattform" },
-  { label: "Security & Governance", href: "/#ki-sicherheit" },
+  { label: "AI Workspace", href: "/#produkt" },
+  { label: "AI Gateway", href: "/ai-gateway" },
+  { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
+  { label: "KI Governance", href: "/ki-governance" },
 ];
 
 const resourceLinks = [
-  { label: "Plattform", href: "#plattform" },
+  { label: "Plattform", href: "/#plattform" },
   { label: "Lösungen", href: "/#loesungen" },
-  { label: "Demo", href: "/#demo" },
+  { label: "Demo", href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai" },
 ];
 
 const companyLinks = [
@@ -24,6 +25,27 @@ const legalLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const renderLink = (link: { label: string; href: string }) => {
+    const isExternal =
+      link.href.startsWith("mailto:") ||
+      link.href.startsWith("tel:") ||
+      link.href.startsWith("http");
+    const isHashLink = link.href.startsWith("/#");
+
+    if (isExternal || isHashLink) {
+      return (
+        <a className="hover:text-text-primary-light" href={link.href}>
+          {link.label}
+        </a>
+      );
+    }
+
+    return (
+      <Link className="hover:text-text-primary-light" href={link.href}>
+        {link.label}
+      </Link>
+    );
+  };
 
   return (
     <footer className="border-t border-border-subtle-light/15 bg-white/80">
@@ -35,17 +57,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {productLinks.map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("#") ? (
-                    <a className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -56,17 +68,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {resourceLinks.map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("#") ? (
-                    <a className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -77,21 +79,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {companyLinks.map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("mailto:") ? (
-                    <a className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </a>
-                  ) : link.href.startsWith("#") ? (
-                    <a className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link className="hover:text-text-primary-light" href={link.href}>
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -102,11 +90,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {legalLinks.map((link) => (
-                <li key={link.label}>
-                  <Link className="hover:text-text-primary-light" href={link.href}>
-                    {link.label}
-                  </Link>
-                </li>
+                <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>
           </div>

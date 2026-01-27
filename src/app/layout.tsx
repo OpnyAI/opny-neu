@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "opny.ai – Kontrollierte KI-Systeme für Unternehmen",
+  title: "opny.ai – KI Plattform für Governance, Sicherheit & AI Orchestrierung",
   description:
-    "opny.ai verbindet Modelle, Daten und Richtlinien zu sicheren, beobachtbaren Workflows.",
+    "opny.ai ist eine Enterprise KI Plattform für kontrollierte KI-Nutzung: AI Gateway, KI Governance, Sicherheit, Routing, Observability.",
 };
 
 export default function RootLayout({

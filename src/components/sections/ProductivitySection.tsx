@@ -19,7 +19,7 @@ export default function ProductivitySection({ className }: ProductivitySectionPr
           </h2>
           <p className="text-base leading-relaxed text-text-muted-light">
             Ein Workspace, der alle LLMs bündelt und Zusammenarbeit
-            strukturierbar macht – mit klaren Leitplanken und klarer Governance.
+            strukturierbar macht – mit klaren Leitplanken und klarer KI Governance.
           </p>
           <ul className="space-y-3 text-base text-text-muted-light">
             {[

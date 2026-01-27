@@ -49,7 +49,7 @@ export default function WorkspaceVsGateway({ className }: IllustrationProps) {
         fill="rgb(var(--opny-text))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        KI-Workspace
+        AI Workspace
       </text>
       <text
         x="520"
@@ -59,7 +59,7 @@ export default function WorkspaceVsGateway({ className }: IllustrationProps) {
         fill="rgb(var(--opny-text))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        KI-Gateway
+        AI Gateway
       </text>
 
       {[
