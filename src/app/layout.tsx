@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import SiteShell from "@/components/SiteShell";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
@@ -7,12 +8,6 @@ import AnalyticsRouteTracker from "@/components/analytics/AnalyticsRouteTracker"
 import CookieBanner from "@/components/consent/CookieBanner";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -38,10 +33,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="de">
       <body className={`${geistSans.className} antialiased`}>
         <GoogleAnalytics />
-        <AnalyticsRouteTracker />
+        <Suspense fallback={null}>
+          <AnalyticsRouteTracker />
+        </Suspense>
         <CookieBanner />
         <SiteShell>{children}</SiteShell>
       </body>
