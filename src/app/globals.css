@@ -98,9 +98,19 @@ body {
 }
 
 body {
+  font-family:
+    var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
   background: rgb(var(--opny-bg));
   color: rgb(var(--fg));
   position: relative;
+}
+
+code,
+pre {
+  font-family:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body > * {
