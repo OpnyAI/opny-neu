@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SiteShell from "@/components/SiteShell";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import AnalyticsRouteTracker from "@/components/analytics/AnalyticsRouteTracker";
+import CookieBanner from "@/components/consent/CookieBanner";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -34,7 +37,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${geistSans.className} ${geistMono.className} antialiased`}>
+        <GoogleAnalytics />
+        <AnalyticsRouteTracker />
+        <CookieBanner />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

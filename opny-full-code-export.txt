@@ -1,0 +1,4823 @@
+===== PROJECT TREE =====
+.
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── opny-full-code-export.txt
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── postcss.config.mjs
+├── public
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   ├── apple-touch-icon-v2.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── brand
+│   │   │   └── opny-logo.png
+│   │   ├── diagrams
+│   │   │   └── opny-ai-gateway.png
+│   │   └── mockups
+│   │       └── opny-dashboard-base.png
+│   ├── logo-opny.png
+│   ├── robots.txt
+│   └── sitemap.xml
+├── README.md
+├── src
+│   ├── app
+│   │   ├── ai-gateway
+│   │   │   └── page.tsx
+│   │   ├── datenschutz
+│   │   │   └── page.tsx
+│   │   ├── globals.css
+│   │   ├── impressum
+│   │   │   └── page.tsx
+│   │   ├── ki-governance
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   └── components
+│       ├── analytics
+│       │   ├── AnalyticsRouteTracker.tsx
+│       │   └── GoogleAnalytics.tsx
+│       ├── AnnouncementBar.tsx
+│       ├── consent
+│       │   └── CookieBanner.tsx
+│       ├── diagrams
+│       │   ├── AiGatewayDiagram.tsx
+│       │   ├── GovernanceControlLayerDiagram.tsx
+│       │   ├── HeroGatewayDiagram.tsx
+│       │   └── WorkspaceGatewayDiagram.tsx
+│       ├── Footer.tsx
+│       ├── Header.tsx
+│       ├── illustrations
+│       │   ├── GatewayDiagram.tsx
+│       │   ├── HeroChatGatewayMock.tsx
+│       │   ├── HeroDashboardMock.tsx
+│       │   ├── HeroProductMock.tsx
+│       │   ├── OpnyDashboardMock.tsx
+│       │   └── WorkspaceVsGateway.tsx
+│       ├── MobileNav.tsx
+│       ├── mocks
+│       │   └── HeroChatMock.tsx
+│       ├── NavDropdown.tsx
+│       ├── Region.tsx
+│       ├── sections
+│       │   ├── AiGatewaySection.tsx
+│       │   ├── MidPageCtaSection.tsx
+│       │   ├── ProductivitySection.tsx
+│       │   └── UnderHeroSection.tsx
+│       ├── SiteShell.tsx
+│       └── ui
+│           ├── Button.tsx
+│           ├── Card.tsx
+│           └── Section.tsx
+├── tailwind.config.js
+└── tsconfig.json
+
+20 directories, 58 files
+
+
+===== PACKAGE.JSON =====
+{
+  "name": "opny-neu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.1.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}
+
+
+===== NEXT CONFIG =====
+no next.config.js
+
+
+===== SRC CODE =====
+src/app/datenschutz/page.tsx
+\n----- FILE: src/app/datenschutz/page.tsx -----
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Datenschutz | opny.ai",
+  description:
+    "Datenschutzhinweise zur Verarbeitung personenbezogener Daten auf opny.ai.",
+};
+
+export default function DatenschutzPage() {
+  return (
+    <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+      <div className="space-y-8">
+        <div className="space-y-3">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+            Datenschutz
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            Hinweise zum Datenschutz
+          </h1>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Nachfolgend
+            informieren wir Sie klar und verständlich über die Verarbeitung auf
+            dieser Website.
+          </p>
+        </div>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Verantwortlicher
+          </h2>
+          <p>
+            Opny AI, Mehmet Çatalsakal
+            <br />
+            Naumannstraße 3
+            <br />
+            73663 Berglen
+          </p>
+          <p>
+            Kontakt:{" "}
+            <a className="hover:text-text-primary-light" href="mailto:info@opny.ai">
+              info@opny.ai
+            </a>
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Allgemeine Hinweise
+          </h2>
+          <p>
+            Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit
+            dies für den Betrieb der Website, die Bereitstellung von Funktionen
+            und die Beantwortung von Anfragen erforderlich ist.
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Hosting bei Vercel
+          </h2>
+          <p>
+            Unsere Website wird bei Vercel Inc., 440 N Barranca Ave #4133,
+            Covina, CA 91723, USA gehostet. Beim Aufruf der Website werden
+            Logdaten (z. B. IP-Adresse, Browserinformationen und Zugriffszeiten)
+            verarbeitet, um den Betrieb zu ermöglichen und abzusichern.
+          </p>
+          <p>
+            Wir haben mit Vercel einen Vertrag zur Auftragsverarbeitung (DPA)
+            gemäß Art. 28 DSGVO abgeschlossen. Die Speicherung erfolgt nach
+            Möglichkeit auf Servern innerhalb der EU. Es kann jedoch nicht
+            ausgeschlossen werden, dass Daten in die USA übertragen werden.
+          </p>
+          <p>
+            Weitere Informationen finden Sie in der Datenschutzerklärung von
+            Vercel:{" "}
+            <a
+              className="hover:text-text-primary-light"
+              href="https://vercel.com/legal/privacy-policy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              vercel.com/legal/privacy-policy
+            </a>
+            .
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Kontaktaufnahme
+          </h2>
+          <p>
+            Wenn Sie uns per E-Mail kontaktieren, speichern wir Ihre Angaben zur
+            Bearbeitung der Anfrage. Die Kommunikation per E-Mail erfolgt
+            unverschlüsselt.
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Einsatz von OpenAI
+          </h2>
+          <p>
+            Wenn Sie KI-Funktionen auf dieser Website nutzen, werden Ihre
+            Eingaben an die OpenAI-API (OpenAI, L.L.C., USA) übermittelt und
+            dort verarbeitet. Weitere Informationen finden Sie in der Privacy
+            Policy von OpenAI:{" "}
+            <a
+              className="hover:text-text-primary-light"
+              href="https://openai.com/policies/privacy-policy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              openai.com/policies/privacy-policy
+            </a>
+            .
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Ihre Rechte
+          </h2>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>Auskunft über die zu Ihrer Person gespeicherten Daten</li>
+            <li>Berichtigung unrichtiger oder unvollständiger Daten</li>
+            <li>Löschung Ihrer Daten, soweit keine Aufbewahrungspflichten bestehen</li>
+            <li>Einschränkung der Verarbeitung in bestimmten Fällen</li>
+            <li>Datenübertragbarkeit</li>
+            <li>Widerspruch gegen die Verarbeitung Ihrer Daten</li>
+          </ul>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Kontakt für Datenschutzanfragen
+          </h2>
+          <p>
+            Für Datenschutzanfragen erreichen Sie uns unter:{" "}
+            <a className="hover:text-text-primary-light" href="mailto:info@opny.ai">
+              info@opny.ai
+            </a>
+            .
+          </p>
+        </section>
+
+        <div className="text-sm text-text-secondary-light">Stand: Januar 2026</div>
+      </div>
+    </main>
+  );
+}
+src/app/ai-gateway/page.tsx
+\n----- FILE: src/app/ai-gateway/page.tsx -----
+import type { Metadata } from "next";
+import Region from "@/components/Region";
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "AI Gateway für Unternehmen – Routing, Fallback & Kontrolle | opny.ai",
+  description:
+    "AI Gateway für Unternehmen: AI Routing & Fallback, Multi-LLM-Steuerung, Observability und kontrollierte KI Orchestrierung.",
+};
+
+export default function AiGatewayPage() {
+  return (
+    <main className="flex flex-col">
+      <Region variant="light" tone="base">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              AI Gateway
+            </div>
+            <h1 className="text-4xl font-semibold tracking-tight text-text-primary-light md:text-5xl">
+              AI Gateway für Unternehmen
+            </h1>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Ein zentraler Gateway-Layer für Engineering-Teams: AI Routing &amp;
+              Fallback, Multi-LLM-Steuerung und Observability in einem Endpoint.
+              So entsteht KI Orchestrierung mit stabiler Kontrolle über Kosten,
+              Qualität und Datenpfade.
+            </p>
+            <ul className="space-y-3 text-base text-text-muted-light">
+              {[
+                "LLM Routing mit dynamischen Regeln je Use-Case",
+                "Fallback-Strategien für Ausfälle und Qualitätsdrift",
+                "Observability für Prompts, Tokens und Kosten",
+                "Policy-Layer für Rollen, Keys und Datenzugriffe",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/ki-governance" variant="secondary" theme="light">
+                KI Governance ansehen
+              </Button>
+              <Button href="/#plattform" variant="primary" theme="light">
+                Plattform entdecken
+              </Button>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Routing-Strategien pro Team
+              </div>
+              <p className="mt-2 text-base text-text-muted-light">
+                Definieren Sie Regeln für LLMs, Kosten-Limits und Modelle je
+                Workspace, Projekt oder Anwendung.
+              </p>
+            </Card>
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Observability in Echtzeit
+              </div>
+              <p className="mt-2 text-base text-text-muted-light">
+                Einblicke in Latenz, Token-Verbrauch und Fehlerquoten – ohne
+                zusätzliche Tool-Ketten.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </Region>
+
+      <Region variant="light" tone="surface">
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Engineering-Fokus
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Technik, die skalierbare KI-Systeme möglich macht.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Das AI Gateway verbindet Modelle, Daten und Policies zu einem
+              verlässlichen Produktiv-Layer. Ideal für CTOs, Engineering Leads
+              und Plattform-Teams.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "Multi-LLM Abstraktion",
+                text: "Modelle zentral verwalten, Versionen testen und je Use-Case auswählen.",
+              },
+              {
+                title: "Fallback & Resilienz",
+                text: "Redundanzen und Failover-Strategien verhindern Downtime und Qualitätsverluste.",
+              },
+              {
+                title: "Observability & Kostenkontrolle",
+                text: "Messbare Qualität, klare Budgetgrenzen und proaktive Alerts.",
+              },
+              {
+                title: "Sichere Deployments",
+                text: "Private Workloads, isolierte Keys und kontrollierte Datenflüsse für sensible Anwendungen.",
+              },
+            ].map((card) => (
+              <Card key={card.title} theme="light">
+                <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-base text-text-muted-light">
+                  {card.text}
+                </p>
+              </Card>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <Button href="/#plattform" variant="secondary" theme="light">
+              Plattform ansehen
+            </Button>
+            <Button href="/ki-governance" variant="primary" theme="light">
+              KI Governance &amp; Sicherheit
+            </Button>
+          </div>
+        </div>
+      </Region>
+    </main>
+  );
+}
+src/app/impressum/page.tsx
+\n----- FILE: src/app/impressum/page.tsx -----
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Impressum | opny.ai",
+  description: "Impressum der Opny AI mit Kontakt- und Pflichtangaben.",
+};
+
+export default function ImpressumPage() {
+  return (
+    <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+      <div className="space-y-8">
+        <div className="space-y-3">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+            Impressum
+          </div>
+          <h1 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            Anbieterkennzeichnung
+          </h1>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            Pflichtangaben nach § 5 TMG und § 55 Abs. 2 RStV.
+          </p>
+        </div>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Opny AI
+          </h2>
+          <p>
+            Inhaber: Mehmet Çatalsakal
+            <br />
+            Naumannstr. 3
+            <br />
+            73663 Berglen
+            <br />
+            Deutschland
+          </p>
+          <p>
+            Telefon:{" "}
+            <a className="hover:text-text-primary-light" href="tel:+4915111956479">
+              +49 1511 1956479
+            </a>
+            <br />
+            E-Mail:{" "}
+            <a className="hover:text-text-primary-light" href="mailto:info@opny.ai">
+              info@opny.ai
+            </a>
+          </p>
+          <p>Umsatzsteuer-ID: DE367221694</p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Verantwortlich für den Inhalt
+          </h2>
+          <p>
+            Verantwortlich nach § 55 Abs. 2 RStV: Mehmet Çatalsakal,
+            Naumannstr. 3, 73663 Berglen.
+          </p>
+        </section>
+
+        <section className="space-y-3 text-base text-text-muted-light">
+          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Online-Streitbeilegung
+          </h2>
+          <p>
+            Die Europäische Kommission stellt eine Plattform zur
+            Online-Streitbeilegung (OS) bereit:{" "}
+            <a
+              className="hover:text-text-primary-light"
+              href="https://europa.eu/consumers/odr/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              europa.eu/consumers/odr/
+            </a>
+            .
+          </p>
+          <p>
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
+            vor einer Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </section>
+      </div>
+    </main>
+  );
+}
+src/app/layout.tsx
+\n----- FILE: src/app/layout.tsx -----
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import "./globals.css";
+import SiteShell from "@/components/SiteShell";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import AnalyticsRouteTracker from "@/components/analytics/AnalyticsRouteTracker";
+import CookieBanner from "@/components/consent/CookieBanner";
+
+const geistSans = Geist({
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title:
+    "opny.ai – KI Plattform für Governance, Sicherheit & AI Orchestrierung",
+  description:
+    "opny.ai ist eine Enterprise KI Plattform für kontrollierte KI-Nutzung: AI Gateway, KI Governance, Sicherheit, Routing, Observability.",
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon-v2.png",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="de">
+      <body className={`${geistSans.className} antialiased`}>
+        <GoogleAnalytics />
+        <AnalyticsRouteTracker />
+        <CookieBanner />
+        <SiteShell>{children}</SiteShell>
+      </body>
+    </html>
+  );
+}
+src/app/ki-governance/page.tsx
+\n----- FILE: src/app/ki-governance/page.tsx -----
+import type { Metadata } from "next";
+import Region from "@/components/Region";
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "KI Governance & Sicherheit – Kontrollierte KI für Unternehmen | opny.ai",
+  description:
+    "KI Governance für Unternehmen: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI Nutzung mit klaren Policies.",
+};
+
+export default function KiGovernancePage() {
+  return (
+    <main className="flex flex-col">
+      <Region variant="light" tone="base">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              KI Governance
+            </div>
+            <h1 className="text-4xl font-semibold tracking-tight text-text-primary-light md:text-5xl">
+              KI Governance &amp; Sicherheit
+            </h1>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Kontrollierte KI braucht klare Regeln: KI Governance, KI Compliance
+              und LLM Governance sichern eine verlässliche, auditierbare Nutzung.
+              So entsteht KI-Sicherheit in Unternehmen, die Vertrauen schafft.
+            </p>
+            <ul className="space-y-3 text-base text-text-muted-light">
+              {[
+                "Policies für Datenzugriff, Rollen und Modelle",
+                "Audit-Trails für Prompts, Dateien und Outputs",
+                "Shadow-AI erkennen und konsolidieren",
+                "Sichere KI Nutzung mit nachvollziehbaren Freigaben",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/ai-gateway" variant="secondary" theme="light">
+                AI Gateway entdecken
+              </Button>
+              <Button href="/#ki-sicherheit" variant="primary" theme="light">
+                Zu KI-Sicherheit
+              </Button>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Policies statt PDFs
+              </div>
+              <p className="mt-2 text-base text-text-muted-light">
+                Richtlinien werden technisch durchgesetzt – vor der Anfrage, nach
+                der Antwort und bei Datei-Uploads.
+              </p>
+            </Card>
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Auditierbarkeit auf Knopfdruck
+              </div>
+              <p className="mt-2 text-base text-text-muted-light">
+                Lückenlose Nachvollziehbarkeit für Management, IT und Compliance.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </Region>
+
+      <Region variant="light" tone="surface">
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Management &amp; Compliance
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              KI Governance, die Kontrolle schafft, ohne Innovation zu bremsen.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Opny unterstützt sichere KI Nutzung mit klaren Verantwortlichkeiten
+              und messbarer Wirkung. Ideal für regulierte Branchen und
+              Compliance-Teams.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "KI Compliance by Design",
+                text: "DSGVO, interne Policies und Audit-Anforderungen werden durchgesetzt, nicht nur dokumentiert.",
+              },
+              {
+                title: "LLM Governance",
+                text: "Modell- und Anbieterwahl bleibt kontrolliert, nachvollziehbar und versioniert.",
+              },
+              {
+                title: "Shadow-AI Prävention",
+                text: "Zentraler Zugang reduziert Tool-Wildwuchs und unkontrollierte Workarounds.",
+              },
+              {
+                title: "Risikominimierung",
+                text: "Klare Freigaben, Guardrails und Monitoring für sensible Daten und Prozesse.",
+              },
+            ].map((card) => (
+              <Card key={card.title} theme="light">
+                <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-base text-text-muted-light">
+                  {card.text}
+                </p>
+              </Card>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <Button href="/ai-gateway" variant="secondary" theme="light">
+              AI Gateway für Engineering
+            </Button>
+            <Button href="/#ki-sicherheit" variant="primary" theme="light">
+              KI-Sicherheit im Detail
+            </Button>
+          </div>
+        </div>
+      </Region>
+    </main>
+  );
+}
+src/app/page.tsx
+\n----- FILE: src/app/page.tsx -----
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
+import Region from "@/components/Region";
+import ProductivitySection from "@/components/sections/ProductivitySection";
+import MidPageCtaSection from "@/components/sections/MidPageCtaSection";
+import AiGatewaySection from "@/components/sections/AiGatewaySection";
+import UnderHeroSection from "@/components/sections/UnderHeroSection";
+import { GovernanceControlLayerDiagram } from "@/components/diagrams/GovernanceControlLayerDiagram";
+import HeroChatMock from "@/components/mocks/HeroChatMock";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col">
+      {/* HERO */}
+      <Region variant="light" tone="base" id="produkt">
+        <div className="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
+          <div className="space-y-6 md:col-span-1 max-w-[520px]">
+            <div className="space-y-4">
+              <h1 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
+                Künstliche Intelligenz (KI) für Unternehmen. KI Plattform für
+                Unternehmen mit Kontrolle.
+              </h1>
+              <p className="text-lg leading-relaxed text-text-muted-light md:text-xl max-w-[46ch]">
+                opny.ai ist die Enterprise KI Plattform für kontrollierte KI
+                und sichere KI Nutzung – mit KI Governance, KI Compliance und
+                AI Gateway.
+              </p>
+            </div>
+            <ul className="mt-6 space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">
+              {[
+                "Produktiv für Teams. Kontrolliert für IT & Compliance.",
+                "Eine API für Entwickler – mit KI Governance, AI Routing & Fallback und Transparenz.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+                className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
+              >
+                Demo anfragen
+              </a>
+              <Button href="/#plattform" variant="secondary" theme="light">
+                Plattform ansehen
+              </Button>
+            </div>
+          </div>
+
+          <div className="mt-10 flex justify-center md:col-span-1 md:mt-0 lg:justify-end">
+            <div className="self-center">
+              <HeroChatMock />
+            </div>
+          </div>
+        </div>
+      </Region>
+
+      <UnderHeroSection />
+
+      {/* REALITÄT */}
+      <Region variant="light" tone="alt">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+              Realität statt KI-Demo
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Wo KI auf Unternehmensrealität trifft
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              KI bringt Tempo – aber in der Praxis bremsen Policies, Kosten und
+              fehlende Transparenz. opny.ai macht KI nutzbar, ohne Kontrolle
+              oder Compliance zu verlieren.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="grid gap-8 sm:grid-cols-2">
+              {[
+                {
+                  value: "91,5%",
+                  label: "KI wird genutzt – oft ohne zentrale Steuerung.",
+                },
+                {
+                  value: "28,1%",
+                  label: "Kosten werden zum Engpass bei Skalierung.",
+                },
+                {
+                  value: "24,7%",
+                  label: "Teams haben unklare KI-Richtlinien.",
+                },
+                {
+                  value: "—",
+                  label: "Fragmentierte Innovation durch Tool-Wildwuchs.",
+                },
+              ].map((stat) => (
+                <Card key={stat.value} theme="light" className="h-full p-5">
+                  <div className="text-4xl font-semibold tracking-tight text-text-primary-light">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 text-sm text-text-muted-light">
+                    {stat.label}
+                  </div>
+                </Card>
+              ))}
+            </div>
+            <div className="text-sm text-text-secondary-light">
+              Beobachtungen aus typischen Enterprise-Rollouts.
+            </div>
+          </div>
+        </div>
+      </Region>
+
+      {/* GOVERNANCE & SECURITY */}
+      <Region variant="light" tone="surface" id="governance">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              KI Governance & Sicherheit
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Zentrale KI Governance & Sicherheit
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Steuerung, LLM Governance und Audits in einem Layer – damit Teams
+              schneller liefern, ohne KI Compliance oder Sicherheitsrisiken.
+            </p>
+            <ul className="space-y-3 text-base text-text-muted-light">
+              {[
+                "Zentrale Policies für Modelle, Daten und Rollen.",
+                "Nachvollziehbarkeit von Prompts, Dateien und Kosten.",
+                "Sichere Freigaben für Teams, Projekte und Workflows.",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border border-border-subtle-light/20 bg-white p-4 shadow-sm">
+            <GovernanceControlLayerDiagram className="h-auto w-full" />
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Card theme="light" className="p-6">
+            <div className="text-lg font-semibold text-text-primary-light">
+              AI Workspace
+            </div>
+            <ul className="mt-4 space-y-2 text-base text-text-muted-light">
+              {[
+                "Chat",
+                "Modellvergleich",
+                "Assistenten",
+                "Projekte",
+                "Integrationen",
+                "Browser Extension",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 text-sm text-text-secondary-light">
+              Ziel: Produktivität steigern und Zusammenarbeit ermöglichen.
+            </div>
+          </Card>
+
+          <Card theme="light" className="p-6">
+            <div className="text-lg font-semibold text-text-primary-light">
+              AI Gateway
+            </div>
+            <ul className="mt-4 space-y-2 text-base text-text-muted-light">
+              {[
+                "Einheitliche API",
+                "Intelligentes Routing",
+                "Fallback-Logik",
+                "RAG-Architektur",
+                "Observability",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 text-sm text-text-secondary-light">
+              Ziel: Entwicklung beschleunigen und Stabilität sichern.
+            </div>
+          </Card>
+        </div>
+      </Region>
+
+      <ProductivitySection />
+      <MidPageCtaSection />
+
+      {/* CONSEQUENCES */}
+      <Region variant="light" tone="base">
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+            Die Folge: Schatten-KI, Tool-Wildwuchs und riskante Workarounds.
+          </h3>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            Ohne KI Governance und Observability entsteht ein Mix aus Tools,
+            Modellen und Datenwegen – schwer auditierbar, teuer und unsicher.
+          </p>
+          <ul className="space-y-2 text-base text-text-muted-light">
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Keine Transparenz über Prompts, Datenabflüsse und Outputs</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Kein Routing/Fallback, wenn ein Modell ausfällt</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+              <span>Kein einheitlicher Policy-Layer für Teams</span>
+            </li>
+          </ul>
+        </div>
+      </Region>
+
+      <AiGatewaySection />
+
+      {/* SECURITY */}
+      <Region variant="light" tone="base" id="ki-sicherheit">
+        <div className="relative space-y-6">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+            KI-Sicherheit & KI Governance
+          </div>
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            KI produktiv nutzen – ohne Risiko, ohne Wildwuchs.
+          </h2>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            opny.ai setzt Richtlinien direkt an der Schnittstelle durch: vor der
+            Anfrage, nach der Antwort und bei jedem Datei-Upload. So bleiben
+            Daten, Rollen und Outputs kontrollierbar – auch wenn Teams
+            unterschiedliche Modelle und Workflows nutzen. Fokus: KI-Sicherheit
+            in Unternehmen, klare Verantwortung und nachvollziehbare Prozesse.
+          </p>
+        </div>
+
+        <div className="mt-6 grid gap-8 md:grid-cols-3">
+          {[
+            {
+              title: "Policies & Guardrails",
+              bullets: [
+                "Input/Output Regeln (PII, Tonalität, erlaubte Inhalte)",
+                "Freigaben je Rolle, Team und Use-Case",
+                "Automatische Redaction & Blocking",
+              ],
+            },
+            {
+              title: "Daten & Dateien",
+              bullets: [
+                "Upload-Regeln (Dateityp, Größe, Retention)",
+                "RAG-Quellen mit Zugriffspfaden",
+                "Sensible Daten: isolierbare Workloads",
+              ],
+            },
+            {
+              title: "Audit & Observability",
+              bullets: [
+                "Prompt/Response Logging (optional, konfigurierbar)",
+                "Kosten- & Usage-Tracking pro Team",
+                "Policy-Events & Incident-Signale",
+              ],
+            },
+          ].map((card) => (
+            <Card key={card.title} theme="light">
+              <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+                {card.title}
+              </h3>
+              <ul className="mt-4 space-y-2 text-base text-text-muted-light">
+                {card.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+              KI Governance, die Teams nicht ausbremst.
+            </h3>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Richtlinien werden als Produkt-Default umgesetzt – nicht als PDF.
+              Teams arbeiten schneller, weil klare Leitplanken Fehlversuche und
+              Workarounds reduzieren.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Role-based access",
+                "PII redaction",
+                "Retention rules",
+                "Model allowlist",
+                "Output constraints",
+              ].map((chip) => (
+                <span
+                  key={chip}
+                  className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-sm text-text-secondary-light"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <Card theme="light" className="p-5">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+              Policy engine
+            </div>
+            <div className="mt-4 space-y-3 text-base text-text-muted-light">
+              {[
+                { label: "PII redaction", status: "Enabled" },
+                { label: "File type rules", status: "Enforced" },
+                { label: "Model allowlist", status: "Active" },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-center justify-between rounded-xl border border-border-subtle-light/20 bg-elevated-light/80 px-3 py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-accent" />
+                    <span>{row.label}</span>
+                  </div>
+                  <span className="text-sm text-text-secondary-light">
+                    {row.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <div className="mt-6 flex justify-center gap-4">
+          <a
+            href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+            className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
+          >
+            Demo anfragen
+          </a>
+          <Button href="/#plattform" variant="secondary" theme="light">
+            Plattform ansehen →
+          </Button>
+        </div>
+      </Region>
+
+      {/* USE-CASES */}
+      <Region variant="light" tone="alt" id="loesungen">
+        <div className="mx-auto max-w-6xl">
+          <div className="space-y-4 text-left sm:space-y-5">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Lösungen
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              KI dort einsetzen, wo sie echten Mehrwert bringt.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Opny hilft Teams, KI sicher und messbar in Prozesse zu bringen –
+              statt Tool-Wildwuchs und Insellösungen.
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-8 sm:mt-6 sm:space-y-10">
+            <div className="grid gap-8 md:grid-cols-2">
+              {[
+                {
+                  title: "Produkt- & Entwicklungsteams",
+                  text: "Schneller entwickeln – mit kontrollierten Copilots und sauberem Zugriff auf Wissen.",
+                  bullets: [
+                    "Copilots für Code, Doku & Reviews",
+                    "RAG mit technischem Know-how",
+                  ],
+                },
+                {
+                  title: "Operations & Fachbereiche",
+                  text: "Wiederkehrende Aufgaben automatisieren – nachvollziehbar, steuerbar, auditierbar.",
+                  bullets: [
+                    "Dokumente, E-Mails & Tickets automatisieren",
+                    "Entscheidungen mit klaren Policies unterstützen",
+                  ],
+                },
+                {
+                  title: "Compliance, Legal & Risiko",
+                  text: "KI nutzen, ohne Audit- und Datenschutzrisiken zu erzeugen.",
+                  bullets: [
+                    "Policy-konforme Nutzung & Freigaben",
+src/components/mocks/HeroChatMock.tsx
+\n----- FILE: src/components/mocks/HeroChatMock.tsx -----
+type HeroChatMockProps = {
+  className?: string;
+};
+
+const modelOptions = ["Gemini", "OpenAI", "Llama"];
+
+/**
+ * NOTE:
+ * Turbopack/Next can choke on complex Tailwind arbitrary values like:
+ * bg-[url('data:image/svg+xml;utf8,<svg ...>')]
+ * => We use a safe inline `style={{ backgroundImage: ... }}` for the subtle noise overlay.
+ */
+const NOISE_DATA_URI =
+  "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%27120%27%20viewBox%3D%270%200%20120%20120%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27/%3E%3C/filter%3E%3Crect%20width%3D%27120%27%20height%3D%27120%27%20filter%3D%27url(%23n)%27%20opacity%3D%270.35%27/%3E%3C/svg%3E";
+
+export default function HeroChatMock({ className }: HeroChatMockProps) {
+  return (
+    <div
+      className={[
+        "relative mx-auto w-full max-w-[620px] overflow-hidden rounded-2xl",
+        "border border-black/5 bg-gradient-to-b from-white to-slate-50/80",
+        "shadow-[0_20px_60px_rgba(15,23,42,0.12)]",
+        "dark:border-white/10 dark:bg-gradient-to-b dark:from-slate-900/95 dark:to-slate-950",
+        "dark:shadow-[0_30px_80px_rgba(0,0,0,0.35)]",
+        className ?? "",
+      ].join(" ")}
+    >
+      {/* Subtle noise overlay (safe) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.06] dark:opacity-[0.08]"
+        style={{
+          backgroundImage: `url("${NOISE_DATA_URI}")`,
+          backgroundSize: "140px 140px",
+        }}
+      />
+
+      {/* Subtle top highlight */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10"
+      />
+
+      <div className="relative space-y-4 p-5 sm:p-6">
+        {/* Topbar */}
+        <div className="flex items-center justify-between gap-3 rounded-2xl border border-black/10 bg-white/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-slate-900 dark:text-white">
+              Opny Workspace
+            </span>
+            <span className="rounded-full border border-black/10 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-200">
+              EU
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 sm:inline dark:text-slate-300">
+              Model
+            </span>
+
+            {/* Selected */}
+            <span className="rounded-full border border-black/15 bg-slate-900 px-3 py-1 text-[11px] font-semibold text-white dark:border-white/10">
+              Auto
+            </span>
+
+            {/* Inactive model chips (subtle) */}
+            <div className="hidden items-center gap-2 sm:flex">
+              {modelOptions.map((option) => (
+                <span
+                  key={option}
+                  className="rounded-full border border-black/10 bg-white px-2 py-1 text-[11px] text-slate-500 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                >
+                  {option}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Subtle chips (keep minimal) */}
+        <div className="flex flex-wrap gap-2 text-[11px] text-slate-600 dark:text-slate-400">
+          {["Data protection ✓", "Routing: Auto"].map((chip) => (
+            <span
+              key={chip}
+              className="rounded-full border border-black/10 bg-slate-50 px-3 py-1 dark:border-white/10 dark:bg-white/5"
+            >
+              {chip}
+            </span>
+          ))}
+        </div>
+
+        {/* Conversation surface */}
+        <div className="rounded-2xl border border-black/10 bg-white px-4 py-4 dark:border-white/10 dark:bg-white/5">
+          <div className="space-y-4">
+            {/* User bubble */}
+            <div className="flex justify-end">
+              <div className="max-w-[78%] rounded-2xl bg-slate-900/95 px-4 py-3 text-sm text-white">
+                Fasse diesen Vertrag zusammen und markiere personenbezogene
+                Daten.
+              </div>
+            </div>
+
+            {/* Assistant */}
+            <div className="flex items-start gap-3">
+              <span className="mt-2 h-2 w-2 rounded-full bg-emerald-500" />
+              <div className="max-w-[78%] rounded-2xl border border-black/10 bg-slate-50 px-4 py-3 text-sm text-slate-900 dark:border-white/10 dark:bg-white/10 dark:text-white">
+                <ul className="list-disc space-y-1 pl-4">
+                  <li>Vertragslaufzeit: 24 Monate mit Auto-Verlängerung.</li>
+                  <li>Leistungen: definierte SLAs und Support-Fenster.</li>
+                  <li>Zahlung: netto 30 Tage, quartalsweise Meilensteine.</li>
+                </ul>
+                <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">
+                  Personenbezogene Daten wurden erkannt und geschützt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Input bar */}
+        <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 dark:border-white/10 dark:bg-white/5">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+              aria-label="Attach"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path
+                  d="M8 12.5l6.3-6.3a3 3 0 014.2 4.2l-7.1 7.1a4.5 4.5 0 01-6.4-6.4l7.1-7.1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <input
+              type="text"
+              placeholder="Nachricht an Opny…"
+              className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none dark:text-white dark:placeholder:text-slate-400"
+            />
+
+            <button
+              type="button"
+              className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white dark:border-white/10"
+            >
+              Send
+            </button>
+          </div>
+
+          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            Policies &amp; Routing automatisch aktiv.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/ui/Card.tsx
+\n----- FILE: src/components/ui/Card.tsx -----
+import type React from "react";
+
+type CardTheme = "dark" | "light";
+
+type CardProps = {
+  theme?: CardTheme;
+  className?: string;
+  children: React.ReactNode;
+};
+
+const themeClasses: Record<CardTheme, string> = {
+  dark: "card-theme-dark text-text-primary-dark",
+  light: "card-theme-light text-text-primary-light",
+};
+
+function cn(...classes: Array<string | undefined | false>) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Card({ theme = "dark", className, children }: CardProps) {
+  return (
+    <div
+      className={cn(
+        "card-shell rounded-card p-6",
+        themeClasses[theme],
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+src/components/ui/Section.tsx
+\n----- FILE: src/components/ui/Section.tsx -----
+import type React from "react";
+
+type SectionTheme = "dark" | "light";
+
+type SectionProps = {
+  theme?: SectionTheme;
+  className?: string;
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLElement>;
+
+const themeClasses: Record<SectionTheme, string> = {
+  dark:
+    "theme-dark bg-[linear-gradient(180deg,rgb(var(--bg-dark))_0%,rgb(var(--surface-dark))_100%)] text-text-primary-dark before:content-[''] before:absolute before:inset-x-0 before:top-0 before:z-0 before:h-12 before:bg-[linear-gradient(180deg,rgb(var(--bg-light))_0%,transparent_100%)] before:pointer-events-none after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:z-0 after:h-12 after:bg-[linear-gradient(0deg,rgb(var(--bg-light))_0%,transparent_100%)] after:pointer-events-none",
+  light: "theme-light text-text-primary-light",
+};
+
+function cn(...classes: Array<string | undefined | false>) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Section({
+  theme = "dark",
+  className,
+  children,
+  ...props
+}: SectionProps) {
+  return (
+    <section
+      {...props}
+      className={cn(
+        "relative isolate w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 [&>*]:relative [&>*]:z-10",
+        themeClasses[theme],
+        className
+      )}
+    >
+      {children}
+    </section>
+  );
+}
+src/components/ui/Button.tsx
+\n----- FILE: src/components/ui/Button.tsx -----
+import type React from "react";
+import Link from "next/link";
+
+type ButtonVariant = "primary" | "secondary";
+type ButtonTheme = "dark" | "light";
+
+type ButtonProps = {
+  variant?: ButtonVariant;
+  theme?: ButtonTheme;
+  href?: string;
+  className?: string;
+  children: React.ReactNode;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "className"> &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "className">;
+
+function cn(...classes: Array<string | undefined | false>) {
+  return classes.filter(Boolean).join(" ");
+}
+
+/**
+ * IMPORTANT:
+ * We must be resilient against parent text color overrides (e.g. theme-light / text-* on containers).
+ * Therefore, for secondary buttons we use explicit text + border colors with high specificity via Tailwind's `!`.
+ */
+const baseClasses =
+  "inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+
+const variantClasses: Record<ButtonTheme, Record<ButtonVariant, string>> = {
+  dark: {
+    primary:
+      "bg-text-primary-dark text-text-primary-light shadow-card-light hover:opacity-90 " +
+      "focus-visible:ring-text-primary-dark focus-visible:ring-offset-transparent",
+    secondary:
+      // Secondary on DARK surfaces: always readable
+      // - Force text color and border even if parent sets text colors
+      // - Slight frosted bg improves contrast
+      "!text-white border border-white/25 bg-white/5 hover:bg-white/10 hover:border-white/35 " +
+      "focus-visible:ring-white/25 focus-visible:ring-offset-transparent",
+  },
+  light: {
+    primary:
+      "bg-text-primary-light text-text-primary-dark shadow-card-light hover:opacity-90 " +
+      "focus-visible:ring-text-primary-dark focus-visible:ring-offset-white",
+    secondary:
+      "border border-border-subtle-light/20 text-text-primary-light hover:border-border-subtle-light/35 hover:text-text-secondary-light " +
+      "focus-visible:ring-border-subtle-light/35 focus-visible:ring-offset-white",
+  },
+};
+
+export default function Button({
+  variant = "primary",
+  theme = "dark",
+  href,
+  className,
+  children,
+  ...props
+}: ButtonProps) {
+  const styles = cn(baseClasses, variantClasses[theme][variant], className);
+
+  if (href) {
+    const isExternal =
+      href.startsWith("http") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:");
+
+    if (isExternal) {
+      return (
+        <a href={href} className={styles} {...(props as any)}>
+          {children}
+        </a>
+      );
+    }
+
+    if (href.startsWith("#")) {
+      return (
+        <Link href={`/${href}`} className={styles} {...(props as any)}>
+          {children}
+        </Link>
+      );
+    }
+
+    if (href.startsWith("/#")) {
+      return (
+        <Link href={href} className={styles} {...(props as any)}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <Link href={href} className={styles} {...(props as any)}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <button className={styles} {...(props as any)}>
+      {children}
+    </button>
+  );
+}
+src/components/sections/UnderHeroSection.tsx
+\n----- FILE: src/components/sections/UnderHeroSection.tsx -----
+import Card from "@/components/ui/Card";
+import Region from "@/components/Region";
+
+export default function UnderHeroSection() {
+  return (
+    <Region variant="light" tone="base">
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            So funktioniert Opny im Alltag
+          </h2>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            Ein Chat-Interface für Teams – mit Policies und Multi-Model-Routing
+            im Hintergrund.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              title: "Chat Workspace",
+              text: "Teams arbeiten im gemeinsamen Chat und behalten Kontext, Dateien und Antworten an einem Ort.",
+              bullets: [
+                "Zentrale Chat-Ansicht",
+                "Antworten mit Quellen",
+                "Teamübergreifende Zusammenarbeit",
+              ],
+              chips: ["Shared", "Context", "Secure"],
+            },
+            {
+              title: "Model Switch & Auto-Routing",
+              text: "Wechsle Modelle flexibel oder lasse Opny automatisch das beste Routing wählen.",
+              bullets: [
+                "Auto-Auswahl pro Request",
+                "Fallback bei Ausfällen",
+                "Optimiert nach Use-Case",
+              ],
+              chips: ["Auto", "Fallback", "Smart"],
+            },
+            {
+              title: "Policies im Hintergrund",
+              text: "Richtlinien greifen automatisch, ohne den Chat-Flow zu unterbrechen.",
+              bullets: [
+                "PII-Schutz aktiviert",
+                "Compliance-ready",
+                "Auditierbar ohne Reibung",
+              ],
+              chips: ["Policy", "Guardrail", "Audit"],
+            },
+          ].map((item) => (
+            <Card key={item.title} theme="light" className="space-y-4 p-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                {item.title}
+              </div>
+              <p className="text-base text-text-muted-light">{item.text}</p>
+              <ul className="space-y-2 text-sm text-text-muted-light">
+                {item.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-accent" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                {item.chips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-full border border-border-subtle-light/25 bg-elevated-light/70 px-3 py-1 text-xs font-semibold text-text-secondary-light"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Region>
+  );
+}
+src/components/sections/AiGatewaySection.tsx
+\n----- FILE: src/components/sections/AiGatewaySection.tsx -----
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
+import Region from "@/components/Region";
+import HeroDashboardMock from "@/components/illustrations/HeroDashboardMock";
+
+type AiGatewaySectionProps = {
+  className?: string;
+};
+
+export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
+  return (
+    <Region variant="light" tone="surface" className={className}>
+      {/* FULL-WIDTH Textblock */}
+      <div className="w-full min-w-0">
+        <div className="space-y-6">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+            AI Gateway
+          </div>
+
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            Baue und skaliere zuverlässige KI-Systeme – mit Kontrolle statt
+            Chaos.
+          </h2>
+
+          <p className="text-base leading-relaxed text-text-muted-light">
+            opny.ai bündelt Modelle, Daten und Richtlinien in einem zentralen
+            Gateway. Teams integrieren KI über einen Endpoint, behalten Policies
+            im Griff und gewinnen Transparenz über Kosten, Nutzung und Outputs.
+          </p>
+
+          <ul className="space-y-3 text-base text-text-muted-light">
+            <li className="flex items-center gap-3">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <span>Ein Endpoint für mehrere LLMs (Routing + Fallback)</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <span>Policy-Layer für Teams, Rollen und Datenzugriffe</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <span>Observability für Prompts, Outputs und Kosten</span>
+            </li>
+          </ul>
+
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
+            >
+              Demo anfragen
+            </a>
+
+            <Button href="/#ki-sicherheit" variant="secondary" theme="light">
+              KI Governance &amp; Sicherheit →
+            </Button>
+          </div>
+        </div>
+
+        {/* Dashboard Mock – MOBILE SAFE */}
+        <div className="mt-10 w-full min-w-0 overflow-hidden sm:mt-12">
+          <div className="mx-auto w-full max-w-[1100px] px-2 sm:px-0">
+            {/* leichte Skalierung auf sehr kleinen Screens, um Overflow zu vermeiden */}
+            <div className="origin-top scale-[0.92] sm:scale-100">
+              <HeroDashboardMock />
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-2">
+          {[
+            {
+              title: "Plug-and-play API Access",
+              text: "Integriere KI in Apps und Prozesse über einen zentralen Endpoint – mit Schlüssel- und Rollensteuerung.",
+            },
+            {
+              title: "RAG-ready Architektur",
+              text: "Verbinde Modelle mit internem Wissen aus Dokumenten und Systemen – kontrolliert und auditierbar.",
+            },
+            {
+              title: "Private Workloads",
+              text: "Isoliere sensible Anwendungsfälle durch private Deployments und restriktive Zugriffskontrollen.",
+            },
+            {
+              title: "Secure File Storage",
+              text: "Uploads und Outputs zentral verwalten – mit Retention, Zugriffspfaden und Compliance-Optionen.",
+            },
+          ].map((card) => (
+            <Card key={card.title} theme="light">
+              <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+                {card.title}
+              </h3>
+              <p className="mt-2 text-base text-text-muted-light">
+                {card.text}
+              </p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </Region>
+  );
+}
+src/components/sections/MidPageCtaSection.tsx
+\n----- FILE: src/components/sections/MidPageCtaSection.tsx -----
+import Button from "@/components/ui/Button";
+import Region from "@/components/Region";
+
+type MidPageCtaSectionProps = {
+  className?: string;
+};
+
+export default function MidPageCtaSection({ className }: MidPageCtaSectionProps) {
+  return (
+    <Region variant="light" tone="alt" className={className}>
+      <div className="mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0B0F1A] p-8 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-12">
+          <div className="pointer-events-none absolute -left-10 top-0 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-10 bottom-0 h-52 w-52 rounded-full bg-slate-300/10 blur-3xl" />
+
+          <div className="relative grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
+            <div className="space-y-4">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
+                Nächster Schritt
+              </div>
+              <h2 className="text-3xl font-semibold text-white md:text-4xl">
+                Kontrollierte KI – live in Ihrer Realität.
+              </h2>
+              <p className="text-base leading-relaxed text-white/70">
+                Sehen Sie, wie Opny KI Governance, Routing und Observability in
+                einem Layer verbindet – ohne Teams auszubremsen.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+                  className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/90"
+                >
+                  Demo anfragen
+                </a>
+                <Button
+                  href="/#plattform"
+                  variant="secondary"
+                  theme="light"
+                  className="rounded-full border border-white/20 bg-transparent text-white hover:border-white/35 hover:bg-white/5"
+                >
+                  Plattform ansehen
+                </Button>
+              </div>
+            </div>
+            <div className="space-y-3 text-sm text-white/75">
+              {[
+                "Schneller Proof in echten Use-Cases",
+                "Transparenz über Kosten, Nutzung und Qualität",
+                "KI Governance ohne zusätzlichen Prozessballast",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-white/50" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Region>
+  );
+}
+src/components/sections/ProductivitySection.tsx
+\n----- FILE: src/components/sections/ProductivitySection.tsx -----
+import Card from "@/components/ui/Card";
+import Region from "@/components/Region";
+import { WorkspaceGatewayDiagram } from "@/components/diagrams/WorkspaceGatewayDiagram";
+
+type ProductivitySectionProps = {
+  className?: string;
+};
+
+export default function ProductivitySection({ className }: ProductivitySectionProps) {
+  return (
+    <Region variant="light" tone="base" id="productivity" className={className}>
+      <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="space-y-6">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+            Team-Produktivität
+          </div>
+          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+            Produktivität für Teams freisetzen
+          </h2>
+          <p className="text-base leading-relaxed text-text-muted-light">
+            Ein Workspace, der alle LLMs bündelt und Zusammenarbeit
+            strukturierbar macht – mit klaren Leitplanken und klarer KI Governance.
+          </p>
+          <ul className="space-y-3 text-base text-text-muted-light">
+            {[
+              "Chat mit allen LLMs an einem Ort",
+              "Modelle direkt vergleichen",
+              "Wissensbasis anbinden (RAG-ready)",
+              "Use-Case-spezifische Assistenten",
+              "Zusammenarbeit in Projekten (Prompts, Outputs, Dateien)",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-3">
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-border-subtle-light/20 bg-white p-4 shadow-sm">
+            <WorkspaceGatewayDiagram className="h-auto w-full" />
+          </div>
+          <Card theme="light" className="p-5">
+            <div className="text-base font-semibold text-text-primary-light">
+              Ein Workspace, zwei Einstiegspunkte
+            </div>
+            <p className="mt-2 text-base text-text-muted-light">
+              Teams arbeiten im UI, Entwickler integrieren über die API – beides
+              kontrolliert, dokumentiert und skalierbar.
+            </p>
+          </Card>
+        </div>
+      </div>
+    </Region>
+  );
+}
+src/components/SiteShell.tsx
+\n----- FILE: src/components/SiteShell.tsx -----
+import type { ReactNode } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export default function SiteShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="min-h-screen text-text-primary-light">
+      <Header />
+      <main className="w-full pb-16 pt-6">{children}</main>
+      <Footer />
+    </div>
+  );
+}
+src/components/Region.tsx
+\n----- FILE: src/components/Region.tsx -----
+import React from "react";
+
+type RegionVariant = "light" | "dark" | "bridge";
+type RegionTone = "base" | "alt" | "surface";
+
+type RegionProps = {
+  variant?: RegionVariant;
+  tone?: RegionTone;
+  withDividers?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  containerClassName?: string;
+  id?: string;
+  as?: React.ElementType;
+};
+
+function cn(...parts: Array<string | undefined | null | false>) {
+  return parts.filter(Boolean).join(" ");
+}
+
+export default function Region({
+  variant = "light",
+  tone = "base",
+  withDividers = true,
+  children,
+  className,
+  containerClassName,
+  id,
+  as = "section",
+}: RegionProps) {
+  const Comp = as;
+
+  const toneClass =
+    tone === "alt"
+      ? "bg-[rgb(var(--opny-bg-alt))]"
+      : tone === "surface"
+        ? "bg-[rgb(var(--opny-surface))]"
+        : "bg-[rgb(var(--opny-bg))]";
+
+  const dividerClass = withDividers
+    ? "border-y border-[color:rgb(var(--opny-border)/0.2)]"
+    : "";
+
+  const themeClass = variant === "dark" ? "theme-dark" : "theme-light";
+  const textClass =
+    variant === "dark" ? "text-text-primary-dark" : "text-text-primary-light";
+
+  const regionBase = cn(
+    "relative w-full",
+    toneClass,
+    textClass,
+    themeClass,
+    dividerClass,
+    className,
+  );
+
+  const container = cn(
+    "relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-14 md:py-20",
+    containerClassName,
+  );
+
+  return (
+    <Comp id={id} className={regionBase}>
+      <div className={container}>{children}</div>
+    </Comp>
+  );
+}
+src/components/illustrations/HeroDashboardMock.tsx
+\n----- FILE: src/components/illustrations/HeroDashboardMock.tsx -----
+const sidebarItems = [
+  "Dashboard",
+  "Richtlinien",
+  "Routing",
+  "Observability",
+  "Audit Log",
+  "Einstellungen",
+];
+
+const kpis = [
+  { label: "Anfragen (24h)", value: "20.480" },
+  { label: "Durchschnittliche Latenz", value: "715 ms" },
+  { label: "Fehlerrate", value: "1,2 %" },
+  { label: "Kosten (heute)", value: "€ 9,35" },
+];
+
+const requests = [
+  {
+    time: "09:12:43",
+    model: "OpenAI",
+    policy: "PII Schutz",
+    status: "Erfolg",
+    latency: "612 ms",
+  },
+  {
+    time: "09:08:17",
+    model: "Gemini",
+    policy: "Kostenschutz",
+    status: "Warnung",
+    latency: "830 ms",
+  },
+  {
+    time: "09:03:02",
+    model: "Llama",
+    policy: "Prompt-Filter",
+    status: "Erfolg",
+    latency: "702 ms",
+  },
+  {
+    time: "08:55:29",
+    model: "OpenAI",
+    policy: "Datenfreigabe",
+    status: "Erfolg",
+    latency: "688 ms",
+  },
+];
+
+export default function HeroDashboardMock() {
+  return (
+    <div className="relative overflow-hidden rounded-3xl border border-border-subtle-light/40 bg-white shadow-card-light">
+      {/* 
+        FIX 1: Nicht "flacher" werden auf Desktop (das schneidet mehr ab),
+        sondern ein stabiles Verhältnis + echte Mindesthöhe für Desktop geben.
+      */}
+      <div className="w-full">
+        <div className="aspect-[16/10] w-full min-h-[360px] md:min-h-[420px] lg:min-h-[480px]">
+          <div className="h-full w-full overflow-hidden p-3 text-[10px] text-text-muted-light sm:p-4 sm:text-[11px] md:text-[12px] lg:text-[11px] xl:text-xs">
+            <div className="grid h-full grid-cols-1 gap-3 md:grid-cols-[0.95fr_2.1fr_1.15fr] md:gap-4">
+              <main className="order-1 flex h-full min-w-0 flex-col gap-3 md:order-2">
+                <div className="flex items-center justify-between rounded-xl bg-elevated-light/30 px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2">
+                  <span className="rounded-full border border-border-subtle-light/40 bg-white px-2 py-1 font-semibold text-text-secondary-light">
+                    EU
+                  </span>
+                  <div className="flex min-w-0 items-center gap-2 rounded-full border border-emerald-200/60 bg-emerald-50/60 px-2 py-1 font-semibold text-emerald-700">
+                    <span className="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400" />
+                    <span className="max-w-[180px] truncate leading-tight sm:max-w-[220px]">
+                      Alle Systeme betriebsbereit
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex min-w-0 items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:gap-3 sm:text-[11px] lg:gap-3">
+                  {["Richtlinien", "Routing", "Observability"].map((tab) => (
+                    <div key={tab} className="min-w-0">
+                      <span
+                        className={`truncate leading-tight ${
+                          tab === "Observability"
+                            ? "text-text-primary-light"
+                            : "text-text-secondary-light"
+                        }`}
+                      >
+                        {tab}
+                      </span>
+                      <div
+                        className={`mt-1 h-0.5 w-8 rounded-full ${
+                          tab === "Observability"
+                            ? "bg-accent"
+                            : "bg-transparent"
+                        }`}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {kpis.map((kpi) => (
+                    <div
+                      key={kpi.label}
+                      className="rounded-xl bg-elevated-light/40 px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2"
+                    >
+                      <div className="truncate text-[10px] font-medium leading-tight text-text-secondary-light sm:text-[11px] lg:whitespace-normal">
+                        {kpi.label}
+                      </div>
+                      <div className="mt-1 whitespace-nowrap text-base font-semibold text-text-primary-light md:text-lg">
+                        {kpi.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-3 lg:grid-cols-2">
+                  {/* Anfragevolumen */}
+                  <div className="rounded-xl bg-white px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2">
+                    <div className="truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                      Anfragevolumen
+                    </div>
+                    <div className="mt-2 h-24 md:h-28 lg:mt-3 lg:h-32">
+                      <svg
+                        viewBox="0 0 260 100"
+                        className="h-full w-full text-emerald-600"
+                        fill="none"
+                      >
+                        <path
+                          d="M10 70 C 45 30, 85 60, 120 40 S 190 28, 250 36"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                        />
+                        <path
+                          d="M10 70 C 45 30, 85 60, 120 40 S 190 28, 250 36 L 250 88 L 10 88 Z"
+                          fill="currentColor"
+                          opacity="0.12"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Modellverteilung */}
+                  <div className="rounded-xl bg-white px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2">
+                    <div className="truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                      Modellverteilung
+                    </div>
+                    <div className="mt-2 h-24 md:h-28 lg:mt-3 lg:h-32">
+                      <svg
+                        viewBox="0 0 240 100"
+                        className="h-full w-full"
+                        fill="none"
+                      >
+                        {/* OpenAI */}
+                        <rect
+                          x="26"
+                          y="24"
+                          width="34"
+                          height="54"
+                          rx="6"
+                          fill="#0F172A"
+                          opacity="0.9"
+                        />
+                        {/* Gemini */}
+                        <rect
+                          x="96"
+                          y="40"
+                          width="34"
+                          height="38"
+                          rx="6"
+                          fill="#5B8CFF"
+                          opacity="0.9"
+                        />
+                        {/* Llama */}
+                        <rect
+                          x="166"
+                          y="18"
+                          width="34"
+                          height="60"
+                          rx="6"
+                          fill="#34D399"
+                          opacity="0.95"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-medium text-text-secondary-light sm:text-[11px]">
+                      <div className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#0F172A]" />
+                        OpenAI
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#5B8CFF]" />
+                        Gemini
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#34D399]" />
+                        Llama
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="md:hidden rounded-xl bg-white px-3 py-2 ring-1 ring-black/5">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                    Letzte Anfragen
+                  </div>
+                  <div className="mt-2 space-y-2">
+                    {requests.slice(0, 2).map((row) => (
+                      <div
+                        key={`${row.time}-${row.model}`}
+                        className="flex items-center justify-between rounded-lg border border-border-subtle-light/20 bg-elevated-light/40 px-2 py-1"
+                      >
+                        <div className="min-w-0">
+                          <div className="truncate font-medium text-text-primary-light">
+                            {row.model}
+                          </div>
+                          <div className="truncate leading-tight text-text-secondary-light">
+                            {row.policy}
+                          </div>
+                        </div>
+                        <div className="text-right text-text-secondary-light">
+                          {row.latency}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="hidden min-h-0 flex-col rounded-xl bg-white px-3 py-2 ring-1 ring-black/5 md:flex lg:px-2 lg:py-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                    Letzte Anfragen
+                  </div>
+                  <div className="mt-2 grid grid-cols-[0.9fr_0.7fr_1.2fr_0.6fr_0.6fr] gap-2 text-[10px] font-semibold text-text-secondary-light sm:text-[11px]">
+                    <span className="truncate">Zeitstempel</span>
+                    <span className="truncate">Modell</span>
+                    <span className="truncate">Angewendete Richtlinie</span>
+                    <span className="truncate">Status</span>
+                    <span className="truncate">Latenz</span>
+                  </div>
+                  <div className="mt-2 space-y-1 text-[10px] text-text-primary-light sm:text-[11px]">
+                    {requests.map((row) => (
+                      <div
+                        key={`${row.time}-${row.model}`}
+                        className="grid grid-cols-[0.9fr_0.7fr_1.2fr_0.6fr_0.6fr] items-center gap-2 rounded-lg border border-border-subtle-light/20 bg-elevated-light/40 px-2 py-1"
+                      >
+                        <span className="truncate leading-tight">
+                          {row.time}
+                        </span>
+                        <span className="truncate leading-tight">
+                          {row.model}
+                        </span>
+                        <span className="truncate leading-tight">
+                          {row.policy}
+                        </span>
+                        <span
+                          className={`truncate font-medium leading-tight ${
+                            row.status === "Erfolg"
+                              ? "text-emerald-600"
+                              : "text-amber-600"
+                          }`}
+                        >
+                          {row.status}
+                        </span>
+                        <span className="truncate leading-tight">
+                          {row.latency}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </main>
+
+              <aside className="order-2 flex h-full min-w-0 flex-col gap-3 rounded-xl bg-slate-50/60 p-3 ring-1 ring-black/5 md:order-1">
+                <div className="space-y-1">
+                  {sidebarItems.map((item) => (
+                    <div
+                      key={item}
+                      className={`flex min-w-0 items-center gap-2 rounded-full px-2 py-1 font-medium ${
+                        item === "Observability"
+                          ? "border border-border-subtle-light/40 bg-white text-text-primary-light"
+                          : "text-text-secondary-light"
+                      }`}
+                    >
+                      <span
+                        className={`h-2 w-2 flex-shrink-0 rounded-full ${
+                          item === "Observability"
+                            ? "bg-accent"
+                            : "bg-border-subtle-light/60"
+                        }`}
+                      />
+                      <span className="truncate leading-tight lg:max-w-[160px] xl:max-w-none">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="hidden rounded-lg bg-white/80 px-2 py-1 text-[10px] text-text-secondary-light ring-1 ring-black/5 md:block">
+                  Status: stabil
+                </div>
+              </aside>
+
+              <aside className="order-3 flex h-full min-w-0 flex-col gap-3 md:order-3">
+                <div className="rounded-xl bg-white px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                    Aktive Modelle
+                  </div>
+                  <div className="mt-2 space-y-2 text-[10px] font-medium text-text-primary-light sm:text-[11px]">
+                    {["OpenAI", "Gemini", "Llama"].map((model) => (
+                      <div
+                        key={model}
+                        className="flex items-center justify-between"
+                      >
+                        <span className="truncate leading-tight lg:max-w-[160px] xl:max-w-none">
+                          {model}
+                        </span>
+                        <div className="relative h-4 w-8 rounded-full bg-emerald-400/80">
+                          <span className="absolute right-0.5 top-0.5 h-3 w-3 rounded-full bg-white shadow-sm" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-white px-3 py-2 ring-1 ring-black/5 lg:px-2 lg:py-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light sm:text-[11px]">
+                    Aktive Teams
+                  </div>
+                  <div className="mt-2 space-y-2 text-[10px] font-medium text-text-primary-light sm:text-[11px]">
+                    {["Product", "Ops", "Compliance", "Finanzen"].map(
+                      (team) => (
+                        <div
+                          key={team}
+                          className="flex items-center gap-2 rounded-lg border border-border-subtle-light/20 bg-elevated-light/40 px-2 py-1"
+                        >
+                          <span className="h-2 w-2 rounded-full bg-border-subtle-light/80" />
+                          <span className="truncate leading-tight lg:max-w-[160px] xl:max-w-none">
+                            {team}
+                          </span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          {/* FIX 2: Sauberer Fade unten (statt „hart abgeschnitten“) */}
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/illustrations/HeroChatGatewayMock.tsx
+\n----- FILE: src/components/illustrations/HeroChatGatewayMock.tsx -----
+type HeroChatGatewayMockProps = {
+  className?: string;
+};
+
+export default function HeroChatGatewayMock({
+  className,
+}: HeroChatGatewayMockProps) {
+  return (
+    <div
+      className={`relative max-w-full overflow-hidden rounded-3xl border border-border-subtle-light/40 bg-white shadow-[0_18px_40px_-30px_rgba(15,23,42,0.2)] ${
+        className ?? ""
+      }`}
+    >
+      <div className="space-y-5 p-3 sm:p-4">
+        <div className="flex flex-col gap-3 rounded-2xl border border-border-subtle-light/30 bg-white px-4 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-text-primary-light">
+                Opny Workspace
+              </span>
+              <span className="rounded-full border border-border-subtle-light/30 bg-elevated-light/70 px-2 py-0.5 text-xs font-semibold text-text-secondary-light">
+                EU
+              </span>
+            </div>
+            <div className="flex min-w-[220px] flex-col gap-1 rounded-xl border border-border-subtle-light/30 bg-elevated-light/60 px-3 py-2 text-xs text-text-secondary-light">
+              <div className="flex items-center justify-between">
+                <span className="uppercase tracking-[0.2em]">Model</span>
+                <span className="text-text-primary-light">
+                  Auto (Policy-based)
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2 text-[11px] text-text-muted-light">
+                {["Gemini", "OpenAI", "Llama"].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-border-subtle-light/30 bg-white px-2 py-0.5"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-[11px] text-text-muted-light">
+          Policy: Data protection ✓
+        </div>
+
+        <div className="space-y-3 rounded-2xl border border-border-subtle-light/30 bg-slate-50/70 p-3 sm:p-4">
+          <div className="rounded-2xl border border-border-subtle-light/20 bg-white px-4 py-3">
+            <p className="text-sm text-text-primary-light">
+              Summarize the attached contract and flag PII.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border-subtle-light/20 bg-white px-4 py-3">
+            <p className="text-sm leading-relaxed text-text-primary-light">
+              The contract sets a 24-month term with auto-renewal and outlines
+              service-level guarantees. It includes net-30 payment terms and
+              quarterly milestones.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 rounded-2xl border border-border-subtle-light/30 bg-white px-4 py-3 shadow-sm">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle-light/30 bg-elevated-light/70 text-text-secondary-light">
+            <svg
+              viewBox="0 0 24 24"
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <path
+                d="M8 12.5l6.3-6.3a3 3 0 014.2 4.2l-7.1 7.1a4.5 4.5 0 01-6.4-6.4l7.1-7.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Send a request…"
+            className="flex-1 bg-transparent text-sm text-text-primary-light placeholder:text-text-muted-light focus:outline-none"
+          />
+          <button className="rounded-full border border-border-subtle-light/30 bg-elevated-light/70 px-5 py-2 text-xs font-semibold text-text-primary-light">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/illustrations/OpnyDashboardMock.tsx
+\n----- FILE: src/components/illustrations/OpnyDashboardMock.tsx -----
+import Image from "next/image";
+
+const sidebarLabels = [
+  { label: "Dashboard", top: "18%", left: "6%" },
+  { label: "Richtlinien", top: "25%", left: "6%" },
+  { label: "Routing", top: "32%", left: "6%" },
+  { label: "Observability", top: "39%", left: "6%" },
+  { label: "Audit Log", top: "46%", left: "6%" },
+  { label: "Einstellungen", top: "53%", left: "6%" },
+];
+
+const tabLabels = [
+  { label: "Richtlinien", top: "21%", left: "40%" },
+  { label: "Routing", top: "21%", left: "54%" },
+  { label: "Observability", top: "21%", left: "68%" },
+];
+
+const kpiLabels = [
+  { label: "Anfragen (24h)", top: "37%", left: "39%" },
+  { label: "Durchschnittliche Latenz", top: "37%", left: "55%" },
+  { label: "Fehlerrate", top: "37%", left: "72%" },
+  { label: "Kosten (heute)", top: "37%", left: "84%" },
+];
+
+const chartLabels = [
+  { label: "Anfragevolumen", top: "58%", left: "39%" },
+  { label: "Modellverteilung", top: "58%", left: "63%" },
+];
+
+const rightPanelLabels = [
+  { label: "Aktive Modelle", top: "24%", left: "81%" },
+  { label: "Aktive Teams", top: "46%", left: "81%" },
+];
+
+const modelLabels = [
+  { label: "OpenAI", top: "30%", left: "81%" },
+  { label: "Gemini", top: "34.5%", left: "81%" },
+  { label: "Llama", top: "39%", left: "81%" },
+];
+
+const teamLabels = [
+  { label: "Product", top: "52%", left: "81%" },
+  { label: "Ops", top: "56.5%", left: "81%" },
+  { label: "Compliance", top: "61%", left: "81%" },
+  { label: "Finanzen", top: "65.5%", left: "81%" },
+];
+
+export default function OpnyDashboardMock() {
+  return (
+    <div className="relative w-full">
+      <Image
+        src="/images/mockups/opny-dashboard-base.png"
+        alt="Opny Dashboard Mockup"
+        width={1536}
+        height={1024}
+        priority
+        sizes="(min-width: 1024px) 46vw, 90vw"
+        className="h-auto w-full"
+      />
+
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <span className="absolute left-[39%] top-[12%] text-[10px] font-semibold text-[#0B0F1A]/70 md:text-xs">
+          Alle Systeme betriebsbereit
+        </span>
+
+        {sidebarLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute text-[10px] font-medium text-[#0B0F1A]/70 md:text-xs"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {tabLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute text-[10px] font-semibold text-[#0B0F1A]/80 md:text-xs"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {rightPanelLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute text-[10px] font-semibold text-[#0B0F1A]/85 md:text-xs"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {kpiLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute hidden text-[9px] font-medium text-[#0B0F1A]/70 md:block md:text-[10px]"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {chartLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute hidden text-[9px] font-medium text-[#0B0F1A]/70 md:block md:text-[10px]"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {modelLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute hidden text-[9px] font-medium text-[#0B0F1A]/70 md:block md:text-[10px]"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+
+        {teamLabels.map((item) => (
+          <span
+            key={item.label}
+            className="absolute hidden text-[9px] font-medium text-[#0B0F1A]/70 md:block md:text-[10px]"
+            style={{ left: item.left, top: item.top }}
+          >
+            {item.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+src/components/illustrations/WorkspaceVsGateway.tsx
+\n----- FILE: src/components/illustrations/WorkspaceVsGateway.tsx -----
+type IllustrationProps = {
+  className?: string;
+};
+
+export default function WorkspaceVsGateway({ className }: IllustrationProps) {
+  return (
+    <svg
+      role="img"
+      aria-label="Workspace und Gateway"
+      viewBox="0 0 720 420"
+      width="100%"
+      height="auto"
+      className={className}
+    >
+      <rect
+        x="40"
+        y="30"
+        width="640"
+        height="320"
+        rx="28"
+        fill="rgb(var(--opny-bg-alt))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <rect
+        x="70"
+        y="60"
+        width="260"
+        height="210"
+        rx="20"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+      <rect
+        x="390"
+        y="60"
+        width="260"
+        height="210"
+        rx="20"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="200"
+        y="95"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        AI Workspace
+      </text>
+      <text
+        x="520"
+        y="95"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        AI Gateway
+      </text>
+
+      {[
+        "Chat",
+        "Assistenten",
+        "Projekte",
+        "Integrationen",
+        "Modellvergleich",
+      ].map((item, index) => (
+        <g key={item}>
+          <circle
+            cx="100"
+            cy={128 + index * 26}
+            r="4"
+            fill="rgb(var(--accent))"
+          />
+          <text
+            x="112"
+            y={132 + index * 26}
+            fontSize="12"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item}
+          </text>
+        </g>
+      ))}
+
+      {[
+        "API",
+        "Routing",
+        "Fallback",
+        "RAG",
+        "Observability",
+      ].map((item, index) => (
+        <g key={item}>
+          <circle
+            cx="420"
+            cy={128 + index * 26}
+            r="4"
+            fill="rgb(var(--accent))"
+          />
+          <text
+            x="432"
+            y={132 + index * 26}
+            fontSize="12"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="170"
+        y1="300"
+        x2="170"
+        y2="330"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="550"
+        y1="300"
+        x2="550"
+        y2="330"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="170"
+        y1="315"
+        x2="550"
+        y2="315"
+        stroke="rgb(var(--opny-border))"
+      />
+      <text
+        x="360"
+        y="370"
+        fontSize="13"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Eine Plattform – zwei Zugänge
+      </text>
+    </svg>
+  );
+}
+src/components/illustrations/HeroProductMock.tsx
+\n----- FILE: src/components/illustrations/HeroProductMock.tsx -----
+type HeroProductMockProps = {
+  className?: string;
+};
+
+const kpis = [
+  { label: "Anfragen (24h)", value: "20.480" },
+  { label: "Durchschnittliche Latenz", value: "715 ms" },
+  { label: "Fehlerrate", value: "1,2 %" },
+  { label: "Kosten (heute)", value: "€ 935" },
+];
+
+const modelLegend = [
+  { label: "OpenAI", color: "bg-slate-900" },
+  { label: "Gemini", color: "bg-sky-500" },
+  { label: "Llama", color: "bg-emerald-500" },
+];
+
+export default function HeroProductMock({ className }: HeroProductMockProps) {
+  return (
+    <div
+      className={`relative overflow-hidden md:overflow-visible ${className ?? ""}`}
+    >
+      <div className="relative rounded-[32px] border border-border-subtle-light/40 bg-white p-4 shadow-[0_25px_80px_-50px_rgba(15,23,42,0.35)] sm:p-5 md:p-6">
+        <div className="absolute -right-6 -top-6 hidden items-center gap-2 rounded-full border border-border-subtle-light/30 bg-white/90 px-3 py-2 text-xs font-semibold text-text-secondary-light shadow-sm md:flex">
+          Policy: PII redaction ✓
+        </div>
+        <div className="absolute -left-6 top-16 hidden items-center gap-2 rounded-full border border-border-subtle-light/30 bg-white/90 px-3 py-2 text-xs font-semibold text-text-secondary-light shadow-sm md:flex">
+          Avg Latency 715ms
+        </div>
+        <div className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-full border border-border-subtle-light/30 bg-white/90 px-3 py-2 text-xs font-semibold text-text-secondary-light shadow-sm md:flex">
+          Cost today €935
+        </div>
+
+        <div className="relative overflow-hidden rounded-[24px] border border-border-subtle-light/30 bg-slate-50/60 p-4 sm:p-5 md:p-6">
+          <div className="absolute inset-0 hidden md:block">
+            <div className="h-full w-full transform bg-transparent [transform:perspective(1200px)_rotateY(-8deg)_rotateX(2deg)]" />
+          </div>
+
+          <div className="relative grid gap-4 md:grid-cols-[180px_minmax(0,1fr)] md:gap-6">
+            <aside className="rounded-2xl border border-border-subtle-light/30 bg-white/80 p-3">
+              <div className="space-y-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                Navigation
+              </div>
+              <div className="mt-3 space-y-2 text-[11px] font-medium text-text-secondary-light">
+                {[
+                  "Dashboard",
+                  "Richtlinien",
+                  "Routing",
+                  "Observability",
+                  "Audit Log",
+                  "Einstellungen",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2 ${
+                      item === "Observability"
+                        ? "border border-border-subtle-light/30 bg-white text-text-primary-light"
+                        : "bg-transparent"
+                    }`}
+                  >
+                    <span className="truncate">{item}</span>
+                    <span
+                      className={`h-2 w-2 rounded-full ${
+                        item === "Observability"
+                          ? "bg-accent"
+                          : "bg-border-subtle-light/70"
+                      }`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </aside>
+
+            <div className="flex min-w-0 flex-col gap-4">
+              <div className="flex items-center justify-between rounded-2xl border border-border-subtle-light/30 bg-white px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                  Observability
+                </div>
+                <div className="flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                  Alle Systeme betriebsbereit
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {kpis.map((kpi) => (
+                  <div
+                    key={kpi.label}
+                    className="rounded-2xl border border-border-subtle-light/30 bg-white px-4 py-3"
+                  >
+                    <div className="text-[11px] font-medium text-text-secondary-light">
+                      {kpi.label}
+                    </div>
+                    <div className="mt-2 text-lg font-semibold text-text-primary-light">
+                      {kpi.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-border-subtle-light/30 bg-white p-4">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                    Anfragevolumen
+                  </div>
+                  <svg
+                    viewBox="0 0 240 80"
+                    className="mt-3 h-20 w-full"
+                    fill="none"
+                  >
+                    <path
+                      d="M10 60 C 40 30, 80 50, 120 32 S 190 22, 230 30"
+                      stroke="rgb(var(--text-secondary-light))"
+                      strokeWidth="2.5"
+                    />
+                    <path
+                      d="M10 60 C 40 30, 80 50, 120 32 S 190 22, 230 30 L 230 72 L 10 72 Z"
+                      fill="rgb(var(--text-secondary-light))"
+                      opacity="0.08"
+                    />
+                  </svg>
+                </div>
+
+                <div className="rounded-2xl border border-border-subtle-light/30 bg-white p-4">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                    Modellverteilung
+                  </div>
+                  <div className="mt-4 flex h-20 items-end gap-3">
+                    {[
+                      "bg-slate-900",
+                      "bg-sky-500",
+                      "bg-emerald-500",
+                    ].map((color, index) => (
+                      <div
+                        key={color}
+                        className={`w-6 rounded-md ${color}`}
+                        style={{ height: `${50 + index * 15}%` }}
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-text-secondary-light">
+                    {modelLegend.map((item) => (
+                      <div key={item.label} className="flex items-center gap-2">
+                        <span className={`h-2 w-2 rounded-full ${item.color}`} />
+                        {item.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-border-subtle-light/30 bg-white p-4">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                  Aktive Teams
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2 text-sm font-medium text-text-primary-light">
+                  {["Product", "Ops", "Compliance", "Finance"].map((team) => (
+                    <span
+                      key={team}
+                      className="rounded-full border border-border-subtle-light/30 bg-elevated-light/60 px-3 py-1"
+                    >
+                      {team}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/illustrations/GatewayDiagram.tsx
+\n----- FILE: src/components/illustrations/GatewayDiagram.tsx -----
+type IllustrationProps = {
+  className?: string;
+};
+
+export default function GatewayDiagram({ className }: IllustrationProps) {
+  return (
+    <svg
+      role="img"
+      aria-label="Gateway-Diagramm"
+      viewBox="0 0 720 520"
+      width="100%"
+      height="auto"
+      className={className}
+    >
+      <rect
+        x="24"
+        y="24"
+        width="672"
+        height="472"
+        rx="32"
+        fill="rgb(var(--opny-bg-alt))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="60"
+        y="56"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        All LLMs
+      </text>
+
+      {[
+        { label: "OpenAI", x: 60 },
+        { label: "Gemini", x: 270 },
+        { label: "Llama", x: 480 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="70"
+            width="180"
+            height="56"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 90}
+            y="104"
+            fontSize="14"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="150"
+        y1="126"
+        x2="150"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="360"
+        y1="126"
+        x2="360"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="570"
+        y1="126"
+        x2="570"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="150"
+        y1="150"
+        x2="570"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="360"
+        y1="150"
+        x2="360"
+        y2="170"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <rect
+        x="60"
+        y="170"
+        width="600"
+        height="110"
+        rx="22"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--accent))"
+        strokeWidth="1.5"
+      />
+      <text
+        x="360"
+        y="205"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Opny Control Layer
+      </text>
+      {[
+        { label: "Policies", x: 150 },
+        { label: "Routing", x: 300 },
+        { label: "Observability", x: 450 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="225"
+            width="120"
+            height="32"
+            rx="14"
+            fill="rgb(var(--opny-bg))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 60}
+            y="246"
+            fontSize="12"
+            textAnchor="middle"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="360"
+        y1="280"
+        x2="360"
+        y2="320"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="150"
+        y1="320"
+        x2="570"
+        y2="320"
+        stroke="rgb(var(--opny-border))"
+      />
+      {[150, 275, 425, 575].map((x) => (
+        <line
+          key={x}
+          x1={x}
+          y1="320"
+          x2={x}
+          y2="350"
+          stroke="rgb(var(--opny-border))"
+        />
+      ))}
+      <line
+        x1="360"
+        y1="320"
+        x2="360"
+        y2="408"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="60"
+        y="338"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Teams / Apps
+      </text>
+
+      {[
+        { label: "Product", x: 60 },
+        { label: "Ops", x: 210 },
+        { label: "Compliance", x: 360 },
+        { label: "Finance", x: 510 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="350"
+            width="130"
+            height="52"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 65}
+            y="382"
+            fontSize="13"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <rect
+        x="170"
+        y="408"
+        width="380"
+        height="56"
+        rx="18"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+      <text
+        x="360"
+        y="442"
+        fontSize="13"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Data &amp; Analytics
+      </text>
+    </svg>
+  );
+}
+src/components/diagrams/WorkspaceGatewayDiagram.tsx
+\n----- FILE: src/components/diagrams/WorkspaceGatewayDiagram.tsx -----
+type DiagramProps = {
+  className?: string;
+};
+
+export function WorkspaceGatewayDiagram({ className }: DiagramProps) {
+  return (
+    <svg
+      role="img"
+      aria-label="Workspace und Gateway"
+      viewBox="0 0 720 420"
+      width="100%"
+      height="auto"
+      className={className}
+    >
+      <rect
+        x="40"
+        y="30"
+        width="640"
+        height="320"
+        rx="28"
+        fill="rgb(var(--opny-bg-alt))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <rect
+        x="70"
+        y="60"
+        width="260"
+        height="210"
+        rx="20"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+      <rect
+        x="390"
+        y="60"
+        width="260"
+        height="210"
+        rx="20"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="200"
+        y="95"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        AI Workspace
+      </text>
+      <text
+        x="520"
+        y="95"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        AI Gateway
+      </text>
+
+      {[
+        "Chat",
+        "Assistenten",
+        "Projekte",
+        "Integrationen",
+        "Modellvergleich",
+      ].map((item, index) => (
+        <g key={item}>
+          <circle
+            cx="100"
+            cy={128 + index * 26}
+            r="4"
+            fill="rgb(var(--accent))"
+          />
+          <text
+            x="112"
+            y={132 + index * 26}
+            fontSize="12"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item}
+          </text>
+        </g>
+      ))}
+
+      {[
+        "API",
+        "Routing",
+        "Fallback",
+        "RAG",
+        "Observability",
+      ].map((item, index) => (
+        <g key={item}>
+          <circle
+            cx="420"
+            cy={128 + index * 26}
+            r="4"
+            fill="rgb(var(--accent))"
+          />
+          <text
+            x="432"
+            y={132 + index * 26}
+            fontSize="12"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="170"
+        y1="300"
+        x2="170"
+        y2="330"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="550"
+        y1="300"
+        x2="550"
+        y2="330"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="170"
+        y1="315"
+        x2="550"
+        y2="315"
+        stroke="rgb(var(--opny-border))"
+      />
+      <text
+        x="360"
+        y="370"
+        fontSize="13"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Eine Plattform – zwei Zugänge
+      </text>
+    </svg>
+  );
+}
+src/components/diagrams/HeroGatewayDiagram.tsx
+\n----- FILE: src/components/diagrams/HeroGatewayDiagram.tsx -----
+type HeroGatewayDiagramProps = {
+  className?: string;
+};
+
+export default function HeroGatewayDiagram({
+  className,
+}: HeroGatewayDiagramProps) {
+  return (
+    <div
+      className={`rounded-3xl border border-border-subtle-light/40 bg-white shadow-card-light ${
+        className ?? ""
+      }`}
+    >
+      <svg
+        role="img"
+        aria-label="Opny AI Gateway Architekturdiagramm"
+        viewBox="0 0 720 520"
+        width="100%"
+        height="auto"
+        className="h-auto w-full"
+      >
+        <g>
+          <rect
+            x="24"
+            y="24"
+            width="672"
+            height="472"
+            rx="28"
+            fill="white"
+            stroke="rgb(var(--opny-border))"
+          />
+
+          <text
+            x="48"
+            y="64"
+            fontSize="12"
+            letterSpacing="2"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            AI MODELS
+          </text>
+        </g>
+
+        <g>
+          {[
+            { label: "OpenAI", x: 60 },
+            { label: "Gemini", x: 270 },
+            { label: "Llama", x: 480 },
+          ].map((item) => (
+            <g key={item.label}>
+              <rect
+                x={item.x}
+                y="78"
+                width="180"
+                height="56"
+                rx="16"
+                fill="rgb(var(--opny-surface))"
+                stroke="rgb(var(--opny-border))"
+              />
+              <text
+                x={item.x + 90}
+                y="112"
+                fontSize="14"
+                textAnchor="middle"
+                fill="rgb(var(--opny-text))"
+                fontFamily="Arial, Helvetica, sans-serif"
+              >
+                {item.label}
+              </text>
+            </g>
+          ))}
+        </g>
+
+        <g>
+          <line
+            x1="150"
+            y1="134"
+            x2="150"
+            y2="158"
+            stroke="rgb(var(--opny-border))"
+          />
+          <line
+            x1="360"
+            y1="134"
+            x2="360"
+            y2="158"
+            stroke="rgb(var(--opny-border))"
+          />
+          <line
+            x1="570"
+            y1="134"
+            x2="570"
+            y2="158"
+            stroke="rgb(var(--opny-border))"
+          />
+          <line
+            x1="150"
+            y1="158"
+            x2="570"
+            y2="158"
+            stroke="rgb(var(--opny-border))"
+          />
+          <line
+            x1="360"
+            y1="158"
+            x2="360"
+            y2="184"
+            stroke="rgb(var(--opny-border))"
+          />
+        </g>
+
+        <g>
+          <rect
+            x="60"
+            y="184"
+            width="600"
+            height="116"
+            rx="22"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x="360"
+            y="218"
+            fontSize="14"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            Opny AI Gateway
+          </text>
+
+          {[
+            { label: "Policies", x: 150 },
+            { label: "Routing", x: 300 },
+            { label: "Observability", x: 450 },
+          ].map((item) => (
+            <g key={item.label}>
+              <rect
+                x={item.x}
+                y="238"
+                width="120"
+                height="32"
+                rx="16"
+                fill="white"
+                stroke="rgb(var(--opny-border))"
+              />
+              <text
+                x={item.x + 60}
+                y="259"
+                fontSize="12"
+                textAnchor="middle"
+                fill="rgb(var(--text-secondary-light))"
+                fontFamily="Arial, Helvetica, sans-serif"
+              >
+                {item.label}
+              </text>
+            </g>
+          ))}
+        </g>
+
+        <g>
+          <line
+            x1="360"
+            y1="300"
+            x2="360"
+            y2="332"
+            stroke="rgb(var(--opny-border))"
+          />
+          <line
+            x1="150"
+            y1="332"
+            x2="570"
+            y2="332"
+            stroke="rgb(var(--opny-border))"
+          />
+          {[150, 275, 425, 575].map((x) => (
+            <line
+              key={x}
+              x1={x}
+              y1="332"
+              x2={x}
+              y2="364"
+              stroke="rgb(var(--opny-border))"
+            />
+          ))}
+        </g>
+
+        <g>
+          <text
+            x="48"
+            y="354"
+            fontSize="12"
+            letterSpacing="2"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            TEAMS & APPS
+          </text>
+
+          {[
+            { label: "Product", x: 60 },
+            { label: "Ops", x: 210 },
+            { label: "Compliance", x: 360 },
+            { label: "Finance", x: 510 },
+          ].map((item) => (
+            <g key={item.label}>
+              <rect
+                x={item.x}
+                y="368"
+                width="150"
+                height="56"
+                rx="16"
+                fill="rgb(var(--opny-surface))"
+                stroke="rgb(var(--opny-border))"
+              />
+              <text
+                x={item.x + 75}
+                y="402"
+                fontSize="13"
+                textAnchor="middle"
+                fill="rgb(var(--opny-text))"
+                fontFamily="Arial, Helvetica, sans-serif"
+              >
+                {item.label}
+              </text>
+            </g>
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}
+src/components/diagrams/GovernanceControlLayerDiagram.tsx
+\n----- FILE: src/components/diagrams/GovernanceControlLayerDiagram.tsx -----
+type DiagramProps = {
+  className?: string;
+};
+
+export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
+  return (
+    <svg
+      role="img"
+      aria-label="Governance Control Layer Diagramm"
+      viewBox="0 0 720 520"
+      width="100%"
+      height="auto"
+      className={className}
+    >
+      <rect
+        x="24"
+        y="24"
+        width="672"
+        height="472"
+        rx="32"
+        fill="rgb(var(--opny-bg-alt))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="60"
+        y="56"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        All LLMs
+      </text>
+
+      {[
+        { label: "OpenAI", x: 60 },
+        { label: "Gemini", x: 270 },
+        { label: "Llama", x: 480 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="70"
+            width="180"
+            height="56"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 90}
+            y="104"
+            fontSize="14"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="150"
+        y1="126"
+        x2="150"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="360"
+        y1="126"
+        x2="360"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="570"
+        y1="126"
+        x2="570"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="150"
+        y1="150"
+        x2="570"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="360"
+        y1="150"
+        x2="360"
+        y2="170"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <rect
+        x="60"
+        y="170"
+        width="600"
+        height="110"
+        rx="22"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--accent))"
+        strokeWidth="1.5"
+      />
+      <text
+        x="360"
+        y="205"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Opny Control Layer
+      </text>
+      {[
+        { label: "Policies", x: 150 },
+        { label: "Routing", x: 300 },
+        { label: "Observability", x: 450 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="225"
+            width="120"
+            height="32"
+            rx="14"
+            fill="rgb(var(--opny-bg))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 60}
+            y="246"
+            fontSize="12"
+            textAnchor="middle"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="360"
+        y1="280"
+        x2="360"
+        y2="320"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="150"
+        y1="320"
+        x2="570"
+        y2="320"
+        stroke="rgb(var(--opny-border))"
+      />
+      {[150, 275, 425, 575].map((x) => (
+        <line
+          key={x}
+          x1={x}
+          y1="320"
+          x2={x}
+          y2="350"
+          stroke="rgb(var(--opny-border))"
+        />
+      ))}
+      <line
+        x1="360"
+        y1="320"
+        x2="360"
+        y2="408"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="60"
+        y="338"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Teams / Apps
+      </text>
+
+      {[
+        { label: "Product", x: 60 },
+        { label: "Ops", x: 210 },
+        { label: "Compliance", x: 360 },
+        { label: "Finance", x: 510 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="350"
+            width="130"
+            height="52"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 65}
+            y="382"
+            fontSize="13"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <rect
+        x="170"
+        y="408"
+        width="380"
+        height="56"
+        rx="18"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--opny-border))"
+      />
+      <text
+        x="360"
+        y="442"
+        fontSize="13"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Data &amp; Analytics
+      </text>
+    </svg>
+  );
+}
+src/components/diagrams/AiGatewayDiagram.tsx
+\n----- FILE: src/components/diagrams/AiGatewayDiagram.tsx -----
+type DiagramProps = {
+  className?: string;
+};
+
+export function AiGatewayDiagram({ className }: DiagramProps) {
+  return (
+    <svg
+      role="img"
+      aria-label="AI Gateway Diagramm"
+      viewBox="0 0 720 460"
+      width="100%"
+      height="auto"
+      className={className}
+    >
+      <rect
+        x="28"
+        y="24"
+        width="664"
+        height="412"
+        rx="28"
+        fill="rgb(var(--opny-bg-alt))"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <text
+        x="60"
+        y="58"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Modelle
+      </text>
+
+      {[
+        { label: "OpenAI", x: 60 },
+        { label: "Gemini", x: 265 },
+        { label: "Llama", x: 470 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="72"
+            width="180"
+            height="50"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 90}
+            y="102"
+            fontSize="13"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="150"
+        y1="122"
+        x2="150"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="355"
+        y1="122"
+        x2="355"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="560"
+        y1="122"
+        x2="560"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="150"
+        y1="150"
+        x2="560"
+        y2="150"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="355"
+        y1="150"
+        x2="355"
+        y2="176"
+        stroke="rgb(var(--opny-border))"
+      />
+
+      <rect
+        x="110"
+        y="176"
+        width="500"
+        height="98"
+        rx="20"
+        fill="rgb(var(--opny-surface))"
+        stroke="rgb(var(--accent))"
+        strokeWidth="1.6"
+      />
+      <text
+        x="360"
+        y="210"
+        fontSize="14"
+        textAnchor="middle"
+        fill="rgb(var(--opny-text))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Opny AI Gateway
+      </text>
+      {[
+        { label: "Policies", x: 150 },
+        { label: "Routing", x: 310 },
+        { label: "Observability", x: 470 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="222"
+            width="120"
+            height="28"
+            rx="14"
+            fill="rgb(var(--opny-bg))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 60}
+            y="241"
+            fontSize="12"
+            textAnchor="middle"
+            fill="rgb(var(--text-secondary-light))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+
+      <line
+        x1="360"
+        y1="274"
+        x2="360"
+        y2="316"
+        stroke="rgb(var(--opny-border))"
+      />
+      <line
+        x1="170"
+        y1="316"
+        x2="550"
+        y2="316"
+        stroke="rgb(var(--opny-border))"
+      />
+      {[170, 295, 425, 550].map((x) => (
+        <line
+          key={x}
+          x1={x}
+          y1="316"
+          x2={x}
+          y2="346"
+          stroke="rgb(var(--opny-border))"
+        />
+      ))}
+
+      <text
+        x="60"
+        y="336"
+        fontSize="12"
+        letterSpacing="2"
+        fill="rgb(var(--text-secondary-light))"
+        fontFamily="Arial, Helvetica, sans-serif"
+      >
+        Teams & Apps
+      </text>
+
+      {[
+        { label: "Product", x: 80 },
+        { label: "Ops", x: 230 },
+        { label: "Compliance", x: 380 },
+        { label: "Finance", x: 530 },
+      ].map((item) => (
+        <g key={item.label}>
+          <rect
+            x={item.x}
+            y="346"
+            width="120"
+            height="50"
+            rx="16"
+            fill="rgb(var(--opny-surface))"
+            stroke="rgb(var(--opny-border))"
+          />
+          <text
+            x={item.x + 60}
+            y="377"
+            fontSize="12"
+            textAnchor="middle"
+            fill="rgb(var(--opny-text))"
+            fontFamily="Arial, Helvetica, sans-serif"
+          >
+            {item.label}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+src/components/NavDropdown.tsx
+\n----- FILE: src/components/NavDropdown.tsx -----
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+export type NavDropdownItem = {
+  label: string;
+  href: string;
+  description?: string;
+};
+
+type NavDropdownProps = {
+  label: string;
+  items: NavDropdownItem[];
+};
+
+export default function NavDropdown({ label, items }: NavDropdownProps) {
+  const [open, setOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<number | null>(null);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = window.setTimeout(() => {
+      setOpen(false);
+    }, 220);
+  };
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  const handlePointerEnter = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const handlePointerLeave = (event: React.PointerEvent<HTMLDivElement>) => {
+    const nextTarget = event.relatedTarget as Node | null;
+    if (nextTarget && wrapperRef.current?.contains(nextTarget)) {
+      return;
+    }
+    scheduleClose();
+  };
+
+  const handleFocus = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    const nextTarget = event.relatedTarget as Node | null;
+    if (nextTarget && wrapperRef.current?.contains(nextTarget)) {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setOpen((prev) => !prev);
+    }
+  };
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="relative"
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
+      <button
+        type="button"
+        className="flex items-center gap-1 text-sm font-medium text-text-secondary-light transition hover:text-text-primary-light focus:text-text-primary-light"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onKeyDown={handleKeyDown}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        {label}
+        <svg
+          className="h-4 w-4 text-text-secondary-light/70"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        >
+          <path d="M4 6l4 4 4-4" strokeLinecap="round" />
+        </svg>
+      </button>
+      <div
+        className={`absolute left-0 top-full z-50 mt-3 w-64 rounded-card border border-border-subtle-light/20 bg-elevated-light p-3 shadow-card-light transition ${
+          open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-2 opacity-0"
+        }`}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+      >
+        <div className="space-y-2">
+          {items.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="block rounded-xl border border-transparent px-3 py-2 text-sm text-text-secondary-light transition hover:border-border-subtle-light/20 hover:bg-bg-light hover:text-text-primary-light"
+            >
+              <div className="font-medium text-text-primary-light">
+                {item.label}
+              </div>
+              {item.description ? (
+                <div className="text-xs text-text-secondary-light">
+                  {item.description}
+                </div>
+              ) : null}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/MobileNav.tsx
+\n----- FILE: src/components/MobileNav.tsx -----
+"use client";
+
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+
+type MobileNavLink = {
+  label: string;
+  href: string;
+};
+
+type MobileNavProps = {
+  open: boolean;
+  onClose: () => void;
+  links: MobileNavLink[];
+  cta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+};
+
+export default function MobileNav({
+  open,
+  onClose,
+  links,
+  cta = {
+    label: "Demo anfragen",
+    href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+  },
+  secondaryCta = { label: "Anmelden", href: "/#demo" },
+}: MobileNavProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const [animateIn, setAnimateIn] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleHashLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("/#")) return;
+
+    event.preventDefault();
+    onClose();
+
+    const id = href.slice(2);
+
+    if (pathname === "/") {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    router.push(href);
+
+    let frame = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      frame += 1;
+      if (frame < 40) requestAnimationFrame(tryScroll);
+    };
+    requestAnimationFrame(tryScroll);
+  };
+
+  const renderNavLink = (link: MobileNavLink) => {
+    const isExternal =
+      link.href.startsWith("http") ||
+      link.href.startsWith("mailto:") ||
+      link.href.startsWith("tel:");
+    const isHashLink = link.href.startsWith("/#");
+
+    const baseClass =
+      "block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5";
+
+    if (isExternal) {
+      return (
+        <a href={link.href} className={baseClass}>
+          {link.label}
+        </a>
+      );
+    }
+
+    if (isHashLink) {
+      return (
+        <Link
+          href={link.href}
+          onClick={(event) => handleHashLinkClick(event, link.href)}
+          className={baseClass}
+        >
+          {link.label}
+        </Link>
+      );
+    }
+
+    return (
+      <Link href={link.href} onClick={onClose} className={baseClass}>
+        {link.label}
+      </Link>
+    );
+  };
+
+  // 1) Body scroll lock
+  useEffect(() => {
+    if (!open) return;
+
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    if (scrollBarWidth > 0) {
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    };
+  }, [open]);
+
+  // 2) ESC + Focus-Trap
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusables || focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open, onClose]);
+
+  // 3) Initial focus + close on lg+
+  useEffect(() => {
+    if (!open) return;
+
+    const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    focusables?.[0]?.focus();
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    if (mq.matches) {
+      onClose();
+      return;
+    }
+
+    const onChange = (event: MediaQueryListEvent) => {
+      if (event.matches) onClose();
+    };
+
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [open, onClose]);
+
+  // 4) Drawer animation
+  useEffect(() => {
+    if (!open) return;
+
+    const id = requestAnimationFrame(() => setAnimateIn(true));
+    return () => {
+      cancelAnimationFrame(id);
+      setAnimateIn(false);
+    };
+  }, [open]);
+
+  if (!open) return null;
+
+  const secondaryOnClick = secondaryCta.href.startsWith("/#")
+    ? (event: React.MouseEvent<HTMLAnchorElement>) =>
+        handleHashLinkClick(event, secondaryCta.href)
+    : onClose;
+
+  return (
+    <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menü"
+      className="fixed inset-x-0 bottom-0 top-16 z-[999] lg:hidden"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+
+      <div
+        className={`absolute right-0 top-0 h-full w-full max-w-[420px] transform bg-white shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] transition-transform duration-300 ease-out ${
+          animateIn ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex h-full flex-col px-5 pb-6 pt-[max(16px,env(safe-area-inset-top))]">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/brand/opny-logo.png"
+                alt="Opny"
+                width={140}
+                height={40}
+                priority
+                className="h-6 w-auto"
+              />
+              <span className="text-sm font-semibold uppercase tracking-[0.22em] text-text-secondary-light">
+                MENÜ
+              </span>
+            </div>
+            <button
+              onClick={onClose}
+              aria-label="Close menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-white text-xl text-text-secondary-light transition hover:text-text-primary-light"
+            >
+              ×
+            </button>
+          </div>
+
+          <nav className="mt-6 flex-1 overflow-y-auto">
+            <ul className="space-y-2">
+              {links.map((l) => (
+                <li key={l.href}>{renderNavLink(l)}</li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="mt-6 space-y-3">
+            <a
+              href={cta.href}
+              className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+            >
+              {cta.label}
+            </a>
+
+            <Link
+              href={secondaryCta.href}
+              onClick={secondaryOnClick}
+              className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+            >
+              {secondaryCta.label}
+            </Link>
+          </div>
+
+          <div className="h-[max(12px,env(safe-area-inset-bottom))]" />
+        </div>
+      </div>
+    </div>
+  );
+}
+src/components/Footer.tsx
+\n----- FILE: src/components/Footer.tsx -----
+import Link from "next/link";
+
+const productLinks = [
+  { label: "AI Workspace", href: "/#produkt" },
+  { label: "AI Gateway", href: "/ai-gateway" },
+  { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
+  { label: "KI Governance", href: "/ki-governance" },
+];
+
+const resourceLinks = [
+  { label: "Plattform", href: "/#plattform" },
+  { label: "Lösungen", href: "/#loesungen" },
+  { label: "Demo", href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai" },
+];
+
+const companyLinks = [
+  { label: "Über Opny", href: "/#unternehmen" },
+  { label: "Kontakt", href: "mailto:info@opny.ai" },
+];
+
+const legalLinks = [
+  { label: "Impressum", href: "/impressum" },
+  { label: "Datenschutz", href: "/datenschutz" },
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+  const renderLink = (link: { label: string; href: string }) => {
+    const isExternal =
+      link.href.startsWith("mailto:") ||
+      link.href.startsWith("tel:") ||
+      link.href.startsWith("http");
+    const isHashLink = link.href.startsWith("/#");
+
+    if (isExternal || isHashLink) {
+      return (
+        <a className="hover:text-text-primary-light" href={link.href}>
+          {link.label}
+        </a>
+      );
+    }
+
+    return (
+      <Link className="hover:text-text-primary-light" href={link.href}>
+        {link.label}
+      </Link>
+    );
+  };
+
+  return (
+    <footer className="border-t border-border-subtle-light/15 bg-white/80">
+      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-3">
+            <div className="text-base font-semibold text-text-primary-light">
+              Produkt
+            </div>
+            <ul className="space-y-2 text-sm text-text-muted-light">
+              {productLinks.map((link) => (
+                <li key={link.label}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <div className="text-base font-semibold text-text-primary-light">
+              Ressourcen
+            </div>
+            <ul className="space-y-2 text-sm text-text-muted-light">
+              {resourceLinks.map((link) => (
+                <li key={link.label}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <div className="text-base font-semibold text-text-primary-light">
+              Unternehmen
+            </div>
+            <ul className="space-y-2 text-sm text-text-muted-light">
+              {companyLinks.map((link) => (
+                <li key={link.label}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <div className="text-base font-semibold text-text-primary-light">
+              Rechtliches
+            </div>
+            <ul className="space-y-2 text-sm text-text-muted-light">
+              {legalLinks.map((link) => (
+                <li key={link.label}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-start gap-2 border-t border-border-subtle-light/15 pt-6 text-sm text-text-secondary-light sm:flex-row sm:items-center sm:justify-between">
+          <span>© {year} Opny AI</span>
+          <span>Kontrollierte KI-Systeme für Unternehmen</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+src/components/AnnouncementBar.tsx
+\n----- FILE: src/components/AnnouncementBar.tsx -----
+export default function AnnouncementBar() {
+  return (
+    <div className="sticky top-0 z-50 h-10 w-full border-b border-border-subtle-dark/20 bg-[linear-gradient(90deg,rgb(var(--bg-dark))_0%,rgb(var(--surface-dark))_55%,rgb(var(--bg-dark))_100%)] backdrop-blur">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-3 px-4 text-xs text-text-secondary-dark sm:px-6 lg:px-10">
+        <span className="truncate sm:hidden">
+          opny.ai – Kontrollierte KI-Systeme.
+        </span>
+        <span className="hidden sm:block">
+          opny.ai – Kontrollierte KI-Systeme für Unternehmen. Umsetzung statt
+          PowerPoint.
+        </span>
+        <a
+          className="flex-shrink-0 text-text-primary-dark transition hover:text-text-primary-dark/80"
+          href="/#produkt"
+        >
+          Mehr erfahren →
+        </a>
+      </div>
+    </div>
+  );
+}
+src/components/consent/CookieBanner.tsx
+\n----- FILE: src/components/consent/CookieBanner.tsx -----
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { gaPageView } from "@/components/analytics/GoogleAnalytics";
+
+const CONSENT_KEY = "cookie_consent_v2";
+const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
+
+type ConsentValue = "accepted" | "declined";
+
+function setConsentGranted(): void {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  window.gtag("consent", "update", {
+    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+}
+
+function setConsentDenied(): void {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  window.gtag("consent", "update", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+}
+
+function currentUrl(): string {
+  return `${window.location.pathname}${window.location.search}`;
+}
+
+export default function CookieBanner() {
+  const [consent, setConsent] = useState<ConsentValue | null>(() => {
+    if (typeof window === "undefined") return null;
+    if (!HAS_GA_ID) return null;
+
+    const stored = window.localStorage.getItem(CONSENT_KEY);
+    return stored === "accepted" || stored === "declined" ? stored : null;
+  });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
+
+  // Ensure "denied" on first load when no stored consent (but do not store anything).
+  useEffect(() => {
+    if (!HAS_GA_ID || typeof window === "undefined") return;
+
+    const stored = window.localStorage.getItem(CONSENT_KEY);
+    if (stored !== "accepted" && stored !== "declined") {
+      setConsentDenied();
+      return;
+    }
+
+    if (stored === "accepted") setConsentGranted();
+    if (stored === "declined") setConsentDenied();
+  }, []);
+
+  // Close modal on ESC
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsModalOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isModalOpen]);
+
+  const persistAccepted = () => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(CONSENT_KEY, "accepted");
+    setConsent("accepted");
+    setConsentGranted();
+    gaPageView(currentUrl());
+  };
+
+  const persistDeclined = () => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(CONSENT_KEY, "declined");
+    setConsent("declined");
+    setConsentDenied();
+  };
+
+  const handleAccept = () => {
+    persistAccepted();
+  };
+
+  const handleDecline = () => {
+    persistDeclined();
+  };
+
+  const handleOpenSettings = () => {
+    setAnalyticsEnabled(consent === "accepted");
+    setIsModalOpen(true);
+  };
+
+  const handleCancelSettings = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveSettings = () => {
+    if (analyticsEnabled) persistAccepted();
+    else persistDeclined();
+
+    setIsModalOpen(false);
+  };
+
+  if (!HAS_GA_ID) return null;
+
+  // If user already decided, do not render banner/modal.
+  if (consent !== null) return null;
+
+  return (
+    <>
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white p-4 shadow-[0_-8px_24px_rgba(0,0,0,0.08)]">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-neutral-800">
+            Wir verwenden Cookies fuer Reichweitenmessung (Google Analytics). Mehr in der{" "}
+            <Link href="/datenschutz" className="underline underline-offset-2">
+              Datenschutzerklaerung
+            </Link>
+            .
+          </p>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleOpenSettings}
+              className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+            >
+              Einstellungen
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDecline}
+              className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+            >
+              Ablehnen
+            </button>
+
+            <button
+              type="button"
+              onClick={handleAccept}
+              className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+            >
+              Akzeptieren
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cookie-settings-title"
+            className="w-full max-w-md rounded-lg bg-white p-5 shadow-xl"
+          >
+            <h2 id="cookie-settings-title" className="text-lg font-semibold text-neutral-900">
+              Cookie-Einstellungen
+            </h2>
+
+            <div className="mt-4 flex items-center justify-between gap-4 rounded-md border border-neutral-200 p-3">
+              <span className="text-sm text-neutral-800">Analytics (Google Analytics)</span>
+
+              <button
+                type="button"
+                role="switch"
+                aria-checked={analyticsEnabled}
+                onClick={() => setAnalyticsEnabled((prev) => !prev)}
+                className={`inline-flex h-6 w-11 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
+                  analyticsEnabled ? "bg-black" : "bg-neutral-300"
+                }`}
+              >
+                <span
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                    analyticsEnabled ? "translate-x-5" : "translate-x-0.5"
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={handleCancelSettings}
+                className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+              >
+                Abbrechen
+              </button>
+              <button
+                type="button"
+                onClick={handleSaveSettings}
+                className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+              >
+                Speichern
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+src/components/Header.tsx
+\n----- FILE: src/components/Header.tsx -----
+"use client";
+
+import type React from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import MobileNav from "@/components/MobileNav";
+
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleHashLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href || !href.startsWith("/#")) return;
+
+    event.preventDefault();
+    const id = href.slice(2);
+
+    if (pathname === "/") {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    router.push(href);
+
+    let frame = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      frame += 1;
+      if (frame < 40) requestAnimationFrame(tryScroll);
+    };
+    requestAnimationFrame(tryScroll);
+  };
+
+  const nav = [
+    { label: "Produkt", href: "/#produkt" },
+    { label: "Lösungen", href: "/#loesungen" },
+    { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
+    { label: "Plattform", href: "/#plattform" },
+    { label: "AI Gateway", href: "/ai-gateway" },
+    { label: "KI Governance", href: "/ki-governance" },
+    { label: "Über Opny", href: "/#unternehmen" },
+  ];
+
+  return (
+    <>
+      <header className="sticky top-0 z-50 border-b border-border-subtle-light/15 bg-white/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <Link
+            href="/"
+            className="flex items-center gap-2 py-1"
+            aria-label="Zur Startseite"
+            onClick={(event) => {
+              if (pathname === "/") {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            <img
+              src="/images/brand/opny-logo.png"
+              alt="Opny"
+              className="block h-5 w-auto md:h-6"
+              draggable={false}
+            />
+            <span className="sr-only">opny.ai</span>
+          </Link>
+
+          <nav className="hidden items-center gap-6 md:flex">
+            {nav.map((n) => (
+              <Link
+                key={n.label}
+                href={n.href}
+                onClick={
+                  n.href.startsWith("/#") ? handleHashLinkClick : undefined
+                }
+                className="text-sm text-text-muted-light hover:text-text-primary-light"
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <Link
+              href="/#demo"
+              className="text-sm text-text-muted-light hover:text-text-primary-light"
+              onClick={handleHashLinkClick}
+            >
+              Anmelden
+            </Link>
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              className="rounded-full bg-[#0b1220] px-4 py-2.5 text-sm font-semibold text-white"
+            >
+              Demo anfragen
+            </a>
+          </div>
+
+          <div className="flex items-center gap-2 md:hidden">
+            <a
+              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              className="rounded-full bg-[#0b1220] px-3.5 py-2.5 text-sm font-semibold text-white"
+            >
+              Demo anfragen
+            </a>
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
+              aria-label="Menü öffnen"
+            >
+              <span className="text-sm font-semibold">Menu</span>
+              <span className="flex flex-col gap-1">
+                <span className="h-0.5 w-4 rounded-full bg-text-primary-light/80" />
+                <span className="h-0.5 w-3 rounded-full bg-text-primary-light/80" />
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <MobileNav
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        links={nav}
+        cta={{
+          label: "Demo anfragen",
+          href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+        }}
+        secondaryCta={{ label: "Anmelden", href: "/#demo" }}
+      />
+    </>
+  );
+}
+src/components/analytics/AnalyticsRouteTracker.tsx
+\n----- FILE: src/components/analytics/AnalyticsRouteTracker.tsx -----
+"use client";
+
+import { useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { gaPageView } from "@/components/analytics/GoogleAnalytics";
+
+const CONSENT_KEY = "cookie_consent_v1";
+const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
+
+export default function AnalyticsRouteTracker() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!HAS_GA_ID || typeof window === "undefined") return;
+
+    const consent = window.localStorage.getItem(CONSENT_KEY);
+    if (consent !== "accepted") return;
+
+    const query = searchParams.toString();
+    const url = query ? `${pathname}?${query}` : pathname;
+    gaPageView(url);
+  }, [pathname, searchParams]);
+
+  return null;
+}
+src/components/analytics/GoogleAnalytics.tsx
+\n----- FILE: src/components/analytics/GoogleAnalytics.tsx -----
+import Script from "next/script";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+type GtagCommand =
+  | ["js", Date]
+  | ["config", string, Record<string, unknown>?]
+  | ["consent", "default" | "update", Record<string, unknown>]
+  | ["event", string, Record<string, unknown>?];
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag?: (...args: GtagCommand) => void;
+  }
+}
+
+function canTrack(): boolean {
+  return typeof window !== "undefined" && Boolean(GA_ID) && typeof window.gtag === "function";
+}
+
+export function gaEvent(action: string, params?: Record<string, unknown>): void {
+  if (!canTrack()) return;
+  window.gtag!("event", action, params);
+}
+
+export function gaPageView(url: string): void {
+  if (!canTrack() || !GA_ID) return;
+  window.gtag!("config", GA_ID, {
+    page_location: window.location.href,
+    page_path: url,
+    page_title: document.title,
+  });
+}
+
+export default function GoogleAnalytics() {
+  if (!GA_ID) return null;
+
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-consent-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('consent', 'default', {
+            region: ['DE','AT','CH','FR','IT','ES','NL','BE','LU','IE','PT','SE','NO','DK','FI','PL','CZ','SK','HU','SI','HR','RO','BG','GR','CY','MT','EE','LV','LT','IS','LI','UK'],
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ads_data_redaction: true,
+            wait_for_update: 500
+          });
+          gtag('config', '${GA_ID}', {
+            send_page_view: false,
+            anonymize_ip: true
+          });
+        `}
+      </Script>
+    </>
+  );
+}

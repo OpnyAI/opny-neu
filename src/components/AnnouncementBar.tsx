@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function AnnouncementBar() {
   return (
     <div className="sticky top-0 z-50 h-10 w-full border-b border-border-subtle-dark/20 bg-[linear-gradient(90deg,rgb(var(--bg-dark))_0%,rgb(var(--surface-dark))_55%,rgb(var(--bg-dark))_100%)] backdrop-blur">
@@ -9,12 +11,12 @@ export default function AnnouncementBar() {
           opny.ai – Kontrollierte KI-Systeme für Unternehmen. Umsetzung statt
           PowerPoint.
         </span>
-        <a
+        <Link
           className="flex-shrink-0 text-text-primary-dark transition hover:text-text-primary-dark/80"
           href="/#produkt"
         >
           Mehr erfahren →
-        </a>
+        </Link>
       </div>
     </div>
   );

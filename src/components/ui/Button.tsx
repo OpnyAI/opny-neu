@@ -57,6 +57,8 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const styles = cn(baseClasses, variantClasses[theme][variant], className);
+  const anchorProps = props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  const buttonProps = props as React.ButtonHTMLAttributes<HTMLButtonElement>;
 
   if (href) {
     const isExternal =
@@ -66,7 +68,7 @@ export default function Button({
 
     if (isExternal) {
       return (
-        <a href={href} className={styles} {...(props as any)}>
+        <a href={href} className={styles} {...anchorProps}>
           {children}
         </a>
       );
@@ -74,7 +76,7 @@ export default function Button({
 
     if (href.startsWith("#")) {
       return (
-        <Link href={`/${href}`} className={styles} {...(props as any)}>
+        <Link href={`/${href}`} className={styles} {...anchorProps}>
           {children}
         </Link>
       );
@@ -82,21 +84,21 @@ export default function Button({
 
     if (href.startsWith("/#")) {
       return (
-        <Link href={href} className={styles} {...(props as any)}>
+        <Link href={href} className={styles} {...anchorProps}>
           {children}
         </Link>
       );
     }
 
     return (
-      <Link href={href} className={styles} {...(props as any)}>
+      <Link href={href} className={styles} {...anchorProps}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={styles} {...(props as any)}>
+    <button className={styles} {...buttonProps}>
       {children}
     </button>
   );
