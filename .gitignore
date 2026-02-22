@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local code export artifacts
+opny-full-code-export.txt
+*-code-export*.txt
