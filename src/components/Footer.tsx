@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SocialLinks from "@/components/SocialLinks";
 
 const productLinks = [
   { label: "AI Workspace", href: "/#produkt" },
@@ -97,8 +98,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start gap-2 border-t border-border-subtle-light/15 pt-6 text-sm text-text-secondary-light sm:flex-row sm:items-center sm:justify-between">
-          <span>© {year} Opny AI</span>
-          <span>Kontrollierte KI-Systeme für Unternehmen</span>
+          <div className="flex flex-col items-start gap-3">
+            <span>© {year} Opny AI</span>
+            <span>Kontrollierte KI-Systeme für Unternehmen</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-text-muted-light">Follow Opny</span>
+            <SocialLinks variant="footer" />
+          </div>
         </div>
       </div>
     </footer>

@@ -26,14 +26,16 @@ export default function DatenschutzPage() {
 
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Verantwortlicher
+            Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO)
           </h2>
           <p>
-            Opny AI, Mehmet Çatalsakal
+            Novationtec GmbH
             <br />
-            Naumannstraße 3
+            An der Schelmenhalde 35
             <br />
-            73663 Berglen
+            71665 Vaihingen an der Enz
+            <br />
+            Deutschland
           </p>
           <p>
             Kontakt:{" "}

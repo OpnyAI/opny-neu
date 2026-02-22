@@ -2,9 +2,11 @@
 
 import type React from "react";
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import MobileNav from "@/components/MobileNav";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,9 +67,11 @@ export default function Header() {
               }
             }}
           >
-            <img
+            <Image
               src="/images/brand/opny-logo.png"
               alt="Opny"
+              width={120}
+              height={32}
               className="block h-5 w-auto md:h-6"
               draggable={false}
             />
@@ -89,7 +93,11 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="relative z-[60] hidden items-center gap-3 md:flex">
+            <SocialLinks
+              variant="header"
+              className="pointer-events-auto pr-1"
+            />
             <Link
               href="/#demo"
               className="text-sm text-text-muted-light hover:text-text-primary-light"

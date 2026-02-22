@@ -23,14 +23,19 @@ export default function ImpressumPage() {
 
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Opny AI
+            Anbieter
           </h2>
           <p>
-            Inhaber: Mehmet Çatalsakal
+            Opny AI
             <br />
-            Naumannstr. 3
+            Ein Angebot der Novationtec GmbH
             <br />
-            73663 Berglen
+            <br />
+            Novationtec GmbH
+            <br />
+            An der Schelmenhalde 35
+            <br />
+            71665 Vaihingen an der Enz
             <br />
             Deutschland
           </p>
@@ -53,8 +58,8 @@ export default function ImpressumPage() {
             Verantwortlich für den Inhalt
           </h2>
           <p>
-            Verantwortlich nach § 55 Abs. 2 RStV: Mehmet Çatalsakal,
-            Naumannstr. 3, 73663 Berglen.
+            Verantwortlich nach § 55 Abs. 2 RStV: Novationtec GmbH, An der
+            Schelmenhalde 35, 71665 Vaihingen an der Enz, Deutschland.
           </p>
         </section>
 
