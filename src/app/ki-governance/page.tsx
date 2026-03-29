@@ -4,9 +4,18 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "KI Governance & Sicherheit – Kontrollierte KI für Unternehmen | opny.ai",
+  title: "KI Governance für Unternehmen | NodeX Deep Dive",
   description:
-    "KI Governance für Unternehmen: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI Nutzung mit klaren Policies.",
+    "Deep-Dive-Seite zu KI Governance in NodeX: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI-Nutzung mit klaren Policies für Unternehmen.",
+  alternates: {
+    canonical: "/ki-governance",
+  },
+  openGraph: {
+    title: "KI Governance für Unternehmen | NodeX Deep Dive",
+    description:
+      "Deep-Dive-Seite zu KI Governance in NodeX: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI-Nutzung mit klaren Policies für Unternehmen.",
+    url: "/ki-governance",
+  },
 };
 
 export default function KiGovernancePage() {
@@ -16,7 +25,7 @@ export default function KiGovernancePage() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              KI Governance
+              KI Governance | Teil von NodeX
             </div>
             <h1 className="text-4xl font-semibold tracking-tight text-text-primary-light md:text-5xl">
               KI Governance &amp; Sicherheit
@@ -40,11 +49,11 @@ export default function KiGovernancePage() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/leistungen/nodex" variant="primary" theme="light">
+                Zu NodeX
+              </Button>
               <Button href="/ai-gateway" variant="secondary" theme="light">
                 AI Gateway entdecken
-              </Button>
-              <Button href="/#ki-sicherheit" variant="primary" theme="light">
-                Zu KI-Sicherheit
               </Button>
             </div>
           </div>
@@ -81,8 +90,8 @@ export default function KiGovernancePage() {
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
               Opny unterstützt sichere KI Nutzung mit klaren Verantwortlichkeiten
-              und messbarer Wirkung. Ideal für regulierte Branchen und
-              Compliance-Teams.
+              und messbarer Wirkung innerhalb von NodeX. Ideal für regulierte
+              Branchen und Compliance-Teams.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -115,11 +124,11 @@ export default function KiGovernancePage() {
             ))}
           </div>
           <div className="flex flex-wrap gap-4">
+            <Button href="/leistungen/nodex" variant="primary" theme="light">
+              NodeX Produktseite
+            </Button>
             <Button href="/ai-gateway" variant="secondary" theme="light">
               AI Gateway für Engineering
-            </Button>
-            <Button href="/#ki-sicherheit" variant="primary" theme="light">
-              KI-Sicherheit im Detail
             </Button>
           </div>
         </div>

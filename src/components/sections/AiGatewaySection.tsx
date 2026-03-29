@@ -2,6 +2,7 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Region from "@/components/Region";
 import HeroDashboardMock from "@/components/illustrations/HeroDashboardMock";
+import { companyCtas } from "@/config/site";
 
 type AiGatewaySectionProps = {
   className?: string;
@@ -18,12 +19,12 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
           </div>
 
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            Baue und skaliere zuverlässige KI-Systeme – mit Kontrolle statt
+            Baue und skaliere zuverlässige KI-Systeme mit NodeX statt
             Chaos.
           </h2>
 
           <p className="text-base leading-relaxed text-text-muted-light">
-            opny.ai bündelt Modelle, Daten und Richtlinien in einem zentralen
+            NodeX bündelt Modelle, Daten und Richtlinien in einem zentralen
             Gateway. Teams integrieren KI über einen Endpoint, behalten Policies
             im Griff und gewinnen Transparenz über Kosten, Nutzung und Outputs.
           </p>
@@ -45,14 +46,14 @@ export default function AiGatewaySection({ className }: AiGatewaySectionProps) {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              href={companyCtas.nodexDemo}
               className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
             >
               Demo anfragen
             </a>
 
-            <Button href="/#ki-sicherheit" variant="secondary" theme="light">
-              KI Governance &amp; Sicherheit →
+            <Button href="/ki-governance" variant="secondary" theme="light">
+              KI Governance im Detail →
             </Button>
           </div>
         </div>

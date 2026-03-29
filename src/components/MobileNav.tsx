@@ -1,10 +1,9 @@
 "use client";
 
-import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { companyCtas } from "@/config/site";
 
 type MobileNavLink = {
   label: string;
@@ -24,55 +23,22 @@ export default function MobileNav({
   onClose,
   links,
   cta = {
-    label: "Demo anfragen",
-    href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+    label: "Erstgespräch anfragen",
+    href: companyCtas.generalInquiry,
   },
-  secondaryCta = { label: "Anmelden", href: "/#demo" },
+  secondaryCta = {
+    label: "Kontakt",
+    href: companyCtas.contact,
+  },
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const [animateIn, setAnimateIn] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const handleHashLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    if (!href.startsWith("/#")) return;
-
-    event.preventDefault();
-    onClose();
-
-    const id = href.slice(2);
-
-    if (pathname === "/") {
-      document
-        .getElementById(id)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-
-    router.push(href);
-
-    let frame = 0;
-    const tryScroll = () => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-      frame += 1;
-      if (frame < 40) requestAnimationFrame(tryScroll);
-    };
-    requestAnimationFrame(tryScroll);
-  };
 
   const renderNavLink = (link: MobileNavLink) => {
     const isExternal =
       link.href.startsWith("http") ||
       link.href.startsWith("mailto:") ||
       link.href.startsWith("tel:");
-    const isHashLink = link.href.startsWith("/#");
 
     const baseClass =
       "block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5";
@@ -82,18 +48,6 @@ export default function MobileNav({
         <a href={link.href} className={baseClass}>
           {link.label}
         </a>
-      );
-    }
-
-    if (isHashLink) {
-      return (
-        <Link
-          href={link.href}
-          onClick={(event) => handleHashLinkClick(event, link.href)}
-          className={baseClass}
-        >
-          {link.label}
-        </Link>
       );
     }
 
@@ -194,11 +148,6 @@ export default function MobileNav({
 
   if (!open) return null;
 
-  const secondaryOnClick = secondaryCta.href.startsWith("/#")
-    ? (event: React.MouseEvent<HTMLAnchorElement>) =>
-        handleHashLinkClick(event, secondaryCta.href)
-    : onClose;
-
   return (
     <div
       ref={dialogRef}
@@ -249,20 +198,43 @@ export default function MobileNav({
           </nav>
 
           <div className="mt-6 space-y-3">
-            <a
-              href={cta.href}
-              className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
-            >
-              {cta.label}
-            </a>
+            {cta.href.startsWith("mailto:") ||
+            cta.href.startsWith("tel:") ||
+            cta.href.startsWith("http") ? (
+              <a
+                href={cta.href}
+                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+              >
+                {cta.label}
+              </a>
+            ) : (
+              <Link
+                href={cta.href}
+                onClick={onClose}
+                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+              >
+                {cta.label}
+              </Link>
+            )}
 
-            <Link
-              href={secondaryCta.href}
-              onClick={secondaryOnClick}
-              className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
-            >
-              {secondaryCta.label}
-            </Link>
+            {secondaryCta.href.startsWith("mailto:") ||
+            secondaryCta.href.startsWith("tel:") ||
+            secondaryCta.href.startsWith("http") ? (
+              <a
+                href={secondaryCta.href}
+                className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+              >
+                {secondaryCta.label}
+              </a>
+            ) : (
+              <Link
+                href={secondaryCta.href}
+                onClick={onClose}
+                className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+              >
+                {secondaryCta.label}
+              </Link>
+            )}
           </div>
 
           <div className="h-[max(12px,env(safe-area-inset-bottom))]" />

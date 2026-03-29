@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import Region from "@/components/Region";
+import { companyCtas } from "@/config/site";
 
 type MidPageCtaSectionProps = {
   className?: string;
@@ -16,37 +17,37 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
           <div className="relative grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-4">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
-                Nächster Schritt
+                NodeX live erleben
               </div>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Kontrollierte KI – live in Ihrer Realität.
+                NodeX in Ihrer Systemrealität statt als isolierte KI-Demo.
               </h2>
               <p className="text-base leading-relaxed text-white/70">
-                Sehen Sie, wie Opny KI Governance, Routing und Observability in
-                einem Layer verbindet – ohne Teams auszubremsen.
+                Sehen Sie, wie NodeX Governance, Routing, Transparenz und
+                produktive Teamnutzung in einer Plattform zusammenführt.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+                  href={companyCtas.nodexDemo}
                   className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/90"
                 >
                   Demo anfragen
                 </a>
                 <Button
-                  href="/#plattform"
+                  href="/leistungen"
                   variant="secondary"
                   theme="light"
                   className="rounded-full border border-white/20 bg-transparent text-white hover:border-white/35 hover:bg-white/5"
                 >
-                  Plattform ansehen
+                  Leistungen ansehen
                 </Button>
               </div>
             </div>
             <div className="space-y-3 text-sm text-white/75">
               {[
-                "Schneller Proof in echten Use-Cases",
+                "Schneller Proof in echten Unternehmens-Use-Cases",
                 "Transparenz über Kosten, Nutzung und Qualität",
-                "KI Governance ohne zusätzlichen Prozessballast",
+                "Governance und Produktivität in einem Produktiv-Layer",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-white/50" />

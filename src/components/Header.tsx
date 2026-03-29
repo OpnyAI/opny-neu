@@ -1,56 +1,16 @@
 "use client";
 
-import type React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import MobileNav from "@/components/MobileNav";
 import SocialLinks from "@/components/SocialLinks";
+import { companyCtas, primaryNavigationLinks } from "@/config/site";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-
-  const handleHashLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const href = event.currentTarget.getAttribute("href");
-    if (!href || !href.startsWith("/#")) return;
-
-    event.preventDefault();
-    const id = href.slice(2);
-
-    if (pathname === "/") {
-      document
-        .getElementById(id)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-
-    router.push(href);
-
-    let frame = 0;
-    const tryScroll = () => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-      frame += 1;
-      if (frame < 40) requestAnimationFrame(tryScroll);
-    };
-    requestAnimationFrame(tryScroll);
-  };
-
-  const nav = [
-    { label: "Produkt", href: "/#produkt" },
-    { label: "Lösungen", href: "/#loesungen" },
-    { label: "KI-Sicherheit", href: "/#ki-sicherheit" },
-    { label: "Plattform", href: "/#plattform" },
-    { label: "AI Gateway", href: "/ai-gateway" },
-    { label: "KI Governance", href: "/ki-governance" },
-    { label: "Über Opny", href: "/#unternehmen" },
-  ];
 
   return (
     <>
@@ -79,18 +39,26 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
-            {nav.map((n) => (
-              <Link
-                key={n.label}
-                href={n.href}
-                onClick={
-                  n.href.startsWith("/#") ? handleHashLinkClick : undefined
-                }
-                className="text-sm text-text-muted-light hover:text-text-primary-light"
-              >
-                {n.label}
-              </Link>
-            ))}
+            {primaryNavigationLinks.map((n) => {
+              const isActive =
+                n.href === "/"
+                  ? pathname === "/"
+                  : pathname === n.href || pathname.startsWith(`${n.href}/`);
+
+              return (
+                <Link
+                  key={n.label}
+                  href={n.href}
+                  className={`text-sm transition ${
+                    isActive
+                      ? "text-text-primary-light"
+                      : "text-text-muted-light hover:text-text-primary-light"
+                  }`}
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="relative z-[60] hidden items-center gap-3 md:flex">
@@ -98,27 +66,26 @@ export default function Header() {
               variant="header"
               className="pointer-events-auto pr-1"
             />
-            <Link
-              href="/#demo"
-              className="text-sm text-text-muted-light hover:text-text-primary-light"
-              onClick={handleHashLinkClick}
-            >
-              Anmelden
-            </Link>
             <a
-              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              href={companyCtas.contact}
+              className="text-sm text-text-muted-light hover:text-text-primary-light"
+            >
+              Kontakt
+            </a>
+            <a
+              href={companyCtas.generalInquiry}
               className="rounded-full bg-[#0b1220] px-4 py-2.5 text-sm font-semibold text-white"
             >
-              Demo anfragen
+              Erstgespräch anfragen
             </a>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
             <a
-              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              href={companyCtas.generalInquiry}
               className="rounded-full bg-[#0b1220] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
-              Demo anfragen
+              Erstgespräch
             </a>
             <button
               onClick={() => setMobileOpen(true)}
@@ -138,12 +105,12 @@ export default function Header() {
       <MobileNav
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        links={nav}
+        links={[...primaryNavigationLinks]}
         cta={{
-          label: "Demo anfragen",
-          href: "mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai",
+          label: "Erstgespräch anfragen",
+          href: companyCtas.generalInquiry,
         }}
-        secondaryCta={{ label: "Anmelden", href: "/#demo" }}
+        secondaryCta={{ label: "Kontakt", href: companyCtas.contact }}
       />
     </>
   );

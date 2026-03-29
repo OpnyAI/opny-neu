@@ -7,14 +7,14 @@ export default function UnderHeroSection() {
       <div className="space-y-4">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            So funktioniert Opny im Alltag
+            So funktioniert NodeX im Alltag
           </h2>
           <p className="text-base leading-relaxed text-text-muted-light">
-            Ein Chat-Interface für Teams – mit Policies und Multi-Model-Routing
-            im Hintergrund.
+            Ein gemeinsamer Workspace für Teams, ein kontrollierter Produktiv-Layer
+            für IT und klare Leitplanken für Governance, Routing und Freigaben.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {[
             {
               title: "Chat Workspace",
@@ -28,7 +28,7 @@ export default function UnderHeroSection() {
             },
             {
               title: "Model Switch & Auto-Routing",
-              text: "Wechsle Modelle flexibel oder lasse Opny automatisch das beste Routing wählen.",
+              text: "Wechsle Modelle flexibel oder lasse NodeX automatisch das beste Routing wählen.",
               bullets: [
                 "Auto-Auswahl pro Request",
                 "Fallback bei Ausfällen",
@@ -47,7 +47,7 @@ export default function UnderHeroSection() {
               chips: ["Policy", "Guardrail", "Audit"],
             },
           ].map((item) => (
-            <Card key={item.title} theme="light" className="space-y-4 p-6">
+            <Card key={item.title} theme="light" className="space-y-4 p-6 md:p-7">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 {item.title}
               </div>

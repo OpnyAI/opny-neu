@@ -15,11 +15,12 @@ export default function ProductivitySection({ className }: ProductivitySectionPr
             Team-Produktivität
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            Produktivität für Teams freisetzen
+            Produktivität für Teams, Kontrolle für Plattformverantwortliche
           </h2>
           <p className="text-base leading-relaxed text-text-muted-light">
-            Ein Workspace, der alle LLMs bündelt und Zusammenarbeit
-            strukturierbar macht – mit klaren Leitplanken und klarer KI Governance.
+            NodeX verbindet Workspace und Gateway in einer Plattform, die
+            produktive KI-Nutzung ermöglicht und gleichzeitig Routing, Rollen,
+            Freigaben und Datenpfade steuerbar hält.
           </p>
           <ul className="space-y-3 text-base text-text-muted-light">
             {[
@@ -46,8 +47,8 @@ export default function ProductivitySection({ className }: ProductivitySectionPr
               Ein Workspace, zwei Einstiegspunkte
             </div>
             <p className="mt-2 text-base text-text-muted-light">
-              Teams arbeiten im UI, Entwickler integrieren über die API – beides
-              kontrolliert, dokumentiert und skalierbar.
+              Teams arbeiten im UI, Entwickler integrieren über die API und IT
+              behält Regeln, Transparenz und Skalierbarkeit an einer Stelle.
             </p>
           </Card>
         </div>

@@ -4,9 +4,18 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "AI Gateway für Unternehmen – Routing, Fallback & Kontrolle | opny.ai",
+  title: "AI Gateway für Unternehmen | NodeX Deep Dive",
   description:
-    "AI Gateway für Unternehmen: AI Routing & Fallback, Multi-LLM-Steuerung, Observability und kontrollierte KI Orchestrierung.",
+    "Deep-Dive-Seite zum AI Gateway von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+  alternates: {
+    canonical: "/ai-gateway",
+  },
+  openGraph: {
+    title: "AI Gateway für Unternehmen | NodeX Deep Dive",
+    description:
+      "Deep-Dive-Seite zum AI Gateway von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+    url: "/ai-gateway",
+  },
 };
 
 export default function AiGatewayPage() {
@@ -16,7 +25,7 @@ export default function AiGatewayPage() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              AI Gateway
+              AI Gateway | Teil von NodeX
             </div>
             <h1 className="text-4xl font-semibold tracking-tight text-text-primary-light md:text-5xl">
               AI Gateway für Unternehmen
@@ -41,11 +50,11 @@ export default function AiGatewayPage() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/leistungen/nodex" variant="primary" theme="light">
+                Zu NodeX
+              </Button>
               <Button href="/ki-governance" variant="secondary" theme="light">
                 KI Governance ansehen
-              </Button>
-              <Button href="/#plattform" variant="primary" theme="light">
-                Plattform entdecken
               </Button>
             </div>
           </div>
@@ -83,8 +92,8 @@ export default function AiGatewayPage() {
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
               Das AI Gateway verbindet Modelle, Daten und Policies zu einem
-              verlässlichen Produktiv-Layer. Ideal für CTOs, Engineering Leads
-              und Plattform-Teams.
+              verlässlichen Produktiv-Layer innerhalb von NodeX. Ideal für
+              CTOs, Engineering Leads und Plattform-Teams.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -117,10 +126,10 @@ export default function AiGatewayPage() {
             ))}
           </div>
           <div className="flex flex-wrap gap-4">
-            <Button href="/#plattform" variant="secondary" theme="light">
-              Plattform ansehen
+            <Button href="/leistungen/nodex" variant="primary" theme="light">
+              NodeX Produktseite
             </Button>
-            <Button href="/ki-governance" variant="primary" theme="light">
+            <Button href="/ki-governance" variant="secondary" theme="light">
               KI Governance &amp; Sicherheit
             </Button>
           </div>

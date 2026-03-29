@@ -90,6 +90,7 @@
 
 html {
   color-scheme: light;
+  -webkit-text-size-adjust: 100%;
 }
 
 html,
@@ -104,6 +105,11 @@ body {
   background: rgb(var(--opny-bg));
   color: rgb(var(--fg));
   position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  font-feature-settings: "ss01" 1;
 }
 
 code,
@@ -116,6 +122,20 @@ pre {
 body > * {
   position: relative;
   z-index: 1;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: pretty;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
 }
 
 @layer components {

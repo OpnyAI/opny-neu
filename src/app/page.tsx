@@ -1,35 +1,52 @@
+import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Region from "@/components/Region";
-import ProductivitySection from "@/components/sections/ProductivitySection";
-import MidPageCtaSection from "@/components/sections/MidPageCtaSection";
-import AiGatewaySection from "@/components/sections/AiGatewaySection";
-import UnderHeroSection from "@/components/sections/UnderHeroSection";
-import { GovernanceControlLayerDiagram } from "@/components/diagrams/GovernanceControlLayerDiagram";
 import HeroChatMock from "@/components/mocks/HeroChatMock";
+import { companyCtas } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "KI-Beratung für Unternehmen und datenschutzkonforme KI-Lösungen",
+  description:
+    "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "KI-Beratung für Unternehmen und datenschutzkonforme KI-Lösungen",
+    description:
+      "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+    url: "/",
+  },
+};
 
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* HERO */}
-      <Region variant="light" tone="base" id="produkt">
+      <Region variant="light" tone="base">
         <div className="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
-          <div className="space-y-6 md:col-span-1 max-w-[520px]">
+          <div className="max-w-[580px] space-y-6">
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
-                Künstliche Intelligenz (KI) für Unternehmen. KI Plattform für
-                Unternehmen mit Kontrolle.
+              <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+                Opny
+              </div>
+              <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
+                KI im Unternehmen einführen, ohne Datenschutzchaos und
+                Schatten-KI.
               </h1>
-              <p className="text-lg leading-relaxed text-text-muted-light md:text-xl max-w-[46ch]">
-                opny.ai ist die Enterprise KI Plattform für kontrollierte KI
-                und sichere KI Nutzung – mit KI Governance, KI Compliance und
-                AI Gateway.
+              <p className="max-w-[50ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
+                Opny begleitet Unternehmen von der ersten Strukturentscheidung
+                bis zum kontrollierten Betrieb produktiver KI: mit Beratung für
+                Zielbild und Governance und mit NodeX für die operative
+                Plattformlogik.
               </p>
             </div>
-            <ul className="mt-6 space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">
+
+            <ul className="space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">
               {[
-                "Produktiv für Teams. Kontrolliert für IT & Compliance.",
-                "Eine API für Entwickler – mit KI Governance, AI Routing & Fallback und Transparenz.",
+                "Beratung für Einführungslogik, Governance und priorisierte Use Cases.",
+                "NodeX für kontrollierte Nutzung, Transparenz und skalierbaren Betrieb.",
+                "Klare Verantwortung für Datenschutz, Freigaben und Zuständigkeiten.",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
@@ -37,20 +54,21 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
+
+            <div className="flex flex-wrap gap-3">
               <a
-                href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+                href={companyCtas.generalInquiry}
                 className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
               >
-                Demo anfragen
+                Erstgespräch anfragen
               </a>
-              <Button href="/#plattform" variant="secondary" theme="light">
-                Plattform ansehen
+              <Button href="/leistungen" variant="secondary" theme="light">
+                Leistungen ansehen
               </Button>
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center md:col-span-1 md:mt-0 lg:justify-end">
+          <div className="mt-10 flex justify-center md:mt-0 lg:justify-end">
             <div className="self-center">
               <HeroChatMock />
             </div>
@@ -58,22 +76,110 @@ export default function Home() {
         </div>
       </Region>
 
-      <UnderHeroSection />
+      <Region variant="light" tone="surface">
+        <div className="space-y-6">
+          <div className="max-w-3xl space-y-3">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Orientierung
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Zwei Einstiege, ein klarer Weg: erst Struktur schaffen, dann
+              kontrolliert skalieren.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Wenn Zielbild, Governance und Zuständigkeiten noch nicht sauber
+              stehen, beginnt der sinnvolle Weg mit Beratung. Wenn produktive KI
+              bereits operativ kontrolliert werden muss, führt der nächste
+              Schritt zu NodeX.
+            </p>
+          </div>
 
-      {/* REALITÄT */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card theme="light" className="flex h-full flex-col p-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                Einstieg über Beratung
+              </div>
+              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+                Ich will KI strukturiert im Unternehmen einführen
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-text-muted-light">
+                Sie brauchen einen belastbaren Einführungsweg, klare Prioritäten
+                und Governance, bevor aus einzelnen KI-Initiativen ein weiterer
+                unsicherer Flickenteppich wird.
+              </p>
+              <ul className="mt-5 space-y-2 text-base text-text-muted-light">
+                {[
+                  "Use Cases priorisieren und realistisch bewerten",
+                  "Datenschutz, Rollen und Verantwortung gemeinsam ordnen",
+                  "Organisation und Prozesse auf produktive Nutzung vorbereiten",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Button
+                  href="/leistungen/ki-beratung"
+                  variant="primary"
+                  theme="light"
+                >
+                  KI-Beratung für Unternehmen
+                </Button>
+              </div>
+            </Card>
+
+            <Card theme="light" className="flex h-full flex-col p-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                Einstieg über Produkt
+              </div>
+              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+                Ich brauche Kontrolle, Governance und Plattformlogik für
+                produktive KI
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-text-muted-light">
+                Sie brauchen einen operativen Layer, der Nutzung, Richtlinien,
+                Datenpfade und Transparenz zusammenhält, statt weiteres
+                Tool-Chaos und neue Freigaberisiken zu erzeugen.
+              </p>
+              <ul className="mt-5 space-y-2 text-base text-text-muted-light">
+                {[
+                  "Zentrale Kontrolle über Nutzung, Rollen und Kosten",
+                  "Governance und sichere Freigaben im laufenden Betrieb",
+                  "Plattformlogik für Teams, Anwendungen und interne KI-Produkte",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Button href="/leistungen/nodex" variant="secondary" theme="light">
+                  NodeX ansehen
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </Region>
+
       <Region variant="light" tone="alt">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-              Realität statt KI-Demo
+              Unternehmensrealität
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Wo KI auf Unternehmensrealität trifft
+              KI wird in Unternehmen längst genutzt. Das Problem ist: oft ohne
+              gemeinsame Steuerung.
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
-              KI bringt Tempo – aber in der Praxis bremsen Policies, Kosten und
-              fehlende Transparenz. opny.ai macht KI nutzbar, ohne Kontrolle
-              oder Compliance zu verlieren.
+              Fachbereiche testen Tools, Teams bauen eigene Workarounds, IT
+              versucht Risiken einzuhegen und Datenschutz wird erst spät
+              operativ gedacht. Genau daraus entstehen unklare Zuständigkeiten,
+              Schatten-KI und ein Einführungsweg, der nicht trägt.
             </p>
           </div>
 
@@ -81,24 +187,28 @@ export default function Home() {
             <div className="grid gap-8 sm:grid-cols-2">
               {[
                 {
-                  value: "91,5%",
-                  label: "KI wird genutzt – oft ohne zentrale Steuerung.",
+                  value: "Teams",
+                  label:
+                    "nutzen KI oft schon im Alltag, bevor Regeln, Freigaben und Zuständigkeiten sauber geklärt sind.",
                 },
                 {
-                  value: "28,1%",
-                  label: "Kosten werden zum Engpass bei Skalierung.",
+                  value: "IT",
+                  label:
+                    "soll Datenschutz, Zugriffe und Betrieb absichern, ohne Fachbereiche komplett auszubremsen.",
                 },
                 {
-                  value: "24,7%",
-                  label: "Teams haben unklare KI-Richtlinien.",
+                  value: "Fachbereiche",
+                  label:
+                    "brauchen belastbare Anwendungsfälle statt lose Tools, Pilotinseln und neue Einzellösungen.",
                 },
                 {
-                  value: "—",
-                  label: "Fragmentierte Innovation durch Tool-Wildwuchs.",
+                  value: "Management",
+                  label:
+                    "erwartet Wirkung und Kontrolle, bekommt aber oft keine nachvollziehbare Einführungslogik.",
                 },
               ].map((stat) => (
                 <Card key={stat.value} theme="light" className="h-full p-5">
-                  <div className="text-4xl font-semibold tracking-tight text-text-primary-light">
+                  <div className="text-2xl font-semibold tracking-tight text-text-primary-light md:text-3xl">
                     {stat.value}
                   </div>
                   <div className="mt-2 text-sm text-text-muted-light">
@@ -108,458 +218,279 @@ export default function Home() {
               ))}
             </div>
             <div className="text-sm text-text-secondary-light">
-              Beobachtungen aus typischen Enterprise-Rollouts.
+              Genau hier entsteht der Bedarf für Beratung, Governance und einen
+              operativen Produktiv-Layer.
             </div>
           </div>
         </div>
       </Region>
 
-      {/* GOVERNANCE & SECURITY */}
-      <Region variant="light" tone="surface" id="governance">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-6">
+      <Region variant="light" tone="base">
+        <div className="space-y-6">
+          <div className="max-w-3xl space-y-3">
             <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              KI Governance & Sicherheit
+              Leistungen
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Zentrale KI Governance & Sicherheit
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary-light md:text-4xl">
+              Beratung und NodeX stehen nicht nebeneinander. Sie bauen aufeinander auf.
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
-              Steuerung, LLM Governance und Audits in einem Layer – damit Teams
-              schneller liefern, ohne KI Compliance oder Sicherheitsrisiken.
+              Die Beratung klärt Zielbild, Governance und Einführungslogik.
+              NodeX übersetzt diese Struktur anschließend in kontrollierten
+              operativen Betrieb.
             </p>
-            <ul className="space-y-3 text-base text-text-muted-light">
-              {[
-                "Zentrale Policies für Modelle, Daten und Rollen.",
-                "Nachvollziehbarkeit von Prompts, Dateien und Kosten.",
-                "Sichere Freigaben für Teams, Projekte und Workflows.",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="rounded-2xl border border-border-subtle-light/20 bg-white p-4 shadow-sm">
-            <GovernanceControlLayerDiagram className="h-auto w-full" />
-          </div>
-        </div>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <Card theme="light" className="p-6">
-            <div className="text-lg font-semibold text-text-primary-light">
-              AI Workspace
-            </div>
-            <ul className="mt-4 space-y-2 text-base text-text-muted-light">
-              {[
-                "Chat",
-                "Modellvergleich",
-                "Assistenten",
-                "Projekte",
-                "Integrationen",
-                "Browser Extension",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 text-sm text-text-secondary-light">
-              Ziel: Produktivität steigern und Zusammenarbeit ermöglichen.
-            </div>
-          </Card>
-
-          <Card theme="light" className="p-6">
-            <div className="text-lg font-semibold text-text-primary-light">
-              AI Gateway
-            </div>
-            <ul className="mt-4 space-y-2 text-base text-text-muted-light">
-              {[
-                "Einheitliche API",
-                "Intelligentes Routing",
-                "Fallback-Logik",
-                "RAG-Architektur",
-                "Observability",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 text-sm text-text-secondary-light">
-              Ziel: Entwicklung beschleunigen und Stabilität sichern.
-            </div>
-          </Card>
-        </div>
-      </Region>
-
-      <ProductivitySection />
-      <MidPageCtaSection />
-
-      {/* CONSEQUENCES */}
-      <Region variant="light" tone="base">
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Die Folge: Schatten-KI, Tool-Wildwuchs und riskante Workarounds.
-          </h3>
-          <p className="text-base leading-relaxed text-text-muted-light">
-            Ohne KI Governance und Observability entsteht ein Mix aus Tools,
-            Modellen und Datenwegen – schwer auditierbar, teuer und unsicher.
-          </p>
-          <ul className="space-y-2 text-base text-text-muted-light">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-              <span>Keine Transparenz über Prompts, Datenabflüsse und Outputs</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-              <span>Kein Routing/Fallback, wenn ein Modell ausfällt</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-              <span>Kein einheitlicher Policy-Layer für Teams</span>
-            </li>
-          </ul>
-        </div>
-      </Region>
-
-      <AiGatewaySection />
-
-      {/* SECURITY */}
-      <Region variant="light" tone="base" id="ki-sicherheit">
-        <div className="relative space-y-6">
-          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-            KI-Sicherheit & KI Governance
-          </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            KI produktiv nutzen – ohne Risiko, ohne Wildwuchs.
-          </h2>
-          <p className="text-base leading-relaxed text-text-muted-light">
-            opny.ai setzt Richtlinien direkt an der Schnittstelle durch: vor der
-            Anfrage, nach der Antwort und bei jedem Datei-Upload. So bleiben
-            Daten, Rollen und Outputs kontrollierbar – auch wenn Teams
-            unterschiedliche Modelle und Workflows nutzen. Fokus: KI-Sicherheit
-            in Unternehmen, klare Verantwortung und nachvollziehbare Prozesse.
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-8 md:grid-cols-3">
-          {[
-            {
-              title: "Policies & Guardrails",
-              bullets: [
-                "Input/Output Regeln (PII, Tonalität, erlaubte Inhalte)",
-                "Freigaben je Rolle, Team und Use-Case",
-                "Automatische Redaction & Blocking",
-              ],
-            },
-            {
-              title: "Daten & Dateien",
-              bullets: [
-                "Upload-Regeln (Dateityp, Größe, Retention)",
-                "RAG-Quellen mit Zugriffspfaden",
-                "Sensible Daten: isolierbare Workloads",
-              ],
-            },
-            {
-              title: "Audit & Observability",
-              bullets: [
-                "Prompt/Response Logging (optional, konfigurierbar)",
-                "Kosten- & Usage-Tracking pro Team",
-                "Policy-Events & Incident-Signale",
-              ],
-            },
-          ].map((card) => (
-            <Card key={card.title} theme="light">
-              <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-                {card.title}
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card theme="light" className="flex h-full flex-col p-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                KI-Beratung für Unternehmen
+              </div>
+              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+                Für Unternehmen, die KI strukturiert einführen statt nur Tools zu testen
               </h3>
-              <ul className="mt-4 space-y-2 text-base text-text-muted-light">
-                {card.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
+              <p className="mt-3 text-base leading-relaxed text-text-muted-light">
+                Die Beratung schafft Klarheit über Zielbild, relevante Use
+                Cases, Governance und Einführungslogik. So entsteht ein
+                realistischer Weg in die produktive Nutzung statt ein weiteres
+                Pilotprojekt ohne Halt.
+              </p>
+              <ul className="mt-5 space-y-2 text-base text-text-muted-light">
+                {[
+                  "Für Entscheider, IT und Fachbereiche mit Einführungsbedarf",
+                  "Für priorisierte Use Cases statt unkoordinierter Einzelinitiativen",
+                  "Für belastbare Governance, Prozesse und Verantwortlichkeiten",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                    <span>{bullet}</span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-              KI Governance, die Teams nicht ausbremst.
-            </h3>
-            <p className="text-base leading-relaxed text-text-muted-light">
-              Richtlinien werden als Produkt-Default umgesetzt – nicht als PDF.
-              Teams arbeiten schneller, weil klare Leitplanken Fehlversuche und
-              Workarounds reduzieren.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Role-based access",
-                "PII redaction",
-                "Retention rules",
-                "Model allowlist",
-                "Output constraints",
-              ].map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full border border-border-subtle-light/25 px-3 py-1 text-sm text-text-secondary-light"
+              <div className="mt-6">
+                <Button
+                  href="/leistungen/ki-beratung"
+                  variant="primary"
+                  theme="light"
                 >
-                  {chip}
-                </span>
+                  KI-Beratung ansehen
+                </Button>
+              </div>
+            </Card>
+
+            <Card theme="light" className="flex h-full flex-col p-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
+                NodeX
+              </div>
+              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+                Für Unternehmen, die produktive KI sicher und kontrolliert betreiben müssen
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-text-muted-light">
+                NodeX bündelt Kontrolle, Governance, Transparenz und
+                Plattformlogik in einem operativen Layer. Damit KI-Nutzung nicht
+                in Tool-Wildwuchs, unklaren Datenpfaden und unsicheren
+                Workarounds endet.
+              </p>
+              <ul className="mt-5 space-y-2 text-base text-text-muted-light">
+                {[
+                  "Für Teams, IT und Verantwortliche, die zentrale Kontrolle brauchen",
+                  "Für sichere Nutzung, klare Freigaben und nachvollziehbare Datenpfade",
+                  "Für skalierbaren Betrieb statt lose Einzeltools",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Button href="/leistungen/nodex" variant="secondary" theme="light">
+                  NodeX ansehen
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </Region>
+
+      <Region variant="light" tone="surface">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Datenschutz & Vertrauen
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Produktive KI wird erst dann belastbar, wenn Verantwortung
+              mitgedacht wird.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Datenschutz, Rollen, Freigaben und Nachvollziehbarkeit sind keine
+              spätere Compliance-Schicht, sondern die Voraussetzung dafür, dass
+              KI im Unternehmen überhaupt verantwortbar skaliert werden kann.
+            </p>
+            <ul className="space-y-3 text-base text-text-muted-light">
+              {[
+                "Klare Zuständigkeiten verhindern Reibung zwischen IT, Fachbereichen und Datenschutz",
+                "Nachvollziehbare Regeln reduzieren Schatten-KI und unsichere Einzelwege",
+                "Saubere Freigaben schaffen Vertrauen in den produktiven Einsatz",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Weniger Risiko, mehr Entscheidbarkeit
+              </div>
+              <p className="mt-3 text-base text-text-muted-light">
+                Wenn Rollen, Daten und Freigaben geklärt sind, kann KI schneller
+                eingeführt werden, weil Entscheidungen nicht ständig neu
+                eskaliert werden müssen.
+              </p>
+            </Card>
+            <Card theme="light" className="p-6">
+              <div className="text-lg font-semibold text-text-primary-light">
+                Vertrauen für produktiven Betrieb
+              </div>
+              <p className="mt-3 text-base text-text-muted-light">
+                Eine saubere Governance schafft die Grundlage dafür, dass
+                produktive Nutzung intern akzeptiert, verantwortet und später
+                technisch sauber betrieben werden kann.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </Region>
+
+      <Region variant="light" tone="alt">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="space-y-5">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              Beratungsansatz
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Beratung ist oft der pragmatischste Einstieg, wenn KI intern schon
+              drängt, aber der Weg noch fehlt.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Opny arbeitet nicht an abstrakten Zukunftsbildern, sondern an den
+              konkreten Fragen, die Unternehmen vor einer tragfähigen Einführung
+              beantworten müssen: Wo starten wir? Wer verantwortet was? Welche
+              Use Cases sind realistisch? Welche Governance trägt im Alltag?
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "Strategie & Priorisierung",
+                text: "Sie gewinnen ein klares Zielbild statt paralleler KI-Initiativen ohne gemeinsame Richtung.",
+              },
+              {
+                title: "Use-Case-Workshops",
+                text: "Sie wissen, welche Anwendungsfälle Wirkung bringen und welche aktuell nur Komplexität erzeugen.",
+              },
+              {
+                title: "Governance-Setup",
+                text: "Sie schaffen belastbare Regeln für Zuständigkeiten, Freigaben und Datenschutz im Alltag.",
+              },
+              {
+                title: "Rollout & Begleitung",
+                text: "Sie übersetzen Entscheidungen in Prozesse, Teams und eine realistische Einführungslogik.",
+              },
+            ].map((card) => (
+              <Card key={card.title} theme="light" className="p-6">
+                <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-text-muted-light">
+                  {card.text}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </Region>
+
+      <Region variant="light" tone="base">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
+              NodeX als Produktbaustein
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Wenn aus Beratung belastbarer Betrieb werden soll, kommt NodeX ins Spiel.
+            </h2>
+            <p className="text-base leading-relaxed text-text-muted-light">
+              Beratung schafft Zielbild, Priorisierung, Governance und
+              Einführungslogik. NodeX operationalisiert diese Struktur im
+              Betrieb und hält Nutzung, Kontrolle und Transparenz in einer
+              gemeinsamen Plattformlogik zusammen.
+            </p>
+            <ul className="space-y-3 text-base text-text-muted-light">
+              {[
+                "NodeX übersetzt Governance in operativen Unternehmensbetrieb",
+                "Teams arbeiten produktiv, ohne dass Kontrolle verloren geht",
+                "IT, Fachbereiche und Management sehen dieselbe Betriebslogik statt fragmentierter Tools",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-3">
+              <Button href="/leistungen/nodex" variant="secondary" theme="light">
+                NodeX ansehen
+              </Button>
             </div>
           </div>
 
-          <Card theme="light" className="p-5">
+          <Card theme="light" className="p-6">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-              Policy engine
+              Vom Problem zum Betrieb
             </div>
             <div className="mt-4 space-y-3 text-base text-text-muted-light">
               {[
-                { label: "PII redaction", status: "Enabled" },
-                { label: "File type rules", status: "Enforced" },
-                { label: "Model allowlist", status: "Active" },
-              ].map((row) => (
-                <div
-                  key={row.label}
-                  className="flex items-center justify-between rounded-xl border border-border-subtle-light/20 bg-elevated-light/80 px-3 py-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-accent" />
-                    <span>{row.label}</span>
-                  </div>
-                  <span className="text-sm text-text-secondary-light">
-                    {row.status}
-                  </span>
+                "Die Beratung beantwortet zuerst die Einführungs- und Governance-Fragen.",
+                "NodeX bildet diese Struktur anschließend im operativen KI-Betrieb ab.",
+                "So entsteht ein durchgängiger Weg von Problem über Struktur bis zu skalierbarer Nutzung.",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
           </Card>
         </div>
-
-        <div className="mt-6 flex justify-center gap-4">
-          <a
-            href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
-            className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
-          >
-            Demo anfragen
-          </a>
-          <Button href="/#plattform" variant="secondary" theme="light">
-            Plattform ansehen →
-          </Button>
-        </div>
       </Region>
 
-      {/* USE-CASES */}
-      <Region variant="light" tone="alt" id="loesungen">
-        <div className="mx-auto max-w-6xl">
-          <div className="space-y-4 text-left sm:space-y-5">
-            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              Lösungen
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              KI dort einsetzen, wo sie echten Mehrwert bringt.
-            </h2>
-            <p className="text-base leading-relaxed text-text-muted-light">
-              Opny hilft Teams, KI sicher und messbar in Prozesse zu bringen –
-              statt Tool-Wildwuchs und Insellösungen.
-            </p>
-          </div>
-
-          <div className="mt-6 space-y-8 sm:mt-6 sm:space-y-10">
-            <div className="grid gap-8 md:grid-cols-2">
-              {[
-                {
-                  title: "Produkt- & Entwicklungsteams",
-                  text: "Schneller entwickeln – mit kontrollierten Copilots und sauberem Zugriff auf Wissen.",
-                  bullets: [
-                    "Copilots für Code, Doku & Reviews",
-                    "RAG mit technischem Know-how",
-                  ],
-                },
-                {
-                  title: "Operations & Fachbereiche",
-                  text: "Wiederkehrende Aufgaben automatisieren – nachvollziehbar, steuerbar, auditierbar.",
-                  bullets: [
-                    "Dokumente, E-Mails & Tickets automatisieren",
-                    "Entscheidungen mit klaren Policies unterstützen",
-                  ],
-                },
-                {
-                  title: "Compliance, Legal & Risiko",
-                  text: "KI nutzen, ohne Audit- und Datenschutzrisiken zu erzeugen.",
-                  bullets: [
-                    "Policy-konforme Nutzung & Freigaben",
-                    "Auditierbare Prompt- und Output-Historie",
-                  ],
-                },
-                {
-                  title: "Regulierte Branchen",
-                  text: "Kontrolle bei sensiblen Daten – auch unter strengen Vorgaben.",
-                  bullets: [
-                    "Pharma, Banken, Industrie",
-                    "KI Governance, Nachvollziehbarkeit, Sicherheit",
-                  ],
-                },
-              ].map((card) => (
-                <div key={card.title} className="space-y-3">
-                  <h3 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-                    {card.title}
-                  </h3>
-                  <p className="text-base leading-relaxed text-text-muted-light">
-                    {card.text}
-                  </p>
-                  <ul className="space-y-2 text-base text-text-muted-light">
-                    {card.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Region>
-
-      {/* PLATFORM */}
-      <section
-        id="plattform"
-        className="bg-[linear-gradient(to_bottom,rgb(10_12_18),rgb(6_8_12))] py-24"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-left sm:text-center">
-            <div className="text-sm font-semibold uppercase tracking-widest text-slate-400">
-              Plattform
-            </div>
-            <p className="mt-4 text-3xl font-semibold text-white md:text-4xl">
-              Hinter jedem erfolgreichen Anwendungsfall steht eine stabile
-              Plattform.
-            </p>
-            <p className="mt-3 text-base text-slate-300">
-              KI Orchestrierung, AI Routing & Fallback und Observability bilden
-              das Fundament für skalierbare KI-Workflows.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-start gap-3 sm:justify-center">
-              {["Policies", "AI Routing & Fallback", "Observability"].map((pill) => (
-                <span
-                  key={pill}
-                  className="rounded-full bg-[rgb(18_22_30)] px-4 py-2 text-sm font-semibold text-slate-200"
-                >
-                  {pill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Multimodale Uploads",
-                text: "Dokumente, Tabellen und Medien zentral ingestieren.",
-                icon: (
-                  <svg
-                    className="h-5 w-5 text-slate-300"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path
-                      d="M7 7h10v10H7z"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path d="M3 3h4M17 3h4M3 21h4M17 21h4" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Workspace Control Panel",
-                text: "Teams, Rollen und Kosten mit klaren Policies steuern.",
-                icon: (
-                  <svg
-                    className="h-5 w-5 text-slate-300"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path
-                      d="M4 7h16M4 12h16M4 17h10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                title: "Input/Output Guardrails",
-                text: "Safety-Checks und Regeln auf jeder Anfrage.",
-                icon: (
-                  <svg
-                    className="h-5 w-5 text-slate-300"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path
-                      d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ),
-              },
-            ].map((feature) => (
-              <div
-                key={feature.title}
-                className="rounded-xl border border-[rgba(255,255,255,0.06)] bg-[rgb(18_22_30)] p-6"
-              >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgb(18_22_30)]">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-medium text-white md:text-2xl">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-base text-slate-300">{feature.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <Region variant="light" tone="alt" id="unternehmen">
-        <span id="demo" className="sr-only" />
+      <Region variant="light" tone="alt">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-            Nutzen Sie KI mit Kontrolle, Klarheit und Vertrauen.
+            Wenn KI im Unternehmen nicht im Pilotmodus hängen bleiben soll,
+            braucht es einen klaren nächsten Schritt.
           </h2>
           <p className="max-w-2xl text-base leading-relaxed text-text-muted-light">
-            Vereinfachen Sie KI-Operationen, sichern Sie DSGVO-Compliance und
-            skalieren Sie sicher.
+            Starten Sie mit einem Erstgespräch, wenn Zielbild, Governance oder
+            Einführungslogik noch offen sind. Wenn Sie bereits in den
+            kontrollierten Betrieb denken, führt der zweite Schritt zu NodeX.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="mailto:info@opny.ai?subject=Demo%20Anfrage%20opny.ai"
+              href={companyCtas.generalInquiry}
               className="inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/95"
             >
-              Demo anfragen
+              Erstgespräch anfragen
             </a>
-            <Button href="/#plattform" variant="secondary" theme="light">
-              Plattform ansehen
+            <Button href="/leistungen/nodex" variant="secondary" theme="light">
+              NodeX ansehen
             </Button>
           </div>
         </div>

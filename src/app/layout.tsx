@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 import SiteShell from "@/components/SiteShell";
@@ -9,13 +9,34 @@ import CookieBanner from "@/components/consent/CookieBanner";
 
 const geistSans = Geist({
   subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-  title:
-    "opny.ai – KI Plattform für Governance, Sicherheit & AI Orchestrierung",
+  metadataBase: new URL("https://opny.ai"),
+  title: {
+    default: "Opny | KI-Beratung und datenschutzkonforme KI-Lösungen",
+    template: "%s | Opny",
+  },
   description:
-    "opny.ai ist eine Enterprise KI Plattform für kontrollierte KI-Nutzung: AI Gateway, KI Governance, Sicherheit, Routing, Observability.",
+    "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Opny | KI-Beratung und datenschutzkonforme KI-Lösungen",
+    description:
+      "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+    url: "/",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
+  },
 
   icons: {
     icon: [
@@ -34,7 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={`${geistSans.className} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${geistSans.className} antialiased`}
+      >
         <GoogleAnalytics />
         <Suspense fallback={null}>
           <AnalyticsRouteTracker />
