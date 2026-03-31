@@ -4,17 +4,22 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "KI Governance für Unternehmen | Deep Dive zu NodeX",
+  title:
+    "KI Governance für Unternehmen | Richtlinien, Kontrolle & Datenschutz | Opny",
   description:
-    "Deep-Dive-Seite zum Governance-Layer von NodeX: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI-Nutzung mit klaren Policies für Unternehmen.",
+    "KI Governance für Unternehmen: klare Regeln, sichere Freigaben und transparente Datenflüsse für den kontrollierten Einsatz von KI im Unternehmen.",
   alternates: {
     canonical: "https://www.opny.ai/ki-governance",
   },
   openGraph: {
-    title: "KI Governance für Unternehmen | Deep Dive zu NodeX",
+    title:
+      "KI Governance für Unternehmen | Richtlinien, Kontrolle & Datenschutz | Opny",
     description:
-      "Deep-Dive-Seite zum Governance-Layer von NodeX: KI Compliance, LLM Governance, Auditierbarkeit und sichere KI-Nutzung mit klaren Policies für Unternehmen.",
+      "KI Governance für Unternehmen: klare Regeln, sichere Freigaben und transparente Datenflüsse für den kontrollierten Einsatz von KI im Unternehmen.",
     url: "https://www.opny.ai/ki-governance",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 

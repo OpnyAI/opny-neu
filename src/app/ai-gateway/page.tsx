@@ -4,17 +4,22 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "AI Gateway für Unternehmen | Deep Dive zu NodeX",
+  title:
+    "AI Gateway Plattform für Unternehmen | Routing, Kontrolle & Sicherheit | Opny",
   description:
-    "Deep-Dive-Seite zum Gateway-Layer von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+    "AI Gateway für Unternehmen: zentrale Steuerung von Modellen, Daten und Zugriffen. Mit Routing, Fallbacks und Governance für sicheren KI-Betrieb.",
   alternates: {
     canonical: "https://www.opny.ai/ai-gateway",
   },
   openGraph: {
-    title: "AI Gateway für Unternehmen | Deep Dive zu NodeX",
+    title:
+      "AI Gateway Plattform für Unternehmen | Routing, Kontrolle & Sicherheit | Opny",
     description:
-      "Deep-Dive-Seite zum Gateway-Layer von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+      "AI Gateway für Unternehmen: zentrale Steuerung von Modellen, Daten und Zugriffen. Mit Routing, Fallbacks und Governance für sicheren KI-Betrieb.",
     url: "https://www.opny.ai/ai-gateway",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 

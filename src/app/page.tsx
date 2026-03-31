@@ -6,17 +6,22 @@ import HeroChatMock from "@/components/mocks/HeroChatMock";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "KI-Beratung für Unternehmen und datenschutzkonforme KI-Lösungen",
+  title:
+    "KI Beratung für Unternehmen | Einführung, Governance & AI Plattform | Opny",
   description:
-    "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+    "Opny unterstützt Unternehmen bei der strukturierten Einführung von KI – von Strategie und Use Cases bis zur sicheren Umsetzung mit Governance und AI-Plattform.",
   alternates: {
     canonical: "https://www.opny.ai/",
   },
   openGraph: {
-    title: "KI-Beratung für Unternehmen und datenschutzkonforme KI-Lösungen",
+    title:
+      "KI Beratung für Unternehmen | Einführung, Governance & AI Plattform | Opny",
     description:
-      "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
+      "Opny unterstützt Unternehmen bei der strukturierten Einführung von KI – von Strategie und Use Cases bis zur sicheren Umsetzung mit Governance und AI-Plattform.",
     url: "https://www.opny.ai/",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 
@@ -31,7 +36,7 @@ export default function Home() {
                 Opny
               </div>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
-                KI im Unternehmen einführen, ohne Datenschutzchaos und
+                KI im Unternehmen strukturiert einführen, ohne Datenschutzchaos und
                 Schatten-KI.
               </h1>
               <p className="max-w-[50ch] text-lg leading-relaxed text-text-muted-light md:text-xl">

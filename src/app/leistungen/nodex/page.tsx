@@ -11,17 +11,22 @@ import HeroChatMock from "@/components/mocks/HeroChatMock";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "NodeX: Kontrollierte KI-Nutzung für Unternehmen",
+  title:
+    "AI Gateway für Unternehmen | KI Plattform mit Kontrolle & Governance | Opny",
   description:
-    "NodeX ist die zentrale Plattform für kontrollierte KI-Nutzung mit AI Gateway, KI Governance, Routing, Fallback, Transparenz und operativer Plattformlogik im Unternehmen.",
+    "NodeX ist die AI-Gateway-Plattform für Unternehmen: zentrale Steuerung von KI-Nutzung, klare Datenflüsse, Governance, Kostenkontrolle und sichere Integration.",
   alternates: {
     canonical: "https://www.opny.ai/leistungen/nodex",
   },
   openGraph: {
-    title: "NodeX: Kontrollierte KI-Nutzung für Unternehmen",
+    title:
+      "AI Gateway für Unternehmen | KI Plattform mit Kontrolle & Governance | Opny",
     description:
-      "NodeX ist die zentrale Plattform für kontrollierte KI-Nutzung mit AI Gateway, KI Governance, Routing, Fallback, Transparenz und operativer Plattformlogik im Unternehmen.",
+      "NodeX ist die AI-Gateway-Plattform für Unternehmen: zentrale Steuerung von KI-Nutzung, klare Datenflüsse, Governance, Kostenkontrolle und sichere Integration.",
     url: "https://www.opny.ai/leistungen/nodex",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 
@@ -36,14 +41,13 @@ export default function NodeXPage() {
                 NodeX
               </div>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
-                Ohne NodeX entsteht KI-Wildwuchs. Mit NodeX entsteht
-                kontrollierter produktiver Betrieb.
+                AI Gateway für Unternehmen statt KI-Wildwuchs im Betrieb.
               </h1>
               <p className="max-w-[48ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
-                NodeX gibt Unternehmen einen operativen Layer für produktive
-                KI-Nutzung: mit klaren Regeln, kontrollierten Datenpfaden,
-                nachvollziehbaren Entscheidungen und einer Plattformlogik, die
-                Teams und IT zusammenführt.
+                NodeX ist das AI Gateway für Unternehmen und gibt einen
+                operativen Layer für produktive KI-Nutzung: mit klaren Regeln,
+                kontrollierten Datenpfaden, nachvollziehbaren Entscheidungen
+                und einer Plattformlogik, die Teams und IT zusammenführt.
               </p>
             </div>
             <ul className="space-y-3 text-base leading-relaxed text-text-muted-light md:text-lg">

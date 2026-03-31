@@ -5,17 +5,22 @@ import Region from "@/components/Region";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "KI-Beratung für Unternehmen: Einführung, Governance und Struktur",
+  title:
+    "KI im Unternehmen einführen | Strategie, Use Cases & Governance Beratung | Opny",
   description:
-    "KI-Beratung für Unternehmen von Opny: Zielbild, Use-Case-Priorisierung, Governance, Datenschutz und Einführungslogik für eine sichere und produktive KI-Nutzung im Unternehmensalltag.",
+    "Strukturierte KI-Einführung für Unternehmen: Opny entwickelt Strategien, priorisiert Use Cases und schafft klare Governance für nachhaltige KI-Nutzung.",
   alternates: {
     canonical: "https://www.opny.ai/leistungen/ki-beratung",
   },
   openGraph: {
-    title: "KI-Beratung für Unternehmen: Einführung, Governance und Struktur",
+    title:
+      "KI im Unternehmen einführen | Strategie, Use Cases & Governance Beratung | Opny",
     description:
-      "KI-Beratung für Unternehmen von Opny: Zielbild, Use-Case-Priorisierung, Governance, Datenschutz und Einführungslogik für eine sichere und produktive KI-Nutzung im Unternehmensalltag.",
+      "Strukturierte KI-Einführung für Unternehmen: Opny entwickelt Strategien, priorisiert Use Cases und schafft klare Governance für nachhaltige KI-Nutzung.",
     url: "https://www.opny.ai/leistungen/ki-beratung",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 
@@ -30,14 +35,14 @@ export default function KiBeratungPage() {
                 KI-Beratung für Unternehmen
               </div>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
-                KI ist relevant. Die eigentliche Frage ist, wie sie im
-                Unternehmen belastbar eingeführt werden soll.
+                KI im Unternehmen einführen mit Strategie, Use Cases und
+                Governance.
               </h1>
               <p className="text-base leading-relaxed text-text-muted-light md:text-lg">
                 Genau hier setzt die Beratung an: wenn Use Cases da sind,
-                Entscheidungen anstehen und gleichzeitig Zielbild, Governance,
-                Datenschutz und Einführungslogik noch nicht tragfähig
-                zusammenlaufen.
+                Entscheidungen anstehen und gleichzeitig Strategie, Zielbild,
+                Governance, Datenschutz und Einführungslogik noch nicht
+                tragfähig zusammenlaufen.
               </p>
             </div>
 

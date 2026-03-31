@@ -5,17 +5,22 @@ import Region from "@/components/Region";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "KI-Beratung für Unternehmen und NodeX im Überblick",
+  title:
+    "KI Lösungen für Unternehmen | Beratung, AI Plattform & Governance | Opny",
   description:
-    "Überblick über KI-Beratung für Unternehmen und NodeX als Plattform für kontrollierte KI-Nutzung, Governance und operative Umsetzung.",
+    "Von der KI-Strategie bis zur operativen Plattform: Opny bietet strukturierte KI-Lösungen für Unternehmen – inklusive Governance, Use Cases und skalierbarer Umsetzung.",
   alternates: {
     canonical: "https://www.opny.ai/leistungen",
   },
   openGraph: {
-    title: "KI-Beratung für Unternehmen und NodeX im Überblick",
+    title:
+      "KI Lösungen für Unternehmen | Beratung, AI Plattform & Governance | Opny",
     description:
-      "Überblick über KI-Beratung für Unternehmen und NodeX als Plattform für kontrollierte KI-Nutzung, Governance und operative Umsetzung.",
+      "Von der KI-Strategie bis zur operativen Plattform: Opny bietet strukturierte KI-Lösungen für Unternehmen – inklusive Governance, Use Cases und skalierbarer Umsetzung.",
     url: "https://www.opny.ai/leistungen",
+    siteName: "Opny",
+    locale: "de_DE",
+    type: "website",
   },
 };
 
