@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { companyCtas } from "@/config/site";
+import { usePathname } from "next/navigation";
+import { companyCtas, type PrimaryNavigationLink } from "@/config/site";
 
-type MobileNavLink = {
-  label: string;
-  href: string;
-};
+type MobileNavLink = PrimaryNavigationLink;
 
 type MobileNavProps = {
   open: boolean;
@@ -33,8 +31,54 @@ export default function MobileNav({
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const [animateIn, setAnimateIn] = useState(false);
+  const pathname = usePathname();
 
   const renderNavLink = (link: MobileNavLink) => {
+    const hasItems = "items" in link;
+
+    if (hasItems) {
+      const isActive =
+        pathname === link.href ||
+        pathname.startsWith(`${link.href}/`) ||
+        link.items.some((item) => pathname === item.href) ||
+        pathname === "/ai-gateway" ||
+        pathname === "/ki-governance";
+
+      return (
+        <div className="rounded-[1.75rem] border border-black/5 bg-white px-4 py-3">
+          <div
+            className={`flex items-center justify-between gap-4 text-base font-medium ${
+              isActive ? "text-text-primary-light" : "text-text-muted-light"
+            }`}
+          >
+            <span>{link.label}</span>
+            <span className="text-xs text-text-secondary-light">Auswahl</span>
+          </div>
+
+          <div className="mt-4 space-y-2 border-t border-border-subtle-light/15 pt-4">
+            {link.items.map((item) => {
+              const itemIsActive = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onClose}
+                  className={`block rounded-2xl px-3 py-3 text-sm transition ${
+                    itemIsActive
+                      ? "bg-black/[0.04] text-text-primary-light"
+                      : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
     const isExternal =
       link.href.startsWith("http") ||
       link.href.startsWith("mailto:") ||

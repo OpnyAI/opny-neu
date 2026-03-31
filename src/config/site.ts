@@ -1,3 +1,19 @@
+export type ServiceNavigationItem = {
+  label: string;
+  href: string;
+};
+
+export type PrimaryNavigationLink =
+  | {
+      label: string;
+      href: string;
+    }
+  | {
+      label: string;
+      href: string;
+      items: readonly ServiceNavigationItem[];
+    };
+
 export const companyEmail = "info@opny.ai";
 
 export const companyCtas = {
@@ -7,16 +23,22 @@ export const companyCtas = {
   contact: `mailto:${companyEmail}`,
 } as const;
 
-export const primaryNavigationLinks = [
+export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
+  { label: "NodeX", href: "/leistungen/nodex" },
+  { label: "KI-Beratung für Unternehmen", href: "/leistungen/ki-beratung" },
+];
+
+export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
   { label: "Startseite", href: "/" },
-  { label: "Leistungen", href: "/leistungen" },
-] as const;
+  {
+    label: "Leistungen",
+    href: "/leistungen",
+    items: serviceNavigationLinks,
+  },
+];
 
 export const footerLinks = {
-  services: [
-    { label: "NodeX", href: "/leistungen/nodex" },
-    { label: "KI-Beratung für Unternehmen", href: "/leistungen/ki-beratung" },
-  ],
+  services: serviceNavigationLinks,
   company: [
     { label: "Startseite", href: "/" },
     { label: "Kontakt", href: companyCtas.contact },

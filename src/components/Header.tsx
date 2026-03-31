@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,26 @@ import { companyCtas, primaryNavigationLinks } from "@/config/site";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!servicesRef.current?.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, []);
+
+  const isServicesActive =
+    pathname === "/leistungen" ||
+    pathname.startsWith("/leistungen/") ||
+    pathname === "/ai-gateway" ||
+    pathname === "/ki-governance";
 
   return (
     <>
@@ -40,23 +59,90 @@ export default function Header() {
 
           <nav className="hidden items-center gap-6 md:flex">
             {primaryNavigationLinks.map((n) => {
-              const isActive =
-                n.href === "/"
-                  ? pathname === "/"
-                  : pathname === n.href || pathname.startsWith(`${n.href}/`);
+              const hasItems = "items" in n;
+
+              if (!hasItems) {
+                const isActive =
+                  n.href === "/"
+                    ? pathname === "/"
+                    : pathname === n.href || pathname.startsWith(`${n.href}/`);
+
+                return (
+                  <Link
+                    key={n.label}
+                    href={n.href}
+                    className={`text-sm transition ${
+                      isActive
+                        ? "text-text-primary-light"
+                        : "text-text-muted-light hover:text-text-primary-light"
+                    }`}
+                  >
+                    {n.label}
+                  </Link>
+                );
+              }
+
+              const isActive = isServicesActive;
 
               return (
-                <Link
+                <div
                   key={n.label}
-                  href={n.href}
-                  className={`text-sm transition ${
-                    isActive
-                      ? "text-text-primary-light"
-                      : "text-text-muted-light hover:text-text-primary-light"
-                  }`}
+                  ref={servicesRef}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  {n.label}
-                </Link>
+                  <button
+                    type="button"
+                    aria-expanded={servicesOpen}
+                    aria-haspopup="menu"
+                    className={`inline-flex items-center gap-2 text-sm transition ${
+                      isActive
+                        ? "text-text-primary-light"
+                        : "text-text-muted-light hover:text-text-primary-light"
+                    }`}
+                    onClick={() => setServicesOpen((open) => !open)}
+                    onFocus={() => setServicesOpen(true)}
+                  >
+                    <span>{n.label}</span>
+                    <span
+                      className={`text-[10px] transition-transform ${
+                        servicesOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      ▼
+                    </span>
+                  </button>
+
+                  <div
+                    className={`absolute left-0 top-full pt-4 transition ${
+                      servicesOpen
+                        ? "pointer-events-auto translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-1 opacity-0"
+                    }`}
+                  >
+                    <div className="min-w-[320px] rounded-3xl border border-border-subtle-light/20 bg-white p-2 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)]">
+                      {n.items.map((item) => {
+                        const itemIsActive = pathname === item.href;
+
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className={`block rounded-2xl px-4 py-3 text-sm transition ${
+                              itemIsActive
+                                ? "bg-black/[0.04] text-text-primary-light"
+                                : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
+                            }`}
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </nav>
@@ -88,7 +174,10 @@ export default function Header() {
               Erstgespräch
             </a>
             <button
-              onClick={() => setMobileOpen(true)}
+              onClick={() => {
+                setServicesOpen(false);
+                setMobileOpen(true);
+              }}
               className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
               aria-label="Menü öffnen"
             >

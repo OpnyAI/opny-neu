@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.opny.ai/",
   },
   openGraph: {
     title: "KI-Beratung für Unternehmen und datenschutzkonforme KI-Lösungen",
     description:
       "Opny begleitet Unternehmen mit KI-Beratung, Governance und datenschutzkonformen KI-Lösungen – von der Einführung bis zum kontrollierten Betrieb mit NodeX.",
-    url: "/",
+    url: "https://www.opny.ai/",
   },
 };
 
@@ -30,7 +30,7 @@ export default function Home() {
               <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
                 Opny
               </div>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
+              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
                 KI im Unternehmen einführen, ohne Datenschutzchaos und
                 Schatten-KI.
               </h1>
@@ -99,7 +99,7 @@ export default function Home() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 Einstieg über Beratung
               </div>
-              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+              <h3 className="mt-4 text-xl font-semibold leading-tight text-text-primary-light md:text-2xl">
                 Ich will KI strukturiert im Unternehmen einführen
               </h3>
               <p className="mt-3 text-base leading-relaxed text-text-muted-light">
@@ -134,7 +134,7 @@ export default function Home() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 Einstieg über Produkt
               </div>
-              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+              <h3 className="mt-4 text-xl font-semibold leading-tight text-text-primary-light md:text-2xl">
                 Ich brauche Kontrolle, Governance und Plattformlogik für
                 produktive KI
               </h3>
@@ -246,7 +246,7 @@ export default function Home() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 KI-Beratung für Unternehmen
               </div>
-              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+              <h3 className="mt-4 text-xl font-semibold leading-tight text-text-primary-light md:text-2xl">
                 Für Unternehmen, die KI strukturiert einführen statt nur Tools zu testen
               </h3>
               <p className="mt-3 text-base leading-relaxed text-text-muted-light">
@@ -282,7 +282,7 @@ export default function Home() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
                 NodeX
               </div>
-              <h3 className="mt-4 text-[1.65rem] font-semibold leading-tight text-text-primary-light md:text-3xl">
+              <h3 className="mt-4 text-xl font-semibold leading-tight text-text-primary-light md:text-2xl">
                 Für Unternehmen, die produktive KI sicher und kontrolliert betreiben müssen
               </h3>
               <p className="mt-3 text-base leading-relaxed text-text-muted-light">

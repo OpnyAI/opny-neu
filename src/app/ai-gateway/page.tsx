@@ -4,17 +4,17 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "AI Gateway für Unternehmen | NodeX Deep Dive",
+  title: "AI Gateway für Unternehmen | Deep Dive zu NodeX",
   description:
-    "Deep-Dive-Seite zum AI Gateway von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+    "Deep-Dive-Seite zum Gateway-Layer von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
   alternates: {
-    canonical: "/ai-gateway",
+    canonical: "https://www.opny.ai/ai-gateway",
   },
   openGraph: {
-    title: "AI Gateway für Unternehmen | NodeX Deep Dive",
+    title: "AI Gateway für Unternehmen | Deep Dive zu NodeX",
     description:
-      "Deep-Dive-Seite zum AI Gateway von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
-    url: "/ai-gateway",
+      "Deep-Dive-Seite zum Gateway-Layer von NodeX: AI Routing, Fallback, Multi-LLM-Steuerung und kontrollierte KI-Orchestrierung für Unternehmen.",
+    url: "https://www.opny.ai/ai-gateway",
   },
 };
 

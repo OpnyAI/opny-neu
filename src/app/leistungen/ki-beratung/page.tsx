@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "KI-Beratung für Unternehmen von Opny: Zielbild, Use-Case-Priorisierung, Governance, Datenschutz und Einführungslogik für eine sichere und produktive KI-Nutzung im Unternehmensalltag.",
   alternates: {
-    canonical: "/leistungen/ki-beratung",
+    canonical: "https://www.opny.ai/leistungen/ki-beratung",
   },
   openGraph: {
     title: "KI-Beratung für Unternehmen: Einführung, Governance und Struktur",
     description:
       "KI-Beratung für Unternehmen von Opny: Zielbild, Use-Case-Priorisierung, Governance, Datenschutz und Einführungslogik für eine sichere und produktive KI-Nutzung im Unternehmensalltag.",
-    url: "/leistungen/ki-beratung",
+    url: "https://www.opny.ai/leistungen/ki-beratung",
   },
 };
 

@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     "NodeX ist die zentrale Plattform für kontrollierte KI-Nutzung mit AI Gateway, KI Governance, Routing, Fallback, Transparenz und operativer Plattformlogik im Unternehmen.",
   alternates: {
-    canonical: "/leistungen/nodex",
+    canonical: "https://www.opny.ai/leistungen/nodex",
   },
   openGraph: {
     title: "NodeX: Kontrollierte KI-Nutzung für Unternehmen",
     description:
       "NodeX ist die zentrale Plattform für kontrollierte KI-Nutzung mit AI Gateway, KI Governance, Routing, Fallback, Transparenz und operativer Plattformlogik im Unternehmen.",
-    url: "/leistungen/nodex",
+    url: "https://www.opny.ai/leistungen/nodex",
   },
 };
 
@@ -35,7 +35,7 @@ export default function NodeXPage() {
               <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
                 NodeX
               </div>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-text-primary-light md:text-5xl lg:text-6xl">
+              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
                 Ohne NodeX entsteht KI-Wildwuchs. Mit NodeX entsteht
                 kontrollierter produktiver Betrieb.
               </h1>
@@ -120,9 +120,9 @@ export default function NodeXPage() {
                     "Teams arbeiten mit unklaren Richtlinien, Freigaben und Verantwortlichkeiten.",
                 },
                 {
-                  value: "—",
+                  value: "78%",
                   label:
-                    "Tool-Wildwuchs, Schatten-KI und Workarounds verdrängen einen sauberen Betriebsstandard.",
+                    "der KI-Nutzer bringen eigene KI-Tools mit zur Arbeit (BYOAI) – oft außerhalb zentraler Governance.",
                 },
               ].map((stat) => (
                 <Card key={stat.value} theme="light" className="h-full p-5">

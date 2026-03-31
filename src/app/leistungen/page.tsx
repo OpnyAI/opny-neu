@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "Überblick über KI-Beratung für Unternehmen und NodeX als Plattform für kontrollierte KI-Nutzung, Governance und operative Umsetzung.",
   alternates: {
-    canonical: "/leistungen",
+    canonical: "https://www.opny.ai/leistungen",
   },
   openGraph: {
     title: "KI-Beratung für Unternehmen und NodeX im Überblick",
     description:
       "Überblick über KI-Beratung für Unternehmen und NodeX als Plattform für kontrollierte KI-Nutzung, Governance und operative Umsetzung.",
-    url: "/leistungen",
+    url: "https://www.opny.ai/leistungen",
   },
 };
 
