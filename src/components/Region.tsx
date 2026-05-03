@@ -46,7 +46,7 @@ export default function Region({
     variant === "dark" ? "text-text-primary-dark" : "text-text-primary-light";
 
   const regionBase = cn(
-    "relative w-full",
+    "relative w-full max-w-full overflow-x-clip",
     toneClass,
     textClass,
     themeClass,
@@ -55,7 +55,7 @@ export default function Region({
   );
 
   const container = cn(
-    "relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-14 md:py-20",
+    "relative z-10 mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 lg:px-8 py-14 md:py-20",
     containerClassName,
   );
 

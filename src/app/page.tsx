@@ -4,6 +4,7 @@ import Card from "@/components/ui/Card";
 import Region from "@/components/Region";
 import HeroChatMock from "@/components/mocks/HeroChatMock";
 import { companyCtas } from "@/config/site";
+import HomeSocialProof from "./HomeSocialProof";
 
 export const metadata: Metadata = {
   title:
@@ -29,8 +30,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Region variant="light" tone="base">
-        <div className="grid items-center gap-10 lg:gap-14 md:grid-cols-2">
-          <div className="max-w-[580px] space-y-6">
+        <div className="grid min-w-0 items-center gap-10 lg:gap-14 md:grid-cols-2">
+          <div className="min-w-0 max-w-[580px] space-y-6">
             <div className="space-y-4">
               <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
                 Opny
@@ -73,13 +74,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center md:mt-0 lg:justify-end">
-            <div className="self-center">
-              <HeroChatMock />
+          <div className="mt-10 flex min-w-0 w-full max-w-full justify-center overflow-x-clip md:mt-0 lg:justify-end">
+            <div className="w-full min-w-0 max-w-[620px] self-center">
+              <HeroChatMock className="max-w-full" />
             </div>
           </div>
         </div>
       </Region>
+
+      <HomeSocialProof />
 
       <Region variant="light" tone="surface">
         <div className="space-y-6">

@@ -91,11 +91,15 @@
 html {
   color-scheme: light;
   -webkit-text-size-adjust: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 html,
 body {
   min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -183,5 +187,33 @@ body > * {
     --card-border: var(--card-border-light);
     --card-border-opacity: var(--card-border-opacity-light);
     --card-shadow: var(--card-shadow-light);
+  }
+
+  .field-input {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    padding: 0.75rem 0.875rem;
+    color: rgb(var(--opny-text));
+    outline: none;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .field-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .field-input:hover {
+    border-color: #cbd5e1;
+  }
+
+  .field-input:focus {
+    border-color: #0f172a;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
   }
 }

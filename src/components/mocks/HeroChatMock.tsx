@@ -19,9 +19,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
       className={[
         "relative mx-auto w-full max-w-[620px] overflow-hidden rounded-2xl",
         "border border-black/5 bg-gradient-to-b from-white to-slate-50/80",
-        "shadow-[0_20px_60px_rgba(15,23,42,0.12)]",
         "dark:border-white/10 dark:bg-gradient-to-b dark:from-slate-900/95 dark:to-slate-950",
-        "dark:shadow-[0_30px_80px_rgba(0,0,0,0.35)]",
         className ?? "",
       ].join(" ")}
     >
@@ -55,7 +53,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
 
           <div className="flex items-center gap-2">
             <span className="hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 sm:inline dark:text-slate-300">
-              Model
+              Modell
             </span>
 
             {/* Selected */}
@@ -79,7 +77,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
 
         {/* Subtle chips (keep minimal) */}
         <div className="flex flex-wrap gap-2 text-[11px] text-slate-600 dark:text-slate-400">
-          {["Data protection ✓", "Routing: Auto"].map((chip) => (
+          {["Datenschutz aktiv", "Routing: Auto"].map((chip) => (
             <span
               key={chip}
               className="rounded-full border border-black/10 bg-slate-50 px-3 py-1 dark:border-white/10 dark:bg-white/5"
@@ -119,11 +117,11 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
 
         {/* Input bar */}
         <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 dark:border-white/10 dark:bg-white/5">
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
-              aria-label="Attach"
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+              aria-label="Anhang"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -142,15 +140,15 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
 
             <input
               type="text"
-              placeholder="Nachricht an Opny…"
-              className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none dark:text-white dark:placeholder:text-slate-400"
+              placeholder="Nachricht an Opny..."
+              className="min-w-0 flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none dark:text-white dark:placeholder:text-slate-400"
             />
 
             <button
               type="button"
-              className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white dark:border-white/10"
+              className="flex-shrink-0 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white dark:border-white/10"
             >
-              Send
+              Senden
             </button>
           </div>
 

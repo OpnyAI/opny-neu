@@ -198,13 +198,13 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-x-0 bottom-0 top-16 z-[999] lg:hidden"
+      className="fixed inset-x-0 bottom-0 top-16 z-[999] overflow-hidden lg:hidden"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
 
       <div
-        className={`absolute right-0 top-0 h-full w-full max-w-[420px] transform bg-white shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] transition-transform duration-300 ease-out ${
+        className={`absolute right-0 top-0 h-full w-full max-w-[min(420px,100vw)] transform bg-white shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] transition-transform duration-300 ease-out ${
           animateIn ? "translate-x-0" : "translate-x-full"
         }`}
         onClick={(e) => e.stopPropagation()}
