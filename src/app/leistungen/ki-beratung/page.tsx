@@ -66,7 +66,7 @@ export default function KiBeratungPage() {
               >
                 Beratungsgespräch anfragen
               </a>
-              <Button href="/leistungen/nodex" variant="secondary" theme="light">
+              <Button href="/produkte/nodex" variant="secondary" theme="light">
                 NodeX ansehen
               </Button>
             </div>
@@ -265,7 +265,7 @@ export default function KiBeratungPage() {
               ))}
             </div>
             <div className="mt-6">
-              <Button href="/leistungen/nodex" variant="secondary" theme="light">
+              <Button href="/produkte/nodex" variant="secondary" theme="light">
                 NodeX ansehen
               </Button>
             </div>
@@ -292,7 +292,7 @@ export default function KiBeratungPage() {
             >
               Beratungsgespräch anfragen
             </a>
-            <Button href="/leistungen/nodex" variant="secondary" theme="light">
+            <Button href="/produkte/nodex" variant="secondary" theme="light">
               NodeX ansehen
             </Button>
           </div>

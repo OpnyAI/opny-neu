@@ -40,9 +40,7 @@ export default function MobileNav({
       const isActive =
         pathname === link.href ||
         pathname.startsWith(`${link.href}/`) ||
-        link.items.some((item) => pathname === item.href) ||
-        pathname === "/ai-gateway" ||
-        pathname === "/ki-governance";
+        link.items.some((item) => pathname === item.href);
 
       return (
         <div className="rounded-[1.75rem] border border-black/5 bg-white px-4 py-3">

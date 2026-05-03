@@ -68,8 +68,8 @@ export default function Home() {
               >
                 Erstgespräch anfragen
               </a>
-              <Button href="/leistungen" variant="secondary" theme="light">
-                Leistungen ansehen
+              <Button href="/loesungen" variant="secondary" theme="light">
+                Lösungen ansehen
               </Button>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function Home() {
               </ul>
               <div className="mt-6">
                 <Button
-                  href="/leistungen/ki-beratung"
+                  href="/loesungen/ki-beratung"
                   variant="primary"
                   theme="light"
                 >
@@ -164,7 +164,7 @@ export default function Home() {
                 ))}
               </ul>
               <div className="mt-6">
-                <Button href="/leistungen/nodex" variant="secondary" theme="light">
+                <Button href="/produkte/nodex" variant="secondary" theme="light">
                   NodeX ansehen
                 </Button>
               </div>
@@ -277,7 +277,7 @@ export default function Home() {
               </ul>
               <div className="mt-6">
                 <Button
-                  href="/leistungen/ki-beratung"
+                  href="/loesungen/ki-beratung"
                   variant="primary"
                   theme="light"
                 >
@@ -312,7 +312,7 @@ export default function Home() {
                 ))}
               </ul>
               <div className="mt-6">
-                <Button href="/leistungen/nodex" variant="secondary" theme="light">
+                <Button href="/produkte/nodex" variant="secondary" theme="light">
                   NodeX ansehen
                 </Button>
               </div>
@@ -453,7 +453,7 @@ export default function Home() {
               ))}
             </ul>
             <div className="flex flex-wrap gap-3">
-              <Button href="/leistungen/nodex" variant="secondary" theme="light">
+              <Button href="/produkte/nodex" variant="secondary" theme="light">
                 NodeX ansehen
               </Button>
             </div>
@@ -497,7 +497,7 @@ export default function Home() {
             >
               Erstgespräch anfragen
             </a>
-            <Button href="/leistungen/nodex" variant="secondary" theme="light">
+            <Button href="/produkte/nodex" variant="secondary" theme="light">
               NodeX ansehen
             </Button>
           </div>

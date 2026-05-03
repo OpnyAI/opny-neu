@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-3">
             <div className="text-base font-semibold text-text-primary-light">
-              Leistungen
+              Lösungen & Produkte
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {footerLinks.services.map((link) => (

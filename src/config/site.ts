@@ -24,21 +24,36 @@ export const companyCtas = {
 } as const;
 
 export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
-  { label: "NodeX", href: "/leistungen/nodex" },
-  { label: "KI-Beratung für Unternehmen", href: "/leistungen/ki-beratung" },
+  { label: "KI-Beratung", href: "/loesungen/ki-beratung" },
+  { label: "KI-Trainings", href: "/loesungen/ki-trainings" },
+];
+
+export const productNavigationLinks: readonly ServiceNavigationItem[] = [
+  { label: "NodeX", href: "/produkte/nodex" },
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
   { label: "Startseite", href: "/" },
   {
-    label: "Leistungen",
-    href: "/leistungen",
+    label: "Lösungen",
+    href: "/loesungen",
     items: serviceNavigationLinks,
   },
+  {
+    label: "Produkte",
+    href: "/produkte",
+    items: productNavigationLinks,
+  },
+  { label: "Kontakt", href: companyCtas.contact },
 ];
 
 export const footerLinks = {
-  services: serviceNavigationLinks,
+  services: [
+    { label: "Lösungen", href: "/loesungen" },
+    ...serviceNavigationLinks,
+    { label: "Produkte", href: "/produkte" },
+    ...productNavigationLinks,
+  ],
   company: [
     { label: "Startseite", href: "/" },
     { label: "Kontakt", href: companyCtas.contact },

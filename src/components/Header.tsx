@@ -10,26 +10,20 @@ import { companyCtas, primaryNavigationLinks } from "@/config/site";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handlePointerDown = (event: MouseEvent) => {
-      if (!servicesRef.current?.contains(event.target as Node)) {
-        setServicesOpen(false);
+      if (!navRef.current?.contains(event.target as Node)) {
+        setActiveDropdown(null);
       }
     };
 
     document.addEventListener("mousedown", handlePointerDown);
     return () => document.removeEventListener("mousedown", handlePointerDown);
   }, []);
-
-  const isServicesActive =
-    pathname === "/leistungen" ||
-    pathname.startsWith("/leistungen/") ||
-    pathname === "/ai-gateway" ||
-    pathname === "/ki-governance";
 
   return (
     <>
@@ -57,57 +51,77 @@ export default function Header() {
             <span className="sr-only">opny.ai</span>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav ref={navRef} className="hidden items-center gap-6 md:flex">
             {primaryNavigationLinks.map((n) => {
               const hasItems = "items" in n;
 
               if (!hasItems) {
+                const isExternal =
+                  n.href.startsWith("http") ||
+                  n.href.startsWith("mailto:") ||
+                  n.href.startsWith("tel:");
                 const isActive =
                   n.href === "/"
                     ? pathname === "/"
                     : pathname === n.href || pathname.startsWith(`${n.href}/`);
+                const className = `text-sm transition ${
+                  isActive
+                    ? "text-text-primary-light"
+                    : "text-text-muted-light hover:text-text-primary-light"
+                }`;
+
+                if (isExternal) {
+                  return (
+                    <a key={n.label} href={n.href} className={className}>
+                      {n.label}
+                    </a>
+                  );
+                }
 
                 return (
                   <Link
                     key={n.label}
                     href={n.href}
-                    className={`text-sm transition ${
-                      isActive
-                        ? "text-text-primary-light"
-                        : "text-text-muted-light hover:text-text-primary-light"
-                    }`}
+                    className={className}
                   >
                     {n.label}
                   </Link>
                 );
               }
 
-              const isActive = isServicesActive;
+              const isActive =
+                pathname === n.href ||
+                pathname.startsWith(`${n.href}/`) ||
+                n.items.some((item) => pathname === item.href);
+              const isOpen = activeDropdown === n.href;
 
               return (
                 <div
                   key={n.label}
-                  ref={servicesRef}
                   className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={() => setActiveDropdown(n.href)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
                     type="button"
-                    aria-expanded={servicesOpen}
+                    aria-expanded={isOpen}
                     aria-haspopup="menu"
                     className={`inline-flex items-center gap-2 text-sm transition ${
                       isActive
                         ? "text-text-primary-light"
                         : "text-text-muted-light hover:text-text-primary-light"
                     }`}
-                    onClick={() => setServicesOpen((open) => !open)}
-                    onFocus={() => setServicesOpen(true)}
+                    onClick={() =>
+                      setActiveDropdown((current) =>
+                        current === n.href ? null : n.href,
+                      )
+                    }
+                    onFocus={() => setActiveDropdown(n.href)}
                   >
                     <span>{n.label}</span>
                     <span
                       className={`text-[10px] transition-transform ${
-                        servicesOpen ? "rotate-180" : ""
+                        isOpen ? "rotate-180" : ""
                       }`}
                     >
                       ▼
@@ -116,7 +130,7 @@ export default function Header() {
 
                   <div
                     className={`absolute left-0 top-full pt-4 transition ${
-                      servicesOpen
+                      isOpen
                         ? "pointer-events-auto translate-y-0 opacity-100"
                         : "pointer-events-none -translate-y-1 opacity-0"
                     }`}
@@ -134,7 +148,7 @@ export default function Header() {
                                 ? "bg-black/[0.04] text-text-primary-light"
                                 : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
                             }`}
-                            onClick={() => setServicesOpen(false)}
+                            onClick={() => setActiveDropdown(null)}
                           >
                             {item.label}
                           </Link>
@@ -175,7 +189,7 @@ export default function Header() {
             </a>
             <button
               onClick={() => {
-                setServicesOpen(false);
+                setActiveDropdown(null);
                 setMobileOpen(true);
               }}
               className="flex items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"

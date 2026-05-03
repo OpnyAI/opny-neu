@@ -55,7 +55,7 @@ export default function AiGatewayPage() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button href="/leistungen/nodex" variant="primary" theme="light">
+              <Button href="/produkte/nodex" variant="primary" theme="light">
                 Zu NodeX
               </Button>
               <Button href="/ki-governance" variant="secondary" theme="light">
@@ -131,7 +131,7 @@ export default function AiGatewayPage() {
             ))}
           </div>
           <div className="flex flex-wrap gap-4">
-            <Button href="/leistungen/nodex" variant="primary" theme="light">
+            <Button href="/produkte/nodex" variant="primary" theme="light">
               NodeX Produktseite
             </Button>
             <Button href="/ki-governance" variant="secondary" theme="light">

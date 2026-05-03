@@ -34,12 +34,12 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
                   Demo anfragen
                 </a>
                 <Button
-                  href="/leistungen"
+                  href="/loesungen"
                   variant="secondary"
                   theme="light"
                   className="rounded-full border border-white/20 bg-transparent text-white hover:border-white/35 hover:bg-white/5"
                 >
-                  Leistungen ansehen
+                  Lösungen ansehen
                 </Button>
               </div>
             </div>

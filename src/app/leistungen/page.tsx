@@ -70,7 +70,7 @@ export default function LeistungenPage() {
               ))}
             </ul>
             <div className="mt-6">
-              <Button href="/leistungen/nodex" variant="primary" theme="light">
+              <Button href="/produkte/nodex" variant="primary" theme="light">
                 NodeX öffnen
               </Button>
             </div>
@@ -102,7 +102,7 @@ export default function LeistungenPage() {
             </ul>
             <div className="mt-6">
               <Button
-                href="/leistungen/ki-beratung"
+                href="/loesungen/ki-beratung"
                 variant="primary"
                 theme="light"
               >
@@ -123,11 +123,11 @@ export default function LeistungenPage() {
             eine erste Einordnung reicht auch ein gemeinsames Erstgespräch.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button href="/leistungen/nodex" variant="primary" theme="light">
+            <Button href="/produkte/nodex" variant="primary" theme="light">
               Zu NodeX
             </Button>
             <Button
-              href="/leistungen/ki-beratung"
+              href="/loesungen/ki-beratung"
               variant="secondary"
               theme="light"
             >
