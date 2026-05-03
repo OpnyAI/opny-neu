@@ -15,6 +15,8 @@ export type PrimaryNavigationLink =
     };
 
 export const companyEmail = "info@opny.ai";
+export const companyPhone = "+49 1511 1956479";
+export const companyPhoneHref = "tel:+4915111956479";
 
 export const companyCtas = {
   generalInquiry: `mailto:${companyEmail}?subject=Erstgespr%C3%A4ch%20Opny`,
@@ -44,7 +46,7 @@ export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
     href: "/produkte",
     items: productNavigationLinks,
   },
-  { label: "Kontakt", href: companyCtas.contact },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export const footerLinks = {
@@ -56,7 +58,7 @@ export const footerLinks = {
   ],
   company: [
     { label: "Startseite", href: "/" },
-    { label: "Kontakt", href: companyCtas.contact },
+    { label: "Kontakt", href: "/kontakt" },
   ],
   legal: [
     { label: "Impressum", href: "/impressum" },

@@ -6,16 +6,16 @@ import Region from "@/components/Region";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "KI-Beratung für Unternehmen | Strategie, Governance & Umsetzung",
+  title: "KI-Beratung für Unternehmen | KI Strategie, Governance & Umsetzung",
   description:
-    "Opny begleitet Unternehmen bei der kontrollierten Einführung von KI – von Strategie und Use-Case-Analyse bis Governance, Datenschutz, Pilotprojekten und skalierbarer Umsetzung.",
+    "Opny begleitet Unternehmen bei KI Strategie, KI Einführung, KI Governance und ChatGPT Beratung – von Use Cases bis skalierbarer Umsetzung.",
   alternates: {
     canonical: "https://www.opny.ai/loesungen/ki-beratung",
   },
   openGraph: {
-    title: "KI-Beratung für Unternehmen | Strategie, Governance & Umsetzung",
+    title: "KI-Beratung für Unternehmen | KI Strategie, Governance & Umsetzung",
     description:
-      "Opny begleitet Unternehmen bei der kontrollierten Einführung von KI – von Strategie und Use-Case-Analyse bis Governance, Datenschutz, Pilotprojekten und skalierbarer Umsetzung.",
+      "Opny begleitet Unternehmen bei KI Strategie, KI Einführung, KI Governance und ChatGPT Beratung – von Use Cases bis skalierbarer Umsetzung.",
     url: "https://www.opny.ai/loesungen/ki-beratung",
     siteName: "Opny",
     locale: "de_DE",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 };
 
 const problems = [
-  "keine KI-Strategie",
+  "Keine KI-Strategie",
   "Schatten-KI im Unternehmen",
   "Datenschutzrisiken",
-  "unklare Tools und Kosten",
-  "fehlende Akzeptanz im Team",
-  "keine skalierbare Umsetzung",
+  "Unklare Tools und Kosten",
+  "Fehlende Akzeptanz im Team",
+  "Keine skalierbare Umsetzung",
 ];
 
 const process = [
@@ -80,7 +80,7 @@ export default function KiBeratungPage() {
             KI-Beratung für Unternehmen, die nicht nur testen, sondern sauber umsetzen wollen.
           </h1>
           <p className="max-w-[68ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
-            Wir helfen Ihnen, KI strategisch, datenschutzorientiert und praxisnah in Ihr Unternehmen zu integrieren – mit klaren Use Cases, Governance, Trainings und optional NodeX als technische Kontrollschicht.
+            Wir helfen Ihnen, KI strategisch, datenschutzorientiert und praxistauglich in Ihr Unternehmen zu integrieren – mit klarer KI Strategie, KI Governance, ChatGPT Beratung, Trainings und optional NodeX als technischer Kontrollschicht.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
@@ -126,7 +126,7 @@ export default function KiBeratungPage() {
               Wir machen aus KI-Experimenten einen kontrollierten Umsetzungsplan.
             </h2>
             <p className="text-base leading-relaxed text-text-muted-light">
-              Opny verbindet Analyse, Use-Case-Priorisierung, Governance, Tool- und Modellstrategie, Pilotprojekt, Rollout und Training zu einem pragmatischen KI-Consulting-Ansatz.
+              Opny verbindet KI Beratung für Unternehmen, Use-Case-Priorisierung, KI Governance, Tool- und Modellstrategie, Pilotprojekt, Rollout und Training zu einem pragmatischen Beratungsansatz für die KI Einführung im Unternehmen.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">

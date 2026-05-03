@@ -44,7 +44,7 @@ export default function HeroChatMock({ className }: HeroChatMockProps) {
         <div className="flex items-center justify-between gap-3 rounded-2xl border border-black/10 bg-white/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-slate-900 dark:text-white">
-              Opny Workspace
+              NodeX Workspace
             </span>
             <span className="rounded-full border border-black/10 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-200">
               EU

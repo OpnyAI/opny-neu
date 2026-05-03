@@ -16,7 +16,7 @@ export default function HeroChatGatewayMock({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold text-text-primary-light">
-                Opny Workspace
+                NodeX Workspace
               </span>
               <span className="rounded-full border border-border-subtle-light/30 bg-elevated-light/70 px-2 py-0.5 text-xs font-semibold text-text-secondary-light">
                 EU

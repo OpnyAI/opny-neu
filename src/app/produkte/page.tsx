@@ -34,7 +34,7 @@ export default function ProduktePage() {
             Produkte für kontrollierte KI-Nutzung im Unternehmen.
           </h1>
           <p className="max-w-[62ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
-            Unsere Produkte helfen Unternehmen, KI produktiv zu nutzen, ohne Kontrolle über Daten, Kosten und Prozesse zu verlieren.
+            Unsere Produkte helfen Unternehmen, KI produktiv zu nutzen und Kontrolle über Daten, Kosten und Prozesse zu behalten.
           </p>
         </div>
       </Region>
@@ -50,7 +50,7 @@ export default function ProduktePage() {
                 Die zentrale Kontrollschicht für KI im Unternehmen.
               </h2>
               <p className="text-base leading-relaxed text-text-muted-light">
-                NodeX macht Schatten-KI sichtbar, schützt sensible Daten vor unkontrollierter Weitergabe und schafft Transparenz über Nutzung, Kosten und Regeln.
+                NodeX macht Schatten-KI sichtbar, schützt sensible Daten vor unkontrollierter Weitergabe und schafft Transparenz über Nutzung, Kosten und Richtlinien.
               </p>
             </div>
             <div className="space-y-5">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -30,8 +30,19 @@ export default function MobileNav({
   },
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [animateIn, setAnimateIn] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
+  const hasSecondaryInLinks = links.some((link) => link.href === secondaryCta.href);
+  const secondaryIsExternal =
+    secondaryCta.href.startsWith("mailto:") ||
+    secondaryCta.href.startsWith("tel:") ||
+    secondaryCta.href.startsWith("http");
+  const handleClose = useCallback(() => {
+    setOpenGroup(null);
+    onClose();
+  }, [onClose]);
 
   const renderNavLink = (link: MobileNavLink) => {
     const hasItems = "items" in link;
@@ -41,37 +52,67 @@ export default function MobileNav({
         pathname === link.href ||
         pathname.startsWith(`${link.href}/`) ||
         link.items.some((item) => pathname === item.href);
+      const groupIsOpen =
+        openGroup === link.href || (openGroup === null && isActive);
+      const panelId = `mobile-nav-${link.label.toLowerCase()}`;
 
       return (
-        <div className="rounded-[1.75rem] border border-black/5 bg-white px-4 py-3">
-          <div
-            className={`flex items-center justify-between gap-4 text-base font-medium ${
+        <div className="border-b border-border-subtle-light/15">
+          <button
+            type="button"
+            aria-expanded={groupIsOpen}
+            aria-controls={panelId}
+            onClick={() =>
+              setOpenGroup((current) =>
+                current === link.href ? null : link.href,
+              )
+            }
+            className={`flex min-h-12 w-full items-center justify-between gap-4 px-1 py-4 text-left text-[17px] font-medium transition ${
               isActive ? "text-text-primary-light" : "text-text-muted-light"
             }`}
           >
             <span>{link.label}</span>
-            <span className="text-xs text-text-secondary-light">Auswahl</span>
-          </div>
+            <span
+              aria-hidden="true"
+              className={`text-lg leading-none text-text-secondary-light transition-transform ${
+                groupIsOpen ? "rotate-45" : ""
+              }`}
+            >
+              +
+            </span>
+          </button>
 
-          <div className="mt-4 space-y-2 border-t border-border-subtle-light/15 pt-4">
-            {link.items.map((item) => {
-              const itemIsActive = pathname === item.href;
+          <div
+            id={panelId}
+            className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
+              groupIsOpen
+                ? "grid-rows-[1fr] opacity-100"
+                : "grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="pb-3 pl-4">
+                {link.items.map((item) => {
+                  const itemIsActive = pathname === item.href;
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={onClose}
-                  className={`block rounded-2xl px-3 py-3 text-sm transition ${
-                    itemIsActive
-                      ? "bg-black/[0.04] text-text-primary-light"
-                      : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={handleClose}
+                      className={`block min-h-11 rounded-2xl px-4 py-3 text-[15px] transition ${
+                        itemIsActive
+                          ? "bg-black/[0.04] text-text-primary-light"
+                          : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
+                      }`}
+                    >
+                      <span className="mr-2 text-text-secondary-light">→</span>
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -83,18 +124,18 @@ export default function MobileNav({
       link.href.startsWith("tel:");
 
     const baseClass =
-      "block rounded-2xl border border-black/5 bg-white px-4 py-4 text-base font-medium text-text-primary-light transition hover:bg-black/5";
+      "block min-h-12 border-b border-border-subtle-light/15 px-1 py-4 text-[17px] font-medium text-text-primary-light transition hover:text-text-secondary-light";
 
     if (isExternal) {
       return (
-        <a href={link.href} className={baseClass}>
+        <a href={link.href} onClick={handleClose} className={baseClass}>
           {link.label}
         </a>
       );
     }
 
     return (
-      <Link href={link.href} onClick={onClose} className={baseClass}>
+      <Link href={link.href} onClick={handleClose} className={baseClass}>
         {link.label}
       </Link>
     );
@@ -127,7 +168,7 @@ export default function MobileNav({
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose();
+        handleClose();
         return;
       }
 
@@ -152,16 +193,13 @@ export default function MobileNav({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open, onClose]);
+  }, [open, handleClose]);
 
   // 3) Initial focus + close on lg+
   useEffect(() => {
     if (!open) return;
 
-    const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-    );
-    focusables?.[0]?.focus();
+    closeButtonRef.current?.focus();
 
     const mq = window.matchMedia("(min-width: 1024px)");
     if (mq.matches) {
@@ -170,12 +208,12 @@ export default function MobileNav({
     }
 
     const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) onClose();
+      if (event.matches) handleClose();
     };
 
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
-  }, [open, onClose]);
+  }, [open, handleClose, onClose]);
 
   // 4) Drawer animation
   useEffect(() => {
@@ -196,18 +234,18 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-x-0 bottom-0 top-16 z-[999] overflow-hidden lg:hidden"
-      onClick={onClose}
+      className="fixed inset-x-0 bottom-0 top-14 z-[999] overflow-hidden lg:hidden"
+      onClick={handleClose}
     >
-      <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-xl" />
 
       <div
-        className={`absolute right-0 top-0 h-full w-full max-w-[min(420px,100vw)] transform bg-white shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] transition-transform duration-300 ease-out ${
-          animateIn ? "translate-x-0" : "translate-x-full"
+        className={`absolute left-0 right-0 top-0 max-h-full w-full transform bg-white shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] transition-all duration-300 ease-out ${
+          animateIn ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex h-full flex-col px-5 pb-6 pt-[max(16px,env(safe-area-inset-top))]">
+        <div className="flex max-h-[calc(100dvh-3.5rem)] flex-col overflow-y-auto px-5 pb-6 pt-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image
@@ -218,21 +256,20 @@ export default function MobileNav({
                 priority
                 className="h-6 w-auto"
               />
-              <span className="text-sm font-semibold uppercase tracking-[0.22em] text-text-secondary-light">
-                MENÜ
-              </span>
             </div>
             <button
-              onClick={onClose}
-              aria-label="Close menu"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle-light/25 bg-white text-xl text-text-secondary-light transition hover:text-text-primary-light"
+              ref={closeButtonRef}
+              type="button"
+              onClick={handleClose}
+              aria-label="Menü schließen"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle-light/20 bg-white text-2xl leading-none text-text-secondary-light transition hover:text-text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-subtle-light/35"
             >
               ×
             </button>
           </div>
 
-          <nav className="mt-6 flex-1 overflow-y-auto">
-            <ul className="space-y-2">
+          <nav className="mt-5 flex-1" aria-label="Mobile Navigation">
+            <ul>
               {links.map((l) => (
                 <li key={l.href}>{renderNavLink(l)}</li>
               ))}
@@ -245,6 +282,7 @@ export default function MobileNav({
             cta.href.startsWith("http") ? (
               <a
                 href={cta.href}
+                onClick={handleClose}
                 className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
               >
                 {cta.label}
@@ -252,31 +290,32 @@ export default function MobileNav({
             ) : (
               <Link
                 href={cta.href}
-                onClick={onClose}
+                onClick={handleClose}
                 className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
               >
                 {cta.label}
               </Link>
             )}
 
-            {secondaryCta.href.startsWith("mailto:") ||
-            secondaryCta.href.startsWith("tel:") ||
-            secondaryCta.href.startsWith("http") ? (
-              <a
-                href={secondaryCta.href}
-                className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
-              >
-                {secondaryCta.label}
-              </a>
-            ) : (
-              <Link
-                href={secondaryCta.href}
-                onClick={onClose}
-                className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
-              >
-                {secondaryCta.label}
-              </Link>
-            )}
+            {!hasSecondaryInLinks ? (
+              secondaryIsExternal ? (
+                <a
+                  href={secondaryCta.href}
+                  onClick={handleClose}
+                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                >
+                  {secondaryCta.label}
+                </a>
+              ) : (
+                <Link
+                  href={secondaryCta.href}
+                  onClick={handleClose}
+                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                >
+                  {secondaryCta.label}
+                </Link>
+              )
+            ) : null}
           </div>
 
           <div className="h-[max(12px,env(safe-area-inset-bottom))]" />

@@ -208,7 +208,7 @@ export default function NodeXPage() {
                 NodeX AI Gateway
               </div>
               <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
-                Ihre Mitarbeiter nutzen bereits KI. NodeX sorgt dafür, dass sensible Daten nicht unkontrolliert nach außen gelangen.
+                Schluss mit Schatten-KI. NodeX bringt Ihre KI unter Kontrolle.
               </h1>
               <p className="max-w-[58ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
                 NodeX ist die zentrale Kontrollschicht zwischen Ihren Teams und KI-Tools wie ChatGPT oder Gemini. So nutzen Sie KI produktiv – während Daten, Nutzung und Kosten unter Kontrolle bleiben.

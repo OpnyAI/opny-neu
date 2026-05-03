@@ -167,7 +167,7 @@ export default function Header() {
               className="pointer-events-auto pr-1"
             />
             <a
-              href={companyCtas.contact}
+              href="/kontakt"
               className="text-sm text-text-muted-light hover:text-text-primary-light"
             >
               Kontakt
@@ -213,7 +213,7 @@ export default function Header() {
           label: "Erstgespräch anfragen",
           href: companyCtas.generalInquiry,
         }}
-        secondaryCta={{ label: "Kontakt", href: companyCtas.contact }}
+        secondaryCta={{ label: "Kontakt", href: "/kontakt" }}
       />
     </>
   );

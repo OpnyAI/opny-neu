@@ -28,21 +28,21 @@ export const metadata: Metadata = {
 const solutions = [
   {
     title: "KI-Beratung",
-    text: "Strategie, Use Cases, Governance und Pilotpfad für Unternehmen, die KI kontrolliert einführen wollen.",
+    text: "Strategie, Use Cases, Governance und Pilotpfad für Unternehmen, die KI kontrolliert einführen möchten.",
     benefit: "Von Einzelinitiativen zu einem entscheidbaren Umsetzungsplan.",
     href: "/loesungen/ki-beratung",
     cta: "KI-Beratung ansehen",
   },
   {
     title: "KI-Trainings",
-    text: "Praxisnahe Schulungen für ChatGPT, Claude, Copilot, Prompt Engineering und GenAI-Workflows.",
+    text: "Praxisnahe Trainings für ChatGPT, Claude, Copilot, Prompt Engineering und GenAI-Workflows.",
     benefit: "Teams lernen, KI sicher und produktiv im Arbeitsalltag zu nutzen.",
     href: "/loesungen/ki-trainings",
     cta: "KI-Trainings ansehen",
   },
   {
     title: "NodeX",
-    text: "Die zentrale Kontrollschicht für KI-Nutzung, Datenflüsse, Rollen, Audit Logs und Kostenkontrolle.",
+    text: "Die zentrale Kontrollschicht für KI-Nutzung, Datenflüsse, Rollen, Audit Logs und Kosten.",
     benefit: "Produktive KI nutzen, ohne Kontrolle über Daten und Nutzung zu verlieren.",
     href: "/produkte/nodex",
     cta: "NodeX ansehen",
@@ -61,7 +61,7 @@ export default function LoesungenPage() {
             KI im Unternehmen einführen – kontrolliert, sicher und mit messbarem Nutzen.
           </h1>
           <p className="max-w-[62ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
-            Opny unterstützt Unternehmen dabei, KI nicht nur zu testen, sondern produktiv, datenschutzorientiert und steuerbar im Arbeitsalltag zu nutzen.
+            Opny unterstützt Unternehmen dabei, KI nicht nur zu testen, sondern produktiv, datenschutzorientiert und steuerbar im Alltag zu nutzen.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href="/loesungen/ki-beratung" variant="primary" theme="light">
