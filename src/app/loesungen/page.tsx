@@ -65,7 +65,7 @@ export default function LoesungenPage() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href="/loesungen/ki-beratung" variant="primary" theme="light">
-              KI-Beratung anfragen
+              KI-Beratung ansehen
             </Button>
             <Button href="/loesungen/ki-trainings" variant="secondary" theme="light">
               KI-Trainings ansehen

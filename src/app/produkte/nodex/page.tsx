@@ -231,7 +231,7 @@ export default function NodeXPage() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <NodeXCtaButton interest="NodeX Demo" eventName="nodex_demo_request">
-                Demo anfragen
+                NodeX Demo anfragen
               </NodeXCtaButton>
               <NodeXCtaButton
                 interest="KI-Governance-Check"
@@ -469,7 +469,7 @@ export default function NodeXPage() {
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <NodeXCtaButton interest="NodeX Demo" eventName="nodex_demo_request">
-              Demo anfragen
+              NodeX Demo anfragen
             </NodeXCtaButton>
             <NodeXCtaButton
               interest="KI-Governance-Check"
@@ -489,7 +489,7 @@ export default function NodeXPage() {
             eventName="nodex_demo_request"
             className="flex-1 px-3"
           >
-            Demo anfragen
+            NodeX Demo
           </NodeXCtaButton>
           <NodeXCtaButton
             interest="KI-Governance-Check"

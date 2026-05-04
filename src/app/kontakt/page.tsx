@@ -56,10 +56,10 @@ export default function KontaktPage() {
               Erstgespräch anfragen
             </a>
             <a
-              href={companyCtas.contact}
+              href="#direktkontakt"
               className="inline-flex items-center justify-center rounded-button border border-border-subtle-light/20 px-5 py-2.5 text-sm font-semibold text-text-primary-light transition hover:border-border-subtle-light/35"
             >
-              E-Mail schreiben
+              Kontaktoptionen ansehen
             </a>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function KontaktPage() {
         </div>
       </Region>
 
-      <Region variant="light" tone="base">
+      <Region id="direktkontakt" variant="light" tone="base">
         <div className="grid gap-6 md:grid-cols-3">
           <Card theme="light" className="p-5">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
@@ -100,7 +100,7 @@ export default function KontaktPage() {
               Standort
             </div>
             <div className="mt-3 text-lg font-semibold text-text-primary-light">
-              Stuttgart
+              Vaihingen an der Enz / Stuttgart Region
             </div>
           </Card>
         </div>

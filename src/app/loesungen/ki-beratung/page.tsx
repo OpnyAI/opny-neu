@@ -87,7 +87,7 @@ export default function KiBeratungPage() {
               href={companyCtas.consultingInquiry}
               className="inline-flex items-center justify-center rounded-button bg-text-primary-light px-5 py-2.5 text-sm font-semibold text-text-primary-dark shadow-card-light transition hover:opacity-90"
             >
-              Erstgespräch anfragen
+              Beratungsgespräch anfragen
             </a>
             <a
               href="#vorgehen"
@@ -205,7 +205,7 @@ export default function KiBeratungPage() {
             href={companyCtas.consultingInquiry}
             className="inline-flex items-center justify-center rounded-button bg-text-primary-light px-5 py-2.5 text-sm font-semibold text-text-primary-dark shadow-card-light transition hover:opacity-90"
           >
-            Erstgespräch anfragen
+            Beratungsgespräch anfragen
           </a>
         </div>
       </Region>

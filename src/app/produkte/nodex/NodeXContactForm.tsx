@@ -5,10 +5,12 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 const interests = [
+  "KI-Beratung",
+  "KI-Training",
   "NodeX Demo",
+  "Allgemeine Anfrage",
   "KI-Governance-Check",
   "Pilotprojekt besprechen",
-  "Allgemeine Anfrage",
 ] as const;
 
 const companySizes = [

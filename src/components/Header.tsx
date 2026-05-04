@@ -183,9 +183,9 @@ export default function Header() {
           <div className="flex items-center gap-2 md:hidden">
             <a
               href={companyCtas.generalInquiry}
-              className="rounded-full bg-[#0b1220] px-3.5 py-2.5 text-sm font-semibold text-white"
+              className="rounded-full bg-[#0b1220] px-3 py-2.5 text-xs font-semibold text-white"
             >
-              Erstgespräch
+              Erstgespräch anfragen
             </a>
             <button
               onClick={() => {

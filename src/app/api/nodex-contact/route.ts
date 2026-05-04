@@ -3,10 +3,12 @@ import { NextResponse, type NextRequest } from "next/server";
 export const runtime = "nodejs";
 
 const interests = new Set([
+  "KI-Beratung",
+  "KI-Training",
   "NodeX Demo",
+  "Allgemeine Anfrage",
   "KI-Governance-Check",
   "Pilotprojekt besprechen",
-  "Allgemeine Anfrage",
 ]);
 
 const companySizes = new Set([

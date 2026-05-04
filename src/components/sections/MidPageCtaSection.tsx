@@ -31,7 +31,7 @@ export default function MidPageCtaSection({ className }: MidPageCtaSectionProps)
                   href={companyCtas.nodexDemo}
                   className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent bg-white text-[#0B0F1A] border border-black/10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] hover:bg-white/90"
                 >
-                  Demo anfragen
+                  NodeX ansehen
                 </a>
                 <Button
                   href="/loesungen"

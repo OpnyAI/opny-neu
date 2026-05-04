@@ -26,7 +26,7 @@ export default function MobileNav({
   },
   secondaryCta = {
     label: "Kontakt",
-    href: companyCtas.contact,
+    href: "/kontakt",
   },
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);

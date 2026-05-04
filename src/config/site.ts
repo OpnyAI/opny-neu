@@ -19,9 +19,9 @@ export const companyPhone = "+49 1511 1956479";
 export const companyPhoneHref = "tel:+4915111956479";
 
 export const companyCtas = {
-  generalInquiry: `mailto:${companyEmail}?subject=Erstgespr%C3%A4ch%20Opny`,
-  nodexDemo: `mailto:${companyEmail}?subject=Demo%20Anfrage%20NodeX`,
-  consultingInquiry: `mailto:${companyEmail}?subject=Beratungsgespr%C3%A4ch%20KI-Beratung`,
+  generalInquiry: "/kontakt",
+  nodexDemo: "/produkte/nodex",
+  consultingInquiry: "/kontakt",
   contact: `mailto:${companyEmail}`,
 } as const;
 
