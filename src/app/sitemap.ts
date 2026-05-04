@@ -39,37 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/produkte/nodex`,
       lastModified,
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 1,
     },
     {
       url: `${baseUrl}/kontakt`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ai-gateway`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ki-governance`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/impressum`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/datenschutz`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
     },
   ];
 }

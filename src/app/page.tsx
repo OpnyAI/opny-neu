@@ -7,18 +7,16 @@ import { companyCtas } from "@/config/site";
 import HomeSocialProof from "./HomeSocialProof";
 
 export const metadata: Metadata = {
-  title:
-    "KI Beratung für Unternehmen | Einführung, Governance & AI Plattform | Opny",
+  title: "KI Beratung & KI Trainings für Unternehmen | Opny",
   description:
-    "Opny unterstützt Unternehmen bei der strukturierten Einführung von KI – mit KI-Beratung, KI-Trainings, ChatGPT Training und NodeX für sichere AI Governance.",
+    "Opny unterstützt Unternehmen bei KI Beratung, strukturierter KI Einführung und praxisnahen KI Trainings für ChatGPT, Claude, Gemini und Microsoft Copilot.",
   alternates: {
     canonical: "https://www.opny.ai/",
   },
   openGraph: {
-    title:
-      "KI Beratung für Unternehmen | Einführung, Governance & AI Plattform | Opny",
+    title: "KI Beratung & KI Trainings für Unternehmen | Opny",
     description:
-      "Opny unterstützt Unternehmen bei der strukturierten Einführung von KI – mit KI-Beratung, KI-Trainings, ChatGPT Training und NodeX für sichere AI Governance.",
+      "Opny unterstützt Unternehmen bei KI Beratung, strukturierter KI Einführung und praxisnahen KI Trainings für ChatGPT, Claude, Gemini und Microsoft Copilot.",
     url: "https://www.opny.ai/",
     siteName: "Opny",
     locale: "de_DE",

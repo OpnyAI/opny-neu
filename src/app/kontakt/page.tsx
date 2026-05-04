@@ -10,16 +10,16 @@ import {
 } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Kontakt | Opny – KI Beratung & KI Trainings für Unternehmen",
+  title: "Kontakt | Opny – KI Beratung & KI Trainings",
   description:
-    "Jetzt Kontakt aufnehmen: KI Beratung, KI Trainings, ChatGPT Schulung und GenAI Lösungen für Unternehmen.",
+    "Kontaktieren Sie Opny für KI Beratung, KI Trainings und KI Einführung im Unternehmen. Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.",
   alternates: {
     canonical: "https://www.opny.ai/kontakt",
   },
   openGraph: {
-    title: "Kontakt | Opny – KI Beratung & KI Trainings für Unternehmen",
+    title: "Kontakt | Opny – KI Beratung & KI Trainings",
     description:
-      "Jetzt Kontakt aufnehmen: KI Beratung, KI Trainings, ChatGPT Schulung und GenAI Lösungen für Unternehmen.",
+      "Kontaktieren Sie Opny für KI Beratung, KI Trainings und KI Einführung im Unternehmen. Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.",
     url: "https://www.opny.ai/kontakt",
     siteName: "Opny",
     locale: "de_DE",

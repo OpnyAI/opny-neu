@@ -5,16 +5,16 @@ import CustomerReferencesStrip from "@/components/CustomerReferencesStrip";
 import Region from "@/components/Region";
 
 export const metadata: Metadata = {
-  title: "KI-Produkte für Unternehmen | Opny NodeX",
+  title: "KI Plattform für Unternehmen | NodeX AI Gateway | Opny",
   description:
-    "Entdecken Sie NodeX von Opny: eine Plattform für kontrollierte KI-Nutzung, Governance, Datenkontrolle, Modellsteuerung und Transparenz im Unternehmen.",
+    "Mit NodeX steuern Unternehmen ihre KI Nutzung zentral: Governance, Datenschutz und Kontrolle für ChatGPT, Claude und weitere Modelle.",
   alternates: {
     canonical: "https://www.opny.ai/produkte",
   },
   openGraph: {
-    title: "KI-Produkte für Unternehmen | Opny NodeX",
+    title: "KI Plattform für Unternehmen | NodeX AI Gateway | Opny",
     description:
-      "Entdecken Sie NodeX von Opny: eine Plattform für kontrollierte KI-Nutzung, Governance, Datenkontrolle, Modellsteuerung und Transparenz im Unternehmen.",
+      "Mit NodeX steuern Unternehmen ihre KI Nutzung zentral: Governance, Datenschutz und Kontrolle für ChatGPT, Claude und weitere Modelle.",
     url: "https://www.opny.ai/produkte",
     siteName: "Opny",
     locale: "de_DE",

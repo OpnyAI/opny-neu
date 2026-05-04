@@ -8,16 +8,16 @@ import NodeXContactForm from "./NodeXContactForm";
 import { NodeXTestimonials, NodeXTrustStrip } from "./NodeXTestimonials";
 
 export const metadata: Metadata = {
-  title: "AI Gateway für Unternehmen | KI sicher nutzen mit NodeX",
+  title: "NodeX AI Gateway | KI sicher im Unternehmen nutzen | Opny",
   description:
-    "NodeX hilft Unternehmen, KI sicher einzusetzen: als AI Gateway mit KI Governance, Audit Logs, Kostenkontrolle und Schutz vor Schatten-KI. Demo anfragen.",
+    "NodeX bringt Kontrolle in Ihre KI Nutzung: zentrale Steuerung, Datenschutz und Governance für produktive KI im Unternehmen.",
   alternates: {
     canonical: "https://www.opny.ai/produkte/nodex",
   },
   openGraph: {
-    title: "AI Gateway für Unternehmen | KI sicher nutzen mit NodeX",
+    title: "NodeX AI Gateway | KI sicher im Unternehmen nutzen | Opny",
     description:
-      "NodeX hilft Unternehmen, KI sicher einzusetzen: als AI Gateway mit KI Governance, Audit Logs, Kostenkontrolle und Schutz vor Schatten-KI. Demo anfragen.",
+      "NodeX bringt Kontrolle in Ihre KI Nutzung: zentrale Steuerung, Datenschutz und Governance für produktive KI im Unternehmen.",
     url: "https://www.opny.ai/produkte/nodex",
     siteName: "Opny",
     locale: "de_DE",

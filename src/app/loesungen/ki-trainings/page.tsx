@@ -7,17 +7,17 @@ import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
   title:
-    "KI-Trainings für Unternehmen | ChatGPT, Copilot & GenAI Schulung",
+    "KI Trainings für Unternehmen | ChatGPT, Claude & Copilot | Opny",
   description:
-    "KI-Trainings für Unternehmen: ChatGPT Training, Claude Training, Gemini Training, Copilot Training und Prompt Engineering für sichere GenAI-Workflows.",
+    "Praxisnahe KI Trainings für Unternehmen: ChatGPT Training, Claude, Gemini und Microsoft Copilot Trainings sowie Prompt Engineering für Teams.",
   alternates: {
     canonical: "https://www.opny.ai/loesungen/ki-trainings",
   },
   openGraph: {
     title:
-      "KI-Trainings für Unternehmen | ChatGPT, Copilot & GenAI Schulung",
+      "KI Trainings für Unternehmen | ChatGPT, Claude & Copilot | Opny",
     description:
-      "KI-Trainings für Unternehmen: ChatGPT Training, Claude Training, Gemini Training, Copilot Training und Prompt Engineering für sichere GenAI-Workflows.",
+      "Praxisnahe KI Trainings für Unternehmen: ChatGPT Training, Claude, Gemini und Microsoft Copilot Trainings sowie Prompt Engineering für Teams.",
     url: "https://www.opny.ai/loesungen/ki-trainings",
     siteName: "Opny",
     locale: "de_DE",

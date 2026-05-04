@@ -6,18 +6,16 @@ import Region from "@/components/Region";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title:
-    "KI-Lösungen für Unternehmen | Beratung, Trainings & sichere KI-Nutzung",
+  title: "KI Lösungen für Unternehmen | Beratung & Trainings | Opny",
   description:
-    "Opny unterstützt Unternehmen bei der kontrollierten Einführung von KI – mit KI-Beratung, praxisnahen KI-Trainings und NodeX für sichere, steuerbare KI-Nutzung.",
+    "Ganzheitliche KI Lösungen für Unternehmen: KI Beratung, KI Trainings und strukturierte Einführung – von Strategie bis operativer Umsetzung.",
   alternates: {
     canonical: "https://www.opny.ai/loesungen",
   },
   openGraph: {
-    title:
-      "KI-Lösungen für Unternehmen | Beratung, Trainings & sichere KI-Nutzung",
+    title: "KI Lösungen für Unternehmen | Beratung & Trainings | Opny",
     description:
-      "Opny unterstützt Unternehmen bei der kontrollierten Einführung von KI – mit KI-Beratung, praxisnahen KI-Trainings und NodeX für sichere, steuerbare KI-Nutzung.",
+      "Ganzheitliche KI Lösungen für Unternehmen: KI Beratung, KI Trainings und strukturierte Einführung – von Strategie bis operativer Umsetzung.",
     url: "https://www.opny.ai/loesungen",
     siteName: "Opny",
     locale: "de_DE",

@@ -6,16 +6,16 @@ import Region from "@/components/Region";
 import { companyCtas } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "KI-Beratung für Unternehmen | KI Strategie, Governance & Umsetzung",
+  title: "KI Beratung für Unternehmen | Strategie & Einführung | Opny",
   description:
-    "Opny begleitet Unternehmen bei KI Strategie, KI Einführung, KI Governance und ChatGPT Beratung – von Use Cases bis skalierbarer Umsetzung.",
+    "KI Beratung für Unternehmen: Entwicklung von KI Strategien, strukturierte KI Einführung, Governance sowie Beratung zu ChatGPT, Claude und Gemini.",
   alternates: {
     canonical: "https://www.opny.ai/loesungen/ki-beratung",
   },
   openGraph: {
-    title: "KI-Beratung für Unternehmen | KI Strategie, Governance & Umsetzung",
+    title: "KI Beratung für Unternehmen | Strategie & Einführung | Opny",
     description:
-      "Opny begleitet Unternehmen bei KI Strategie, KI Einführung, KI Governance und ChatGPT Beratung – von Use Cases bis skalierbarer Umsetzung.",
+      "KI Beratung für Unternehmen: Entwicklung von KI Strategien, strukturierte KI Einführung, Governance sowie Beratung zu ChatGPT, Claude und Gemini.",
     url: "https://www.opny.ai/loesungen/ki-beratung",
     siteName: "Opny",
     locale: "de_DE",
