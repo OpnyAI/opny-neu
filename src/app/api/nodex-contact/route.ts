@@ -118,7 +118,23 @@ async function sendResendEmail({
   });
 
   if (!response.ok) {
-    throw new Error("Resend email request failed.");
+    const responseText = await response.text();
+    let responseBody: unknown = responseText;
+
+    try {
+      responseBody = JSON.parse(responseText);
+    } catch {
+      // Keep the raw response text when Resend does not return JSON.
+    }
+
+    throw {
+      message: "Resend email request failed.",
+      status: response.status,
+      statusText: response.statusText,
+      body: responseBody,
+      to,
+      subject,
+    };
   }
 }
 
@@ -166,8 +182,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false }, { status: 400 });
     }
 
-    const to = process.env.CONTACT_TO_EMAIL || "kontakt@opny.ai";
-    const from = process.env.CONTACT_FROM_EMAIL || "Opny <kontakt@opny.ai>";
+    const to = process.env.CONTACT_TO_EMAIL;
+    const from = process.env.CONTACT_FROM_EMAIL;
+
+    if (!to || !from) {
+      console.error(
+        "NodeX contact email failed: CONTACT_TO_EMAIL or CONTACT_FROM_EMAIL is not configured.",
+      );
+      return NextResponse.json({ ok: false }, { status: 500 });
+    }
 
     const rows = [
       ["Name", name],
@@ -196,26 +219,42 @@ export async function POST(request: NextRequest) {
     `;
 
     const confirmationHtml = `
-      <p>Guten Tag ${escapeHtml(name)},</p>
-      <p>danke für Ihre Anfrage zu NodeX. Wir haben Ihre Angaben erhalten und melden uns zeitnah mit einem konkreten Vorschlag für den nächsten Schritt.</p>
-      <p>Freundliche Grüße<br />Opny</p>
+      <p>Hallo ${escapeHtml(name)},</p>
+      <p>vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns in der Regel innerhalb von 24 Stunden bei Ihnen zurück.</p>
+      <p>Je nach Anliegen prüfen wir vorab, ob es um KI-Beratung, KI-Training oder NodeX geht, damit wir das Gespräch direkt sinnvoll vorbereiten können.</p>
+      <p>Viele Grüße<br />Opny</p>
     `;
 
-    await Promise.all([
-      sendResendEmail({
-        to,
-        from,
-        subject: `NodeX Anfrage: ${interest} - ${company}`,
-        html: internalHtml,
-        replyTo: email,
-      }),
-      sendResendEmail({
-        to: email,
-        from,
-        subject: "Ihre NodeX Anfrage bei Opny",
-        html: confirmationHtml,
-      }),
-    ]);
+    try {
+      await Promise.all([
+        sendResendEmail({
+          to,
+          from,
+          subject: `NodeX Anfrage: ${interest} - ${company}`,
+          html: internalHtml,
+          replyTo: email,
+        }),
+        sendResendEmail({
+          to: email,
+          from,
+          subject: "Ihre Anfrage bei Opny ist eingegangen",
+          html: confirmationHtml,
+        }),
+      ]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.error("RESEND FULL ERROR:", error)
+      console.error("RESEND JSON:", JSON.stringify(error, null, 2))
+
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: error?.message,
+          full: error
+        }),
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
