@@ -17,11 +17,11 @@ function cn(...classes: Array<string | undefined | false>) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Card({ theme = "dark", className, children }: CardProps) {
+export default function Card({ theme = "light", className, children }: CardProps) {
   return (
     <div
       className={cn(
-        "card-shell rounded-card p-6",
+        "card-shell rounded-card p-7",
         themeClasses[theme],
         className
       )}

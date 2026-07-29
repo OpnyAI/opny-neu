@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Impressum | opny.ai",
+export const metadata = createMetadata({
+  title: "Impressum",
   description: "Impressum der Opny AI mit Kontakt- und Pflichtangaben.",
-};
+  path: "/impressum",
+});
 
 export default function ImpressumPage() {
   return (
@@ -104,21 +105,8 @@ export default function ImpressumPage() {
 
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Online-Streitbeilegung
+            Verbraucherstreitbeilegung
           </h2>
-          <p>
-            Die Europäische Kommission stellt eine Plattform zur
-            Online-Streitbeilegung (OS) bereit:{" "}
-            <a
-              className="hover:text-text-primary-light"
-              href="https://europa.eu/consumers/odr/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              europa.eu/consumers/odr/
-            </a>
-            .
-          </p>
           <p>
             Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
             vor einer Verbraucherschlichtungsstelle teilzunehmen.

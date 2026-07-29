@@ -6,10 +6,9 @@ export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
   return (
     <svg
       role="img"
-      aria-label="Governance Control Layer Diagramm"
+      aria-label="Konzeptmodell der NodeX-Kontrollschicht zwischen freigegebenen KI-Diensten, Teams und internen Systemen"
       viewBox="0 0 720 520"
       width="100%"
-      height="auto"
       className={className}
     >
       <rect
@@ -30,13 +29,13 @@ export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
         fill="rgb(var(--text-secondary-light))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        All LLMs
+        FREIGEGEBENE KI-DIENSTE
       </text>
 
       {[
-        { label: "OpenAI", x: 60 },
-        { label: "Gemini", x: 270 },
-        { label: "Llama", x: 480 },
+        { label: "Sprachmodelle", x: 60 },
+        { label: "Fachmodelle", x: 270 },
+        { label: "Interne Modelle", x: 480 },
       ].map((item) => (
         <g key={item.label}>
           <rect
@@ -115,12 +114,12 @@ export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
         fill="rgb(var(--opny-text))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        Opny Control Layer
+        NodeX Kontrollschicht
       </text>
       {[
-        { label: "Policies", x: 150 },
+        { label: "Richtlinien", x: 150 },
         { label: "Routing", x: 300 },
-        { label: "Observability", x: 450 },
+        { label: "Protokollierung", x: 450 },
       ].map((item) => (
         <g key={item.label}>
           <rect
@@ -185,14 +184,14 @@ export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
         fill="rgb(var(--text-secondary-light))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        Teams / Apps
+        TEAMS UND ANWENDUNGEN
       </text>
 
       {[
-        { label: "Product", x: 60 },
-        { label: "Ops", x: 210 },
+        { label: "Engineering", x: 60 },
+        { label: "Qualität", x: 210 },
         { label: "Compliance", x: 360 },
-        { label: "Finance", x: 510 },
+        { label: "Verwaltung", x: 510 },
       ].map((item) => (
         <g key={item.label}>
           <rect
@@ -234,7 +233,7 @@ export function GovernanceControlLayerDiagram({ className }: DiagramProps) {
         fill="rgb(var(--opny-text))"
         fontFamily="Arial, Helvetica, sans-serif"
       >
-        Data &amp; Analytics
+        Daten, Anwendungen und interne Systeme
       </text>
     </svg>
   );

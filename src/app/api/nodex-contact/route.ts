@@ -1,14 +1,19 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { createHash } from "node:crypto";
+import {
+  readContactEmailConfig,
+  sendResendEmail,
+} from "@/lib/contact-email";
 
 export const runtime = "nodejs";
 
 const interests = new Set([
-  "KI-Beratung",
-  "KI-Training",
-  "NodeX Demo",
-  "Allgemeine Anfrage",
+  "TrustArch Demo",
+  "NodeX Einsatz",
+  "KI-Beratung Automotive",
+  "KI-Schulung Automotive",
   "KI-Governance-Check",
-  "Pilotprojekt besprechen",
+  "Allgemeine Anfrage",
 ]);
 
 const companySizes = new Set([
@@ -82,62 +87,6 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-async function sendResendEmail({
-  to,
-  from,
-  subject,
-  html,
-  replyTo,
-}: {
-  to: string;
-  from: string;
-  subject: string;
-  html: string;
-  replyTo?: string;
-}) {
-  const apiKey = process.env.RESEND_API_KEY;
-
-  if (!apiKey) {
-    console.warn("NodeX contact email skipped: RESEND_API_KEY is not configured.");
-    return;
-  }
-
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      subject,
-      html,
-      reply_to: replyTo,
-    }),
-  });
-
-  if (!response.ok) {
-    const responseText = await response.text();
-    let responseBody: unknown = responseText;
-
-    try {
-      responseBody = JSON.parse(responseText);
-    } catch {
-      // Keep the raw response text when Resend does not return JSON.
-    }
-
-    throw {
-      message: "Resend email request failed.",
-      status: response.status,
-      statusText: response.statusText,
-      body: responseBody,
-      to,
-      subject,
-    };
-  }
-}
-
 export async function POST(request: NextRequest) {
   try {
     const ip = getClientIp(request);
@@ -182,15 +131,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false }, { status: 400 });
     }
 
-    const to = process.env.CONTACT_TO_EMAIL;
-    const from = process.env.CONTACT_FROM_EMAIL;
+    const emailConfig = readContactEmailConfig(process.env);
 
-    if (!to || !from) {
-      console.error(
-        "NodeX contact email failed: CONTACT_TO_EMAIL or CONTACT_FROM_EMAIL is not configured.",
-      );
-      return NextResponse.json({ ok: false }, { status: 500 });
+    if (!emailConfig) {
+      console.error("Opny contact delivery is not configured.");
+      return NextResponse.json({ ok: false }, { status: 503 });
     }
+    const { apiKey, to, from } = emailConfig;
+
+    const submissionKey = createHash("sha256")
+      .update(`${email}|${interest}|${renderedAt}`)
+      .digest("hex");
 
     const rows = [
       ["Name", name],
@@ -200,12 +151,12 @@ export async function POST(request: NextRequest) {
       ["Unternehmensgröße", companySize],
       ["Interesse", interest],
       ["Nachricht", message || "-"],
-      ["Quelle", "NodeX Landingpage"],
+      ["Quelle", "Opny Website"],
       ["Zeitstempel", submittedAt],
     ];
 
     const internalHtml = `
-      <h1>Neue NodeX Anfrage</h1>
+      <h1>Neue Anfrage über die Opny Website</h1>
       <table cellpadding="8" cellspacing="0" style="border-collapse:collapse">
         ${rows
           .map(
@@ -220,45 +171,48 @@ export async function POST(request: NextRequest) {
 
     const confirmationHtml = `
       <p>Hallo ${escapeHtml(name)},</p>
-      <p>vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns in der Regel innerhalb von 24 Stunden bei Ihnen zurück.</p>
-      <p>Je nach Anliegen prüfen wir vorab, ob es um KI-Beratung, KI-Training oder NodeX geht, damit wir das Gespräch direkt sinnvoll vorbereiten können.</p>
+      <p>vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns bei Ihnen zurück.</p>
+      <p>Je nach Anliegen prüfen wir vorab, ob es um TrustArch, NodeX, KI-Beratung, KI-Schulung oder KI-Governance geht, damit wir das Gespräch sinnvoll vorbereiten können.</p>
       <p>Viele Grüße<br />Opny</p>
     `;
 
     try {
-      await Promise.all([
-        sendResendEmail({
-          to,
-          from,
-          subject: `NodeX Anfrage: ${interest} - ${company}`,
-          html: internalHtml,
-          replyTo: email,
-        }),
-        sendResendEmail({
-          to: email,
-          from,
-          subject: "Ihre Anfrage bei Opny ist eingegangen",
-          html: confirmationHtml,
-        }),
-      ]);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.error("RESEND FULL ERROR:", error)
-      console.error("RESEND JSON:", JSON.stringify(error, null, 2))
+      await sendResendEmail({
+        apiKey,
+        to,
+        from,
+        subject: `Opny Anfrage: ${interest} - ${company}`,
+        html: internalHtml,
+        replyTo: email,
+        idempotencyKey: `opny-internal-${submissionKey}`,
+      });
+    } catch (error) {
+      console.error(
+        "Opny contact delivery failed.",
+        error instanceof Error ? error.message : "unknown_provider_error",
+      );
+      return NextResponse.json({ ok: false }, { status: 502 });
+    }
 
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: error?.message,
-          full: error
-        }),
-        { status: 500 }
-      )
+    try {
+      await sendResendEmail({
+        apiKey,
+        to: email,
+        from,
+        subject: "Ihre Anfrage bei Opny ist eingegangen",
+        html: confirmationHtml,
+        idempotencyKey: `opny-confirmation-${submissionKey}`,
+      });
+    } catch (error) {
+      console.warn(
+        "Opny contact confirmation could not be sent.",
+        error instanceof Error ? error.message : "unknown_provider_error",
+      );
     }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("NodeX contact request failed.", error);
+    console.error("Opny contact request failed.", error);
     return NextResponse.json({ ok: false }, { status: 500 });
   }
 }

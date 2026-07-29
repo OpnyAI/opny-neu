@@ -1,4 +1,11 @@
+"use client";
+
 import Script from "next/script";
+import { useCallback, useEffect, useState } from "react";
+import {
+  CONSENT_CHANGE_EVENT,
+  readConsent,
+} from "@/lib/consent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -16,7 +23,12 @@ declare global {
 }
 
 function canTrack(): boolean {
-  return typeof window !== "undefined" && Boolean(GA_ID) && typeof window.gtag === "function";
+  return (
+    typeof window !== "undefined" &&
+    Boolean(GA_ID) &&
+    readConsent() === "accepted" &&
+    typeof window.gtag === "function"
+  );
 }
 
 export function gaEvent(action: string, params?: Record<string, unknown>): void {
@@ -34,35 +46,49 @@ export function gaPageView(url: string): void {
 }
 
 export default function GoogleAnalytics() {
-  if (!GA_ID) return null;
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (!GA_ID) return;
+
+    const syncConsent = () => {
+      setEnabled(readConsent() === "accepted");
+    };
+
+    syncConsent();
+    window.addEventListener(CONSENT_CHANGE_EVENT, syncConsent);
+    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, syncConsent);
+  }, []);
+
+  const initializeAnalytics = useCallback(() => {
+    if (!GA_ID || readConsent() !== "accepted") return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag =
+      window.gtag ||
+      ((...args: GtagCommand) => {
+        window.dataLayer.push(args);
+      });
+    window.gtag("js", new Date());
+    window.gtag("consent", "default", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+    window.gtag("config", GA_ID, {
+      send_page_view: true,
+      anonymize_ip: true,
+    });
+  }, []);
+
+  if (!GA_ID || !enabled) return null;
 
   return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="ga4-consent-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('consent', 'default', {
-            region: ['DE','AT','CH','FR','IT','ES','NL','BE','LU','IE','PT','SE','NO','DK','FI','PL','CZ','SK','HU','SI','HR','RO','BG','GR','CY','MT','EE','LV','LT','IS','LI','UK'],
-            ad_storage: 'denied',
-            analytics_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            ads_data_redaction: true,
-            wait_for_update: 500
-          });
-          gtag('config', '${GA_ID}', {
-            send_page_view: false,
-            anonymize_ip: true
-          });
-        `}
-      </Script>
-    </>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+      strategy="afterInteractive"
+      onReady={initializeAnalytics}
+    />
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 
 type RegionVariant = "light" | "dark" | "bridge";
 type RegionTone = "base" | "alt" | "surface";
+type RegionSpacing = "compact" | "standard" | "hero";
 
 type RegionProps = {
   variant?: RegionVariant;
@@ -12,6 +13,7 @@ type RegionProps = {
   containerClassName?: string;
   id?: string;
   as?: React.ElementType;
+  spacing?: RegionSpacing;
 };
 
 function cn(...parts: Array<string | undefined | null | false>) {
@@ -21,12 +23,13 @@ function cn(...parts: Array<string | undefined | null | false>) {
 export default function Region({
   variant = "light",
   tone = "base",
-  withDividers = true,
+  withDividers = false,
   children,
   className,
   containerClassName,
   id,
   as = "section",
+  spacing = "standard",
 }: RegionProps) {
   const Comp = as;
 
@@ -54,8 +57,16 @@ export default function Region({
     className,
   );
 
+  const spacingClass =
+    spacing === "compact"
+      ? "py-12 md:py-16"
+      : spacing === "hero"
+        ? "py-16 md:py-24 lg:py-28"
+        : "py-20 md:py-28 lg:py-32";
+
   const container = cn(
-    "relative z-10 mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 lg:px-8 py-14 md:py-20",
+    "relative z-10 mx-auto w-full min-w-0 max-w-7xl px-5 sm:px-8 lg:px-10",
+    spacingClass,
     containerClassName,
   );
 

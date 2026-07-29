@@ -1,4 +1,6 @@
 export const CONSENT_KEY = "cookie_consent_v2";
+export const CONSENT_CHANGE_EVENT = "opny-consent-change";
+export const OPEN_COOKIE_SETTINGS_EVENT = "open-cookie-settings";
 
 export type ConsentValue = "accepted" | "declined";
 

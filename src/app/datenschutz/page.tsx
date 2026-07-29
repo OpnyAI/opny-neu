@@ -1,5 +1,7 @@
 "use client";
 
+const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
+
 export default function DatenschutzPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
@@ -99,9 +101,10 @@ export default function DatenschutzPage() {
             beispielsweise Standardvertragsklauseln (SCC).
           </p>
           <p>
-            Protokolldaten werden regelmäßig gelöscht oder rotiert; die konkrete
-            Dauer liegt je nach Hosting-Konfiguration typischerweise im Bereich
-            von wenigen Tagen bis wenigen Wochen.
+            Wir speichern Protokolldaten nur so lange, wie dies für Betrieb,
+            Sicherheit, Fehleranalyse und gesetzliche Pflichten erforderlich
+            ist. Die konkrete Dauer hängt von der eingesetzten Hosting- und
+            Kontokonfiguration ab.
           </p>
           <p>
             Weitere Informationen finden Sie in der Datenschutzerklärung von
@@ -123,26 +126,30 @@ export default function DatenschutzPage() {
             Einwilligungen und Cookie-Einstellungen
           </h2>
           <p>
-            Analyse- und Marketingtechnologien werden erst nach Ihrer
-            Einwilligung aktiviert. Sie können eine erteilte Einwilligung
-            jederzeit mit Wirkung für die Zukunft widerrufen.
+            Google Analytics wird nur nach Ihrer Einwilligung geladen. Sie
+            können eine erteilte Einwilligung jederzeit mit Wirkung für die
+            Zukunft widerrufen.
           </p>
-          <p>
-            Ihre Auswahl können Sie über{" "}
-            <a
-              href="#"
-              className="hover:text-text-primary-light"
-              onClick={(e) => {
-                e.preventDefault();
-                if (typeof window !== "undefined") {
-                  window.dispatchEvent(new Event("open-cookie-settings"));
+          {HAS_GA_ID ? (
+            <p>
+              Ihre Auswahl können Sie über{" "}
+              <button
+                type="button"
+                className="font-semibold underline underline-offset-2 hover:text-text-primary-light"
+                onClick={() =>
+                  window.dispatchEvent(new Event("open-cookie-settings"))
                 }
-              }}
-            >
-              Cookie-Einstellungen
-            </a>{" "}
-            anpassen.
-          </p>
+              >
+                Cookie-Einstellungen
+              </button>{" "}
+              anpassen.
+            </p>
+          ) : (
+            <p>
+              Derzeit ist auf dieser Website keine optionale Reichweitenmessung
+              konfiguriert.
+            </p>
+          )}
         </section>
 
         <section className="space-y-3 text-base text-text-muted-light">
@@ -176,41 +183,15 @@ export default function DatenschutzPage() {
 
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Google Tag Manager (GTM)
-          </h2>
-          <p>
-            Soweit eingesetzt, verwenden wir den Google Tag Manager zur
-            Verwaltung und Ausspielung von Tags. Analyse- und Marketing-Tags
-            werden erst nach erteilter Einwilligung ausgelöst.
-          </p>
-          <p>
-            Im Rahmen des Einsatzes kann es zu technischer Verarbeitung kommen,
-            z. B. von IP-Adresse und Request-Informationen. Für Analyse- und
-            Marketing-Tags ist die Rechtsgrundlage Art. 6 Abs. 1 lit. a DSGVO
-            in Verbindung mit den Vorgaben des TDDDG.
-          </p>
-        </section>
-
-        <section className="space-y-3 text-base text-text-muted-light">
-          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Google Consent Mode
-          </h2>
-          <p>
-            Soweit genutzt, übermittelt der Google Consent Mode den
-            Einwilligungsstatus an Google-Dienste. Ohne Einwilligung können
-            lediglich eingeschränkte oder aggregierte Signale verarbeitet
-            werden.
-          </p>
-        </section>
-
-        <section className="space-y-3 text-base text-text-muted-light">
-          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
             Kontaktaufnahme
           </h2>
           <p>
             Bei einer Kontaktaufnahme verarbeiten wir die von Ihnen
-            bereitgestellten Daten, insbesondere Name, E-Mail-Adresse,
-            Nachrichtentext sowie technische Metadaten der Kommunikation.
+            bereitgestellten Daten, insbesondere Name, Unternehmen,
+            geschäftliche E-Mail-Adresse, optionale Telefonnummer,
+            Unternehmensgröße, ausgewähltes Interesse und optionalen
+            Nachrichtentext. Zur Missbrauchsabwehr werden außerdem technische
+            Angaben wie Zeitstempel und IP-Adresse verarbeitet.
           </p>
           <p>
             Die Verarbeitung erfolgt zur Bearbeitung Ihrer Anfrage und für
@@ -218,39 +199,40 @@ export default function DatenschutzPage() {
             (Vertragsanbahnung) und/oder Art. 6 Abs. 1 lit. f DSGVO.
           </p>
           <p>
-            Die Daten werden grundsätzlich bis zum Abschluss der Bearbeitung
-            gespeichert; darüber hinaus nur, soweit gesetzliche
-            Aufbewahrungspflichten bestehen.
-          </p>
-        </section>
-
-        <section className="space-y-3 text-base text-text-muted-light">
-          <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Einsatz von OpenAI
-          </h2>
-          <p>
-            Bei Nutzung von KI-Funktionen können Inhalte und Eingaben sowie
-            technische Metadaten an OpenAI zur Verarbeitung übermittelt werden,
-            soweit dies zur Bereitstellung der angeforderten Funktion
-            erforderlich ist.
+            Für die Zustellung der internen Anfrage und einer
+            Eingangsbestätigung nutzen wir den E-Mail-Dienst Resend der Plus
+            Five Five, Inc. Dabei werden E-Mail-Adressen, Metadaten und
+            Nachrichteninhalte an Resend übermittelt. Resend verarbeitet Daten
+            nach eigenen Angaben auch in den USA. Als Garantien für solche
+            Übermittlungen nennt der Anbieter unter anderem
+            Standardvertragsklauseln und das EU-US Data Privacy Framework.
           </p>
           <p>
-            Die Verarbeitung erfolgt je nach Ausgestaltung auf Grundlage von Art.
-            6 Abs. 1 lit. b DSGVO (angeforderte Leistung) oder Art. 6 Abs. 1
-            lit. f DSGVO. Eine Verarbeitung in Drittländern, insbesondere in den
-            USA, ist möglich. Übermittlungen erfolgen in diesen Fällen auf Basis
-            geeigneter Garantien, beispielsweise Standardvertragsklauseln (SCC).
+            Anfragen werden gelöscht, sobald der Zweck der Bearbeitung entfällt
+            und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+            Resend speichert Daten nach den eigenen Richtlinien so lange, wie
+            dies für die Bereitstellung, Sicherheit und Erfüllung rechtlicher
+            Pflichten erforderlich ist. Die konkrete Anbieter- und
+            Kontokonfiguration ist vor dem Produktivbetrieb zu prüfen.
           </p>
           <p>
-            Weitere Informationen finden Sie in der Datenschutzerklärung von
-            OpenAI:{" "}
+            Weitere Informationen:{" "}
             <a
               className="hover:text-text-primary-light"
-              href="https://openai.com/policies/privacy-policy"
+              href="https://resend.com/legal/privacy-policy"
               target="_blank"
               rel="noreferrer"
             >
-              openai.com/policies/privacy-policy
+              Resend Datenschutzerklärung
+            </a>
+            {" · "}
+            <a
+              className="hover:text-text-primary-light"
+              href="https://resend.com/legal/dpa"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resend Data Processing Addendum
             </a>
             .
           </p>
@@ -262,7 +244,8 @@ export default function DatenschutzPage() {
           </h2>
           <p>
             Wir setzen externe Dienstleister ein, insbesondere in den Bereichen
-            Hosting, technische Bereitstellung, Analyse sowie KI-Funktionen.
+            Hosting, technische Bereitstellung, Reichweitenmessung und
+            E-Mail-Zustellung.
           </p>
           <p>
             Soweit diese Dienstleister in unserem Auftrag tätig sind, erfolgt die
@@ -325,7 +308,14 @@ export default function DatenschutzPage() {
           </p>
         </section>
 
-        <div className="text-sm text-text-secondary-light">Stand: Februar 2026</div>
+        <div className="space-y-2 text-sm text-text-secondary-light">
+          <div>Stand: 28. Juli 2026</div>
+          <p>
+            Dieser Text bildet die aktuelle technische Umsetzung ab. Die
+            rechtliche Endprüfung durch eine qualifizierte Stelle bleibt
+            erforderlich.
+          </p>
+        </div>
       </div>
     </main>
   );
