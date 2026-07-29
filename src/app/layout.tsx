@@ -28,19 +28,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.opny.ai/media/opny/automotive-quality-inspection-v2.jpg",
-        width: 1672,
-        height: 941,
-        alt: "Qualitätsprüfung eines bearbeiteten Aluminiumgehäuses bei einem Automotive-Zulieferer",
+        url: "https://www.opny.ai/opny-brand-icon-1024.png",
+        width: 1024,
+        height: 1024,
+        alt: "Opny Logo",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Opny | KI-Governance für Automotive-Zulieferer",
     description:
       "KI kontrolliert einführen – mit TrustArch, NodeX, Beratung und Schulung.",
-    images: ["https://www.opny.ai/media/opny/automotive-quality-inspection-v2.jpg"],
+    images: ["https://www.opny.ai/opny-brand-icon-1024.png"],
   },
 
   icons: {
@@ -48,9 +48,17 @@ export const metadata: Metadata = {
       { url: "/favicon.ico" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
     ],
-    apple: "/apple-touch-icon-v2.png",
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
