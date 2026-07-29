@@ -19,45 +19,60 @@ export const companyPhone = "+49 1511 1956479";
 export const companyPhoneHref = "tel:+4915111956479";
 
 export const companyCtas = {
-  generalInquiry: "/kontakt",
-  nodexDemo: "/produkte/nodex",
-  consultingInquiry: "/kontakt",
+  generalInquiry: "/kontakt?interesse=Allgemeine%20Anfrage#anfrage",
+  trustarchDemo: "/kontakt?interesse=TrustArch%20Demo#anfrage",
+  nodexInquiry: "/kontakt?interesse=NodeX%20Einsatz#anfrage",
+  consultingInquiry: "/kontakt?interesse=KI-Beratung%20Automotive#anfrage",
+  trainingInquiry: "/kontakt?interesse=KI-Schulung%20Automotive#anfrage",
   contact: `mailto:${companyEmail}`,
 } as const;
 
 export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
-  { label: "KI-Beratung", href: "/loesungen/ki-beratung" },
-  { label: "KI-Trainings", href: "/loesungen/ki-trainings" },
+  {
+    label: "KI-Beratung für Automotive",
+    href: "/loesungen/ki-beratung-automotive",
+  },
+  {
+    label: "KI-Schulungen & Coaching",
+    href: "/loesungen/ki-schulungen-automotive",
+  },
+  { label: "KI-Governance Automotive", href: "/ki-governance-automotive" },
 ];
 
 export const productNavigationLinks: readonly ServiceNavigationItem[] = [
+  { label: "Produktübersicht", href: "/produkte" },
+  { label: "TrustArch", href: "/produkte/trustarch" },
   { label: "NodeX", href: "/produkte/nodex" },
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
-  { label: "Startseite", href: "/" },
-  {
-    label: "Lösungen",
-    href: "/loesungen",
-    items: serviceNavigationLinks,
-  },
+  { label: "Automotive", href: "/automotive" },
   {
     label: "Produkte",
     href: "/produkte",
     items: productNavigationLinks,
   },
-  { label: "Kontakt", href: "/kontakt" },
+  {
+    label: "Lösungen",
+    href: "/loesungen",
+    items: serviceNavigationLinks,
+  },
+  { label: "Über Opny", href: "/ueber-opny" },
 ];
 
 export const footerLinks = {
   services: [
-    { label: "Lösungen", href: "/loesungen" },
-    ...serviceNavigationLinks,
-    { label: "Produkte", href: "/produkte" },
     ...productNavigationLinks,
+    ...serviceNavigationLinks,
   ],
   company: [
     { label: "Startseite", href: "/" },
+    { label: "Automotive-Zulieferer", href: "/automotive" },
+    {
+      label: "Leitfaden: KI im Unternehmen einführen",
+      href: "/wissen/ki-im-unternehmen-einfuehren",
+    },
+    { label: "Über Opny", href: "/ueber-opny" },
     { label: "Kontakt", href: "/kontakt" },
   ],
   legal: [

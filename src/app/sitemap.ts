@@ -1,51 +1,24 @@
 import type { MetadataRoute } from "next";
 
 const baseUrl = "https://www.opny.ai";
-const lastModified = new Date();
+const pages = [
+  { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/automotive", priority: 1, changeFrequency: "weekly" },
+  { path: "/produkte", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/produkte/trustarch", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/produkte/nodex", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/loesungen/ki-beratung-automotive", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/loesungen/ki-schulungen-automotive", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/ki-governance-automotive", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/wissen/ki-im-unternehmen-einfuehren", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/ueber-opny", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/kontakt", priority: 0.5, changeFrequency: "monthly" },
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/loesungen`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/loesungen/ki-beratung`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/loesungen/ki-trainings`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/produkte`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/produkte/nodex`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/kontakt`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-  ];
+  return pages.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    priority,
+    changeFrequency,
+  }));
 }

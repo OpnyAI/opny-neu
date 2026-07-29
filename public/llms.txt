@@ -1,0 +1,37 @@
+# Opny
+
+> Opny unterstützt Automotive-Zulieferer vom Tier-1 bis Tier-3 im DACH-Raum dabei, KI kontrolliert einzuführen und nachweisbar zu steuern.
+
+Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische Kontrolle der tatsächlichen KI-Nutzung sowie Beratung und Schulung für Prozesse und Teams.
+
+## Zentrale Seiten
+
+- [Startseite](https://www.opny.ai/): Positionierung und vollständiger Opny-Ansatz
+- [Automotive-Branchenlösung](https://www.opny.ai/automotive): Kontrollierte KI-Einführung für Automobilzulieferer und Automotive-Lieferanten
+- [KI-Governance Automotive](https://www.opny.ai/ki-governance-automotive): Inventar, Rollen, Richtlinien, Freigaben, technische Kontrollen und Nachweise
+- [Leitfaden: KI im Unternehmen einführen](https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren): Sieben Schritte von der Use-Case-Auswahl über Daten, Governance und Pilot bis zu Schulung und kontrolliertem Betrieb
+- [Produktübersicht](https://www.opny.ai/produkte): Abgrenzung zwischen TrustArch und NodeX
+- [Über Opny](https://www.opny.ai/ueber-opny): Gründer- und Automotive-Erfahrung
+- [Kontakt](https://www.opny.ai/kontakt): Demo oder Erstgespräch anfragen
+
+## Produkte
+
+- [TrustArch](https://www.opny.ai/produkte/trustarch): Verfügbares Opny-Produkt für Anforderungen, Nachweise, Risiken, Maßnahmen und Auditvorbereitung
+- [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
+
+## Leistungen
+
+- [KI-Beratung für Automotive-Zulieferer](https://www.opny.ai/loesungen/ki-beratung-automotive): KI-Strategie, Use-Case-Auswahl, Governance, Datenklassen und kontrollierte Pilotplanung
+- [KI-, ChatGPT- und Gemini-Schulungen für Automotive](https://www.opny.ai/loesungen/ki-schulungen-automotive): Inhouse-Workshops, Online-Schulungen und KI-Coaching für ChatGPT, Google Gemini, Microsoft Copilot und interne KI-Zugänge
+
+## Wichtige Einordnung
+
+- TrustArch ist ein verfügbares Opny-Produkt. Die veröffentlichten Ansichten und der Produktrundgang verwenden fiktive Beispieldaten. Einsatzumfang und konkrete Integrationen werden individuell geklärt; TrustArch ersetzt weder Rechtsberatung noch eine Zertifizierungsstelle.
+- NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
+- Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.
+
+## Kontakt
+
+- E-Mail: info@opny.ai
+- Telefon: +49 1511 1956479
+- Region und Markt: Stuttgart, DACH

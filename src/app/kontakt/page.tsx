@@ -1,153 +1,108 @@
-import type { Metadata } from "next";
-import Card from "@/components/ui/Card";
 import Region from "@/components/Region";
-import NodeXContactForm from "@/app/produkte/nodex/NodeXContactForm";
+import Card from "@/components/ui/Card";
+import Breadcrumbs from "@/components/marketing/Breadcrumbs";
+import ContactForm from "@/components/marketing/ContactForm";
+import JsonLd from "@/components/marketing/JsonLd";
 import {
-  companyCtas,
   companyEmail,
   companyPhone,
   companyPhoneHref,
 } from "@/config/site";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Kontakt | Opny – KI Beratung & KI Trainings",
+export const metadata = createMetadata({
+  title: "Kontakt: TrustArch, NodeX und KI-Beratung",
   description:
-    "Kontaktieren Sie Opny für KI Beratung, KI Trainings und KI Einführung im Unternehmen. Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.",
-  alternates: {
-    canonical: "https://www.opny.ai/kontakt",
-  },
-  openGraph: {
-    title: "Kontakt | Opny – KI Beratung & KI Trainings",
-    description:
-      "Kontaktieren Sie Opny für KI Beratung, KI Trainings und KI Einführung im Unternehmen. Wir melden uns innerhalb von 24 Stunden bei Ihnen zurück.",
-    url: "https://www.opny.ai/kontakt",
-    siteName: "Opny",
-    locale: "de_DE",
-    type: "website",
-  },
-};
+    "Demo oder Erstgespräch mit Opny anfragen: TrustArch, NodeX, KI-Beratung, KI-Schulungen und KI-Governance für Automotive-Zulieferer.",
+  path: "/kontakt",
+});
 
-const reasons = [
-  "Praxisnahe KI-Beratung für Unternehmen",
-  "Fokus auf Datenschutz und sichere Nutzung",
-  "Kombination aus Strategie, Training und Umsetzung",
-  "Keine Standardlösungen",
-];
+export default async function KontaktPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ interesse?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const initialInterest =
+    typeof params.interesse === "string" ? params.interesse : undefined;
 
-export default function KontaktPage() {
   return (
-    <div className="flex flex-col">
-      <Region variant="light" tone="base">
-        <div className="max-w-4xl space-y-6">
-          <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-            Kontakt
-          </div>
-          <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-text-primary-light md:text-5xl">
-            Kontakt aufnehmen
+    <main>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "@id": "https://www.opny.ai/kontakt#webpage",
+          url: "https://www.opny.ai/kontakt",
+          name: "Kontakt: TrustArch, NodeX und KI-Beratung",
+          isPartOf: { "@id": "https://www.opny.ai/#website" },
+          about: { "@id": "https://www.opny.ai/#organization" },
+          inLanguage: "de-DE",
+        }}
+      />
+      <Region variant="light" tone="base" spacing="hero">
+        <Breadcrumbs
+          items={[
+            { label: "Startseite", href: "/" },
+            { label: "Kontakt", href: "/kontakt" },
+          ]}
+        />
+        <div className="mt-8 max-w-4xl">
+          <div className="eyebrow">Kontakt</div>
+          <h1 className="display-lg mt-5 text-text-primary-light">
+            Demo oder Erstgespräch anfragen
           </h1>
-          <p className="max-w-[68ch] text-lg leading-relaxed text-text-muted-light md:text-xl">
-            Sprechen Sie mit uns über KI-Beratung, KI-Trainings oder den Einsatz von NodeX in Ihrem Unternehmen.
+          <p className="lead-copy mt-6 max-w-[68ch]">
+            Beschreiben Sie kurz Ausgangslage und Interesse. Wir ordnen ein, ob
+            TrustArch, NodeX, Beratung oder Schulung der passende nächste Schritt ist.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href="#erstgespraech"
-              className="inline-flex items-center justify-center rounded-button bg-text-primary-light px-5 py-2.5 text-sm font-semibold text-text-primary-dark shadow-card-light transition hover:opacity-90"
-            >
-              Erstgespräch anfragen
-            </a>
-            <a
-              href="#direktkontakt"
-              className="inline-flex items-center justify-center rounded-button border border-border-subtle-light/20 px-5 py-2.5 text-sm font-semibold text-text-primary-light transition hover:border-border-subtle-light/35"
-            >
-              Kontaktoptionen ansehen
-            </a>
-          </div>
         </div>
       </Region>
 
-      <Region variant="light" tone="surface" containerClassName="py-8 md:py-10">
-        <div className="rounded-card border border-border-subtle-light/20 bg-white px-5 py-4 text-base font-medium text-text-primary-light shadow-card-light">
-          Antwort innerhalb von 24 Stunden. Unverbindlich und praxisnah.
-        </div>
-      </Region>
-
-      <Region id="direktkontakt" variant="light" tone="base">
-        <div className="grid gap-6 md:grid-cols-3">
+      <Region variant="light" tone="surface">
+        <div className="grid gap-5 md:grid-cols-3">
           <Card theme="light" className="p-5">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-              E-Mail
-            </div>
-            <a
-              href={companyCtas.contact}
-              className="mt-3 block text-lg font-semibold text-text-primary-light"
-            >
+            <div className="eyebrow">E-Mail</div>
+            <a className="mt-3 block text-lg font-semibold text-text-primary-light" href={`mailto:${companyEmail}`}>
               {companyEmail}
             </a>
           </Card>
           <Card theme="light" className="p-5">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-              Telefon
-            </div>
-            <a
-              href={companyPhoneHref}
-              className="mt-3 block text-lg font-semibold text-text-primary-light"
-            >
+            <div className="eyebrow">Telefon</div>
+            <a className="mt-3 block text-lg font-semibold text-text-primary-light" href={companyPhoneHref}>
               {companyPhone}
             </a>
           </Card>
           <Card theme="light" className="p-5">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-text-secondary-light">
-              Standort
-            </div>
+            <div className="eyebrow">Region</div>
             <div className="mt-3 text-lg font-semibold text-text-primary-light">
-              Vaihingen an der Enz / Stuttgart Region
+              Region Stuttgart · DACH
             </div>
           </Card>
         </div>
       </Region>
 
-      <Region variant="light" tone="alt">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-4">
-            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              Warum Opny?
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Warum Opny?
+      <Region id="anfrage" variant="light" tone="base">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <div className="eyebrow">Anfrage</div>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
+              Worum geht es bei Ihnen?
             </h2>
-            <p className="text-base leading-relaxed text-text-muted-light">
-              Wir sagen Ihnen ehrlich, ob und wo sich KI bei Ihnen lohnt.
+            <p className="mt-4 leading-relaxed text-text-muted-light">
+              Hilfreich sind Standards, Auditdruck, betroffene Prozesse,
+              vorhandene KI-Tools, Datenklassen und die verantwortlichen Bereiche.
             </p>
+            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-text-muted-light">
+              <li>TrustArch: Demo und Anforderungen an Compliance-Arbeit</li>
+              <li>NodeX: technischer KI-Zugang und kontrollierter Pilot</li>
+              <li>Beratung: Use Cases, Governance und Einführungsplan</li>
+              <li>Schulung: Rollen, Tools, Daten und Automotive-Fallbeispiele</li>
+            </ul>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {reasons.map((reason) => (
-              <Card key={reason} theme="light" className="p-5">
-                <h3 className="text-lg font-semibold text-text-primary-light">
-                  {reason}
-                </h3>
-              </Card>
-            ))}
-          </div>
+          <ContactForm initialInterest={initialInterest} />
         </div>
       </Region>
-
-      <Region id="erstgespraech" variant="light" tone="surface">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-4">
-            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">
-              Erstgespräch
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Unverbindliches Erstgespräch anfragen
-            </h2>
-            <p className="text-base leading-relaxed text-text-muted-light">
-              Beschreiben Sie kurz Ihre Ausgangslage. Wir melden uns mit einer
-              konkreten Einschätzung zu KI-Beratung, KI-Trainings oder NodeX.
-            </p>
-          </div>
-          <NodeXContactForm />
-        </div>
-      </Region>
-    </div>
+    </main>
   );
 }

@@ -23,27 +23,27 @@ function cn(...classes: Array<string | undefined | false>) {
  * Therefore, for secondary buttons we use explicit text + border colors with high specificity via Tailwind's `!`.
  */
 const baseClasses =
-  "inline-flex items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold transition " +
+  "inline-flex min-h-11 items-center justify-center rounded-button px-5 py-2.5 text-sm font-semibold tracking-[-0.01em] transition " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
 
 const variantClasses: Record<ButtonTheme, Record<ButtonVariant, string>> = {
   dark: {
     primary:
-      "bg-text-primary-dark text-text-primary-light shadow-card-light hover:opacity-90 " +
+      "bg-white text-[#1d1d1f] hover:bg-white/90 " +
       "focus-visible:ring-text-primary-dark focus-visible:ring-offset-transparent",
     secondary:
       // Secondary on DARK surfaces: always readable
       // - Force text color and border even if parent sets text colors
       // - Slight frosted bg improves contrast
-      "!text-white border border-white/25 bg-white/5 hover:bg-white/10 hover:border-white/35 " +
+      "!text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 " +
       "focus-visible:ring-white/25 focus-visible:ring-offset-transparent",
   },
   light: {
     primary:
-      "bg-text-primary-light text-text-primary-dark shadow-card-light hover:opacity-90 " +
+      "bg-[#1d1d1f] text-white hover:bg-black " +
       "focus-visible:ring-text-primary-dark focus-visible:ring-offset-white",
     secondary:
-      "border border-border-subtle-light/20 text-text-primary-light hover:border-border-subtle-light/35 hover:text-text-secondary-light " +
+      "border border-black/15 bg-white/60 text-text-primary-light hover:border-black/30 hover:bg-white " +
       "focus-visible:ring-border-subtle-light/35 focus-visible:ring-offset-white",
   },
 };
@@ -76,9 +76,9 @@ export default function Button({
 
     if (href.startsWith("#")) {
       return (
-        <Link href={`/${href}`} className={styles} {...anchorProps}>
+        <a href={href} className={styles} {...anchorProps}>
           {children}
-        </Link>
+        </a>
       );
     }
 

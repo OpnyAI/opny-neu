@@ -43,3 +43,17 @@ next-env.d.ts
 # local code export artifacts
 opny-full-code-export.txt
 *-code-export*.txt
+
+# local TrustArch source and QA artifacts
+/TrustArch — AI-assisted compliance certification_v5.html
+/docs/qa/
+/docs/screenshots/
+
+# local source media not shipped by the website
+/public/og.png
+/public/media/opny/automotive-engineering-workspace-v1.jpg
+/public/media/opny/mehmet-catalsakal-founder-about.jpg
+/public/media/opny/mehmet-catalsakal-founder-home.jpg
+/public/media/opny/opny-control-layers-v1.jpg
+/public/media/README.md
+/public/media/**/.gitkeep

@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,6 +20,7 @@ type MobileNavProps = {
   links: MobileNavLink[];
   cta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  returnFocusRef?: RefObject<HTMLButtonElement | null>;
 };
 
 export default function MobileNav({
@@ -28,6 +35,7 @@ export default function MobileNav({
     label: "Kontakt",
     href: "/kontakt",
   },
+  returnFocusRef,
 }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +50,8 @@ export default function MobileNav({
   const handleClose = useCallback(() => {
     setOpenGroup(null);
     onClose();
-  }, [onClose]);
+    window.requestAnimationFrame(() => returnFocusRef?.current?.focus());
+  }, [onClose, returnFocusRef]);
 
   const renderNavLink = (link: MobileNavLink) => {
     const hasItems = "items" in link;
@@ -82,15 +91,8 @@ export default function MobileNav({
             </span>
           </button>
 
-          <div
-            id={panelId}
-            className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
-              groupIsOpen
-                ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0"
-            }`}
-          >
-            <div className="overflow-hidden">
+          {groupIsOpen ? (
+            <div id={panelId}>
               <div className="pb-3 pl-4">
                 {link.items.map((item) => {
                   const itemIsActive = pathname === item.href;
@@ -100,6 +102,7 @@ export default function MobileNav({
                       key={item.href}
                       href={item.href}
                       onClick={handleClose}
+                      aria-current={itemIsActive ? "page" : undefined}
                       className={`block min-h-11 rounded-2xl px-4 py-3 text-[15px] transition ${
                         itemIsActive
                           ? "bg-black/[0.04] text-text-primary-light"
@@ -113,7 +116,7 @@ export default function MobileNav({
                 })}
               </div>
             </div>
-          </div>
+          ) : null}
         </div>
       );
     }
@@ -135,7 +138,12 @@ export default function MobileNav({
     }
 
     return (
-      <Link href={link.href} onClick={handleClose} className={baseClass}>
+      <Link
+        href={link.href}
+        onClick={handleClose}
+        className={baseClass}
+        aria-current={pathname === link.href ? "page" : undefined}
+      >
         {link.label}
       </Link>
     );
@@ -147,6 +155,16 @@ export default function MobileNav({
 
     const prevOverflow = document.body.style.overflow;
     const prevPaddingRight = document.body.style.paddingRight;
+    const backgroundElements = [
+      document.querySelector<HTMLElement>("header"),
+      document.querySelector<HTMLElement>("#site-content"),
+      document.querySelector<HTMLElement>("footer"),
+    ].filter((element): element is HTMLElement => Boolean(element));
+    const previousStates = backgroundElements.map((element) => ({
+      element,
+      ariaHidden: element.getAttribute("aria-hidden"),
+      inert: element.inert,
+    }));
 
     const scrollBarWidth =
       window.innerWidth - document.documentElement.clientWidth;
@@ -155,10 +173,22 @@ export default function MobileNav({
     }
 
     document.body.style.overflow = "hidden";
+    backgroundElements.forEach((element) => {
+      element.setAttribute("aria-hidden", "true");
+      element.inert = true;
+    });
 
     return () => {
       document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPaddingRight;
+      previousStates.forEach(({ element, ariaHidden, inert }) => {
+        if (ariaHidden === null) {
+          element.removeAttribute("aria-hidden");
+        } else {
+          element.setAttribute("aria-hidden", ariaHidden);
+        }
+        element.inert = inert;
+      });
     };
   }, [open]);
 
@@ -230,6 +260,7 @@ export default function MobileNav({
 
   return (
     <div
+      id="mobile-navigation"
       ref={dialogRef}
       role="dialog"
       aria-modal="true"
@@ -251,9 +282,8 @@ export default function MobileNav({
               <Image
                 src="/images/brand/opny-logo.png"
                 alt="Opny"
-                width={140}
-                height={40}
-                priority
+                width={1043}
+                height={459}
                 className="h-6 w-auto"
               />
             </div>

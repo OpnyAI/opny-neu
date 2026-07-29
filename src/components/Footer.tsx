@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
+import CookieSettingsButton from "@/components/consent/CookieSettingsButton";
 import { footerLinks } from "@/config/site";
 
 export default function Footer() {
@@ -26,12 +27,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border-subtle-light/15 bg-white/80">
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="border-t border-black/[0.06] bg-[rgb(var(--opny-bg-alt))]">
+      <div className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-3">
             <div className="text-base font-semibold text-text-primary-light">
-              Lösungen & Produkte
+              Produkte & Lösungen
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
               {footerLinks.services.map((link) => (
@@ -59,17 +60,20 @@ export default function Footer() {
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>{renderLink(link)}</li>
               ))}
+              <li>
+                <CookieSettingsButton />
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col items-start gap-2 border-t border-border-subtle-light/15 pt-6 text-sm text-text-secondary-light sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col items-start gap-3">
-            <span>© {year} Opny AI</span>
-            <span>Datenschutzkonforme KI-Lösungen für Unternehmen</span>
+            <span>© {year} Opny</span>
+            <span>KI-Governance für Automotive-Zulieferer</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-sm text-text-muted-light">Follow Opny</span>
+            <span className="text-sm text-text-muted-light">Opny folgen</span>
             <SocialLinks variant="footer" />
           </div>
         </div>
