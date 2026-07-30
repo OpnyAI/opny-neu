@@ -11,9 +11,9 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "NodeX: kontrollierte KI-Nutzung für Automotive-Zulieferer",
+  title: "NodeX: Plattform für kontrollierte KI-Nutzung",
   description:
-    "NodeX bündelt freigegebene KI-Zugänge, Rechte, Datenregeln sowie den Überblick über Nutzung und Kosten an einer zentralen Stelle.",
+    "NodeX ist Opnys Plattform für kontrollierte KI-Nutzung. Sie bündelt freigegebene KI-Modelle, Rechte, Datenregeln sowie Nutzung und Kosten.",
   path: "/produkte/nodex",
   image: {
     url: "/media/opny/automotive-quality-inspection-v2.jpg",
@@ -39,7 +39,7 @@ const faqs = [
   {
     question: "Ersetzt NodeX TrustArch?",
     answer:
-      "Nein. TrustArch ordnet Anforderungen, Risiken, Nachweise und Aufgaben. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
+      "Nein. TrustArch verbindet Managementsysteme, Anforderungen, Dokumente, Freigaben, Nachweise, Risiken und Maßnahmen. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
   },
   {
     question: "Ist NodeX für vertrauliche Automotive-Daten geeignet?",
@@ -64,7 +64,7 @@ export default function NodeXPage() {
               "@type": "WebPage",
               "@id": "https://www.opny.ai/produkte/nodex#webpage",
               url: "https://www.opny.ai/produkte/nodex",
-              name: "NodeX: kontrollierte KI-Nutzung für Automotive-Zulieferer",
+              name: "NodeX: Plattform für kontrollierte KI-Nutzung",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               about: { "@id": "https://www.opny.ai/produkte/nodex#software" },
               video: { "@id": "https://www.opny.ai/produkte/nodex#produktvideo" },
@@ -101,7 +101,7 @@ export default function NodeXPage() {
                 "https://www.opny.ai/media/nodex/marketing-opny-nodex-poster.jpg",
               contentUrl:
                 "https://www.opny.ai/media/nodex/marketing-opny-nodex.MP4",
-              uploadDate: "2026-07-29",
+              uploadDate: "2026-07-29T16:50:10+02:00",
               duration: "PT21.55S",
               isPartOf: { "@id": "https://www.opny.ai/produkte/nodex#webpage" },
             },
@@ -132,8 +132,10 @@ export default function NodeXPage() {
         <div className="mx-auto mt-10 max-w-5xl text-center">
           <div className="eyebrow">NodeX · Kontrollierter Zugang zu KI</div>
           <h1 className="display-lg mt-6">
-            KI nutzen.
-            <span className="block text-[#86868b]">Modelle, Daten und Kosten kontrollieren.</span>
+            NodeX.
+            <span className="block text-[#86868b]">
+              KI-Zugänge, Daten und Kosten kontrollieren.
+            </span>
           </h1>
           <p className="lead-copy mx-auto mt-7 max-w-3xl">
             NodeX gibt Mitarbeitenden einen zentralen Zugang zu freigegebenen

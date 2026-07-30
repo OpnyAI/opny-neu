@@ -4,6 +4,19 @@ Analysierte Quelle: `TrustArch — AI-assisted compliance certification_v5.html`
 
 Stand: 28. Juli 2026
 
+## Verhältnis zur späteren Produktinformation
+
+Die Demoanalyse bleibt der Nachweis für sichtbare Oberflächen und Abläufe. Die
+am 30. Juli 2026 bereitgestellte First-Party-Produktbeschreibung ergänzt die
+Positionierung von TrustArch als verfügbare, KI-gestützte Software für
+Managementsysteme und Compliance sowie Dokumentversionierung und anpassbare
+Freigabeabläufe. Sie ist in `docs/trustarch-product-brief-2026-07-30.md`
+dokumentiert.
+
+Die neue Produktinformation belegt keine pauschalen Aussagen zu 80 Prozent
+Zeitersparnis, Echtzeit-Konformität, Rechtssicherheit, vollständiger
+Normabdeckung oder dem Ersatz verantwortlicher Fachrollen.
+
 ## Einordnung
 
 Die Datei ist eine rund 399 KB große, vollständig gebündelte React-Frontend-Demo. Sie enthält eine simulierte Anmeldung, 16 navigierbare App-Bereiche, Beispieldaten und lokale Interaktionen. Die Analyse belegt sichtbare Benutzeroberflächen und Demoabläufe, aber keinen produktiven Backend-Betrieb, keine realen Integrationen, keine Zertifizierung und keine Kundennutzung.

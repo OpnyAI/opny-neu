@@ -2,7 +2,7 @@ import SolutionPage from "@/components/marketing/SolutionPage";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "KI-Governance im Automotive-Umfeld",
+  title: "KI-Governance für Automotive-Zulieferer",
   description:
     "KI-Governance für Automotive-Zulieferer: Inventar, Rollen, Datenklassen, Richtlinien, Freigaben, Nachweise und kontrollierter KI-Betrieb.",
   path: "/ki-governance-automotive",
@@ -12,8 +12,8 @@ export default function KiGovernanceAutomotivePage() {
   return (
     <SolutionPage
       path="/ki-governance-automotive"
-      eyebrow="KI-Governance Automotive"
-      title="Klare Regeln, Zuständigkeiten und Nachweise für KI."
+      eyebrow="KI-Governance für Automotive-Zulieferer"
+      title="KI-Governance für Automotive-Zulieferer. Klare Regeln, Zuständigkeiten und Nachweise."
       intro="KI-Governance bedeutet: Das Unternehmen legt verständlich fest, welche KI wofür genutzt werden darf, wer entscheidet, wie Daten geschützt werden und welche Nachweise benötigt werden."
       primaryCta={{ label: "Governance-Check anfragen", href: "/kontakt?interesse=KI-Governance-Check#anfrage" }}
       secondaryCta={{ label: "Produkte vergleichen", href: "/produkte" }}
@@ -33,7 +33,7 @@ export default function KiGovernanceAutomotivePage() {
         { title: "Übersicht erstellen", text: "KI-Systeme, Anbieter, Zwecke, Verantwortliche, Nutzer und betroffene Daten erfassen." },
         { title: "Einordnen", text: "Risiken, Rollen, interne Anforderungen und relevante rechtliche Prüfbedarfe zusammenführen." },
         { title: "Entscheiden", text: "Zulässige Anwendungen, Modelle, Freigaben, Kontrollen und Eskalationen definieren." },
-        { title: "Umsetzen", text: "Richtlinien, Schulung und TrustArch-Arbeitsobjekte verbinden; passende NodeX-Kontrollen werden je Systemumgebung konfiguriert." },
+        { title: "Umsetzen", text: "Richtlinien und Schulungen mit den passenden Anforderungen, Nachweisen und Maßnahmen in TrustArch verbinden; NodeX-Kontrollen werden je Systemumgebung konfiguriert." },
         { title: "Überwachen", text: "Nutzung, Abweichungen, Maßnahmen und Änderungen regelmäßig prüfen und nachweisen." },
       ]}
       deliverablesTitle="Was Sie am Ende konkret erhalten"

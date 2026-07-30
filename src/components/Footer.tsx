@@ -29,13 +29,24 @@ export default function Footer() {
   return (
     <footer className="border-t border-black/[0.06] bg-[rgb(var(--opny-bg-alt))]">
       <div className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
             <div className="text-base font-semibold text-text-primary-light">
-              Produkte & Lösungen
+              Produkte
             </div>
             <ul className="space-y-2 text-sm text-text-muted-light">
-              {footerLinks.services.map((link) => (
+              {footerLinks.products.map((link) => (
+                <li key={link.label}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <div className="text-base font-semibold text-text-primary-light">
+              Beratung & Schulung
+            </div>
+            <ul className="space-y-2 text-sm text-text-muted-light">
+              {footerLinks.solutions.map((link) => (
                 <li key={link.label}>{renderLink(link)}</li>
               ))}
             </ul>

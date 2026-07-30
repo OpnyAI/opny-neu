@@ -11,9 +11,9 @@ import {
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Kontakt: TrustArch, NodeX und KI-Beratung",
+  title: "Opny kontaktieren: Demo oder Erstgespräch",
   description:
-    "Demo oder Erstgespräch mit Opny anfragen: TrustArch, NodeX, KI-Beratung, KI-Schulungen und KI-Governance für Automotive-Zulieferer.",
+    "Kontaktieren Sie Opny für eine TrustArch-Demo, einen NodeX-Einsatz oder ein Erstgespräch zu KI-Beratung und KI-Schulungen für Automotive-Zulieferer.",
   path: "/kontakt",
 });
 
@@ -34,7 +34,7 @@ export default async function KontaktPage({
           "@type": "ContactPage",
           "@id": "https://www.opny.ai/kontakt#webpage",
           url: "https://www.opny.ai/kontakt",
-          name: "Kontakt: TrustArch, NodeX und KI-Beratung",
+          name: "Opny kontaktieren: Demo oder Erstgespräch",
           isPartOf: { "@id": "https://www.opny.ai/#website" },
           about: { "@id": "https://www.opny.ai/#organization" },
           inLanguage: "de-DE",
@@ -94,7 +94,7 @@ export default async function KontaktPage({
               vorhandene KI-Tools, Datenklassen und die verantwortlichen Bereiche.
             </p>
             <ul className="mt-6 space-y-3 text-sm leading-relaxed text-text-muted-light">
-              <li>TrustArch: Demo und Anforderungen an Compliance-Arbeit</li>
+              <li>TrustArch: Demo für Managementsysteme, Dokumente, Freigaben und Compliance-Arbeit</li>
               <li>NodeX: technischer KI-Zugang und kontrollierter Pilot</li>
               <li>Beratung: Use Cases, Governance und Einführungsplan</li>
               <li>Schulung: Rollen, Tools, Daten und Automotive-Fallbeispiele</li>

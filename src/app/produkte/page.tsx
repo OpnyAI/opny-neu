@@ -9,22 +9,17 @@ import JsonLd from "@/components/marketing/JsonLd";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Opny-Produkte: TrustArch und NodeX",
+  title: "Opny-Produkte für Compliance und kontrollierte KI",
   description:
-    "TrustArch organisiert Compliance, Risiken und Nachweise. NodeX macht Modelle, Richtlinien, Datenflüsse und Kosten beim KI-Einsatz kontrollierbar.",
+    "Opny bietet zwei klar getrennte Softwareprodukte: TrustArch für Managementsysteme und Compliance, NodeX für kontrollierte KI-Zugänge und Datenwege.",
   path: "/produkte",
 });
 
 const comparison = [
-  ["Primäre Aufgabe", "Compliance und Management organisieren", "KI-Nutzung technisch kontrollieren"],
-  ["Kontrollobjekt", "Anforderungen, Risiken, Nachweise, Maßnahmen", "Modelle, Rollen, Datenflüsse, Nutzung, Kosten"],
-  ["Typische Nutzer", "Qualität, ISMS, Compliance, Datenschutz, Management", "IT, KI-Verantwortliche, Fachbereiche, Management"],
-  ["Typischer Einstieg", "Parallele Standards oder aufwendige Auditvorbereitung", "Schatten-KI oder unkontrollierte Modellnutzung"],
-  [
-    "Aktueller Nachweis",
-    "Produktansichten und Produktvideo mit freigegebenen Beispieldaten",
-    "Fertiges Produkt; freigegebenes Produktvideo und zwei Kundenstimmen",
-  ],
+  ["Primäre Aufgabe", "Managementsysteme und Compliance steuern", "KI-Nutzung technisch kontrollieren"],
+  ["Kontrollobjekt", "Anforderungen, Dokumente, Freigaben, Nachweise, Risiken, Maßnahmen", "Modelle, Rollen, Datenflüsse, Nutzung, Kosten"],
+  ["Typische Nutzer", "Qualität, Informationssicherheit, Compliance, Umwelt, Datenschutz, Management", "IT, KI-Verantwortliche, Fachbereiche, Management"],
+  ["Typischer Einstieg", "Verteilte Ablagen, parallele Managementthemen oder aufwendige Freigaben", "Schatten-KI oder unkontrollierte Modellnutzung"],
 ];
 
 export default function ProduktePage() {
@@ -38,7 +33,7 @@ export default function ProduktePage() {
               "@type": "CollectionPage",
               "@id": "https://www.opny.ai/produkte#webpage",
               url: "https://www.opny.ai/produkte",
-              name: "Opny-Produkte: TrustArch und NodeX",
+              name: "Opny-Produkte für Compliance und kontrollierte KI",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               mainEntity: { "@id": "https://www.opny.ai/produkte#products" },
               inLanguage: "de-DE",
@@ -51,13 +46,13 @@ export default function ProduktePage() {
                   "@type": "ListItem",
                   position: 1,
                   url: "https://www.opny.ai/produkte/trustarch",
-                  name: "TrustArch",
+                  name: "TrustArch: Compliance-Software für Managementsysteme",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   url: "https://www.opny.ai/produkte/nodex",
-                  name: "NodeX",
+                  name: "NodeX: Plattform für kontrollierte KI-Nutzung",
                 },
               ],
             },
@@ -69,11 +64,11 @@ export default function ProduktePage() {
         <div className="mt-8 max-w-4xl">
           <div className="eyebrow">Opny Produkte</div>
           <h1 className="display-lg mt-5 text-text-primary-light">
-            Zwei Produkte für unterschiedliche Aufgaben.
+            Software für Compliance und kontrollierte KI-Nutzung.
           </h1>
           <p className="lead-copy mt-6 max-w-[68ch]">
             TrustArch und NodeX erfüllen unterschiedliche Aufgaben: Das eine
-            strukturiert Compliance- und Managementarbeit, das andere macht
+            steuert Managementsystem- und Compliance-Arbeit, das andere macht
             die tatsächliche KI-Nutzung technisch kontrollierbar.
           </p>
         </div>
@@ -96,12 +91,14 @@ export default function ProduktePage() {
               KI-gestütztes Compliance- und Managementsystem
             </h2>
             <p className="mt-4 leading-relaxed text-text-muted-light">
-              Für Standards, Reifegrade, Dokumente, Nachweise, Risiken,
-              Feststellungen, Maßnahmen und Auditvorbereitung in einem gemeinsamen Arbeitsraum.
+              Für Anforderungen, Dokumentversionen, Freigaben, Nachweise,
+              Risiken, Maßnahmen und mehrere Managementthemen in einem
+              gemeinsamen Arbeitsraum.
             </p>
             <p className="mt-4 rounded-2xl bg-black/[0.04] p-4 text-sm leading-relaxed text-text-secondary-light">
-              Die gezeigte Produktansicht verwendet Beispieldaten. Einsatzumfang
-              und konkrete Integrationen werden im Gespräch geklärt.
+              TrustArch ist als Produkt verfügbar. Die Produktansicht verwendet
+              Beispieldaten; aktuelle Standards und der passende Einsatzumfang
+              werden vorab transparent geklärt.
             </p>
             <div className="mt-auto pt-7">
               <Button href="/produkte/trustarch" variant="secondary" theme="light">

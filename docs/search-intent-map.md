@@ -55,11 +55,30 @@ Suchvolumina. Sie dürfen nur innerhalb derselben Vergleichsgruppe interpretiert
 werden. Ein Wert von null kann bedeuten, dass das Volumen für die Darstellung
 zu gering ist; er beweist nicht, dass es überhaupt keine Nachfrage gibt.
 
-Strategische Konsequenz: Seitentitel und Hauptüberschriften priorisieren die
-breiteren Begriffe „KI Beratung“, „KI Schulung“, „KI im Unternehmen“ und „KI
-Automotive“. ChatGPT, Gemini, Copilot, AI Act und Zulieferer-Synonyme werden als
-konkrete Unterintentionen in Leistungsbeschreibung, Formaten, FAQs und
-Fachinhalten abgedeckt.
+Strategische Konsequenz: Seitentitel und Hauptüberschriften verwenden die
+breiteren Suchthemen in natürlicher, verständlicher Sprache. Aus dem
+Suchsignal „KI Automotive“ wird deshalb die konkrete Formulierung „KI für
+Automotive-Zulieferer“; „KI Beratung“ und „KI Schulung“ werden als
+„KI-Beratung für Automotive-Zulieferer“ und „KI-Schulungen für
+Automotive-Teams“ bezeichnet. ChatGPT, Gemini, Copilot, AI Act und weitere
+Zulieferer-Synonyme werden als konkrete Unterintentionen in
+Leistungsbeschreibung, Formaten, FAQs und Fachinhalten abgedeckt.
+
+## Sitelinks und Ergebnisdarstellung
+
+Google erzeugt Sitelinks automatisiert. Ihre Auswahl und Reihenfolge können
+nicht direkt festgelegt werden. Opny unterstützt eine eindeutige Darstellung
+daher mit einer konsistenten Informationsarchitektur:
+
+1. TrustArch und NodeX besitzen getrennte, direkt verlinkte Produktseiten.
+2. Seitentitel, Hauptüberschrift, strukturierte Daten und interne Linktexte
+   beschreiben auf jeder Produktseite dieselbe eindeutige Aufgabe.
+3. Die übergeordnete Produktseite beschreibt die Produktkategorie, ohne
+   TrustArch und NodeX als gemeinsames Produkt zu benennen.
+4. Die Automotive-Seite verwendet „KI für Automotive-Zulieferer“ statt des
+   unklaren Labels „KI Automotive“.
+5. Dauerhafte Weiterleitungen führen alte Leistungs- und Lösungs-URLs auf die
+   jeweils aktuelle Zielseite.
 
 ## Aktuelle Nachfragesignale
 
@@ -179,15 +198,27 @@ Aufgabe der Seite: den organisatorischen und technischen Steuerungsrahmen erklä
 
 Primäre Intention:
 
-- KI Compliance Software
-- Compliance Management Software KI
+- Compliance Management Software
+- Software für Managementsysteme
+- KI-gestützte Compliance Software
 - AI Governance Software
 - AI Gateway Unternehmen
 - LLM Gateway Governance
 - KI-Zugriff kontrollieren
 - KI-Nutzung überwachen
 
-Aufgabe der Seiten: Produktkategorie, Funktionsumfang und belegten Produktstatus präzise darstellen. Keine Beratungskeywords als primäre Seitenausrichtung.
+Sekundäre Produktbegriffe, nur bei bestätigter aktueller Abdeckung:
+
+- Audit Management Software
+- TISAX Software
+- ISO 27001 Software
+
+Aufgabe der Seiten: Produktkategorie, Funktionsumfang und belegten
+Produktstatus präzise darstellen. TrustArch beantwortet die
+Managementsystem-, Dokumenten-, Freigabe- und Nachweisintention; NodeX die
+technische KI-Kontrollintention. TISAX- und ISO-Begriffe werden nur im Umfang
+der bestätigten aktuellen Abdeckung verwendet. Keine Beratungskeywords als
+primäre Seitenausrichtung.
 
 ## Redaktioneller Ausbau nach realer Nachfrage
 

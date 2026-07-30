@@ -29,31 +29,40 @@ export const companyCtas = {
 
 export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
   {
-    label: "KI-Beratung für Automotive",
+    label: "KI-Beratung für Automotive-Zulieferer",
     href: "/loesungen/ki-beratung-automotive",
   },
   {
-    label: "KI-Schulungen & Coaching",
+    label: "KI-Schulungen für Automotive-Teams",
     href: "/loesungen/ki-schulungen-automotive",
   },
-  { label: "KI-Governance Automotive", href: "/ki-governance-automotive" },
+  {
+    label: "KI-Governance für Automotive-Zulieferer",
+    href: "/ki-governance-automotive",
+  },
 ];
 
 export const productNavigationLinks: readonly ServiceNavigationItem[] = [
-  { label: "Produktübersicht", href: "/produkte" },
-  { label: "TrustArch", href: "/produkte/trustarch" },
-  { label: "NodeX", href: "/produkte/nodex" },
+  {
+    label: "TrustArch · Compliance-Software",
+    href: "/produkte/trustarch",
+  },
+  {
+    label: "NodeX · kontrollierte KI-Nutzung",
+    href: "/produkte/nodex",
+  },
+  { label: "Alle Opny-Produkte", href: "/produkte" },
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
-  { label: "Automotive", href: "/automotive" },
+  { label: "Automotive-Zulieferer", href: "/automotive" },
   {
     label: "Produkte",
     href: "/produkte",
     items: productNavigationLinks,
   },
   {
-    label: "Lösungen",
+    label: "Beratung & Schulung",
     href: "/loesungen",
     items: serviceNavigationLinks,
   },
@@ -61,10 +70,8 @@ export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
 ];
 
 export const footerLinks = {
-  services: [
-    ...productNavigationLinks,
-    ...serviceNavigationLinks,
-  ],
+  products: productNavigationLinks,
+  solutions: serviceNavigationLinks,
   company: [
     { label: "Startseite", href: "/" },
     { label: "Automotive-Zulieferer", href: "/automotive" },

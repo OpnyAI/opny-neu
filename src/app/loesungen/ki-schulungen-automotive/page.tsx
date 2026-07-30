@@ -3,7 +3,7 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "KI-Schulungen für Unternehmen und Automotive-Teams",
+  title: "KI-Schulungen für Automotive-Zulieferer",
   description:
     "Praxisnahe KI-Schulungen und KI-Coaching für Automotive-Zulieferer: ChatGPT, Gemini, Copilot, AI Act, Datenschutz und sichere Arbeitsabläufe.",
   path: "/loesungen/ki-schulungen-automotive",
@@ -13,8 +13,8 @@ export default function KiSchulungenAutomotivePage() {
   return (
     <SolutionPage
       path="/loesungen/ki-schulungen-automotive"
-      eyebrow="KI-Schulungen & KI-Coaching Automotive"
-      title="KI-Schulungen für Unternehmen – praxisnah für Automotive."
+      eyebrow="KI-Schulungen und KI-Coaching"
+      title="KI-Schulungen für Automotive-Zulieferer. Praxisnah für den Arbeitsalltag."
       intro="Opny bietet KI-Schulungen, Inhouse-Workshops und KI-Coaching für Automotive-Zulieferer. Jede Rolle übt mit freigegebenen Tools und typischen Aufgaben aus dem eigenen Arbeitsalltag."
       primaryCta={{ label: "Schulung anfragen", href: companyCtas.trainingInquiry }}
       secondaryCta={{ label: "KI-Governance ansehen", href: "/ki-governance-automotive" }}
