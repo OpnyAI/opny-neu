@@ -12,9 +12,9 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "KI Automotive: kontrolliert einführen für Zulieferer",
+  title: "KI für Automotive-Zulieferer kontrolliert einführen",
   description:
-    "KI-Beratung, KI-Governance und KI-Schulungen für Automobilzulieferer: ChatGPT, Gemini, Copilot und weitere KI kontrolliert einführen.",
+    "Opny hilft Automotive-Zulieferern, KI kontrolliert einzuführen: mit KI-Beratung, Governance, sicheren Zugängen und Schulungen für den Arbeitsalltag.",
   path: "/automotive",
   image: {
     url: "/media/opny/automotive-quality-inspection-v2.jpg",
@@ -81,7 +81,7 @@ export default function AutomotivePage() {
               "@type": "WebPage",
               "@id": "https://www.opny.ai/automotive#webpage",
               url: "https://www.opny.ai/automotive",
-              name: "KI Automotive: kontrolliert einführen für Zulieferer",
+              name: "KI für Automotive-Zulieferer kontrolliert einführen",
               description:
                 "KI-Beratung, KI-Governance und KI-Schulungen für Automobilzulieferer.",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
@@ -124,7 +124,7 @@ export default function AutomotivePage() {
           <div>
             <div className="eyebrow">Automotive-Zulieferer · Tier-1 bis Tier-3</div>
             <h1 className="display-lg mt-5 text-text-primary-light">
-              KI für Automotive.
+              KI für Automotive-Zulieferer.
               <span className="mt-2 block text-[#86868b]">
                 Kontrolliert eingeführt.
               </span>
@@ -224,7 +224,7 @@ export default function AutomotivePage() {
           {[
             {
               title: "TrustArch",
-              text: "Standards, Anforderungen, Risiken, Dokumente, Nachweise, Feststellungen und Maßnahmen organisieren.",
+              text: "Managementsysteme, Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen gemeinsam steuern.",
               href: "/produkte/trustarch",
               cta: "Compliance-System ansehen",
             },

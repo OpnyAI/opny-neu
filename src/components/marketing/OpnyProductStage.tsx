@@ -26,7 +26,7 @@ export default function OpnyProductStage() {
                 TrustArch
               </div>
               <div className="mt-1 text-xs text-text-muted-light">
-                Compliance und Nachweise organisieren
+                Managementsysteme und Nachweise steuern
               </div>
             </div>
             <span className="rounded-full border border-black/[0.08] bg-black/[0.03] px-3 py-1.5 text-[11px] font-semibold text-text-muted-light">

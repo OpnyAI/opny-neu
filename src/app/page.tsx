@@ -39,9 +39,9 @@ export const metadata = {
 const decisionQuestions = [
   {
     number: "01",
-    question: "Liegen Audit-Nachweise verstreut in Ordnern und Tabellen?",
+    question: "Sind Managementsysteme, Freigaben und Nachweise verteilt?",
     answer:
-      "TrustArch bringt Anforderungen, Dokumente, Risiken und offene Aufgaben an einem Ort zusammen.",
+      "TrustArch verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem Arbeitsraum.",
     href: "/produkte/trustarch",
   },
   {
@@ -64,12 +64,12 @@ const homepageFaqs = [
   {
     question: "Was ist Opny?",
     answer:
-      "Opny unterstützt Automotive-Zulieferer dabei, KI kontrolliert einzuführen. Beratung und Schulungen begleiten Strategie und Umsetzung; TrustArch strukturiert Compliance-Arbeit, NodeX kontrolliert KI-Zugänge technisch und wird passend zur jeweiligen Systemumgebung konfiguriert.",
+      "Opny unterstützt Automotive-Zulieferer dabei, KI kontrolliert einzuführen. Beratung und Schulungen begleiten Strategie und Umsetzung; TrustArch steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge technisch und wird passend zur jeweiligen Systemumgebung konfiguriert.",
   },
   {
     question: "Welcher Opny-Baustein passt zu welcher Ausgangslage?",
     answer:
-      "Der passende Opny-Baustein richtet sich nach dem konkreten Problem. TrustArch ordnet Compliance-Arbeit, NodeX kontrolliert KI-Zugänge, Beratung bereitet Entscheidungen und Pilotierung vor, und Schulungen übersetzen Regeln und Tools in den Arbeitsalltag.",
+      "Der passende Opny-Baustein richtet sich nach dem konkreten Problem. TrustArch steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge, Beratung bereitet Entscheidungen und Pilotierung vor, und Schulungen übersetzen Regeln und Tools in den Arbeitsalltag.",
   },
   {
     question: "Welche Unterstützung bietet Opny bei KI-Beratung und KI-Schulungen?",
@@ -79,7 +79,7 @@ const homepageFaqs = [
   {
     question: "Braucht jedes Unternehmen TrustArch und NodeX?",
     answer:
-      "Nein. TrustArch ordnet Anforderungen und Nachweise. NodeX macht die tatsächliche KI-Nutzung technisch kontrollierbar. Welcher Baustein passt, hängt von der konkreten Ausgangslage ab.",
+      "Nein. TrustArch verbindet Managementsysteme, Dokumente, Freigaben und Nachweise. NodeX macht die tatsächliche KI-Nutzung technisch kontrollierbar. Welcher Baustein passt, hängt von der konkreten Ausgangslage ab.",
   },
   {
     question: "Ersetzt Opny Rechtsberatung oder eine Zertifizierungsstelle?",
@@ -224,22 +224,23 @@ export default function Home() {
 
       <Region tone="base">
         <SectionIntro
-          eyebrow="Nachweise und Aufgaben ordnen"
-          title="TrustArch bringt Audit-Arbeit an einen Ort."
-          text="TrustArch zeigt, wie Anforderungen, Dokumente, Risiken, Abweichungen und offene Aufgaben zusammen bearbeitet werden können."
+          eyebrow="Managementsysteme gemeinsam steuern"
+          title="TrustArch verbindet Compliance-Arbeit in einem System."
+          text="Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen werden in einem gemeinsamen Arbeitsraum bearbeitet."
         />
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.36fr_0.64fr] lg:items-end">
           <div>
             <p className="leading-relaxed text-text-muted-light">
-              Statt Nachweise in Tabellen, Ordnern und einzelnen Tools zu
-              suchen, führt TrustArch Schritt für Schritt von der Anforderung
-              bis zur Vorbereitung auf ein Audit.
+              TrustArch führt bisher verteilte Inhalte in einem Arbeitsraum
+              zusammen und kann Doppelpflege verringern. KI-Unterstützung
+              bereitet wiederkehrende Einordnungen und nächste Schritte vor;
+              Fachpersonen prüfen und geben Ergebnisse frei.
             </p>
             <Link
               href="/produkte/trustarch"
               className="mt-6 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
             >
-              TrustArch entdecken →
+              TrustArch Compliance-Software ansehen →
             </Link>
           </div>
           <MediaStage
@@ -275,7 +276,7 @@ export default function Home() {
               href="/produkte/nodex"
               className="mt-7 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
             >
-              NodeX entdecken →
+              NodeX für kontrollierte KI-Nutzung ansehen →
             </Link>
           </div>
           <NodeXPreview compact autoPlay />

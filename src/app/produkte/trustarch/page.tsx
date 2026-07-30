@@ -10,9 +10,9 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "TrustArch für Automotive-Zulieferer: Compliance und Nachweise",
+  title: "TrustArch: Compliance-Software für Managementsysteme",
   description:
-    "TrustArch zeigt Automotive-Zulieferern, wie Standards, Nachweise, Risiken, Abweichungen, Maßnahmen und Auditvorbereitung zusammenlaufen.",
+    "TrustArch ist Opnys KI-gestützte Software für Managementsysteme und Compliance. Sie bündelt Anforderungen, Dokumente, Freigaben, Nachweise und Maßnahmen.",
   path: "/produkte/trustarch",
   image: {
     url: "/media/trustarch/trustarch-dashboard-1600x1000.jpg",
@@ -23,34 +23,54 @@ export const metadata = createMetadata({
 });
 
 const visibleAreas = [
-  ["Reifegrad und Compliance Review", "Standards auswählen, Reifegrade betrachten und Lücken in einem geführten Ablauf einordnen."],
-  ["Dokumente und Nachweise", "Dokumente mit Typ, Standardbezug, Verantwortlichkeit und Status strukturiert zusammenführen."],
-  ["Assets, Risiken und Maßnahmen", "Schutzbedarfe, Risiken, Feststellungen, Aufwand, Fristen und Behandlung nachvollziehbar verbinden."],
-  ["Monitoring und Integrationen", "Automatisierte Kontrollen mit Framework-Bezug und vorgesehene Systemanbindungen sichtbar machen."],
-  ["BCM und Incident Management", "Business-Impact, Wiederanlaufziele, Notfallplanung, Fristen und Nachweise gemeinsam bearbeiten."],
-  ["AI-Act-Register", "KI-Systeme, Rollen, Risikoklassen, Pflichten, Verantwortliche und Status zentral inventarisieren."],
+  ["Anforderungen und Reifegrad", "Standards auswählen, den Bearbeitungsstand einordnen und offene Anforderungen gezielt priorisieren."],
+  ["Dokumentversionen und Freigaben", "Dokumente, Versionen, Verantwortlichkeiten und anpassbare Freigabeabläufe nachvollziehbar zusammenführen."],
+  ["Nachweise über Themen hinweg", "Vorhandene Nachweise mit Anforderungen aus mehreren Managementthemen verbinden und Doppelpflege verringern."],
+  ["Risiken und Maßnahmen", "Feststellungen, Risiken, Verantwortliche, Aufwand, Fristen und Bearbeitungsstatus miteinander verknüpfen."],
+  ["KI-Unterstützung", "Wiederkehrende Einordnung und nächste Arbeitsschritte vorbereiten; Fachpersonen prüfen und geben Ergebnisse frei."],
+  ["Auditvorbereitung", "Freigegebene Dokumente, zugeordnete Nachweise und offene Maßnahmen für interne oder externe Prüfungen strukturiert zusammenstellen."],
 ];
 
 const faqs = [
   {
     question: "Was ist TrustArch?",
     answer:
-      "TrustArch ist ein KI-gestütztes Compliance- und Managementsystem. Es bringt Standards, Nachweise, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum zusammen.",
+      "TrustArch ist Opnys KI-gestützte Software für Managementsysteme und Compliance. Sie verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum.",
   },
   {
-    question: "Ist TrustArch bereits produktiv verfügbar?",
+    question: "Für wen ist TrustArch geeignet?",
     answer:
-      "Ja. TrustArch ist als Produkt verfügbar. Welche Bereiche, Integrationen und technischen Rahmenbedingungen für ein Unternehmen sinnvoll sind, wird vor dem Einsatz gemeinsam geklärt.",
+      "TrustArch richtet sich an Automotive-Zulieferer, kleinere Unternehmen mit kompakten Fachrollen sowie mittelständische Unternehmen und Hidden Champions. Besonders hilfreich ist es, wenn Standards, Dokumente, Freigaben und Maßnahmen heute über mehrere Ablagen oder Teams verteilt sind.",
   },
   {
-    question: "Ist TrustArch nur ein AI-Act-Register?",
+    question: "Wie unterstützt die KI in TrustArch konkret?",
     answer:
-      "Nein. TrustArch umfasst neben dem AI-Act-Register auch Standards, Nachweise, Risiken sowie Audit- und Managementprozesse.",
+      "Die KI-Unterstützung ist auf typische Compliance- und Managementsystem-Abläufe ausgerichtet. Sie kann Informationen strukturieren, Einordnungen vorbereiten und nächste Schritte vorschlagen. Fachliche Prüfung, Freigabe und Verantwortung bleiben bei den zuständigen Personen.",
   },
   {
-    question: "Ersetzt TrustArch eine Zertifizierungsstelle oder Rechtsberatung?",
+    question: "Wie funktionieren Dokumentversionierung und Freigaben?",
     answer:
-      "Nein. TrustArch strukturiert interne Arbeit und hilft bei der Vorbereitung von Nachweisen. Zertifizierungsentscheidungen und rechtliche Bewertungen bleiben bei den zuständigen Fachstellen.",
+      "TrustArch führt Dokumente mit Version, Verantwortlichkeit, Standardbezug und Bearbeitungsstatus zusammen. Ein anpassbarer Freigabeablauf macht sichtbar, welche Fassung geprüft, freigegeben oder noch zu bearbeiten ist.",
+  },
+  {
+    question: "Welche Standards unterstützt TrustArch?",
+    answer:
+      "TrustArch ist normenübergreifend angelegt. TISAX ist abgebildet; weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Welche Standards, Versionen und Themenbereiche aktuell für einen Einsatz verfügbar sind, wird vorab transparent geklärt.",
+  },
+  {
+    question: "Kann TrustArch mehrere Managementsysteme gemeinsam abbilden?",
+    answer:
+      "Ja, TrustArch ist für eine gemeinsame Sicht auf Anforderungen, Dokumente, Nachweise, Risiken und Maßnahmen über mehrere Managementthemen hinweg angelegt. Dadurch können vorhandene Inhalte wiederverwendet und parallele Ablagen reduziert werden.",
+  },
+  {
+    question: "Wie viel Aufwand spart TrustArch?",
+    answer:
+      "Die mögliche Entlastung hängt von Ausgangslage, Standards, Ablagen und Freigabewegen ab. Deshalb wird sie nicht pauschal versprochen, sondern in einem abgegrenzten Einsatz anhand konkreter Prozesse und wiederkehrender Aufgaben gemessen.",
+  },
+  {
+    question: "Garantiert TrustArch Konformität oder ersetzt es verantwortliche Fachrollen?",
+    answer:
+      "Nein. TrustArch unterstützt Verantwortliche bei Struktur, Abläufen und Nachweisen. Es ersetzt weder Informationssicherheits- oder Qualitätsbeauftragte noch Auditoren, Rechtsberatung oder eine Zertifizierungsstelle. Fachliche und rechtliche Entscheidungen bleiben bei den zuständigen Stellen.",
   },
 ];
 
@@ -65,7 +85,7 @@ export default function TrustArchPage() {
               "@type": "WebPage",
               "@id": "https://www.opny.ai/produkte/trustarch#webpage",
               url: "https://www.opny.ai/produkte/trustarch",
-              name: "TrustArch für Automotive-Zulieferer: Compliance und Nachweise",
+              name: "TrustArch: Compliance-Software für Managementsysteme",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               about: { "@id": "https://www.opny.ai/produkte/trustarch#software" },
               video: { "@id": "https://www.opny.ai/produkte/trustarch#produkteinblick" },
@@ -80,13 +100,26 @@ export default function TrustArchPage() {
               name: "TrustArch",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
-              description: "KI-gestütztes Compliance- und Managementsystem für Standards, Nachweise, Risiken und Maßnahmen.",
+              description:
+                "KI-gestützte Software für Managementsysteme und Compliance, die Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen verbindet.",
               brand: { "@id": "https://www.opny.ai/#brand" },
               url: "https://www.opny.ai/produkte/trustarch",
+              featureList: [
+                "Anforderungen und Reifegrade strukturieren",
+                "Dokumentversionen und Freigaben nachvollziehen",
+                "Nachweise mit mehreren Managementthemen verbinden",
+                "Risiken, Feststellungen und Maßnahmen steuern",
+                "KI-gestützte Vorbereitung wiederkehrender Aufgaben",
+              ],
+              audience: {
+                "@type": "BusinessAudience",
+                audienceType:
+                  "Automotive-Zulieferer, kleinere Unternehmen und Mittelstand",
+              },
               additionalProperty: {
                 "@type": "PropertyValue",
                 name: "Produktstatus",
-                value: "Verfügbares Produkt; Einsatzumfang wird individuell geklärt",
+                value: "Verfügbares Produkt",
               },
             },
             {
@@ -94,12 +127,12 @@ export default function TrustArchPage() {
               "@id": "https://www.opny.ai/produkte/trustarch#produkteinblick",
               name: "TrustArch-Produkteinblick: vom Review zur Maßnahme",
               description:
-                "Eine ruhige 38-sekündige Produkt-Tour mit Beispieldaten zeigt Dashboard, Standardauswahl, Prüfumfang, simulierte Review-Ergebnisse und Maßnahmen.",
+                "Eine 38-sekündige Produkt-Tour mit Beispieldaten zeigt Dashboard, Standardauswahl, Review-Ergebnisse und Maßnahmen.",
               thumbnailUrl:
                 "https://www.opny.ai/media/trustarch/marketing-opny-trustarch-poster.jpg",
               contentUrl:
                 "https://www.opny.ai/media/trustarch/marketing-opny-trustarch.mp4",
-              uploadDate: "2026-07-29",
+              uploadDate: "2026-07-29T16:50:10+02:00",
               duration: "PT38.3S",
               inLanguage: "de-DE",
               isPartOf: {
@@ -131,27 +164,31 @@ export default function TrustArchPage() {
           ]}
         />
         <div className="mx-auto mt-10 max-w-5xl text-center">
-          <div className="eyebrow">TrustArch · Produktansicht</div>
+          <div className="eyebrow">TrustArch · Compliance-Management-Software</div>
           <h1 className="display-lg mt-6">
-            Compliance-Arbeit bündeln.
-            <span className="block text-[#86868b]">Nachweise vorbereiten.</span>
+            TrustArch.
+            <span className="block text-[#86868b]">
+              Managementsysteme und Compliance gemeinsam steuern.
+            </span>
           </h1>
           <p className="lead-copy mx-auto mt-7 max-w-3xl">
-            TrustArch zeigt, wie Standards, Dokumente, Risiken,
-            Feststellungen und Maßnahmen in einem gemeinsamen Arbeitsraum
-            zusammenlaufen können.
+            TrustArch ist Opnys KI-gestützte Software für Managementsysteme
+            und Compliance. Sie verbindet Anforderungen, Dokumentversionen,
+            Freigaben, Nachweise, Risiken und Maßnahmen in einem gemeinsamen
+            Arbeitsraum.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <Button href={companyCtas.trustarchDemo} variant="primary" theme="light">
               Demo anfragen
             </Button>
             <Button href="#produktumfang" variant="secondary" theme="light">
-              Geprüften Umfang ansehen
+              Funktionen ansehen
             </Button>
           </div>
           <p className="mt-5 text-sm text-text-muted-light">
-            Die Ansichten zeigen freigegebene Beispieldaten. TrustArch ersetzt
-            weder eine Zertifizierungsstelle noch Rechtsberatung.
+            TrustArch ist als Produkt verfügbar. Die Produktansichten verwenden
+            Beispieldaten; im Gespräch klären wir den passenden Einsatz für
+            Ihre Standards und Prozesse.
           </p>
         </div>
         <figure className="media-stage mx-auto mt-14 max-w-6xl overflow-hidden bg-[#07111f]">
@@ -184,7 +221,7 @@ export default function TrustArchPage() {
           >
             <p>
               Die Produkt-Tour zeigt in sechs ruhigen Originalansichten mit
-              fiktiven Beispieldaten, wie ein Review angelegt, Ergebnisse
+              Beispieldaten, wie ein Review angelegt, Ergebnisse
               eingeordnet und daraus konkrete Maßnahmen erstellt werden.
               TrustArch ersetzt keine Zertifizierungsstelle oder Rechtsberatung.
             </p>
@@ -221,9 +258,9 @@ export default function TrustArchPage() {
 
       <Region id="produktumfang" tone="surface">
         <SectionIntro
-          eyebrow="In der Produktansicht sichtbar"
-          title="Ein Arbeitsraum für zusammenhängende Compliance-Prozesse."
-          text="Die folgenden Ansichten zeigen, wie zusammenhängende Compliance-Arbeit in TrustArch organisiert wird."
+          eyebrow="Zentrale Funktionen"
+          title="Ein Arbeitsraum statt verteilter Ablagen."
+          text="TrustArch verbindet wiederkehrende Managementsystem- und Compliance-Arbeit in nachvollziehbaren Abläufen."
         />
         <div className="editorial-rule mt-12 grid md:grid-cols-2">
           {visibleAreas.map(([title, text], index) => (
@@ -248,9 +285,10 @@ export default function TrustArchPage() {
                 Nachweise nicht nur ablegen, sondern einordnen.
               </h2>
               <p className="lead-copy mt-6">
-                TrustArch zeigt Dokumente mit Typ, Standardbezug,
-                verantwortlicher Rolle und Bearbeitungsstatus in einer
-                gemeinsamen Übersicht.
+                TrustArch führt Dokumente mit Typ, Version, Standardbezug,
+                verantwortlicher Rolle und Bearbeitungsstatus zusammen.
+                Anpassbare Freigabeabläufe machen sichtbar, welche Fassung
+                geprüft, freigegeben oder noch zu bearbeiten ist.
               </p>
             </div>
             <MediaStage
@@ -294,19 +332,60 @@ export default function TrustArchPage() {
         </div>
       </Region>
 
+      <Region tone="base">
+        <SectionIntro
+          eyebrow="Normenübergreifend angelegt"
+          title="Ein Managementsystem statt einzelner Normen-Silos."
+          text="Anforderungen überschneiden sich häufig. TrustArch schafft eine gemeinsame Sicht auf Inhalte, Nachweise und offene Arbeit."
+        />
+        <div className="editorial-rule mt-12 grid gap-0 lg:grid-cols-3">
+          {[
+            [
+              "TISAX und ISO schrittweise",
+              "TISAX ist abgebildet. Weitere ISO-Managementsystemstandards werden schrittweise ergänzt; aktuelle Standards und Versionen klären wir vor dem Einsatz.",
+            ],
+            [
+              "Nachweise wiederverwenden",
+              "Dokumente und Nachweise lassen sich mehreren passenden Anforderungen zuordnen, statt sie für jedes Managementthema erneut zu pflegen.",
+            ],
+            [
+              "Zusätzliche Anforderungen einordnen",
+              "Bestehende Strukturen aus TISAX oder ISO 27001 können mit weiteren Themen wie NIS2 oder KRITIS-Anforderungen verglichen werden. Die verbindliche rechtliche Einordnung bleibt bei den zuständigen Fachstellen.",
+            ],
+          ].map(([title, text], index) => (
+            <article
+              key={title}
+              className={`border-b border-black/[0.10] py-7 lg:p-8 ${
+                index < 2 ? "lg:border-r" : ""
+              }`}
+            >
+              <span className="text-sm font-semibold text-text-muted-light">
+                0{index + 1}
+              </span>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
+                {title}
+              </h2>
+              <p className="mt-3 leading-relaxed text-text-muted-light">
+                {text}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Region>
+
       <Region tone="alt">
         <div className="grid gap-12 lg:grid-cols-[0.4fr_0.6fr]">
           <SectionIntro
             eyebrow="Arbeitsmodell"
-            title="Fünf Schritte vom Standard zur Auditvorbereitung."
+            title="Fünf Schritte von der Anforderung zur laufenden Verbesserung."
           />
           <ol className="editorial-rule">
             {[
-              ["Anforderungen einordnen", "Standards und Themenfelder auswählen."],
-              ["Nachweise zuordnen", "Dokumente, Assets und Kontrollen verbinden."],
-              ["Lücken bewerten", "Feststellungen und Risiken priorisieren."],
-              ["Maßnahmen steuern", "Verantwortliche, Aufwand, Fristen und Status zusammenführen."],
-              ["Audit vorbereiten", "Berichte und freigegebene Nachweise strukturieren."],
+              ["Anforderungen einordnen", "Standards, Themenfelder und Verantwortlichkeiten auswählen."],
+              ["Dokumente und Nachweise verbinden", "Freigegebene Inhalte passenden Anforderungen zuordnen."],
+              ["Lücken bewerten", "Feststellungen und Risiken fachlich prüfen und priorisieren."],
+              ["Maßnahmen steuern", "Verantwortliche, Aufwand, Fristen, Freigaben und Status zusammenführen."],
+              ["Wirksamkeit und Auditbereitschaft prüfen", "Fortschritt, Berichte und freigegebene Nachweise für Verbesserungen und Prüfungen strukturieren."],
             ].map(([title, text], index) => (
               <li key={title} className="grid grid-cols-[44px_1fr] gap-5 border-b border-black/[0.10] py-6">
                 <span className="text-sm font-semibold text-text-muted-light">0{index + 1}</span>
@@ -320,15 +399,54 @@ export default function TrustArchPage() {
         </div>
       </Region>
 
+      <Region tone="surface">
+        <SectionIntro
+          eyebrow="Für unterschiedliche Organisationsgrößen"
+          title="Weniger Routine, mehr Zeit für fachliche Entscheidungen."
+          text="TrustArch ersetzt keine verantwortlichen Menschen. Es gibt ihnen einen gemeinsamen Arbeitsraum, klare Abläufe und KI-Unterstützung für wiederkehrende Aufgaben."
+        />
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {[
+            [
+              "Kleinere Unternehmen und kompakte Teams",
+              "Fachrollen behalten Anforderungen, Dokumente, Termine und Nachweise im Blick, auch wenn Informationssicherheit, Qualität oder Umweltmanagement keine eigene große Abteilung haben.",
+            ],
+            [
+              "Mittelstand und Hidden Champions",
+              "Verantwortliche für Informationssicherheit, Qualität, Umwelt und Compliance erhalten eine gemeinsame Sicht über Bereiche und Managementthemen hinweg.",
+            ],
+            [
+              "Automotive-Zulieferer",
+              "TISAX, ISO-bezogene Managementarbeit und zusätzliche Kunden- oder Governance-Anforderungen lassen sich in einer gemeinsamen Arbeitsstruktur bearbeiten.",
+            ],
+          ].map(([title, text]) => (
+            <article
+              key={title}
+              className="rounded-card border border-black/[0.08] bg-white p-7 shadow-[0_22px_60px_-48px_rgba(0,0,0,0.28)]"
+            >
+              <h2 className="text-2xl font-semibold tracking-[-0.03em]">
+                {title}
+              </h2>
+              <p className="mt-4 leading-relaxed text-text-muted-light">
+                {text}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Region>
+
       <Region>
-        <SectionIntro eyebrow="FAQ" title="Entscheidungsfragen zu TrustArch" />
+        <SectionIntro
+          eyebrow="Kurz beantwortet"
+          title="Häufige Fragen zu TrustArch"
+        />
         <FaqList items={faqs} />
       </Region>
 
       <Region spacing="compact">
         <ClosingCta
-          title="TrustArch im eigenen Compliance-Kontext prüfen."
-          text="Nennen Sie uns Standards, Auditdruck und aktuelle Ablagewege. Wir zeigen transparent, was bereits sichtbar ist und was für einen Pilot noch fehlt."
+          title="TrustArch an den eigenen Managementsystemen prüfen."
+          text="Nennen Sie uns Ihre Standards, bestehenden Ablagen und Freigabewege. In der Demo zeigen wir, wie TrustArch Ihre Arbeit konkret zusammenführen kann."
           href={companyCtas.trustarchDemo}
           label="Demo anfragen"
         />

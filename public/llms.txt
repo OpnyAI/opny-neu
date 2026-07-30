@@ -16,7 +16,7 @@ Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische
 
 ## Produkte
 
-- [TrustArch](https://www.opny.ai/produkte/trustarch): Verfügbares Opny-Produkt für Anforderungen, Nachweise, Risiken, Maßnahmen und Auditvorbereitung
+- [TrustArch](https://www.opny.ai/produkte/trustarch): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
 - [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
 
 ## Leistungen
@@ -26,7 +26,8 @@ Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische
 
 ## Wichtige Einordnung
 
-- TrustArch ist ein verfügbares Opny-Produkt. Die veröffentlichten Ansichten und der Produktrundgang verwenden fiktive Beispieldaten. Einsatzumfang und konkrete Integrationen werden individuell geklärt; TrustArch ersetzt weder Rechtsberatung noch eine Zertifizierungsstelle.
+- TrustArch ist ein verfügbares Opny-Produkt. Es ist normenübergreifend angelegt: TISAX ist abgebildet, weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Aktuelle Standards und Versionen werden vor dem Einsatz geklärt.
+- Die veröffentlichten TrustArch-Ansichten und der Produktrundgang verwenden Beispieldaten. Die KI-Unterstützung bereitet Strukturierung und nächste Schritte vor; Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. TrustArch ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
 - NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
 - Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.
 

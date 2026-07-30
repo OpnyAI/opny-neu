@@ -157,31 +157,39 @@ export default function Header() {
                     </svg>
                   </button>
 
-                  {isOpen ? (
-                    <div id={`nav-${n.label.toLowerCase().replaceAll(" ", "-")}`} className="absolute left-0 top-full pt-4">
-                      <div className="min-w-[320px] rounded-3xl border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
-                        {n.items.map((item) => {
-                          const itemIsActive = pathname === item.href;
+                  <div
+                    id={`nav-${n.label.toLowerCase().replaceAll(" ", "-")}`}
+                    aria-hidden={!isOpen}
+                    inert={!isOpen}
+                    className={`absolute left-0 top-full pt-4 transition duration-150 ${
+                      isOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-1 pointer-events-none opacity-0"
+                    }`}
+                  >
+                    <div className="min-w-[320px] rounded-3xl border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
+                      {n.items.map((item) => {
+                        const itemIsActive = pathname === item.href;
 
-                          return (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              aria-current={itemIsActive ? "page" : undefined}
-                              className={`block rounded-2xl px-4 py-3 text-sm transition ${
-                                itemIsActive
-                                  ? "bg-black/[0.04] text-text-primary-light"
-                                  : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
-                              }`}
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {item.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            tabIndex={isOpen ? undefined : -1}
+                            aria-current={itemIsActive ? "page" : undefined}
+                            className={`block rounded-2xl px-4 py-3 text-sm transition ${
+                              itemIsActive
+                                ? "bg-black/[0.04] text-text-primary-light"
+                                : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
+                            }`}
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
                     </div>
-                  ) : null}
+                  </div>
                 </div>
               );
             })}

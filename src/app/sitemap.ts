@@ -2,9 +2,11 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = "https://www.opny.ai";
 const relaunchDate = "2026-07-29";
+const trustArchContentDate = "2026-07-30";
 const pages = [
   {
     path: "/",
+    lastModified: trustArchContentDate,
     images: [
       `${baseUrl}/opny-brand-icon-1024.png`,
       `${baseUrl}/media/opny/automotive-quality-inspection-v2.jpg`,
@@ -12,11 +14,13 @@ const pages = [
   },
   {
     path: "/automotive",
+    lastModified: trustArchContentDate,
     images: [`${baseUrl}/media/opny/automotive-quality-inspection-v2.jpg`],
   },
-  { path: "/produkte" },
+  { path: "/produkte", lastModified: trustArchContentDate },
   {
     path: "/produkte/trustarch",
+    lastModified: trustArchContentDate,
     images: [
       `${baseUrl}/media/trustarch/marketing-opny-trustarch-poster.jpg`,
       `${baseUrl}/media/trustarch/trustarch-dashboard-1600x1000.jpg`,
@@ -26,9 +30,9 @@ const pages = [
     ],
     videos: [
       {
-        title: "TrustArch Produktdemo",
+        title: "TrustArch Produktvideo",
         description:
-          "TrustArch zeigt, wie Compliance-Anforderungen, Nachweise, Risiken und Maßnahmen zentral organisiert werden.",
+          "TrustArch verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen für Managementsysteme und Compliance.",
         thumbnail_loc: `${baseUrl}/media/trustarch/marketing-opny-trustarch-poster.jpg`,
         content_loc: `${baseUrl}/media/trustarch/marketing-opny-trustarch.mp4`,
         family_friendly: "yes",
@@ -37,6 +41,7 @@ const pages = [
   },
   {
     path: "/produkte/nodex",
+    lastModified: trustArchContentDate,
     images: [`${baseUrl}/media/nodex/marketing-opny-nodex-poster.jpg`],
     videos: [
       {
@@ -51,19 +56,20 @@ const pages = [
   },
   { path: "/loesungen/ki-beratung-automotive" },
   { path: "/loesungen/ki-schulungen-automotive" },
-  { path: "/ki-governance-automotive" },
+  { path: "/ki-governance-automotive", lastModified: trustArchContentDate },
   { path: "/wissen/ki-im-unternehmen-einfuehren" },
   {
     path: "/ueber-opny",
     images: [`${baseUrl}/media/opny/mehmet-catalsakal-founder-about-web.jpg`],
   },
-  { path: "/kontakt" },
+  { path: "/kontakt", lastModified: trustArchContentDate },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return pages.map((page) => ({
     url: `${baseUrl}${page.path}`,
-    lastModified: relaunchDate,
+    lastModified:
+      "lastModified" in page ? page.lastModified : relaunchDate,
     ...("images" in page ? { images: [...page.images] } : {}),
     ...("videos" in page ? { videos: [...page.videos] } : {}),
   }));

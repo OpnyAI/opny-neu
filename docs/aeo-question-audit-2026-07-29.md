@@ -29,7 +29,7 @@ Medien und strukturierte Daten, die dem sichtbaren Inhalt entsprechen.
 | `/ki-governance-automotive` | Welche Daten, Regeln, Rollen und AI-Act-Fragen sind zu klären? |
 | `/loesungen/ki-beratung-automotive` | Wie laufen Beratung, Auswahl und Preisbildung ab? |
 | `/loesungen/ki-schulungen-automotive` | Welche Kompetenzmaßnahmen, Inhalte, Formate und Nachweise passen? |
-| `/produkte/trustarch` | Was zeigt die TrustArch-Demo und was belegt sie nicht? |
+| `/produkte/trustarch` | Was ist TrustArch, wie unterstützt es Managementsysteme, Dokumentversionen und Freigaben und welche Standards sind aktuell abgebildet? |
 | `/produkte/nodex` | Was ist NodeX, wie schützt es sensible Angaben und wie wird es je Kundenumgebung konfiguriert? |
 
 ## Priorisierte aktuelle Fragen
@@ -47,6 +47,20 @@ Medien und strukturierte Daten, die dem sichtbaren Inhalt entsprechen.
 11. Wie startet ein Automotive-Zulieferer einen kontrollierten KI-Praxistest?
 12. Wie lässt sich der Erfolg eines KI-Praxistests messen?
 13. Ist jede KI-Anwendung in der Automobilindustrie ein Hochrisiko-KI-System?
+
+## TrustArch-Entscheidungsfragen
+
+Die Produktseite beantwortet zusätzlich sichtbar und identisch im
+`FAQPage`-Markup:
+
+1. Was ist TrustArch?
+2. Für wen ist TrustArch geeignet?
+3. Wie unterstützt die KI in TrustArch konkret?
+4. Wie funktionieren Dokumentversionierung und Freigaben?
+5. Welche Standards unterstützt TrustArch?
+6. Kann TrustArch mehrere Managementsysteme gemeinsam abbilden?
+7. Wie viel Aufwand spart TrustArch?
+8. Garantiert TrustArch Konformität oder ersetzt es verantwortliche Fachrollen?
 
 ## Redaktionsregeln
 
