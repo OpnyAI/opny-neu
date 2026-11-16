@@ -26,4 +26,6 @@ Keine neuen Garantien zu Zertifizierung, Rechtssicherheit, vollständiger Normab
 
 ## Prüf- und Veröffentlichungsstand
 
-Lint und Produktionsbuild erfolgreich. HTTP-Prüfung der Produkt-, Lösungs- und Kontaktwege, permanenter Alt-URL-Redirect, Canonical und Sitemap erfolgreich. Alte Kontaktinteressen werden korrekt normalisiert. Veröffentlichung und anschließende öffentliche Prüfung sind der nächste Schritt.
+Lint und Produktionsbuild erfolgreich. HTTP-Prüfung der Produkt-, Lösungs- und Kontaktwege, permanenter Alt-URL-Redirect, Canonical und Sitemap erfolgreich. Alte Kontaktinteressen werden korrekt normalisiert. Am 16.11.2026 aus Commit `ffde3648c39f50275095f998222ca7bf82e7167a` über das bestehende Vercel-Projekt veröffentlicht. Deployment `dpl_8sG6gU6VpKzKZyHFqPextYKs7756` ist READY und den Domains `www.opny.ai` und `opny.ai` zugeordnet.
+
+Öffentlich geprüft: Startseite, neue Produktseite, allgemeine Lösungsseite, Kontakt-Vorauswahl auch mit altem TrustArch-Link, Sitemap, llms.txt und alle vier neuen Bilddateien erreichbar. Alter Produktweg antwortet mit HTTP 308 auf den neuen Weg. Live-Produktseite im Browser geprüft; Canonical korrekt, sichtbarer Produktname AuthenticTrust. Keine Kontakt-E-Mail versendet.
