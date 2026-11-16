@@ -13,7 +13,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Opny kontaktieren: Demo oder Erstgespräch",
   description:
-    "Kontaktieren Sie Opny für eine TrustArch-Demo, einen NodeX-Einsatz oder ein Erstgespräch zu KI-Beratung und KI-Schulungen für Automotive-Zulieferer.",
+    "Kontaktieren Sie Opny für eine AuthenticTrust-Demo, einen NodeX-Einsatz oder ein Erstgespräch zu KI-Beratung und KI-Schulungen für Unternehmen.",
   path: "/kontakt",
 });
 
@@ -54,7 +54,7 @@ export default async function KontaktPage({
           </h1>
           <p className="lead-copy mt-6 max-w-[68ch]">
             Beschreiben Sie kurz Ausgangslage und Interesse. Wir ordnen ein, ob
-            TrustArch, NodeX, Beratung oder Schulung der passende nächste Schritt ist.
+            AuthenticTrust, NodeX, Beratung oder Schulung der passende nächste Schritt ist.
           </p>
         </div>
       </Region>
@@ -94,10 +94,10 @@ export default async function KontaktPage({
               vorhandene KI-Tools, Datenklassen und die verantwortlichen Bereiche.
             </p>
             <ul className="mt-6 space-y-3 text-sm leading-relaxed text-text-muted-light">
-              <li>TrustArch: Demo für Managementsysteme, Dokumente, Freigaben und Compliance-Arbeit</li>
+              <li>AuthenticTrust: Demo für Managementsysteme, Dokumente, Freigaben und Compliance-Arbeit</li>
               <li>NodeX: technischer KI-Zugang und kontrollierter Pilot</li>
               <li>Beratung: Use Cases, Governance und Einführungsplan</li>
-              <li>Schulung: Rollen, Tools, Daten und Automotive-Fallbeispiele</li>
+              <li>Schulung: Rollen, Tools, Daten und Beispiele aus Ihrem Arbeitsalltag</li>
             </ul>
           </div>
           <ContactForm initialInterest={initialInterest} />

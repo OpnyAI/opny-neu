@@ -33,7 +33,7 @@ export default function KiGovernanceAutomotivePage() {
         { title: "Übersicht erstellen", text: "KI-Systeme, Anbieter, Zwecke, Verantwortliche, Nutzer und betroffene Daten erfassen." },
         { title: "Einordnen", text: "Risiken, Rollen, interne Anforderungen und relevante rechtliche Prüfbedarfe zusammenführen." },
         { title: "Entscheiden", text: "Zulässige Anwendungen, Modelle, Freigaben, Kontrollen und Eskalationen definieren." },
-        { title: "Umsetzen", text: "Richtlinien und Schulungen mit den passenden Anforderungen, Nachweisen und Maßnahmen in TrustArch verbinden; NodeX-Kontrollen werden je Systemumgebung konfiguriert." },
+        { title: "Umsetzen", text: "Richtlinien und Schulungen mit den passenden Anforderungen, Nachweisen und Maßnahmen in AuthenticTrust verbinden; NodeX-Kontrollen werden je Systemumgebung konfiguriert." },
         { title: "Überwachen", text: "Nutzung, Abweichungen, Maßnahmen und Änderungen regelmäßig prüfen und nachweisen." },
       ]}
       deliverablesTitle="Was Sie am Ende konkret erhalten"

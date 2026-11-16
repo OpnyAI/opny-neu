@@ -13,9 +13,9 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 const homeMetadata = createMetadata({
-  title: "Opny: kontrollierte KI für Automotive-Zulieferer",
+  title: "Opny: Compliance steuern und KI kontrolliert einsetzen",
   description:
-    "Opny hilft Automotive-Zulieferern, KI kontrolliert einzuführen: mit Governance, technischer Kontrolle, KI-Beratung und KI-Schulungen.",
+    "Opny unterstützt Unternehmen mit AuthenticTrust für Managementsysteme und Compliance, NodeX für kontrollierte KI-Nutzung sowie Beratung und Schulungen.",
   path: "/",
   image: {
     url: "/opny-brand-icon-1024.png",
@@ -28,7 +28,7 @@ const homeMetadata = createMetadata({
 export const metadata = {
   ...homeMetadata,
   title: {
-    absolute: "Opny: kontrollierte KI für Automotive-Zulieferer",
+    absolute: "Opny: Compliance steuern und KI kontrolliert einsetzen",
   },
   twitter: {
     ...homeMetadata.twitter,
@@ -41,8 +41,8 @@ const decisionQuestions = [
     number: "01",
     question: "Sind Managementsysteme, Freigaben und Nachweise verteilt?",
     answer:
-      "TrustArch verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem Arbeitsraum.",
-    href: "/produkte/trustarch",
+      "AuthenticTrust verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem Arbeitsraum.",
+    href: "/produkte/authentictrust",
   },
   {
     number: "02",
@@ -56,7 +56,7 @@ const decisionQuestions = [
     question: "Gibt es Regeln, die im Arbeitsalltag niemand sicher anwenden kann?",
     answer:
       "Beratung und Schulung machen aus Vorgaben verständliche Entscheidungen, Übungen und feste Arbeitsabläufe.",
-    href: "/automotive",
+    href: "/loesungen",
   },
 ];
 
@@ -64,12 +64,12 @@ const homepageFaqs = [
   {
     question: "Was ist Opny?",
     answer:
-      "Opny unterstützt Automotive-Zulieferer dabei, KI kontrolliert einzuführen. Beratung und Schulungen begleiten Strategie und Umsetzung; TrustArch steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge technisch und wird passend zur jeweiligen Systemumgebung konfiguriert.",
+      "Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen dabei, KI kontrolliert einzuführen. Beratung und Schulungen begleiten Strategie und Umsetzung; AuthenticTrust steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge technisch und wird passend zur jeweiligen Systemumgebung konfiguriert.",
   },
   {
     question: "Welcher Opny-Baustein passt zu welcher Ausgangslage?",
     answer:
-      "Der passende Opny-Baustein richtet sich nach dem konkreten Problem. TrustArch steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge, Beratung bereitet Entscheidungen und Pilotierung vor, und Schulungen übersetzen Regeln und Tools in den Arbeitsalltag.",
+      "Der passende Opny-Baustein richtet sich nach dem konkreten Problem. AuthenticTrust steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge, Beratung bereitet Entscheidungen und Pilotierung vor, und Schulungen übersetzen Regeln und Tools in den Arbeitsalltag.",
   },
   {
     question: "Welche Unterstützung bietet Opny bei KI-Beratung und KI-Schulungen?",
@@ -77,9 +77,9 @@ const homepageFaqs = [
       "Opny unterstützt bei der Auswahl sinnvoller Anwendungen, Datenregeln, Zuständigkeiten und einem begrenzten Praxistest. Schulungen und Coaching können auf ChatGPT, Google Gemini, Microsoft Copilot oder interne KI-Zugänge abgestimmt werden.",
   },
   {
-    question: "Braucht jedes Unternehmen TrustArch und NodeX?",
+    question: "Braucht jedes Unternehmen AuthenticTrust und NodeX?",
     answer:
-      "Nein. TrustArch verbindet Managementsysteme, Dokumente, Freigaben und Nachweise. NodeX macht die tatsächliche KI-Nutzung technisch kontrollierbar. Welcher Baustein passt, hängt von der konkreten Ausgangslage ab.",
+      "Nein. AuthenticTrust verbindet Managementsysteme, Dokumente, Freigaben und Nachweise. NodeX macht die tatsächliche KI-Nutzung technisch kontrollierbar. Welcher Baustein passt, hängt von der konkreten Ausgangslage ab.",
   },
   {
     question: "Ersetzt Opny Rechtsberatung oder eine Zertifizierungsstelle?",
@@ -99,11 +99,11 @@ export default function Home() {
               "@type": "WebPage",
               "@id": "https://www.opny.ai/#webpage",
               url: "https://www.opny.ai/",
-              name: "KI kontrolliert einführen für Automotive-Zulieferer",
+              name: "Compliance steuern und KI kontrolliert einsetzen",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               primaryImageOfPage: {
                 "@type": "ImageObject",
-                url: "https://www.opny.ai/media/opny/automotive-quality-inspection-v2.jpg",
+                url: "https://www.opny.ai/media/authentictrust/authentictrust-dashboard-1600x1000.jpg",
               },
               inLanguage: "de-DE",
             },
@@ -127,17 +127,18 @@ export default function Home() {
         containerClassName="2xl:!max-w-[1500px]"
       >
         <div className="mx-auto max-w-6xl text-center">
-          <div className="eyebrow">KI für Automotive-Zulieferer · Tier-1 bis Tier-3 · DACH</div>
+          <div className="eyebrow">Software, Beratung und Schulung · DACH</div>
           <h1 className="display-xl mt-7 text-text-primary-light">
             KI kontrolliert einführen.
             <span className="block text-[#86868b]">
-              Für Automotive-Zulieferer.
+              Compliance übersichtlich steuern.
             </span>
           </h1>
           <p className="lead-copy mx-auto mt-8 max-w-3xl">
-            Opny hilft Automotive-Zulieferern, KI sinnvoll und sicher zu
-            nutzen: mit klaren Regeln, kontrollierten Zugängen, persönlicher
-            KI-Beratung und Schulungen für den Arbeitsalltag.
+            Opny unterstützt Unternehmen dabei, Managementsysteme und Compliance
+            nachvollziehbar zu organisieren und KI kontrolliert einzusetzen.
+            Mit AuthenticTrust, NodeX, Beratung und Schulungen – passend
+            zu Ihren Abläufen.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <Button href={companyCtas.generalInquiry} variant="primary" theme="light">
@@ -225,27 +226,27 @@ export default function Home() {
       <Region tone="base">
         <SectionIntro
           eyebrow="Managementsysteme gemeinsam steuern"
-          title="TrustArch verbindet Compliance-Arbeit in einem System."
+          title="AuthenticTrust verbindet Compliance-Arbeit in einem System."
           text="Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen werden in einem gemeinsamen Arbeitsraum bearbeitet."
         />
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.36fr_0.64fr] lg:items-end">
           <div>
             <p className="leading-relaxed text-text-muted-light">
-              TrustArch führt bisher verteilte Inhalte in einem Arbeitsraum
+              AuthenticTrust führt bisher verteilte Inhalte in einem Arbeitsraum
               zusammen und kann Doppelpflege verringern. KI-Unterstützung
               bereitet wiederkehrende Einordnungen und nächste Schritte vor;
               Fachpersonen prüfen und geben Ergebnisse frei.
             </p>
             <Link
-              href="/produkte/trustarch"
+              href="/produkte/authentictrust"
               className="mt-6 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
             >
-              TrustArch Compliance-Software ansehen →
+              AuthenticTrust Compliance-Software ansehen →
             </Link>
           </div>
           <MediaStage
-            src="/media/trustarch/trustarch-review-results-1600x1000.jpg"
-            alt="TrustArch-Review mit bewerteten Beispielanforderungen und der Möglichkeit, Maßnahmen anzulegen"
+            src="/media/authentictrust/authentictrust-review-results-1600x1000.jpg"
+            alt="AuthenticTrust-Review mit bewerteten Beispielanforderungen und der Möglichkeit, Maßnahmen anzulegen"
             width={1600}
             height={1000}
             sizes="(min-width: 1024px) 62vw, 100vw"
@@ -307,7 +308,7 @@ export default function Home() {
               sicher und im Arbeitsalltag umsetzbar machen.
             </p>
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">
-              <Link href="/loesungen/ki-beratung-automotive" className="text-[#0066cc] hover:underline">
+              <Link href="/loesungen#beratung" className="text-[#0066cc] hover:underline">
                 KI-Beratung ansehen →
               </Link>
               <Link href="/ueber-opny" className="text-[#0066cc] hover:underline">

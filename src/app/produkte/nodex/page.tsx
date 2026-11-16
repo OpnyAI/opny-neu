@@ -37,9 +37,9 @@ const faqs = [
       "NodeX ist Opnys Plattform für kontrollierte KI-Nutzung. Sie bündelt freigegebene KI-Zugänge, Rechte, Datenregeln sowie den Überblick über Nutzung und Kosten an einer zentralen Stelle. Modelle, Datenwege und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.",
   },
   {
-    question: "Ersetzt NodeX TrustArch?",
+    question: "Ersetzt NodeX AuthenticTrust?",
     answer:
-      "Nein. TrustArch verbindet Managementsysteme, Anforderungen, Dokumente, Freigaben, Nachweise, Risiken und Maßnahmen. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
+      "Nein. AuthenticTrust verbindet Managementsysteme, Anforderungen, Dokumente, Freigaben, Nachweise, Risiken und Maßnahmen. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
   },
   {
     question: "Ist NodeX für vertrauliche Automotive-Daten geeignet?",
@@ -82,7 +82,7 @@ export default function NodeXPage() {
               isPartOf: { "@id": "https://www.opny.ai/produkte/nodex#webpage" },
               audience: {
                 "@type": "BusinessAudience",
-                audienceType: "Automotive-Zulieferer Tier-1 bis Tier-3",
+                audienceType: "Unternehmen mit vertraulichen Daten und Anforderungen an kontrollierte KI-Nutzung",
               },
               additionalProperty: {
                 "@type": "PropertyValue",

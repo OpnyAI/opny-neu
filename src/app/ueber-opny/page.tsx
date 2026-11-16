@@ -46,7 +46,7 @@ export default function UeberOpnyPage() {
               KI verständlich, sicher und im Arbeitsalltag umsetzbar machen.
             </h1>
             <p className="lead-copy mt-6 max-w-[64ch]">
-              Opny hilft Automotive-Zulieferern, sinnvolle KI-Anwendungen
+              Opny hilft Unternehmen, sinnvolle KI-Anwendungen
               auszuwählen, klare Regeln zu schaffen und Mitarbeitende sicher in
               die Nutzung einzuführen.
             </p>

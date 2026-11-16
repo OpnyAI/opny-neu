@@ -3,15 +3,9 @@
 import type React from "react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { contactInterests, normalizeContactInterest } from "@/lib/contact-interest";
 
-export const interests = [
-  "TrustArch Demo",
-  "NodeX Einsatz",
-  "KI-Beratung Automotive",
-  "KI-Schulung Automotive",
-  "KI-Governance-Check",
-  "Allgemeine Anfrage",
-] as const;
+export const interests = contactInterests;
 
 const companySizes = [
   "1-50 Mitarbeitende",
@@ -51,9 +45,10 @@ export default function ContactForm({
 }: {
   initialInterest?: string;
 }) {
+  const normalizedInterest = normalizeContactInterest(initialInterest ?? "");
   const selectedInterest =
-    initialInterest && interests.includes(initialInterest as Interest)
-      ? (initialInterest as Interest)
+    interests.includes(normalizedInterest as Interest)
+      ? (normalizedInterest as Interest)
       : initialState.interest;
   const [form, setForm] = useState<FormState>(() => ({
     ...initialState,

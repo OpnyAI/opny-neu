@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Opny-Produkte für Compliance und kontrollierte KI",
   description:
-    "Opny bietet zwei klar getrennte Softwareprodukte: TrustArch für Managementsysteme und Compliance, NodeX für kontrollierte KI-Zugänge und Datenwege.",
+    "Opny bietet zwei klar getrennte Softwareprodukte: AuthenticTrust für Managementsysteme und Compliance, NodeX für kontrollierte KI-Zugänge und Datenwege.",
   path: "/produkte",
 });
 
@@ -45,8 +45,8 @@ export default function ProduktePage() {
                 {
                   "@type": "ListItem",
                   position: 1,
-                  url: "https://www.opny.ai/produkte/trustarch",
-                  name: "TrustArch: Compliance-Software für Managementsysteme",
+                  url: "https://www.opny.ai/produkte/authentictrust",
+                  name: "AuthenticTrust: Compliance-Software für Managementsysteme",
                 },
                 {
                   "@type": "ListItem",
@@ -67,7 +67,7 @@ export default function ProduktePage() {
             Software für Compliance und kontrollierte KI-Nutzung.
           </h1>
           <p className="lead-copy mt-6 max-w-[68ch]">
-            TrustArch und NodeX erfüllen unterschiedliche Aufgaben: Das eine
+            AuthenticTrust und NodeX erfüllen unterschiedliche Aufgaben: Das eine
             steuert Managementsystem- und Compliance-Arbeit, das andere macht
             die tatsächliche KI-Nutzung technisch kontrollierbar.
           </p>
@@ -78,15 +78,15 @@ export default function ProduktePage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <Card theme="light" className="flex h-full flex-col overflow-hidden p-5 sm:p-7">
             <MediaStage
-              src="/media/trustarch/trustarch-documents-evidence-1600x1000.jpg"
-              alt="TrustArch-Ansicht für Dokumente und Nachweise mit Status und zugeordneten Beispielkontrollen"
+              src="/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg"
+              alt="AuthenticTrust-Ansicht für Dokumente und Nachweise mit Status und zugeordneten Beispielkontrollen"
               width={1600}
               height={1000}
               sizes="(min-width: 1024px) 46vw, 100vw"
               className="mb-7 rounded-[1.2rem]"
               imageClassName="aspect-[16/10] object-contain"
             />
-            <div className="eyebrow">TrustArch · Produktansicht</div>
+            <div className="eyebrow">AuthenticTrust · Produktansicht</div>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary-light">
               KI-gestütztes Compliance- und Managementsystem
             </h2>
@@ -96,13 +96,13 @@ export default function ProduktePage() {
               gemeinsamen Arbeitsraum.
             </p>
             <p className="mt-4 rounded-2xl bg-black/[0.04] p-4 text-sm leading-relaxed text-text-secondary-light">
-              TrustArch ist als Produkt verfügbar. Die Produktansicht verwendet
+              AuthenticTrust ist als Produkt verfügbar. Die Produktansicht verwendet
               Beispieldaten; aktuelle Standards und der passende Einsatzumfang
               werden vorab transparent geklärt.
             </p>
             <div className="mt-auto pt-7">
-              <Button href="/produkte/trustarch" variant="secondary" theme="light">
-                TrustArch ansehen
+              <Button href="/produkte/authentictrust" variant="secondary" theme="light">
+                AuthenticTrust ansehen
               </Button>
             </div>
           </Card>
@@ -141,15 +141,15 @@ export default function ProduktePage() {
           text="Die Trennung verhindert falsche Erwartungen und macht Verantwortlichkeiten verständlich."
         />
         <div className="mt-8 grid gap-4 md:hidden">
-          {comparison.map(([dimension, trustarch, nodex]) => (
+          {comparison.map(([dimension, authentictrust, nodex]) => (
             <article key={dimension} className="rounded-3xl border border-slate-200 bg-white p-5">
               <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-text-secondary-light">
                 {dimension}
               </h3>
               <dl className="mt-5 space-y-5">
                 <div>
-                  <dt className="text-sm font-semibold text-text-primary-light">TrustArch</dt>
-                  <dd className="mt-1 leading-relaxed text-text-muted-light">{trustarch}</dd>
+                  <dt className="text-sm font-semibold text-text-primary-light">AuthenticTrust</dt>
+                  <dd className="mt-1 leading-relaxed text-text-muted-light">{authentictrust}</dd>
                 </div>
                 <div>
                   <dt className="text-sm font-semibold text-text-primary-light">NodeX</dt>
@@ -161,24 +161,24 @@ export default function ProduktePage() {
         </div>
         <div
           role="region"
-          aria-label="Vergleich von TrustArch und NodeX"
+          aria-label="Vergleich von AuthenticTrust und NodeX"
           tabIndex={0}
           className="mt-8 hidden overflow-x-auto rounded-3xl border border-slate-200 bg-white md:block"
         >
           <table className="w-full min-w-[760px] text-left text-sm">
-            <caption className="sr-only">Funktionsvergleich der Opny-Produkte TrustArch und NodeX</caption>
+            <caption className="sr-only">Funktionsvergleich der Opny-Produkte AuthenticTrust und NodeX</caption>
             <thead className="bg-[#1d1d1f] text-white">
               <tr>
                 <th className="px-5 py-4 font-semibold">Dimension</th>
-                <th className="px-5 py-4 font-semibold">TrustArch</th>
+                <th className="px-5 py-4 font-semibold">AuthenticTrust</th>
                 <th className="px-5 py-4 font-semibold">NodeX</th>
               </tr>
             </thead>
             <tbody>
-              {comparison.map(([dimension, trustarch, nodex]) => (
+              {comparison.map(([dimension, authentictrust, nodex]) => (
                 <tr key={dimension} className="border-t border-slate-200 align-top">
                   <th className="px-5 py-4 font-semibold text-slate-950">{dimension}</th>
-                  <td className="px-5 py-4 leading-relaxed text-slate-600">{trustarch}</td>
+                  <td className="px-5 py-4 leading-relaxed text-slate-600">{authentictrust}</td>
                   <td className="px-5 py-4 leading-relaxed text-slate-600">{nodex}</td>
                 </tr>
               ))}

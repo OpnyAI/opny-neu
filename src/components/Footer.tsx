@@ -81,7 +81,7 @@ export default function Footer() {
         <div className="mt-10 flex flex-col items-start gap-2 border-t border-border-subtle-light/15 pt-6 text-sm text-text-secondary-light sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col items-start gap-3">
             <span>© {year} Opny</span>
-            <span>KI-Governance für Automotive-Zulieferer</span>
+            <span>Compliance und kontrollierte KI für Unternehmen</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm text-text-muted-light">Opny folgen</span>

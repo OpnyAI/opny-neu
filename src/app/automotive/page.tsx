@@ -223,9 +223,9 @@ export default function AutomotivePage() {
         <div className="mt-9 grid gap-5 lg:grid-cols-3">
           {[
             {
-              title: "TrustArch",
+              title: "AuthenticTrust",
               text: "Managementsysteme, Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen gemeinsam steuern.",
-              href: "/produkte/trustarch",
+              href: "/produkte/authentictrust",
               cta: "Compliance-System ansehen",
             },
             {
@@ -303,7 +303,7 @@ export default function AutomotivePage() {
       <Region variant="light" tone="base" spacing="compact">
         <ClosingCta
           title="Wo fehlt Ihnen bei KI heute der größte Überblick?"
-          text="Wir prüfen, ob TrustArch, NodeX, Beratung oder Schulung der passende erste Schritt ist – und sagen offen, wenn etwas anderes sinnvoller wäre."
+          text="Wir prüfen, ob AuthenticTrust, NodeX, Beratung oder Schulung der passende erste Schritt ist – und sagen offen, wenn etwas anderes sinnvoller wäre."
           href={companyCtas.consultingInquiry}
           label="Erstgespräch anfragen"
         />

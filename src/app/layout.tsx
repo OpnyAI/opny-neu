@@ -10,18 +10,18 @@ import JsonLd from "@/components/marketing/JsonLd";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.opny.ai"),
   title: {
-    default: "Opny | KI-Governance für Automotive-Zulieferer",
+    default: "Opny | Compliance und kontrollierte KI",
     template: "%s | Opny",
   },
   description:
-    "Opny unterstützt Automotive-Zulieferer beim kontrollierten KI-Einsatz: mit TrustArch, NodeX, KI-Beratung und KI-Schulungen.",
+    "Opny unterstützt Unternehmen bei Managementsystemen, Compliance und kontrollierter KI-Nutzung: mit AuthenticTrust, NodeX, Beratung und Schulungen.",
   alternates: {
     canonical: "https://www.opny.ai/",
   },
   openGraph: {
-    title: "Opny | KI-Governance für Automotive-Zulieferer",
+    title: "Opny | Compliance und kontrollierte KI",
     description:
-      "KI kontrolliert einführen – mit TrustArch, NodeX, Beratung und Schulung für Automotive-Zulieferer.",
+      "Managementsysteme steuern und KI kontrolliert einsetzen – mit AuthenticTrust, NodeX, Beratung und Schulung für Unternehmen.",
     url: "https://www.opny.ai/",
     siteName: "Opny",
     locale: "de_DE",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Opny | KI-Governance für Automotive-Zulieferer",
+    title: "Opny | Compliance und kontrollierte KI",
     description:
-      "KI kontrolliert einführen – mit TrustArch, NodeX, Beratung und Schulung.",
+      "KI kontrolliert einführen – mit AuthenticTrust, NodeX, Beratung und Schulung.",
     images: ["https://www.opny.ai/opny-brand-icon-1024.png"],
   },
 

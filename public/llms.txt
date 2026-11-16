@@ -1,6 +1,6 @@
 # Opny
 
-> Opny unterstützt Automotive-Zulieferer vom Tier-1 bis Tier-3 im DACH-Raum dabei, KI kontrolliert einzuführen und nachweisbar zu steuern.
+> Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen im DACH-Raum bei Managementsystemen, Compliance und kontrollierter KI-Nutzung.
 
 Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische Kontrolle der tatsächlichen KI-Nutzung sowie Beratung und Schulung für Prozesse und Teams.
 
@@ -10,24 +10,26 @@ Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische
 - [Automotive-Branchenlösung](https://www.opny.ai/automotive): Kontrollierte KI-Einführung für Automobilzulieferer und Automotive-Lieferanten
 - [KI-Governance Automotive](https://www.opny.ai/ki-governance-automotive): Inventar, Rollen, Richtlinien, Freigaben, technische Kontrollen und Nachweise
 - [Leitfaden: KI im Unternehmen einführen](https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren): Sieben Schritte von der Use-Case-Auswahl über Daten, Governance und Pilot bis zu Schulung und kontrolliertem Betrieb
-- [Produktübersicht](https://www.opny.ai/produkte): Abgrenzung zwischen TrustArch und NodeX
+- [Produktübersicht](https://www.opny.ai/produkte): Abgrenzung zwischen AuthenticTrust und NodeX
 - [Über Opny](https://www.opny.ai/ueber-opny): Gründer- und Automotive-Erfahrung
 - [Kontakt](https://www.opny.ai/kontakt): Demo oder Erstgespräch anfragen
 
 ## Produkte
 
-- [TrustArch](https://www.opny.ai/produkte/trustarch): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
+- [AuthenticTrust](https://www.opny.ai/produkte/authentictrust): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
 - [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
 
 ## Leistungen
+
+- [Beratung, Schulung und Governance für Unternehmen](https://www.opny.ai/loesungen): Branchenübergreifender Einstieg nach Anforderungen und Ausgangslage
 
 - [KI-Beratung für Automotive-Zulieferer](https://www.opny.ai/loesungen/ki-beratung-automotive): KI-Strategie, Use-Case-Auswahl, Governance, Datenklassen und kontrollierte Pilotplanung
 - [KI-, ChatGPT- und Gemini-Schulungen für Automotive](https://www.opny.ai/loesungen/ki-schulungen-automotive): Inhouse-Workshops, Online-Schulungen und KI-Coaching für ChatGPT, Google Gemini, Microsoft Copilot und interne KI-Zugänge
 
 ## Wichtige Einordnung
 
-- TrustArch ist ein verfügbares Opny-Produkt. Es ist normenübergreifend angelegt: TISAX ist abgebildet, weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Aktuelle Standards und Versionen werden vor dem Einsatz geklärt.
-- Die veröffentlichten TrustArch-Ansichten und der Produktrundgang verwenden Beispieldaten. Die KI-Unterstützung bereitet Strukturierung und nächste Schritte vor; Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. TrustArch ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
+- AuthenticTrust ist ein verfügbares Opny-Produkt. Es ist normenübergreifend angelegt: TISAX ist abgebildet, weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Aktuelle Standards und Versionen werden vor dem Einsatz geklärt.
+- Die veröffentlichten AuthenticTrust-Ansichten verwenden fiktive Beispieldaten. Die KI-Unterstützung bereitet Strukturierung und nächste Schritte vor; Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. AuthenticTrust ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
 - NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
 - Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.
 
