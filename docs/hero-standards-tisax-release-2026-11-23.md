@@ -34,3 +34,11 @@ Production-Build (21 statische Routen) und ESLint erfolgreich. Playwright prüft
 Home zeigt alle sechs Namen; Produkt- und TISAX-Seite bei390/1440 auf Canonical, H1, sichtbare FAQ gegen JSON-LD, Bilder und Layout geprüft. Demo-Link wählt AuthenticTrust-Demo im Kontaktformular vor. Sitemap und llms.txt enthalten die neue URL. Keine beobachteten Browserfehler.
 
 Finale visuelle UI/UX-Abnahme nach Screenshotprüfung erteilt: Home1280×650/1366×768/390×844 und komplette Home1440, TISAX390/1440. Kategorie, Nutzen, drei Vorteile, Demo-CTA und vollständiges Produktbild sind auf Desktop gemeinsam sichtbar; mobil folgt das Bild auf die klare Aussage und Demo. Normkarten sind lesbar und sachlich eingeordnet. Product Owner gibt diese Umsetzung nach den drei Fachprüfungen für die Veröffentlichung frei. Testartefakte liegen ausschließlich im ignorierten docs/qa/hero-standards-20261123/.
+
+## Veröffentlichung und Live-Nachprüfung
+
+Commit180ffe86f9213a144f3cb4a17b1c16e5cb2352c8 auf bestehendem Release-Branch gepusht und als Vercel-Production-Deployment dpl_83EPcnxpbJ671pGLnodYYG8ZvVpZ veröffentlicht. StatusREADY, Domains www.opny.ai und opny.ai zugeordnet.
+
+Die identischen Browserprüfungen bestanden anschließend gegen https://www.opny.ai: sieben Bildschirmgrößen, Normnamen, FAQ-/Schema-Abgleich, neue TISAX-URL, Canonicals, Sitemap/llms.txt, Demo-Vorauswahl und200%-Schrift. Keine beobachteten Browserfehler. Frische/bestehende/erteilte Cookie-Einwilligung ebenfalls live geprüft; keine Hydrationfehler, nach Ablehnung keine Analytics-Aufrufe. Analytics-Aufrufe wurden im Test abgefangen. Keine echte Kontaktmail gesendet. Vercel meldete im geprüften10-Minutenfenster für dieses Deployment keine Fehler-/Fatal-Logs. Der eigene lokale Prüfserver wurde beendet.
+
+OpenSEO-Nachprüfung db968786-a336-4a95-9bdd-c1988074216c vollständig:21URLs gecrawlt, keine kritischen Probleme und keine Warnungen. Sieben rein informative Hinweise: sechs beabsichtigte Canonicals der vorausgefüllten Kontakt-URLs auf /kontakt sowie die kurze Impressumsbeschreibung. Keine Änderung dieser korrekten Kontakt-Canonicals. Der Crawl bestätigt technische Abrufbarkeit, nicht die Google-Indexierung oder ein Ranking der neuen URL.
