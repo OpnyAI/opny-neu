@@ -55,3 +55,19 @@ Erstes Production-Deployment `dpl_2VuLfDLbLGkrAopVnEurKEaDHyWK` aus Commit `84d1
 Ursache: Der Server begann mit `null`, der erste Browser-Render las dagegen direkt localStorage. Die Korrektur verwendet `useSyncExternalStore` mit identischem Server-/Hydration-Snapshot und beobachtet anschließende Consent-Änderungen. Tracking bleibt an Zustimmung gebunden. Vor erneutem Deployment wird lokal mit gesetzter, fiktiver öffentlicher Analytics-ID und simulierten Analytics-Anfragen geprüft.
 
 Frontend/Media-Gate für die Cookie-Korrektur erteilt. Erneuter Produktionsbuild mit `NEXT_PUBLIC_GA_ID=G-OPNYQA` und ESLint erfolgreich. Browser prüfte neue Besucher, gespeicherte Ablehnung und gespeicherte Zustimmung einschließlich erneuter Ablehnung und Reload: keine Hydration-Fehler; nach Ablehnung keine Analytics-Anfragen. Analytics-Anfragen waren vollständig simuliert. Vollständige lokale Seitenprüfung mit aktivierter Analytics-Codevariante erneut erfolgreich (fünf Breiten, 200% Schrift, Bilder, 13 Linkziele, FAQ-Daten, Demo-Vorauswahl und simulierte Formularzustände).
+
+## Verifiziertes Produktionsergebnis
+
+Am 23.11.2026 erfolgreich veröffentlicht: **https://www.opny.ai/** (auch `opny.ai`).
+
+- Status: READY, Production, Next.js 16.2.12.
+- Release-Commit: `8efcb0f77da6f858456b9d1eb9ef7a3cd0303b8c` (enthält den Website-Umbau aus `84d13e28832fbe1f41b4de095e2c9f93e6916ba9`).
+- Deployment: `dpl_BVgd7apM5K38dRYSrYozFytqwj5w`; Buildphase etwa 22 Sekunden; Domains laut Vercel zugeordnet, kein Aliasfehler.
+- Öffentliche Chrome-/Playwright-Prüfung: 390 und 1440px ohne horizontalen Überlauf, alle Produktbilder geladen, neue Hero-Botschaft sichtbar, Canonical korrekt, keine `noindex`-Direktive in geprüften HTTP-/HTML-Metadaten.
+- Demo-Link öffnet das aktuelle Kontaktformular mit AuthenticTrust-Vorauswahl. Keine E-Mail versendet; tatsächlicher Postfacheingang bleibt ungetestet.
+- Robots, Sitemap, llms.txt und beide verwendeten Produktbilder liefern HTTP 200; aktualisierte Inhalte in Sitemap und llms.txt bestätigt. Alter Produktweg liefert HTTP 308 auf AuthenticTrust.
+- Produktions-API bestätigt den frühen Fehlerfall mit HTTP 429 und `too_fast`, ohne Versand auszulösen.
+- Öffentliche Cookie-Prüfung für neue, ablehnende und zustimmende Besucher einschließlich erneuter Ablehnung und Reload erfolgreich; keine Hydration-Fehler. Analytics-Aufrufe bei Zustimmung ausschließlich simuliert; nach Ablehnung keine Aufrufe.
+- Browserkonsole: keine JavaScript-Fehler in den abschließenden Prüfungen. Vercel-Laufzeitfehlerabfrage für das Deployment wird ergänzend dokumentiert, soweit verfügbar.
+
+Die Veröffentlichung belegt keine Indexierung, Rankings oder Empfehlungen in KI-Antworten. Solche Ergebnisse benötigen spätere Messung und hängen von Suchdiensten und deren Verarbeitung ab. Safari konnte wegen des nicht startenden Browserzugriffs nicht direkt geprüft werden; die verwendeten Produktbilder stammen aus der dokumentiert freigegebenen Demo.
