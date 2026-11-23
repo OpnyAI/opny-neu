@@ -14,6 +14,8 @@ import {
   saveConsent,
   subscribeToConsent,
   getServerConsent,
+  needsMarketingReview,
+  getServerMarketingReview,
   type ConsentValue,
   readConsent,
 } from "@/lib/consent";
@@ -21,6 +23,7 @@ import {
   GA_ID,
   GOOGLE_ADS_ID,
   META_PIXEL_ID,
+  LINKEDIN_PARTNER_ID,
   HAS_MARKETING,
   HAS_TRACKING,
 } from "@/lib/tracking-config";
@@ -33,6 +36,13 @@ export default function CookieBanner() {
     readConsent,
     getServerConsent,
   );
+
+  const marketingReview = useSyncExternalStore(
+    subscribeToConsent,
+    needsMarketingReview,
+    getServerMarketingReview,
+  );
+  const savedStatistics = preferences(consent).statistics;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
@@ -152,15 +162,25 @@ export default function CookieBanner() {
 
   return (
     <>
-      {consent === null && !isModalOpen ? (
+      {(consent === null || marketingReview) && !isModalOpen ? (
         <div className="cookie-banner fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white p-4 shadow-[0_-8px_24px_rgba(0,0,0,0.08)]">
           <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-neutral-800">
-              {HAS_MARKETING
+              {marketingReview ? (
+                <>
+                  <strong>Marketing-Auswahl aktualisieren.</strong>{" "}
+                  Wir möchten Websitebesuche zusätzlich mit LinkedIn für
+                  mögliche spätere Werbung erfassen. Die neue Marketing-Auswahl
+                  gilt für Meta und LinkedIn. Ihre Statistik-Auswahl bleibt
+                  unverändert. Marketing startet erst nach Ihrer erneuten
+                  Zustimmung.
+                </>
+              ) : HAS_MARKETING
                 ? `Mit Ihrer Einwilligung nutzen wir ${[
                     GA_ID ? "Google Analytics für Nutzungsstatistiken" : "",
                     GOOGLE_ADS_ID ? "Google Ads für Werbung auf Google und YouTube" : "",
                     META_PIXEL_ID ? "Meta für Werbung auf Facebook und Instagram" : "",
+                    LINKEDIN_PARTNER_ID ? "LinkedIn für mögliche spätere Werbung" : "",
                   ].filter(Boolean).join(" sowie ")}.`
                 : "Mit Ihrer Einwilligung messen wir mit Google Analytics Seitenaufrufe, Produktinteresse und erfolgreiche Anfragen."}{" "}
               Mehr in der{" "}
@@ -184,13 +204,13 @@ export default function CookieBanner() {
 
               <button
                 type="button"
-                onClick={() => persist("declined")}
+                onClick={() => persist(marketingReview && savedStatistics ? "statistics" : "declined")}
                 className="button button-secondary button-small"
               >
-                Ablehnen
+                {marketingReview ? "Ohne Marketing fortfahren" : "Ablehnen"}
               </button>
 
-              {GA_ID && HAS_MARKETING ? (
+              {GA_ID && HAS_MARKETING && !marketingReview ? (
                 <button
                   type="button"
                   onClick={() => persist("statistics")}
@@ -203,7 +223,9 @@ export default function CookieBanner() {
                 type="button"
                 onClick={() =>
                   persist(
-                    HAS_MARKETING
+                    marketingReview
+                      ? savedStatistics ? "all" : "marketing"
+                      : HAS_MARKETING
                       ? GA_ID
                         ? "all"
                         : "marketing"
@@ -212,7 +234,7 @@ export default function CookieBanner() {
                 }
                 className="button button-primary button-small"
               >
-                {HAS_MARKETING ? "Alle akzeptieren" : "Statistik erlauben"}
+                {marketingReview ? "Marketing erlauben" : HAS_MARKETING ? "Alle akzeptieren" : "Statistik erlauben"}
               </button>
             </div>
           </div>
@@ -286,6 +308,7 @@ export default function CookieBanner() {
                   {[
                     GOOGLE_ADS_ID ? "Google Ads / YouTube" : "",
                     META_PIXEL_ID ? "Meta (Facebook / Instagram)" : "",
+                    LINKEDIN_PARTNER_ID ? "LinkedIn" : "",
                   ]
                     .filter(Boolean)
                     .join(" und ")}

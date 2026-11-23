@@ -3,17 +3,17 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import fs from 'node:fs';
 import ts from 'typescript';
-function setup({ stored = {}, ads = '', meta = '', path = '/', blockedStorage = false } = {}) {
+function setup({ stored = {}, ads = '', meta = '', path = '/', blockedStorage = false, blockedWrites = false, revision = 'test-marketing-revision' } = {}) {
   const values = new Map(Object.entries(stored));
   const deletions = [];
   const document = { referrer: 'https://example.org/?email=referrer@example.org' };
   Object.defineProperty(document, 'cookie', { get: () => '_ga=1; _ga_TEST=2; _fbp=3; _gcl_aw=4', set: value => deletions.push(value) });
-  const window = { location: new URL('https://www.opny.ai'+path), localStorage: { getItem: key => {if(blockedStorage) throw Error();return values.get(key)??null}, setItem: (key,value) => {if(blockedStorage)throw Error();values.set(key,value)} }, dispatchEvent() {}, addEventListener() {}, removeEventListener() {} };
+  const window = { location: new URL('https://www.opny.ai'+path), localStorage: { getItem: key => {if(blockedStorage) throw Error();return values.get(key)??null}, setItem: (key,value) => {if(blockedStorage||blockedWrites)throw Error();values.set(key,value)} }, dispatchEvent() {}, addEventListener() {}, removeEventListener() {} };
   const context = vm.createContext({ window, document, URL, Event, console, location: window.location });
   const modules = {};
   function load(name) {
     if (modules[name]) return modules[name];
-    if (name === './tracking-config') return { GA_ID: 'G-TEST123', GOOGLE_ADS_ID: ads, META_PIXEL_ID: meta, HAS_MARKETING: Boolean(ads||meta) };
+    if (name === './tracking-config') return { GA_ID: 'G-TEST123', GOOGLE_ADS_ID: ads, META_PIXEL_ID: meta, HAS_MARKETING: Boolean(ads||meta), MARKETING_REVISION: revision };
     const source = ts.transpileModule(fs.readFileSync(`src/lib/${name.slice(2)}.ts`, 'utf8'), { compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2021} }).outputText;
     const exports = {}; modules[name] = exports;
     const fn=vm.runInContext(`(function(exports,require){${source}\n})`,context); fn(exports,load); return exports;
@@ -178,4 +178,63 @@ test('Meta withdrawal discards recipient-specific pending events before regrant'
   s.tracking.syncTrackingConsent();
   assert.equal(s.window.fbq.queue.length, 1);
   assert.deepEqual(Array.from(s.window.fbq.queue[0]), ['consent', 'revoke']);
+});
+
+
+test('v3 positive marketing requires review while preserving the statistics decision', () => {
+  for (const statistics of [false, true]) {
+    const s = setup({ stored: { opny_consent_v3: JSON.stringify({ version: 3, statistics, marketing: true }) } });
+    assert.equal(s.consent.readConsent(), statistics ? 'statistics' : 'declined');
+    assert.equal(s.consent.needsMarketingReview(), true);
+    assert.equal(s.consent.preferences(s.consent.readConsent()).marketing, false);
+  }
+});
+
+test('v3 marketing denial is preserved without requiring a new marketing decision', () => {
+  for (const statistics of [false, true]) {
+    const s = setup({ stored: { opny_consent_v3: JSON.stringify({ version: 3, statistics, marketing: false }) } });
+    assert.equal(s.consent.readConsent(), statistics ? 'statistics' : 'declined');
+    assert.equal(s.consent.needsMarketingReview(), false);
+  }
+});
+
+test('v4 grants marketing only for the current provider revision and renewed choice', () => {
+  const record = { version: 4, statistics: true, marketing: true, marketingRevision: 'old-providers' };
+  const s = setup({ stored: { opny_consent_v4: JSON.stringify(record) } });
+  assert.equal(s.consent.readConsent(), 'statistics');
+  assert.equal(s.consent.needsMarketingReview(), true);
+  s.consent.saveConsent('all');
+  assert.equal(s.consent.readConsent(), 'all');
+  assert.equal(s.consent.needsMarketingReview(), false);
+  assert.equal(JSON.parse(s.values.get('opny_consent_v4')).marketingRevision, 'test-marketing-revision');
+});
+
+test('v4 denial remains effective when provider revision changes and old approvals exist', () => {
+  const s = setup({ stored: {
+    opny_consent_v4: JSON.stringify({ version: 4, statistics: false, marketing: false, marketingRevision: 'old-providers' }),
+    opny_consent_v3: JSON.stringify({ version: 3, statistics: true, marketing: true }),
+    cookie_consent_v2: 'accepted',
+  } });
+  assert.equal(s.consent.readConsent(), 'declined');
+  assert.equal(s.consent.needsMarketingReview(), false);
+});
+
+test('malformed v4 data cannot fall back to a former marketing approval', () => {
+  const s = setup({ stored: {
+    opny_consent_v4: JSON.stringify({ version: 4, statistics: true, marketing: 'yes' }),
+    opny_consent_v3: JSON.stringify({ version: 3, statistics: true, marketing: true }),
+  } });
+  assert.equal(s.consent.readConsent(), null);
+  assert.equal(s.consent.needsMarketingReview(), false);
+});
+
+test('a current in-memory choice overrides stale readable storage if writes are blocked', () => {
+  const s = setup({ blockedWrites: true, stored: { opny_consent_v3: JSON.stringify({ version: 3, statistics: true, marketing: true }) } });
+  assert.equal(s.consent.needsMarketingReview(), true);
+  s.consent.saveConsent('declined');
+  assert.equal(s.consent.readConsent(), 'declined');
+  assert.equal(s.consent.needsMarketingReview(), false);
+  s.consent.saveConsent('all');
+  assert.equal(s.consent.readConsent(), 'all');
+  assert.equal(s.consent.getServerMarketingReview(), false);
 });

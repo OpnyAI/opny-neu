@@ -5,6 +5,7 @@ import {
   HAS_MARKETING,
 } from "./tracking-config";
 import { preferences, readConsent } from "./consent";
+import { syncLinkedInVisit } from "./linkedin-visit";
 
 type EventName =
   | "page_view"
@@ -170,6 +171,7 @@ export function syncTrackingConsent() {
   }
   deleteMeasurementCookies(choice.statistics, marketing);
   syncMetaConsent();
+  syncLinkedInVisit(Boolean(titles[location.pathname]));
 }
 export function safeMetaLocation(): boolean {
   if (typeof window === "undefined" || !titles[location.pathname]) return false;
@@ -307,6 +309,7 @@ export function trackEvent(name: EventName, params: Params = {}) {
 export function trackCurrentPage() {
   if (typeof window === "undefined") return;
   const metaAllowed = syncMetaConsent();
+  syncLinkedInVisit(Boolean(titles[location.pathname]));
   if (!titles[location.pathname]) return;
   const path = safePath();
   const choice = preferences(readConsent());

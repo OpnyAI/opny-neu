@@ -6,6 +6,7 @@ import {
   HAS_MARKETING,
   GOOGLE_ADS_ID,
   META_PIXEL_ID,
+  LINKEDIN_PARTNER_ID,
 } from "@/lib/tracking-config";
 
 export default function DatenschutzPage() {
@@ -204,11 +205,11 @@ export default function DatenschutzPage() {
             <>
               <p>
                 Nur nach einer getrennten Marketing-Einwilligung setzen wir{" "}
-                {GOOGLE_ADS_ID ? "Google Ads einschließlich YouTube" : ""}
-                {GOOGLE_ADS_ID && META_PIXEL_ID ? " und " : ""}
-                {META_PIXEL_ID
-                  ? "den Meta-Pixel für Facebook und Instagram"
-                  : ""}{" "}
+                {[
+                  GOOGLE_ADS_ID ? "Google Ads einschließlich YouTube" : "",
+                  META_PIXEL_ID ? "den Meta-Pixel für Facebook und Instagram" : "",
+                  LINKEDIN_PARTNER_ID ? "die LinkedIn-Besuchsmessung" : "",
+                ].filter(Boolean).join(" sowie ")}{" "}
                 ein. Damit können Besuche und erfolgreich angenommene Anfragen
                 zur Anzeigenmessung und zum Aufbau von Zielgruppen für spätere
                 Werbung verwendet werden. Online-Kennungen, technische
@@ -240,6 +241,28 @@ export default function DatenschutzPage() {
                     Datenschutzrichtlinie von Meta
                   </a>
                   .
+                </p>
+              ) : null}
+              {LINKEDIN_PARTNER_ID ? (
+                <p>
+                  Die LinkedIn-Besuchsmessung erfasst nach Ihrer
+                  Marketing-Einwilligung Besuche auf Opny, um eine Zielgruppe
+                  für mögliche spätere LinkedIn-Werbung aufzubauen. Empfänger
+                  ist LinkedIn Ireland Unlimited Company. LinkedIn erhält
+                  technische Besuchsdaten, etwa IP-Adresse, Browserinformationen
+                  und die aufgerufene Website, und kann diese über vorhandene
+                  LinkedIn-Kennungen einem Mitgliedskonto zuordnen. Eine
+                  Verarbeitung in den USA ist möglich. Wir übermitteln keine
+                  Formularinhalte an LinkedIn. Ihre Einwilligung können Sie
+                  jederzeit in den Cookie-Einstellungen widerrufen. Weitere
+                  Informationen finden Sie in der{" "}
+                  <a href="https://www.linkedin.com/legal/privacy-policy"
+                    className="underline underline-offset-2" target="_blank"
+                    rel="noopener noreferrer">LinkedIn-Datenschutzrichtlinie</a>
+                  {" "}und den{" "}
+                  <a href="https://www.linkedin.com/legal/cookie-policy"
+                    className="underline underline-offset-2" target="_blank"
+                    rel="noopener noreferrer">LinkedIn-Cookiehinweisen</a>.
                 </p>
               ) : null}
             </>
