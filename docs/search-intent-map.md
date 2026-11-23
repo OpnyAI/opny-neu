@@ -31,3 +31,15 @@ Primärquellen: [Google SEO-Leitfaden](https://developers.google.com/search/docs
 
 
 Ergänzung Standards: Die aktuelle sichtbare Zuordnung nennt TISAX, ISO/IEC27001, ISO9001, NIS2, SOC2 und DSGVO mit unterschiedlichen Umfängen. Dies ist keine Aussage zu gemessenen Suchvolumina oder garantierter Seite-eins-Platzierung. Die präzise Produkt-Scopequelle steht in `docs/authentictrust-product-evidence-2026-11-23.md`.
+
+## Normen- und Vorgabenseiten · 23. November 2026
+
+| Hauptthema | Eigene Nutzerfrage | Zielseite |
+| --- | --- | --- |
+| ISO 27001-Software, ISMS-Software | Wie bearbeiten IT und Informationssicherheit Anforderungen, Richtlinien und Sicherheitsnachweise gemeinsam? | `/iso-27001-software` |
+| ISO 9001-Software, QM-Software | Wie pflegt ein Qualitätsteam gültige Prozessdokumente und verfolgt notwendige Änderungen? | `/iso-9001-software` |
+| NIS2-Software | Wie lassen sich Unterlagen und Maßnahmen zu ausgewählten Cybersicherheitsanforderungen organisieren? | `/nis2-software` |
+| SOC 2-Software | Wie ordnet ein Dienstleistungsteam Belege und Aufgaben ausgewählten Kontrollkriterien zu? | `/soc-2-software` |
+| DSGVO-Software | Wie bearbeitet eine Organisation Unterlagen und Aufgaben zu ausgewählten Datenschutzanforderungen? | `/dsgvo-software` |
+
+Die vorhandene TISAX-Seite bleibt erhalten. ISMS/QM sind sekundäre Suchbegriffe der jeweiligen ISO-Seite, keine zusätzlichen parallelen Einstiegsseiten. NIS2, SOC 2 und DSGVO werden ausdrücklich als ausgewählte Anforderungen ohne vollständiges eigenständiges Fachmodul beschrieben. Der konkrete Umfang wird nicht aus einem Keywordvolumen abgeleitet.

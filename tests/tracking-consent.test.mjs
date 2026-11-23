@@ -238,3 +238,27 @@ test('a current in-memory choice overrides stale readable storage if writes are 
   assert.equal(s.consent.readConsent(), 'all');
   assert.equal(s.consent.getServerMarketingReview(), false);
 });
+
+test('standard landing pages retain sanitized measurement and the existing product identity', () => {
+  const s = setup();
+  s.consent.saveConsent('statistics');
+  s.tracking.syncTrackingConsent();
+  for (const slug of ['iso-27001-software', 'iso-9001-software', 'nis2-software', 'soc-2-software', 'dsgvo-software']) {
+    s.navigate(`/${slug}?email=private@example.org#private-name`);
+    s.tracking.trackCurrentPage();
+    s.tracking.trackCurrentPage();
+    const views = s.events().filter(e => e[1] === 'page_view' && e[2].page_path === `/${slug}`);
+    assert.equal(views.length, 1);
+    assert.equal(views[0][2].page_location, `https://www.opny.ai/${slug}`);
+    assert.notEqual(views[0][2].page_title, 'Seite nicht gefunden | Opny');
+    const product = s.events().filter(e => e[1] === 'view_product' && e[2].page_path === `/${slug}`);
+    assert.equal(product.length, 1);
+    assert.equal(product[0][2].product, 'authentictrust');
+  }
+  assert.doesNotMatch(JSON.stringify(s.events()), /private@|private-name|email=/);
+  s.consent.saveConsent('declined');
+  const count = s.events().length;
+  s.navigate('/iso-27001-software');
+  s.tracking.trackCurrentPage();
+  assert.equal(s.events().length, count);
+});

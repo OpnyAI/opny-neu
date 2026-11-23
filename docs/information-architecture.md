@@ -43,3 +43,7 @@ Historische URLs werden nicht aus optischen Gründen gelöscht. Die aktuelle tec
 AuthenticTrust: Anforderungen, Dokumente, Nachweise, Bewertungen, Risiken und Maßnahmen. Intern erstellte Dokumente und PDF-Nachweise haben unterschiedliche Bearbeitungswege. Regelbasierte Bewertungen, Textunterstützung und menschliche Freigaben werden getrennt erklärt. Keine pauschalen Integrations-, Normabdeckungs-, Konformitäts- oder Zertifizierungsversprechen.
 
 NodeX: technischer KI-Zugang und Konfiguration passend zur Systemumgebung. Seine freigegebenen Kundenstimmen erscheinen ausschließlich im NodeX-Kontext. Technologie-/Standardlogos werden nicht als Kundenreferenzen genutzt.
+
+### Normen und Vorgaben · Erweiterung vom 23. November 2026
+
+Die Standardskarten auf Start- und AuthenticTrust-Produktseite verlinken zu sechs spezifischen Einstiegen: TISAX sowie `/iso-27001-software`, `/iso-9001-software`, `/nis2-software`, `/soc-2-software` und `/dsgvo-software`. Die Seiten haben ein gemeinsames Erscheinungsbild mit individuellen Inhalten und verweisen auf das eine AuthenticTrust-Produkt sowie gegenseitig auf verwandte Themen. Der Footer führt über „Normen und Vorgaben“ zur Produktübersicht. Keine weiteren Produkte oder Zertifizierungen werden dadurch eingeführt.

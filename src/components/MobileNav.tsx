@@ -52,7 +52,13 @@ export default function MobileNav({
   const handleClose = useCallback(() => {
     setOpenGroup(null);
     onClose();
-    window.requestAnimationFrame(() => returnFocusRef?.current?.focus());
+    window.requestAnimationFrame(() => {
+      const trigger = returnFocusRef?.current;
+      const target = trigger?.getClientRects().length
+        ? trigger
+        : document.querySelector<HTMLElement>(".site-header-brand");
+      target?.focus({ preventScroll: true });
+    });
   }, [onClose, returnFocusRef]);
 
   const renderNavLink = (link: MobileNavLink) => {
@@ -228,25 +234,25 @@ export default function MobileNav({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, handleClose]);
 
-  // 3) Initial focus + close on lg+
+  // The effective header layout depends on both space and text size.
   useEffect(() => {
     if (!open) return;
 
     closeButtonRef.current?.focus();
-
-    const mq = window.matchMedia("(min-width: 1024px)");
-    if (mq.matches) {
-      onClose();
-      return;
-    }
-
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) handleClose();
+    const trigger = returnFocusRef?.current;
+    const closeWhenTriggerHidden = () => {
+      if (trigger && trigger.getClientRects().length === 0) handleClose();
     };
+    closeWhenTriggerHidden();
 
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, [open, handleClose, onClose]);
+    const observer = new ResizeObserver(closeWhenTriggerHidden);
+    if (trigger) observer.observe(trigger);
+    window.addEventListener("resize", closeWhenTriggerHidden);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", closeWhenTriggerHidden);
+    };
+  }, [open, handleClose, returnFocusRef]);
 
   // 4) Drawer animation
   useEffect(() => {
@@ -268,7 +274,7 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-0 z-[999] overflow-hidden lg:hidden"
+      className="fixed inset-0 z-[999] overflow-hidden"
       onClick={handleClose}
     >
       <div className="absolute inset-0 bg-white/80 backdrop-blur-xl" />

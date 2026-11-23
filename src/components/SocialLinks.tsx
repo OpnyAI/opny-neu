@@ -64,7 +64,7 @@ export default function SocialLinks({ variant, className }: SocialLinksProps) {
   return (
     <div
       className={cn(
-        "flex items-center",
+        "flex min-w-0 flex-wrap items-center",
         isFooter ? "gap-2.5" : "gap-1.5",
         className,
       )}

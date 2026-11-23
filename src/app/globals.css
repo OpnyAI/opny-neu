@@ -258,6 +258,10 @@ pre {
 }
 .button {
   display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
   align-items: center;
   justify-content: center;
   min-height: 52px;
@@ -487,6 +491,9 @@ pre {
 }
 .at-text-link {
   display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   align-items: center;
   min-height: 44px;
   font-size: 0.9375rem;
@@ -587,6 +594,8 @@ pre {
   margin-top: 42px;
 }
 .at-problem-grid article {
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 27px;
   border: 1px solid rgb(var(--opny-border));
   border-radius: 12px;
@@ -805,7 +814,7 @@ pre {
   }
   .at-orientation > div {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
     font-size: 0.875rem;
   }
@@ -814,7 +823,7 @@ pre {
   .at-ai-note,
   .at-fit-grid,
   .at-opny-more {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .at-problem-grid,
   .at-step-grid {
@@ -1005,6 +1014,7 @@ pre {
 }
 .closing-cta {
   overflow: hidden;
+  overflow-wrap: anywhere;
   border-radius: var(--radius-card);
   background: rgb(var(--accent-deep));
   padding: 40px 24px;
@@ -1012,7 +1022,11 @@ pre {
 }
 .closing-cta-layout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 28px;
+}
+.closing-cta-layout > * {
+  min-width: 0;
 }
 .closing-cta-eyebrow {
   font-size: 0.875rem;
@@ -1254,4 +1268,45 @@ pre {
   .consent-settings-actions { flex-direction: column; }
   .consent-settings-actions .button { width: 100%; overflow-wrap: anywhere; }
   .consent-essential { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Reflow header controls when text is large relative to available width. */
+.site-header {
+  container-name: opny-header;
+  container-type: inline-size;
+}
+@container opny-header (max-width: 48em) {
+  .site-header .site-header-desktop-nav,
+  .site-header .site-header-desktop-actions { display: none; }
+  .site-header .site-header-mobile-actions { display: flex; }
+}
+@container opny-header (max-width: 18em) {
+  .site-header-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    padding: 12px;
+  }
+  .site-header .site-header-mobile-actions { display: contents; }
+  .site-header-brand { grid-column: 1; grid-row: 1; }
+  .site-header-menu { grid-column: 2; grid-row: 1; }
+  .site-header-mobile-cta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.at-orientation span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Marketing copy must stay within grid tracks with enlarged text. */
+main {
+  overflow-wrap: anywhere;
+}
+main .grid > * {
+  min-width: 0;
 }

@@ -19,6 +19,11 @@ AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung un
 ## Produkte
 
 - [TISAX-Software](https://www.opny.ai/tisax-software): Anforderungen, Dokumente, Nachweise und Maßnahmen für die TISAX-Vorbereitung organisieren; Software unterstützt, externe Prüfstellen bewerten
+- [ISO 27001-Software](https://www.opny.ai/iso-27001-software): Informationssicherheitsanforderungen, Richtlinien, Nachweise und Maßnahmen gemeinsam bearbeiten; verfügbare Normausgabe vorab klären
+- [ISO 9001-Software](https://www.opny.ai/iso-9001-software): Qualitätsanforderungen, Prozessdokumente, Versionen, Freigaben und Maßnahmen organisieren; verfügbare Normausgabe vorab klären
+- [NIS2-Software](https://www.opny.ai/nis2-software): Ausgewählte Cybersicherheitsanforderungen mit Unterlagen und Maßnahmen verbinden; kein vollständiges NIS2-Fachmodul oder Meldeportal
+- [SOC 2-Software](https://www.opny.ai/soc-2-software): Nachweise und Aufgaben zu ausgewählten Kriterien strukturieren; kein vollständiges SOC-2-Fachmodul oder ausgestellter Prüfbericht
+- [DSGVO-Software](https://www.opny.ai/dsgvo-software): Unterlagen und Maßnahmen zu ausgewählten Datenschutzanforderungen organisieren; kein vollständiges Datenschutz-Fachmodul oder Einwilligungsmanagement
 - [AuthenticTrust](https://www.opny.ai/produkte/authentictrust): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
 - [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
 

@@ -98,3 +98,7 @@ Die aktuelle fachliche Prüfung und begrenzte Product-Owner-Freigabe sind in `do
 ## Namentliche Standards-Ergänzung · 23. November 2026
 
 Aktuelle Freigabe und Scopeentscheidung: `docs/hero-standards-tisax-release-2026-11-23.md` sowie ergänzte Katalogprüfung in `docs/authentictrust-product-evidence-2026-11-23.md`. Die präzisere jüngere Handbuchquelle ersetzt die alte pauschale ISO-Roadmapformulierung in der aktuellen Website: TISAX, ISO/IEC27001 und ISO9001 als beschriebene Anforderungskataloge; NIS2/SOC2/DSGVO als ausgewählte Anforderungen ohne volle Fachmodule. Keine universelle Norm-/Versions-/Konformitäts-/Zertifizierungszusage.
+
+## Fachlich begrenzte Normen-Unterseiten · 23. November 2026
+
+Die fünf neuen Unterseiten vertiefen ausschließlich die bereits freigegebene Katalogeinordnung aus `authentictrust-product-evidence-2026-11-23.md`: ISO/IEC 27001 und ISO 9001 als beschriebene Anforderungskataloge; NIS2, SOC 2 und DSGVO als ausgewählte Anforderungen ohne vollständige eigenständige Fachmodule. Ausgaben und Einsatzumfang bleiben vorab zu klären. Die Beispiele sind hypothetische Arbeitsabläufe, keine Kundenfälle. Allgemeine Produktansichten mit fiktiven Daten belegen keine vollständige spezifische Oberfläche. Es entstehen keine zusätzlichen Zertifizierungs-, Rechtskonformitäts-, Integrations- oder Automatisierungszusagen.

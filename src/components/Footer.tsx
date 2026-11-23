@@ -83,7 +83,7 @@ export default function Footer() {
             <span>© {year} Opny</span>
             <span>Compliance und kontrollierte KI für Unternehmen</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 flex-wrap items-center gap-3">
             <span className="text-sm text-text-muted-light">Opny folgen</span>
             <SocialLinks variant="footer" />
           </div>

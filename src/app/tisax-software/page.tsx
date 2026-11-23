@@ -7,6 +7,7 @@ import MediaStage from "@/components/marketing/MediaStage";
 import ClosingCta from "@/components/marketing/ClosingCta";
 import FaqList from "@/components/marketing/FaqList";
 import JsonLd from "@/components/marketing/JsonLd";
+import RelatedStandards from "@/components/marketing/RelatedStandards";
 import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -209,6 +210,7 @@ export default function TisaxSoftwarePage() {
           </div>
         </div>
       </Region>
+      <RelatedStandards currentId="tisax" />
       <Region tone="surface">
         <div className="mx-auto max-w-4xl">
           <SectionIntro

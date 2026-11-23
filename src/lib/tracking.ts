@@ -51,6 +51,11 @@ const titles: Record<string, string> = {
   "/produkte/authentictrust": "AuthenticTrust | Opny",
   "/produkte/nodex": "NodeX | Opny",
   "/tisax-software": "TISAX-Software | Opny",
+  "/iso-27001-software": "ISO 27001-Software | Opny",
+  "/iso-9001-software": "ISO 9001-Software | Opny",
+  "/nis2-software": "NIS2-Anforderungen | Opny",
+  "/soc-2-software": "SOC 2-Vorbereitung | Opny",
+  "/dsgvo-software": "DSGVO-Anforderungen | Opny",
   "/produkte": "Produkte | Opny",
   "/loesungen": "Beratung und Schulung | Opny",
   "/kontakt": "Kontakt | Opny",
@@ -323,6 +328,11 @@ export function trackCurrentPage() {
       [
         "/produkte/authentictrust",
         "/tisax-software",
+        "/iso-27001-software",
+        "/iso-9001-software",
+        "/nis2-software",
+        "/soc-2-software",
+        "/dsgvo-software",
         "/produkte/nodex",
       ].includes(path)
     )

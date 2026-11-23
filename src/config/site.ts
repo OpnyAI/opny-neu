@@ -53,6 +53,7 @@ export const productNavigationLinks: readonly ServiceNavigationItem[] = [
     href: "/produkte/nodex",
   },
   { label: "Alle Opny-Produkte", href: "/produkte" },
+  { label: "Normen und Vorgaben", href: "/produkte/authentictrust#standards" },
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [

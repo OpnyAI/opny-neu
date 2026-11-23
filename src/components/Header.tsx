@@ -14,7 +14,12 @@ export default function Header() {
   const isAuthenticTrustPath =
     pathname === "/" ||
     pathname === "/produkte/authentictrust" ||
-    pathname === "/tisax-software";
+    pathname === "/tisax-software" ||
+    pathname === "/iso-27001-software" ||
+    pathname === "/iso-9001-software" ||
+    pathname === "/nis2-software" ||
+    pathname === "/soc-2-software" ||
+    pathname === "/dsgvo-software";
   const primaryCta =
     pathname === "/kontakt"
       ? { href: "#anfrage", label: "Zur Anfrage" }
@@ -58,11 +63,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/95 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
+      <header className="site-header sticky top-0 z-50 border-b border-black/[0.06] bg-white/95 backdrop-blur-2xl">
+        <div className="site-header-layout mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
           <Link
             href="/"
-            className="flex min-h-11 items-center gap-2 py-1"
+            className="site-header-brand flex min-h-11 items-center gap-2 py-1"
             aria-label="Zur Startseite"
             aria-current={pathname === "/" ? "page" : undefined}
             onClick={(event) => {
@@ -83,7 +88,7 @@ export default function Header() {
             <span className="sr-only">opny.ai</span>
           </Link>
 
-          <nav ref={navRef} className="hidden items-center gap-7 lg:flex">
+          <nav ref={navRef} className="site-header-desktop-nav hidden items-center gap-7 lg:flex">
             {primaryNavigationLinks.map((n) => {
               const hasItems = "items" in n;
 
@@ -215,7 +220,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="relative z-[60] hidden items-center gap-4 lg:flex">
+          <div className="site-header-desktop-actions relative z-[60] hidden items-center gap-4 lg:flex">
             <Link
               href={
                 isAuthenticTrustPath
@@ -236,11 +241,11 @@ export default function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="site-header-mobile-actions flex items-center gap-2 lg:hidden">
             <Link
               href={primaryCta.href}
               prefetch={false}
-              className="button button-primary button-small"
+              className="site-header-mobile-cta button button-primary button-small"
             >
               {primaryCta.label}
             </Link>
@@ -250,7 +255,7 @@ export default function Header() {
                 setActiveDropdown(null);
                 setMobileOpen(true);
               }}
-              className="flex min-h-11 items-center gap-2 rounded-button border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
+              className="site-header-menu flex min-h-11 items-center gap-2 rounded-button border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
               aria-label="Menü öffnen"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"

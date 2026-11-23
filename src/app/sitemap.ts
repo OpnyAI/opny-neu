@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getStandardPage, standardPages, type StandardPageId } from "@/content/standard-pages";
 
 const baseUrl = "https://www.opny.ai";
 const relaunchDate = "2026-07-29";
@@ -25,6 +26,14 @@ const pages = [
       `${baseUrl}/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg`,
     ],
   },
+  ...Object.keys(standardPages).map((id) => {
+    const page = getStandardPage(id as StandardPageId);
+    return {
+      path: page.standard.href,
+      lastModified: authenticTrustContentDate,
+      images: [`${baseUrl}/media/authentictrust/${page.media.file}`],
+    };
+  }),
   {
     path: "/produkte/authentictrust",
     lastModified: authenticTrustContentDate,

@@ -49,6 +49,7 @@ export const authenticTrustHomeFaqs = authenticTrustFaqs.filter((_, index) =>
 
 export const authenticTrustStandards = [
   {
+    id: "tisax",
     name: "TISAX",
     type: "Prüf- und Austauschverfahren",
     topic: "Informationssicherheit in der Automobilindustrie",
@@ -59,44 +60,59 @@ export const authenticTrustStandards = [
     linkLabel: "TISAX-Software kennenlernen",
   },
   {
+    id: "iso27001",
     name: "ISO/IEC 27001",
     type: "Norm für Managementsysteme",
     topic: "Informationssicherheit",
     scope:
       "Anforderungen, Dokumente und Maßnahmen für ein Informationssicherheitsmanagementsystem zusammenführen.",
     coverage: "Anforderungskatalog",
+    href: "/iso-27001-software",
+    linkLabel: "ISO 27001-Software kennenlernen",
   },
   {
+    id: "iso9001",
     name: "ISO 9001",
     type: "Norm für Managementsysteme",
     topic: "Qualitätsmanagement",
     scope:
       "Vorgaben, Dokumente, Nachweise und Aufgaben für Ihre Qualitätsprozesse nachvollziehbar organisieren.",
     coverage: "Anforderungskatalog",
+    href: "/iso-9001-software",
+    linkLabel: "ISO 9001-Software kennenlernen",
   },
   {
+    id: "nis2",
     name: "NIS2",
     type: "EU-Richtlinie zur Cybersicherheit",
     topic: "Sicherheitsmaßnahmen und Verantwortlichkeiten",
     scope:
       "Ausgewählte Anforderungen einordnen und mit Nachweisen und Maßnahmen verbinden.",
     coverage: "Ausgewählte Anforderungen",
+    href: "/nis2-software",
+    linkLabel: "NIS2-Anforderungen organisieren",
   },
   {
+    id: "soc2",
     name: "SOC 2",
     type: "Prüf- und Berichtsrahmen",
     topic: "Kontrollen bei Dienstleistungsunternehmen",
     scope:
       "Ausgewählte Vertrauenskriterien mit zugehörigen Unterlagen und offenen Aufgaben strukturieren.",
     coverage: "Ausgewählte Anforderungen",
+    href: "/soc-2-software",
+    linkLabel: "SOC-2-Vorbereitung kennenlernen",
   },
   {
+    id: "dsgvo",
     name: "DSGVO",
     type: "EU-Datenschutzverordnung",
     topic: "Umgang mit personenbezogenen Daten",
     scope:
       "Ausgewählte Datenschutzanforderungen dokumentieren und relevante Nachweise zuordnen.",
     coverage: "Ausgewählte Anforderungen",
+    href: "/dsgvo-software",
+    linkLabel: "DSGVO-Anforderungen organisieren",
   },
 ];
 
