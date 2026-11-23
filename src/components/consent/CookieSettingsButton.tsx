@@ -10,6 +10,7 @@ export default function CookieSettingsButton() {
   return (
     <button
       type="button"
+      data-cookie-settings-opener
       className="text-left hover:text-text-primary-light"
       onClick={() =>
         window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))

@@ -21,11 +21,21 @@ export default function DatenschutzPage() {
             Hinweise zum Datenschutz
           </h1>
           <p className="text-base leading-relaxed text-text-muted-light">
-            Der Schutz Ihrer personenbezogenen Daten ist uns wichtig.
-            Nachfolgend informieren wir Sie klar und verständlich über die
-            Verarbeitung auf dieser Website.
+            Hier erklären wir, welche Daten beim Besuch der Opny-Website und
+            bei einer Anfrage verarbeitet werden. Sie entscheiden selbst, ob
+            wir zusätzlich Statistik- und Marketing-Dienste einsetzen dürfen.
           </p>
         </div>
+
+        <section className="rounded-card border border-border-subtle-light bg-surface-light p-4 sm:p-6" aria-labelledby="privacy-overview-title">
+          <h2 id="privacy-overview-title" className="text-xl font-semibold text-text-primary-light">Ihre Auswahl auf einen Blick</h2>
+          <p className="mt-3 text-base leading-relaxed text-text-muted-light">Die Website funktioniert auch ohne optionale Dienste. Wir speichern Ihre Auswahl in diesem Browser, damit wir sie beachten können.</p>
+          <dl className="mt-4 space-y-3 text-sm leading-relaxed text-text-muted-light">
+            {GA_ID ? <div><dt className="font-semibold text-text-primary-light">Statistik · freiwillig</dt><dd>Google Analytics zeigt uns, welche Seiten und Produktinformationen genutzt werden und ob Anfragen erfolgreich ankommen.</dd></div> : null}
+            {HAS_MARKETING ? <div><dt className="font-semibold text-text-primary-light">Marketing · freiwillig</dt><dd>Anzeigenmessung und mögliche spätere Werbung über {[GOOGLE_ADS_ID ? "Google Ads / YouTube" : "", META_PIXEL_ID ? "Meta (Facebook und Instagram)" : "", LINKEDIN_PARTNER_ID ? "LinkedIn" : ""].filter(Boolean).join(" und ")}.{LINKEDIN_PARTNER_ID ? " LinkedIn erfasst dabei nur Besuche." : ""}</dd></div> : null}
+          </dl>
+          {HAS_TRACKING ? <button type="button" className="button button-secondary mt-5" onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}>Cookie-Einstellungen ändern</button> : null}
+        </section>
 
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
@@ -136,9 +146,10 @@ export default function DatenschutzPage() {
             Einwilligungen und Cookie-Einstellungen
           </h2>
           <p>
-            Google Analytics wird nur nach Ihrer Einwilligung geladen. Sie
-            können eine erteilte Einwilligung jederzeit mit Wirkung für die
-            Zukunft widerrufen.
+            Optionale Statistik- und Marketing-Dienste starten erst nach Ihrer
+            jeweiligen Einwilligung. Sie können die beiden Zwecke getrennt
+            auswählen, beide ablehnen oder beiden zustimmen. Eine Ablehnung
+            schränkt die Nutzung dieser Website nicht ein.
           </p>
           {HAS_TRACKING ? (
             <p>
@@ -152,7 +163,7 @@ export default function DatenschutzPage() {
               >
                 Cookie-Einstellungen
               </button>{" "}
-              anpassen.
+              jederzeit anpassen und Ihre Einwilligung mit Wirkung für die Zukunft widerrufen. Der Link steht auch im Seitenfuß. Die bisherige Verarbeitung bleibt von einem Widerruf unberührt.
             </p>
           ) : (
             <p>
@@ -210,9 +221,9 @@ export default function DatenschutzPage() {
                   META_PIXEL_ID ? "den Meta-Pixel für Facebook und Instagram" : "",
                   LINKEDIN_PARTNER_ID ? "die LinkedIn-Besuchsmessung" : "",
                 ].filter(Boolean).join(" sowie ")}{" "}
-                ein. Damit können Besuche und erfolgreich angenommene Anfragen
-                zur Anzeigenmessung und zum Aufbau von Zielgruppen für spätere
-                Werbung verwendet werden. Online-Kennungen, technische
+                ein. Besuche dienen dem Aufbau von Zielgruppen für spätere
+                Werbung.{META_PIXEL_ID ? " Der Meta-Pixel erfasst außerdem erfolgreich angenommene Anfragen zur Anzeigenmessung." : ""}{LINKEDIN_PARTNER_ID ? " LinkedIn erfasst nur Besuche." : ""}{" "}
+                Online-Kennungen, technische
                 Geräteinformationen und Ereignisdaten können dabei an die
                 jeweiligen Anbieter übermittelt werden.
               </p>
