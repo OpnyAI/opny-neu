@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   CONSENT_CHANGE_EVENT,
   CONSENT_KEY,
@@ -34,11 +34,23 @@ function setConsentDenied(): void {
   });
 }
 
+function subscribeToConsent(onChange: () => void) {
+  window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+
+function getServerConsent(): ConsentValue | null {
+  return null;
+}
+
 export default function CookieBanner() {
-  const [consent, setConsent] = useState<ConsentValue | null>(() => {
-    if (!HAS_GA_ID) return null;
-    return readConsent();
-  });
+  // Use the same initial snapshot on the server and during hydration. The
+  // persisted browser choice is read after hydration, before future updates.
+  const consent = useSyncExternalStore(subscribeToConsent, readConsent, getServerConsent);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
@@ -154,7 +166,6 @@ export default function CookieBanner() {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(CONSENT_KEY, "accepted");
     setConsentGranted();
-    setConsent("accepted");
     window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
     closeSettings();
   };
@@ -163,7 +174,6 @@ export default function CookieBanner() {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(CONSENT_KEY, "declined");
     setConsentDenied();
-    setConsent("declined");
     window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
     closeSettings();
   };

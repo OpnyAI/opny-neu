@@ -46,3 +46,12 @@ Die visuelle UI/UX-Fachprüfung hat zusätzlich einen bestehenden CSS-Fehler in 
 ## Veröffentlichung
 
 Der freigegebene Stand wird aus dem bestehenden Repository `OpnyAI/opny-neu` im Projekt `opny-neu` (`prj_qf1EMRUTNJqRZquQnP3yf1c2Edxq`, Team `team_UtjNWaK9236evD0ZEc8tA64R`) nach Production veröffentlicht. Deployment-ID und öffentliche Prüfung werden nach erfolgreichem Abschluss ergänzt.
+
+
+### Öffentliche Nachprüfung und Cookie-Korrektur
+
+Erstes Production-Deployment `dpl_2VuLfDLbLGkrAopVnEurKEaDHyWK` aus Commit `84d13e28832fbe1f41b4de095e2c9f93e6916ba9` ist READY und den Opny-Domains zugeordnet. Öffentliche Prüfung bestätigte Inhalte, Demo-Vorauswahl, Produktbilder, Sitemap, llms und den 308-Altweg. Sie fand zusätzlich einen bestehenden Hydration-Fehler bei gespeicherter Cookie-Auswahl und aktiviertem Analytics.
+
+Ursache: Der Server begann mit `null`, der erste Browser-Render las dagegen direkt localStorage. Die Korrektur verwendet `useSyncExternalStore` mit identischem Server-/Hydration-Snapshot und beobachtet anschließende Consent-Änderungen. Tracking bleibt an Zustimmung gebunden. Vor erneutem Deployment wird lokal mit gesetzter, fiktiver öffentlicher Analytics-ID und simulierten Analytics-Anfragen geprüft.
+
+Frontend/Media-Gate für die Cookie-Korrektur erteilt. Erneuter Produktionsbuild mit `NEXT_PUBLIC_GA_ID=G-OPNYQA` und ESLint erfolgreich. Browser prüfte neue Besucher, gespeicherte Ablehnung und gespeicherte Zustimmung einschließlich erneuter Ablehnung und Reload: keine Hydration-Fehler; nach Ablehnung keine Analytics-Anfragen. Analytics-Anfragen waren vollständig simuliert. Vollständige lokale Seitenprüfung mit aktivierter Analytics-Codevariante erneut erfolgreich (fünf Breiten, 200% Schrift, Bilder, 13 Linkziele, FAQ-Daten, Demo-Vorauswahl und simulierte Formularzustände).
