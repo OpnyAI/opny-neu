@@ -5,6 +5,7 @@ Stand: 23. November 2026. Ersetzt die ursprüngliche Automotive-/TrustArch-Map. 
 | Pfad | Aufgabe und nächster Schritt |
 | --- | --- |
 | `/` | AuthenticTrust anhand Problem, Nutzen und Produktbeispielen verstehen; persönliche Demo anfragen |
+| `/tisax-software` | Konkrete TISAX-Vorbereitung mit Produktbeispiel, Arbeitsweg, Scopegrenzen und Demo |
 | `/produkte/authentictrust` | Arbeitsweise vertiefen: Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen; Demo |
 | `/produkte/nodex` | Kontrollierten KI-Zugang, Datenwege und Nutzung verstehen; Einsatz besprechen |
 | `/produkte` | Beide Produkte nach Nutzeraufgabe vergleichen; passendes Produkt öffnen |

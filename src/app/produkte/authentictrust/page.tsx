@@ -2,6 +2,7 @@ import Region from "@/components/Region";
 import SectionIntro from "@/components/marketing/SectionIntro";
 import JsonLd from "@/components/marketing/JsonLd";
 import MediaStage from "@/components/marketing/MediaStage";
+import StandardsOverview from "@/components/marketing/StandardsOverview";
 import ProductHero from "@/components/marketing/ProductHero";
 import ClosingCta from "@/components/marketing/ClosingCta";
 import FaqList from "@/components/marketing/FaqList";
@@ -12,11 +13,11 @@ import {
 } from "@/content/authentictrust";
 import { createMetadata } from "@/lib/metadata";
 
-const title = "AuthenticTrust: Software für Managementsysteme";
+const title = "AuthenticTrust: Compliance-Software für TISAX & ISO";
 export const metadata = createMetadata({
   title,
   description:
-    "Anforderungen, Dokumente, Nachweise und Maßnahmen in einem Arbeitsraum: AuthenticTrust von Opny macht Ihr Managementsystem nachvollziehbar. Demo anfragen.",
+    "Compliance mit AuthenticTrust: Anforderungen aus TISAX, ISO 27001 und ISO 9001 strukturieren. Dokumente, Nachweise und Maßnahmen verbinden. Demo anfragen.",
   path: "/produkte/authentictrust",
   image: {
     url: "/media/authentictrust/authentictrust-dashboard-1600x1000.jpg",
@@ -123,6 +124,8 @@ export default function AuthenticTrustPage() {
               url: "https://www.opny.ai/produkte/authentictrust",
               featureList: [
                 "Anforderungen und Nachweise zuordnen",
+                "Anforderungen aus TISAX, ISO/IEC 27001 und ISO 9001 strukturieren",
+                "Ausgewählte Anforderungen aus NIS2, SOC 2 und DSGVO einordnen",
                 "Intern erstellte Dokumente mit Versionen und Freigaben bearbeiten",
                 "PDF-Nachweise mit Anforderungsbezug und Gültigkeit pflegen",
                 "Bewertungen und offene Punkte nachvollziehen",
@@ -167,6 +170,7 @@ export default function AuthenticTrustPage() {
           { href: "#dokumente", label: "Dokumente & Nachweise" },
           { href: "#bewertungen", label: "Bewertungen" },
           { href: "#massnahmen", label: "Risiken & Maßnahmen" },
+          { href: "#standards", label: "Standards & Vorgaben" },
           { href: "#fragen", label: "Fragen" },
         ]}
       >
@@ -208,6 +212,7 @@ export default function AuthenticTrustPage() {
           ))}
         </ol>
       </Region>
+      <StandardsOverview />
       {features.map((feature, index) => (
         <Region
           key={feature.id}
@@ -261,9 +266,10 @@ export default function AuthenticTrustPage() {
                 Standards passend zum Einsatz klären.
               </h3>
               <p className="mt-3 leading-relaxed text-text-muted-light">
-                TISAX ist abgebildet. Weitere ISO-Managementsystemstandards
-                werden schrittweise ergänzt. Welche Kataloge, Versionen und
-                Abläufe Sie benötigen, prüfen wir im Gespräch.
+                TISAX, ISO/IEC 27001 und ISO 9001 sind als Anforderungskataloge
+                beschrieben. Für NIS2, SOC 2 und DSGVO gibt es ausgewählte
+                Anforderungen. Verfügbare Kataloge, Normausgaben und Abläufe
+                klären wir im Gespräch.
               </p>
             </div>
           </div>

@@ -22,9 +22,9 @@ export const authenticTrustFaqs = [
       "TISAX ist ein Prüf- und Austauschmechanismus für Informationssicherheit, insbesondere in der Automobilindustrie. AuthenticTrust hilft, Anforderungen, Dokumente, Nachweise und offene Maßnahmen für die Vorbereitung zusammenzuführen. TISAX ist abgebildet; welche Kataloge und Versionen für Ihren Einsatz passen, wird vorab geklärt. Die eigentliche Prüfentscheidung trifft die zuständige Prüfstelle.",
   },
   {
-    question: "Welche Standards sind verfügbar?",
+    question: "Welche Normen und Vorgaben bildet AuthenticTrust ab?",
     answer:
-      "AuthenticTrust ist für mehrere Managementthemen angelegt. TISAX ist abgebildet; weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Die aktuell verfügbaren Kataloge, Versionen und benötigten Themenbereiche klären wir vor einem Einsatz. Die Beispiele in den Produktbildern sind keine Zusage vollständiger Normabdeckung.",
+      "AuthenticTrust strukturiert Anforderungen aus TISAX, ISO/IEC 27001 für Informationssicherheit und ISO 9001 für Qualitätsmanagement. Für NIS2, SOC 2 und DSGVO sind ausgewählte Anforderungen beschrieben; diese sind keine vollständigen eigenständigen Fachmodule. Welche Kataloge, Normausgaben und Funktionen für Ihren Einsatz verfügbar sind, klären wir vorab. Softwarebewertungen und Produktbeispiele sind keine Zertifizierungs- oder Konformitätszusage.",
   },
   {
     question: "Was macht die KI – und wer entscheidet?",
@@ -46,3 +46,59 @@ export const authenticTrustFaqs = [
 export const authenticTrustHomeFaqs = authenticTrustFaqs.filter((_, index) =>
   [0, 1, 3, 4, 5, 7].includes(index),
 );
+
+export const authenticTrustStandards = [
+  {
+    name: "TISAX",
+    type: "Prüf- und Austauschverfahren",
+    topic: "Informationssicherheit in der Automobilindustrie",
+    scope:
+      "Anforderungen und Nachweise für die TISAX-Vorbereitung organisieren. Katalog und Prüfziele bestimmen den benötigten Umfang.",
+    coverage: "Anforderungskatalog",
+    href: "/tisax-software",
+    linkLabel: "TISAX-Software kennenlernen",
+  },
+  {
+    name: "ISO/IEC 27001",
+    type: "Norm für Managementsysteme",
+    topic: "Informationssicherheit",
+    scope:
+      "Anforderungen, Dokumente und Maßnahmen für ein Informationssicherheitsmanagementsystem zusammenführen.",
+    coverage: "Anforderungskatalog",
+  },
+  {
+    name: "ISO 9001",
+    type: "Norm für Managementsysteme",
+    topic: "Qualitätsmanagement",
+    scope:
+      "Vorgaben, Dokumente, Nachweise und Aufgaben für Ihre Qualitätsprozesse nachvollziehbar organisieren.",
+    coverage: "Anforderungskatalog",
+  },
+  {
+    name: "NIS2",
+    type: "EU-Richtlinie zur Cybersicherheit",
+    topic: "Sicherheitsmaßnahmen und Verantwortlichkeiten",
+    scope:
+      "Ausgewählte Anforderungen einordnen und mit Nachweisen und Maßnahmen verbinden.",
+    coverage: "Ausgewählte Anforderungen",
+  },
+  {
+    name: "SOC 2",
+    type: "Prüf- und Berichtsrahmen",
+    topic: "Kontrollen bei Dienstleistungsunternehmen",
+    scope:
+      "Ausgewählte Vertrauenskriterien mit zugehörigen Unterlagen und offenen Aufgaben strukturieren.",
+    coverage: "Ausgewählte Anforderungen",
+  },
+  {
+    name: "DSGVO",
+    type: "EU-Datenschutzverordnung",
+    topic: "Umgang mit personenbezogenen Daten",
+    scope:
+      "Ausgewählte Datenschutzanforderungen dokumentieren und relevante Nachweise zuordnen.",
+    coverage: "Ausgewählte Anforderungen",
+  },
+];
+
+export const authenticTrustStandardsNote =
+  "Der Umfang unterscheidet sich je Regelwerk. Verfügbare Kataloge, Normausgaben und Funktionen klären wir für Ihren Einsatz. Eine Softwarebewertung ersetzt keine fachliche oder externe Prüfung.";

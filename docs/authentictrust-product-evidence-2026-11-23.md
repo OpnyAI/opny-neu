@@ -29,3 +29,10 @@ Handbuch S208–209 verschiebt Evidence automation, Privacy, Product security, A
 Die Vertriebspräsentation trägt noch die Marke Trustarch und das Datum28.10.2026. Aussagen wie alle Normen, Echtzeitprüfung sämtlicher Unterlagen, Integrationen oder pauschale Zeitersparnis werden nicht als Nachweise übernommen. Konditionen werden ohne veröffentlichte Zahlen im Gespräch geklärt.
 
 Der bisher freigegebene Standardstatus bleibt erhalten: TISAX abgebildet, ISO-Erweiterung schrittweise; verfügbare Kataloge und Versionen vor Einsatz klären. Bilder bleiben dokumentiert freigegebene Beispiele mit fiktiven Daten. Sie belegen keine Kundennutzung und werden als Beispieldaten gekennzeichnet.
+
+
+## Präzisierte Katalogbezeichnung nach erneuter Quellenprüfung
+
+Für die aktuelle Standards-Ergänzung wurde Handbuchv72 S31–33 und171–175 erneut geprüft. Die dort beschriebenen Kataloge umfassen ISO/IEC27001, ISO9001 und TISAX; NIS2/SOC2/DSGVO enthalten ausgewählte umschriebene Anforderungen und keine vollständigen eigenständigen Fachmodule. Der Product Owner gibt diese begrenzte namentliche Einordnung zur Veröffentlichung frei. Sie ersetzt die zuvor pauschale öffentliche Aussage zur schrittweisen ISO-Erweiterung, ohne jede Normausgabe oder aktuelle Katalogversion zuzusagen. Der aktuelle verfügbare Umfang wird vor Einsatz geklärt.
+
+Primärquellen zur Begriffsabgrenzung (keine Produktpartner-/Zertifizierungsbelege): ISO/IEC27001 für Informationssicherheit; ISO9001 für Qualität; ENX-TISAX als Prüf-/Austauschverfahren; NIS2 als EU-Richtlinie, DSGVO als EU-Verordnung, SOC2 als Prüf-/Berichtsrahmen. Aktuelle Katalog-/Jahresversionen werden wegen möglicher Abweichung zur dokumentierten Softwarefassung nicht pauschal zugesagt.

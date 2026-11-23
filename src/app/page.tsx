@@ -3,17 +3,18 @@ import MediaStage from "@/components/marketing/MediaStage";
 import Link from "next/link";
 import Region from "@/components/Region";
 import JsonLd from "@/components/marketing/JsonLd";
+import StandardsOverview from "@/components/marketing/StandardsOverview";
 import FaqList from "@/components/marketing/FaqList";
 import { companyCtas } from "@/config/site";
 import { authenticTrustHomeFaqs as faqs } from "@/content/authentictrust";
 import { createMetadata } from "@/lib/metadata";
 
-const title = "Dokumente und Nachweise für Managementsysteme | Opny";
+const title = "Compliance-Software für TISAX & Managementsysteme | Opny";
 const description =
-  "AuthenticTrust von Opny verbindet Anforderungen, Dokumente, Nachweise und Maßnahmen. Offene Punkte erkennen, Aufgaben bearbeiten und persönliche Demo anfragen.";
+  "AuthenticTrust von Opny: Compliance-Software für TISAX und Managementsysteme. Dokumente, Nachweise und Maßnahmen verbinden. Persönliche Demo anfragen.";
 export const metadata = {
   ...createMetadata({
-    title: "Dokumente und Nachweise für Managementsysteme",
+    title: "Compliance-Software für TISAX & Managementsysteme",
     description,
     path: "/",
     image: {
@@ -38,20 +39,6 @@ const problems = [
   [
     "Nachweise zusammensuchen.",
     "Vor der Prüfung werden Belege und offene Maßnahmen zusammengetragen. Der Bezug zur Anforderung fehlt oft in der Ablage.",
-  ],
-];
-const benefits = [
-  [
-    "Aktuelle Dokumente finden",
-    "Eigene Dokumente mit Versionen, Zuständigkeit und fachlicher Freigabe bearbeiten.",
-  ],
-  [
-    "Nachweise zuordnen",
-    "PDF-Nachweise mit passenden Anforderungen und Gültigkeit verbinden.",
-  ],
-  [
-    "Offene Aufgaben verfolgen",
-    "Maßnahmen, Verantwortliche und Fristen nachvollziehbar bearbeiten.",
   ],
 ];
 const steps = [
@@ -166,72 +153,49 @@ export default function Home() {
       />
 
       <section className="at-hero" aria-labelledby="hero-heading">
-        <div className="at-container">
-          <div className="at-hero-intro">
+        <div className="at-container at-hero-layout">
+          <div className="at-hero-copyblock">
             <p className="at-eyebrow">
-              Für Teams in Informationssicherheit, Qualität und
-              Unternehmensführung
-            </p>
-            <p className="at-product-name">
-              AuthenticTrust <span>von Opny</span>
+              AuthenticTrust von Opny · Compliance-Software
             </p>
             <h1 id="hero-heading">
-              Dokumente und Nachweise im Griff.
-              <br className="hidden sm:block" />{" "}
-              <span>Aufgaben klar verteilt.</span>
+              Compliance organisieren.
+              <span className="block">TISAX vorbereiten.</span>
             </h1>
             <p className="at-hero-copy">
-              AuthenticTrust verbindet Anforderungen, Dokumente, Nachweise und
-              Maßnahmen in einer Software. Damit Ihr Team weiß, was erledigt
-              ist, was fehlt und wer den nächsten Schritt übernimmt.
+              Für Teams, die Vorgaben einhalten und Prüfungen vorbereiten:
+              Dokumente, Nachweise und Aufgaben in einer Software.
             </p>
-            <p className="at-definition">
-              Ihr Managementsystem: die Abläufe, mit denen Ihr Unternehmen
-              Vorgaben im Alltag umsetzt.
-            </p>
+            <ul className="at-hero-points">
+              {[
+                "Dokumente mit Freigaben bearbeiten",
+                "Nachweise Anforderungen zuordnen",
+                "Maßnahmen mit klaren Zuständigkeiten",
+              ].map((point) => (
+                <li key={point}>
+                  <Check />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
             <div className="at-actions">
               <DemoLink />
-              <a href="#produkteinblick" className="at-text-link">
-                Produkt ansehen
-              </a>
+              <Link href="/tisax-software" className="at-text-link">
+                TISAX-Software ansehen
+              </Link>
             </div>
-            <p className="at-microcopy">
-              Persönlicher Produkteinblick. Passend zu Ihrer Ausgangslage.
-            </p>
           </div>
-          <div id="produkteinblick" className="at-hero-product">
+          <div id="produkteinblick" className="at-hero-visual">
             <ProductImage
               kind="documents-evidence"
               priority
-              alt="AuthenticTrust-Dokumentenübersicht mit Versionen, Freigabestatus und zugeordneten Nachweisen"
+              alt="AuthenticTrust Compliance-Software: Dokumente und Nachweise mit Zuständigkeit und Status für die Prüfungsvorbereitung"
             />
-            <div className="at-benefits">
-              <p className="at-eyebrow">Weniger Suchen. Mehr Überblick.</p>
-              <h2>
-                Wissen, wo Sie stehen.
-                <br />
-                Und was noch fehlt.
-              </h2>
-              <ul>
-                {benefits.map(([heading, text]) => (
-                  <li key={heading}>
-                    <Check />
-                    <div>
-                      <h3>{heading}</h3>
-                      <p>{text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <DemoLink>Demo für Ihr Unternehmen anfragen</DemoLink>
-              <p className="at-microcopy">
-                Sie sehen die Software. Danach klären wir, ob sie zu Ihren
-                Abläufen passt.
-              </p>
-            </div>
           </div>
         </div>
       </section>
+
+      <StandardsOverview compact />
 
       <div className="at-orientation">
         <div className="at-container">
@@ -328,9 +292,9 @@ export default function Home() {
             </p>
           </div>
           <p>
-            TISAX ist abgebildet. Weitere ISO-Managementsystemstandards werden
-            schrittweise ergänzt. Den aktuell passenden Umfang klären wir mit
-            Ihnen.
+            Anforderungen aus TISAX, ISO/IEC 27001 und ISO 9001 gemeinsam
+            strukturieren. Für NIS2, SOC 2 und DSGVO werden ausgewählte
+            Anforderungen eingeordnet. Den passenden Umfang klären wir vorab.
           </p>
         </div>
       </Region>

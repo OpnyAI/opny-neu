@@ -93,3 +93,8 @@ Diese Freigabe ändert keine Funktions- oder Wirkungszusagen: Die folgenden hist
 ## Präzisierung des Arbeitswegs · 23. November 2026
 
 Die aktuelle fachliche Prüfung und begrenzte Product-Owner-Freigabe sind in `docs/authentictrust-product-evidence-2026-11-23.md` dokumentiert. Intern erstellte Dokumente, PDF-Nachweise, regelbasierte Bewertungen, KI-Textunterstützung und menschliche Freigaben werden getrennt beschrieben. Diese Präzisierung erweitert keine Integrations-, Sicherheits-, Normabdeckungs- oder Zertifizierungszusagen.
+
+
+## Namentliche Standards-Ergänzung · 23. November 2026
+
+Aktuelle Freigabe und Scopeentscheidung: `docs/hero-standards-tisax-release-2026-11-23.md` sowie ergänzte Katalogprüfung in `docs/authentictrust-product-evidence-2026-11-23.md`. Die präzisere jüngere Handbuchquelle ersetzt die alte pauschale ISO-Roadmapformulierung in der aktuellen Website: TISAX, ISO/IEC27001 und ISO9001 als beschriebene Anforderungskataloge; NIS2/SOC2/DSGVO als ausgewählte Anforderungen ohne volle Fachmodule. Keine universelle Norm-/Versions-/Konformitäts-/Zertifizierungszusage.

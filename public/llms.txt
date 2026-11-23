@@ -2,7 +2,7 @@
 
 > Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen im DACH-Raum bei Managementsystemen, Compliance und kontrollierter KI-Nutzung.
 
-Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Software für Managementsysteme. Sie verbindet Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. TISAX ist ein konkreter Anwendungsfall für die Prüfung der Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
+Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Compliance-Software für TISAX-Vorbereitung und Managementsysteme. Sie verbindet Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. TISAX ist ein konkreter Anwendungsfall für die Prüfung der Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
 
 AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung und Schulung ergänzen das Angebot.
 
@@ -18,6 +18,7 @@ AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung un
 
 ## Produkte
 
+- [TISAX-Software](https://www.opny.ai/tisax-software): Anforderungen, Dokumente, Nachweise und Maßnahmen für die TISAX-Vorbereitung organisieren; Software unterstützt, externe Prüfstellen bewerten
 - [AuthenticTrust](https://www.opny.ai/produkte/authentictrust): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
 - [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
 
@@ -37,7 +38,7 @@ AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung un
 
 ## Wichtige Einordnung
 
-- AuthenticTrust ist ein verfügbares Opny-Produkt. Es ist normenübergreifend angelegt: TISAX ist abgebildet, weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Aktuelle Standards und Versionen werden vor dem Einsatz geklärt.
+- AuthenticTrust ist ein verfügbares Opny-Produkt. Als Anforderungskataloge sind TISAX, ISO/IEC 27001 für Informationssicherheit und ISO 9001 für Qualitätsmanagement beschrieben. Für NIS2, SOC 2 und DSGVO gibt es ausgewählte Anforderungen; diese sind keine vollständigen eigenständigen Fachmodule. Verfügbare Kataloge, Normausgaben und Funktionen werden vor dem Einsatz geklärt.
 - Die veröffentlichten AuthenticTrust-Ansichten verwenden fiktive Beispieldaten. Regelbasierte Bewertung, KI-Textunterstützung und fachliche Entscheidungen sind getrennt. Regeln unterstützen die Einordnung des Bearbeitungsstands; KI kann bei Textformulierungen helfen. Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. AuthenticTrust ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
 - NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
 - Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.

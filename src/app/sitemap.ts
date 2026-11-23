@@ -19,6 +19,13 @@ const pages = [
   },
   { path: "/produkte", lastModified: authenticTrustContentDate },
   {
+    path: "/tisax-software",
+    lastModified: authenticTrustContentDate,
+    images: [
+      `${baseUrl}/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg`,
+    ],
+  },
+  {
     path: "/produkte/authentictrust",
     lastModified: authenticTrustContentDate,
     images: [
@@ -44,10 +51,22 @@ const pages = [
     ],
   },
   { path: "/loesungen", lastModified: authenticTrustContentDate },
-  { path: "/loesungen/ki-beratung-automotive", lastModified: authenticTrustContentDate },
-  { path: "/loesungen/ki-schulungen-automotive", lastModified: authenticTrustContentDate },
-  { path: "/ki-governance-automotive", lastModified: authenticTrustContentDate },
-  { path: "/wissen/ki-im-unternehmen-einfuehren", lastModified: authenticTrustContentDate },
+  {
+    path: "/loesungen/ki-beratung-automotive",
+    lastModified: authenticTrustContentDate,
+  },
+  {
+    path: "/loesungen/ki-schulungen-automotive",
+    lastModified: authenticTrustContentDate,
+  },
+  {
+    path: "/ki-governance-automotive",
+    lastModified: authenticTrustContentDate,
+  },
+  {
+    path: "/wissen/ki-im-unternehmen-einfuehren",
+    lastModified: authenticTrustContentDate,
+  },
   {
     path: "/ueber-opny",
     lastModified: authenticTrustContentDate,
@@ -59,8 +78,7 @@ const pages = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return pages.map((page) => ({
     url: `${baseUrl}${page.path}`,
-    lastModified:
-      "lastModified" in page ? page.lastModified : relaunchDate,
+    lastModified: "lastModified" in page ? page.lastModified : relaunchDate,
     ...("images" in page ? { images: [...page.images] } : {}),
     ...("videos" in page ? { videos: [...page.videos] } : {}),
   }));

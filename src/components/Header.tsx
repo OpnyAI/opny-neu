@@ -12,7 +12,9 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const isAuthenticTrustPath =
-    pathname === "/" || pathname === "/produkte/authentictrust";
+    pathname === "/" ||
+    pathname === "/produkte/authentictrust" ||
+    pathname === "/tisax-software";
   const primaryCta =
     pathname === "/kontakt"
       ? { href: "#anfrage", label: "Zur Anfrage" }
