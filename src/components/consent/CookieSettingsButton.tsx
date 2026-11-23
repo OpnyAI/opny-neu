@@ -2,10 +2,10 @@
 
 import { OPEN_COOKIE_SETTINGS_EVENT } from "@/lib/consent";
 
-const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
+import { HAS_TRACKING } from "@/lib/tracking-config";
 
 export default function CookieSettingsButton() {
-  if (!HAS_GA_ID) return null;
+  if (!HAS_TRACKING) return null;
 
   return (
     <button

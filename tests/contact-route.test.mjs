@@ -6,7 +6,7 @@ import * as crypto from 'node:crypto';
 import ts from 'typescript';
 
 // Exercise the real route validation and response flow without sending email.
-function loadRoute({ failDelivery = false } = {}) {
+function loadRoute({ failDelivery = false, failConfirmation = false } = {}) {
   const emails = [];
   const source = ts.transpileModule(fs.readFileSync('src/app/api/nodex-contact/route.ts', 'utf8'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2021 },
@@ -24,7 +24,7 @@ function loadRoute({ failDelivery = false } = {}) {
       };
       if (name === '@/lib/contact-email') return {
         readContactEmailConfig: () => ({ apiKey: 'test-only', to: 'team@example.invalid', from: 'website@example.invalid' }),
-        sendResendEmail: async email => { if (failDelivery) throw Error('test_provider_failure'); emails.push(email); },
+        sendResendEmail: async email => { if (failDelivery || (failConfirmation && emails.length === 1)) throw Error('test_provider_failure'); emails.push(email); },
       };
       if (name === 'node:crypto') return crypto;
       throw Error(`Unexpected dependency: ${name}`);
@@ -51,6 +51,7 @@ test('valid demo reaches delivery and confirmation with legacy interest normaliz
   const { post, emails } = loadRoute();
   const response = await post(request({ interest: 'TrustArch Demo' }));
   assert.equal(response.body.ok, true);
+  assert.equal(response.body.leadAccepted, true);
   assert.equal(emails.length, 2);
   assert.match(emails[0].subject, /AuthenticTrust Demo/);
   assert.equal(emails[0].replyTo, 'demo@example.invalid');
@@ -61,4 +62,19 @@ test('provider failure does not produce success', async () => {
   const response = await post(request());
   assert.equal(response.status, 502);
   assert.equal(response.body.ok, false);
+});
+
+test('honeypot success never reports an accepted lead', async () => {
+  const { post, emails } = loadRoute();
+  const response = await post(request({ website: 'spam' }));
+  assert.equal(response.body.ok, true);
+  assert.equal(response.body.leadAccepted, undefined);
+  assert.equal(emails.length, 0);
+});
+test('confirmation failure keeps an internally accepted lead valid', async () => {
+  const { post, emails } = loadRoute({ failConfirmation: true });
+  const response = await post(request());
+  assert.equal(response.body.ok, true);
+  assert.equal(response.body.leadAccepted, true);
+  assert.equal(emails.length, 1);
 });

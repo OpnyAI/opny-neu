@@ -1,10 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createHash } from "node:crypto";
-import { contactInterests, normalizeContactInterest } from "@/lib/contact-interest";
 import {
-  readContactEmailConfig,
-  sendResendEmail,
-} from "@/lib/contact-email";
+  contactInterests,
+  normalizeContactInterest,
+} from "@/lib/contact-interest";
+import { readContactEmailConfig, sendResendEmail } from "@/lib/contact-email";
 
 export const runtime = "nodejs";
 
@@ -98,9 +98,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
-    if (!Number.isFinite(renderedAt) || Date.now() - renderedAt < MIN_SUBMIT_TIME_MS) {
+    if (
+      !Number.isFinite(renderedAt) ||
+      Date.now() - renderedAt < MIN_SUBMIT_TIME_MS
+    ) {
       // A real visitor must never see a success message for an unsent request.
-      return NextResponse.json({ ok: false, error: "too_fast" }, { status: 429 });
+      return NextResponse.json(
+        { ok: false, error: "too_fast" },
+        { status: 429 },
+      );
     }
 
     const name = trim(body.name);
@@ -205,7 +211,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, leadAccepted: true });
   } catch (error) {
     console.error("Opny contact request failed.", error);
     return NextResponse.json({ ok: false }, { status: 500 });

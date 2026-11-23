@@ -2,11 +2,13 @@
 
 import type React from "react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   contactInterests,
   normalizeContactInterest,
 } from "@/lib/contact-interest";
+
+import { trackEvent, trackLead, productForInterest } from "@/lib/tracking";
 
 export const interests = contactInterests;
 
@@ -56,6 +58,8 @@ export default function ContactForm({
     ...initialState,
     interest: selectedInterest,
   }));
+  const startedRef = useRef(false);
+  const submittingRef = useRef(false);
   const [renderedAt, setRenderedAt] = useState("");
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -83,6 +87,7 @@ export default function ContactForm({
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submittingRef.current) return;
     setError("");
     const cleaned = {
       ...form,
@@ -104,6 +109,11 @@ export default function ContactForm({
         ? "company"
         : null;
     if (firstInvalid) {
+      trackEvent("form_validation_error", {
+        form_id: "opny_contact",
+        field_name: firstInvalid,
+        error_type: "invalid",
+      });
       setStatus("error");
       setError(invalid[firstInvalid]!);
       event.currentTarget
@@ -111,6 +121,7 @@ export default function ContactForm({
         ?.focus();
       return;
     }
+    submittingRef.current = true;
     setStatus("submitting");
 
     try {
@@ -122,6 +133,7 @@ export default function ContactForm({
       const result = (await response.json().catch(() => null)) as {
         ok?: boolean;
         error?: string;
+        leadAccepted?: boolean;
       } | null;
 
       if (result?.error === "too_fast") {
@@ -135,6 +147,7 @@ export default function ContactForm({
         throw new Error("request_failed");
       }
 
+      if (result.leadAccepted === true) trackLead(form.interest);
       setStatus("success");
       setForm({ ...initialState, interest: form.interest });
       setRenderedAt(String(Date.now()));
@@ -143,6 +156,12 @@ export default function ContactForm({
       setError(
         "Die Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@opny.ai.",
       );
+      trackEvent("form_submit_error", {
+        form_id: "opny_contact",
+        error_type: "request_failed",
+      });
+    } finally {
+      submittingRef.current = false;
     }
   }
 
@@ -157,7 +176,35 @@ export default function ContactForm({
         </div>
       ) : null}
 
-      <form className="space-y-5" onSubmit={onSubmit}>
+      <form
+        className="space-y-5"
+        onSubmit={onSubmit}
+        onChangeCapture={() => {
+          if (!startedRef.current)
+            startedRef.current = trackEvent("form_start", {
+              form_id: "opny_contact",
+              product: productForInterest(form.interest),
+            });
+        }}
+        onInvalidCapture={(event) => {
+          const name = (event.target as HTMLInputElement).name;
+          if (
+            ["name", "company", "email", "companySize", "privacy"].includes(
+              name,
+            )
+          )
+            trackEvent("form_validation_error", {
+              form_id: "opny_contact",
+              field_name: name as
+                | "name"
+                | "company"
+                | "email"
+                | "companySize"
+                | "privacy",
+              error_type: "invalid",
+            });
+        }}
+      >
         <div className="hidden" aria-hidden="true">
           <label htmlFor="website">Website</label>
           <input
@@ -299,6 +346,7 @@ export default function ContactForm({
         <label className="flex items-start gap-3 text-sm leading-relaxed text-text-muted-light">
           <input
             type="checkbox"
+            name="privacy"
             required
             checked={form.privacy}
             onChange={(event) => update("privacy", event.target.checked)}

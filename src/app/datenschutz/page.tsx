@@ -1,6 +1,12 @@
 "use client";
 
-const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
+import {
+  GA_ID,
+  HAS_TRACKING,
+  HAS_MARKETING,
+  GOOGLE_ADS_ID,
+  META_PIXEL_ID,
+} from "@/lib/tracking-config";
 
 export default function DatenschutzPage() {
   return (
@@ -14,9 +20,9 @@ export default function DatenschutzPage() {
             Hinweise zum Datenschutz
           </h1>
           <p className="text-base leading-relaxed text-text-muted-light">
-            Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Nachfolgend
-            informieren wir Sie klar und verständlich über die Verarbeitung auf
-            dieser Website.
+            Der Schutz Ihrer personenbezogenen Daten ist uns wichtig.
+            Nachfolgend informieren wir Sie klar und verständlich über die
+            Verarbeitung auf dieser Website.
           </p>
         </div>
 
@@ -35,7 +41,10 @@ export default function DatenschutzPage() {
           </p>
           <p>
             Kontakt:{" "}
-            <a className="hover:text-text-primary-light" href="mailto:info@opny.ai">
+            <a
+              className="hover:text-text-primary-light"
+              href="mailto:info@opny.ai"
+            >
               info@opny.ai
             </a>
           </p>
@@ -72,10 +81,10 @@ export default function DatenschutzPage() {
             Interesse, z. B. sicherer und stabiler Betrieb der Website).
           </p>
           <p>
-            Soweit für Analyse- oder Marketingzwecke ein Zugriff auf Informationen
-            in Ihrem Endgerät erfolgt oder solche Informationen gespeichert
-            werden, erfolgt dies auf Grundlage der Einwilligung nach den
-            Vorgaben des TDDDG.
+            Soweit für Analyse- oder Marketingzwecke ein Zugriff auf
+            Informationen in Ihrem Endgerät erfolgt oder solche Informationen
+            gespeichert werden, erfolgt dies auf Grundlage der Einwilligung nach
+            den Vorgaben des TDDDG.
           </p>
         </section>
 
@@ -89,9 +98,9 @@ export default function DatenschutzPage() {
             Stabilität und Sicherheit.
           </p>
           <p>
-            Dabei können insbesondere IP-Adresse, Request-Informationen,
-            Geräte- und Browserinformationen sowie Zeitstempel verarbeitet
-            werden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+            Dabei können insbesondere IP-Adresse, Request-Informationen, Geräte-
+            und Browserinformationen sowie Zeitstempel verarbeitet werden.
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
           </p>
           <p>
             Vercel wird als Auftragsverarbeiter auf Grundlage eines Vertrags
@@ -130,7 +139,7 @@ export default function DatenschutzPage() {
             können eine erteilte Einwilligung jederzeit mit Wirkung für die
             Zukunft widerrufen.
           </p>
-          {HAS_GA_ID ? (
+          {HAS_TRACKING ? (
             <p>
               Ihre Auswahl können Sie über{" "}
               <button
@@ -152,33 +161,76 @@ export default function DatenschutzPage() {
           )}
         </section>
 
+        {GA_ID ? (
+          <section className="space-y-3 text-base text-text-muted-light">
+            <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
+              Google Analytics 4 (GA4)
+            </h2>
+            <p>
+              Google Analytics 4 dient nach Ihrer Einwilligung der
+              Nutzungsstatistik: Wir messen Seitenaufrufe, Produktinteresse,
+              Anfrageklicks, den Formularbeginn und erfolgreich angenommene
+              Anfragen. Formularinhalte wie Name, Unternehmen, E-Mail-Adresse,
+              Telefonnummer und Nachricht werden nicht als
+              Analytics-Ereignisparameter übertragen. Seitenadressen werden ohne
+              Queryparameter und URL-Fragmente übergeben.
+            </p>
+            <p>
+              Verarbeitet werden insbesondere Online-Kennungen (z. B.
+              Cookie-/Client-ID), technisch übermittelte IP-Informationen,
+              Geräte- und Browserdaten, Nutzungsdaten, regionsbezogene
+              Standortdaten sowie Ereignisdaten.
+            </p>
+            <p>
+              Empfänger können Google Ireland Limited sowie im Rahmen von
+              Konzernzugriffen Google LLC in den USA sein. Rechtsgrundlage ist
+              Art. 6 Abs. 1 lit. a DSGVO in Verbindung mit den Vorgaben des
+              TDDDG. Drittlandübermittlungen erfolgen auf Basis geeigneter
+              Garantien, beispielsweise Standardvertragsklauseln (SCC).
+            </p>
+            <p>
+              Die Speicherdauer richtet sich nach den in Google Analytics
+              konfigurierten Aufbewahrungsfristen. Ein Widerruf bzw. Opt-out ist
+              jederzeit über die Cookie-Einstellungen möglich.
+            </p>
+          </section>
+        ) : null}
+
         <section className="space-y-3 text-base text-text-muted-light">
           <h2 className="text-xl font-semibold text-text-primary-light md:text-2xl">
-            Google Analytics 4 (GA4)
+            Werbung und Wiederansprache
           </h2>
-          <p>
-            Soweit eingesetzt, dient Google Analytics 4 der Reichweitenmessung
-            und Analyse der Nutzung unserer Website. Die Aktivierung erfolgt nur
-            nach Ihrer Einwilligung.
-          </p>
-          <p>
-            Verarbeitet werden insbesondere Online-Kennungen (z. B.
-            Cookie-/Client-ID), technisch übermittelte IP-Informationen,
-            Geräte- und Browserdaten, Nutzungsdaten, regionsbezogene
-            Standortdaten sowie Ereignisdaten.
-          </p>
-          <p>
-            Empfänger können Google Ireland Limited sowie im Rahmen von
-            Konzernzugriffen Google LLC in den USA sein. Rechtsgrundlage ist
-            Art. 6 Abs. 1 lit. a DSGVO in Verbindung mit den Vorgaben des
-            TDDDG. Drittlandübermittlungen erfolgen auf Basis geeigneter
-            Garantien, beispielsweise Standardvertragsklauseln (SCC).
-          </p>
-          <p>
-            Die Speicherdauer richtet sich nach den in Google Analytics
-            konfigurierten Aufbewahrungsfristen. Ein Widerruf bzw. Opt-out ist
-            jederzeit über die Cookie-Einstellungen möglich.
-          </p>
+          {HAS_MARKETING ? (
+            <>
+              <p>
+                Nur nach einer getrennten Marketing-Einwilligung setzen wir{" "}
+                {GOOGLE_ADS_ID ? "Google Ads einschließlich YouTube" : ""}
+                {GOOGLE_ADS_ID && META_PIXEL_ID ? " und " : ""}
+                {META_PIXEL_ID
+                  ? "den Meta-Pixel für Facebook und Instagram"
+                  : ""}{" "}
+                ein. Damit können Besuche und erfolgreich angenommene Anfragen
+                zur Anzeigenmessung und zum Aufbau von Zielgruppen für spätere
+                Werbung verwendet werden. Online-Kennungen, technische
+                Geräteinformationen und Ereignisdaten können dabei an die
+                jeweiligen Anbieter übermittelt werden.
+              </p>
+              <p>
+                Eine reine Statistik-Einwilligung erlaubt diese Marketing-Tags
+                nicht. Die Auswahl ist jederzeit über die Cookie-Einstellungen
+                änderbar. Formularinhalte werden nicht als
+                Pixel-Ereignisparameter übertragen; automatisches erweitertes
+                Matching wird durch unsere Website nicht aktiviert.
+              </p>
+            </>
+          ) : (
+            <p>
+              Werbetags für Google Ads, YouTube, Facebook und Instagram sind
+              derzeit nicht eingerichtet. Die technische Vorbereitung allein
+              aktiviert keine Wiederansprache und übermittelt keine Daten an
+              diese Werbetags.
+            </p>
+          )}
         </section>
 
         <section className="space-y-3 text-base text-text-muted-light">
@@ -209,11 +261,11 @@ export default function DatenschutzPage() {
           </p>
           <p>
             Anfragen werden gelöscht, sobald der Zweck der Bearbeitung entfällt
-            und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
-            Resend speichert Daten nach den eigenen Richtlinien so lange, wie
-            dies für die Bereitstellung, Sicherheit und Erfüllung rechtlicher
-            Pflichten erforderlich ist. Die konkrete Anbieter- und
-            Kontokonfiguration ist vor dem Produktivbetrieb zu prüfen.
+            und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Resend
+            speichert Daten nach den eigenen Richtlinien so lange, wie dies für
+            die Bereitstellung, Sicherheit und Erfüllung rechtlicher Pflichten
+            erforderlich ist. Die konkrete Anbieter- und Kontokonfiguration ist
+            vor dem Produktivbetrieb zu prüfen.
           </p>
           <p>
             Weitere Informationen:{" "}
@@ -248,9 +300,9 @@ export default function DatenschutzPage() {
             E-Mail-Zustellung.
           </p>
           <p>
-            Soweit diese Dienstleister in unserem Auftrag tätig sind, erfolgt die
-            Verarbeitung auf Grundlage von Verträgen zur Auftragsverarbeitung
-            gemäß Art. 28 DSGVO.
+            Soweit diese Dienstleister in unserem Auftrag tätig sind, erfolgt
+            die Verarbeitung auf Grundlage von Verträgen zur
+            Auftragsverarbeitung gemäß Art. 28 DSGVO.
           </p>
         </section>
 
@@ -261,16 +313,25 @@ export default function DatenschutzPage() {
           <ul className="list-disc space-y-2 pl-5">
             <li>Auskunft über die zu Ihrer Person gespeicherten Daten</li>
             <li>Berichtigung unrichtiger oder unvollständiger Daten</li>
-            <li>Löschung Ihrer Daten, soweit keine Aufbewahrungspflichten bestehen</li>
+            <li>
+              Löschung Ihrer Daten, soweit keine Aufbewahrungspflichten bestehen
+            </li>
             <li>Einschränkung der Verarbeitung in bestimmten Fällen</li>
             <li>Datenübertragbarkeit</li>
-            <li>Widerspruch gegen Verarbeitungen auf Basis von Art. 6 Abs. 1 lit. f DSGVO (Art. 21 DSGVO)</li>
-            <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+            <li>
+              Widerspruch gegen Verarbeitungen auf Basis von Art. 6 Abs. 1 lit.
+              f DSGVO (Art. 21 DSGVO)
+            </li>
+            <li>
+              Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft
+              (Art. 7 Abs. 3 DSGVO)
+            </li>
             <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
           </ul>
           <p>
             Zuständige Aufsichtsbehörde ist der Landesbeauftragte für den
-            Datenschutz und die Informationsfreiheit Baden-Württemberg (LfDI BW):{" "}
+            Datenschutz und die Informationsfreiheit Baden-Württemberg (LfDI
+            BW):{" "}
             <a
               className="hover:text-text-primary-light"
               href="https://www.baden-wuerttemberg.datenschutz.de/"
@@ -301,7 +362,10 @@ export default function DatenschutzPage() {
           </h2>
           <p>
             Für Datenschutzanfragen erreichen Sie uns unter:{" "}
-            <a className="hover:text-text-primary-light" href="mailto:info@opny.ai">
+            <a
+              className="hover:text-text-primary-light"
+              href="mailto:info@opny.ai"
+            >
               info@opny.ai
             </a>
             .
