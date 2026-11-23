@@ -156,7 +156,7 @@ export default function AuthenticTrustPage() {
       <ProductHero
         name="AuthenticTrust"
         path="/produkte/authentictrust"
-        eyebrow="AuthenticTrust von Opny · Software für Managementsysteme"
+        eyebrow="AuthenticTrust von Opny · Compliance-Software"
         title="Vorgaben im Alltag umsetzen."
         accent="Mit einem gemeinsamen System."
         text="Ein Managementsystem organisiert, wie Ihr Unternehmen Vorgaben umsetzt. AuthenticTrust verbindet dafür Anforderungen, Dokumente, Nachweise, Bewertungen und Maßnahmen."
@@ -184,7 +184,7 @@ export default function AuthenticTrustPage() {
           label="AuthenticTrust von Opny"
           status="Beispieldaten"
           caption="Produkteinblick mit fiktiven Beispieldaten. Gezeigte Standards sind keine Zusage einer vollständigen Normabdeckung."
-          sizes="(min-width: 1280px) 1152px, 100vw"
+          sizes="(min-width: 1024px) 50vw, 100vw"
         />
       </ProductHero>
       <Region id="arbeitsweise" tone="surface">

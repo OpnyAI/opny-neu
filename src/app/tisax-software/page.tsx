@@ -117,16 +117,16 @@ export default function TisaxSoftwarePage() {
             { label: "TISAX-Software", href: "/tisax-software" },
           ]}
         />
-        <div className="mt-8 product-feature">
-          <div className="product-feature-copy">
+        <div className="marketing-hero-grid mt-8">
+          <div className="marketing-hero-copy">
             <p className="eyebrow">
               AuthenticTrust von Opny · Compliance-Software
             </p>
-            <h1 className="display-lg mt-4">
+            <h1 className="marketing-hero-title mt-4">
               Software für Ihre{" "}
               <span className="text-accent">TISAX-Vorbereitung.</span>
             </h1>
-            <p>
+            <p className="marketing-hero-lead mt-5">
               Für Teams, die Unterlagen für eine TISAX-Prüfung zusammenführen:
               Anforderungen, Dokumente, Nachweise und Maßnahmen in einem
               gemeinsamen Arbeitsraum.

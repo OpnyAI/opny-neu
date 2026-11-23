@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --opny-bg: 248 250 255;
-  --opny-bg-alt: 240 245 255;
+  --opny-bg: 250 249 246;
+  --opny-bg-alt: 240 243 239;
   --opny-surface: 255 255 255;
-  --opny-border: 217 225 238;
-  --opny-text: 21 36 58;
-  --opny-muted: 83 97 120;
+  --opny-border: 215 223 217;
+  --opny-text: 27 45 42;
+  --opny-muted: 86 100 95;
 
   --bg: var(--opny-bg);
   --fg: var(--opny-text);
@@ -22,20 +22,21 @@
   --elevated-light: var(--opny-surface);
   --elevated-dark: 31 31 34;
   --text-primary-light: var(--opny-text);
-  --text-secondary-light: 67 84 108;
+  --text-secondary-light: 65 85 79;
   --text-muted-light: var(--opny-muted);
   --text-primary-dark: 245 245 247;
   --text-secondary-dark: 210 210 215;
   --text-muted-dark: 161 161 166;
   --border-light: var(--opny-border);
   --border-dark: 255 255 255;
-  --accent: 36 84 198;
-  --accent-hover: 25 67 170;
-  --accent-deep: 21 55 126;
+  --accent: 15 97 91;
+  --accent-hover: 10 75 71;
+  --accent-deep: 18 59 56;
+  --on-accent-muted: 220 236 228;
   --hero-background: radial-gradient(
     ellipse at 50% 30%,
     #fff 15%,
-    #eef4ff 100%
+    #edf3ef 100%
   );
   --section-space: 4rem;
   --section-compact: 3rem;
@@ -205,10 +206,10 @@ pre {
 
   .field-input {
     width: 100%;
-    border: 1px solid #8190a5;
+    border: 1px solid #7b8c83;
     border-radius: 0.9rem;
     outline: none;
-    background: #fbfcff;
+    background: #fffefa;
     font-size: 1rem;
     padding: 0.8rem 0.95rem;
     color: rgb(var(--opny-text));
@@ -222,7 +223,7 @@ pre {
   }
 
   .field-input:hover {
-    border-color: #536178;
+    border-color: #56645f;
   }
 
   .field-input:focus {
@@ -293,7 +294,7 @@ pre {
   background: white;
 }
 .button-inverse:hover {
-  background: #e8efff;
+  background: #eef3ed;
 }
 .button-ghost {
   color: white;
@@ -424,7 +425,7 @@ pre {
 .at-container {
   width: min(100%, 1280px);
   margin-inline: auto;
-  padding-inline: clamp(20px, 3vw, 40px);
+  padding-inline: 20px;
 }
 .at-eyebrow {
   color: rgb(var(--text-secondary-light));
@@ -492,7 +493,7 @@ pre {
   font-weight: 650;
   color: rgb(var(--accent));
   text-decoration: underline;
-  text-decoration-color: #a6b9e9;
+  text-decoration-color: #95b8ac;
   text-underline-offset: 5px;
 }
 .at-microcopy {
@@ -714,30 +715,6 @@ pre {
   line-height: 1.75;
   color: rgb(var(--opny-muted));
 }
-.at-final {
-  background: rgb(var(--accent-deep));
-  text-align: center;
-  padding-block: 70px;
-  color: #fff;
-}
-.at-final .at-eyebrow,
-.at-final .at-microcopy {
-  color: #d1dffb;
-}
-.at-final h2 {
-  margin-top: 18px;
-  font-size: clamp(2rem, 3.8vw, 3.5rem);
-  font-weight: 680;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
-}
-.at-final h2 + p {
-  max-width: 680px;
-  margin: 24px auto 28px;
-  color: #d1dffb;
-  font-size: 1.0625rem;
-  line-height: 1.75;
-}
 .at-opny-more {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -851,9 +828,6 @@ pre {
   .at-opny-more {
     gap: 30px;
   }
-  .at-final {
-    padding-block: 50px;
-  }
 }
 
 /* Keep long German terms readable at narrow widths and enlarged text sizes. */
@@ -915,10 +889,14 @@ pre {
 }
 .standards-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   margin-top: 28px;
 }
 .standard-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  hyphens: auto;
   padding: 22px;
   border: 1px solid rgb(var(--opny-border));
   border-radius: var(--radius-card);
@@ -992,4 +970,237 @@ pre {
   .at-hero-copyblock .at-actions > .at-text-link {
     justify-content: center;
   }
+}
+
+/* Shared product entry, terminal CTA and image inspection. */
+.marketing-hero-grid {
+  display: grid;
+  align-items: center;
+  gap: 28px;
+}
+.marketing-hero-copy,
+.marketing-hero-media {
+  min-width: 0;
+}
+.marketing-hero-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+.marketing-hero-lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgb(var(--text-secondary-light));
+}
+.marketing-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.marketing-hero-media .media-stage {
+  width: 100%;
+}
+.closing-cta {
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: rgb(var(--accent-deep));
+  padding: 40px 24px;
+  color: white;
+}
+.closing-cta-layout {
+  display: grid;
+  gap: 28px;
+}
+.closing-cta-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.6;
+  color: rgb(var(--on-accent-muted));
+}
+.closing-cta .section-title {
+  max-width: 32ch;
+}
+.closing-cta-copy {
+  max-width: 65ch;
+  margin-top: 20px;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgb(var(--on-accent-muted));
+}
+.closing-cta .button {
+  justify-self: start;
+}
+.media-zoom-trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  background: transparent;
+  text-align: left;
+}
+.media-zoom-trigger:focus-visible {
+  outline-offset: -4px;
+}
+.media-zoom-hint {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid rgb(var(--opny-border));
+  background: rgb(var(--opny-bg));
+  color: rgb(var(--accent));
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.image-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 20px;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--opny-text));
+}
+.image-dialog::backdrop {
+  background: rgb(12 28 25 / 0.82);
+  backdrop-filter: blur(5px);
+}
+.image-dialog[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-dialog-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1440px);
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgb(var(--opny-border));
+  border-radius: var(--radius-card);
+  background: rgb(var(--opny-surface));
+  box-shadow: 0 24px 80px #0006;
+}
+.image-dialog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(var(--opny-border));
+}
+.image-dialog-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 650;
+}
+.image-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.image-dialog-actions .button {
+  gap: 10px;
+}
+.image-dialog-viewport {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: rgb(var(--opny-bg));
+}
+.image-dialog-viewport:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: -3px;
+}
+.image-dialog-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 68dvh;
+  object-fit: contain;
+}
+.image-dialog-image.is-enlarged {
+  max-width: none;
+  max-height: none;
+}
+.image-dialog-caption {
+  flex-shrink: 0;
+  max-height: 18dvh;
+  overflow: auto;
+  padding: 12px 16px;
+  border-top: 1px solid rgb(var(--opny-border));
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(var(--opny-muted));
+}
+@media (min-width: 640px) {
+  .at-container {
+    padding-inline: 32px;
+  }
+  .closing-cta {
+    padding: 48px 40px;
+  }
+}
+@media (min-width: 1024px) {
+  .at-container {
+    padding-inline: 40px;
+  }
+  .marketing-hero-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 36px;
+  }
+}
+@media (min-width: 1280px) {
+  .closing-cta-layout {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}
+@media (max-width: 639px) {
+  .marketing-hero-title {
+    hyphens: auto;
+  }
+  .marketing-hero-actions {
+    flex-direction: column;
+  }
+  .marketing-hero-actions .button,
+  .closing-cta .button {
+    width: 100%;
+  }
+  .image-dialog {
+    padding: 8px;
+  }
+  .image-dialog-toolbar {
+    padding: 12px;
+  }
+  .image-dialog-actions {
+    width: 100%;
+  }
+  .image-dialog-actions .button {
+    flex: 1;
+  }
+  .image-dialog-caption {
+    padding: 12px;
+  }
+}
+
+.marketing-hero-media video {
+  width: auto;
+  max-width: 100%;
+  max-height: 420px;
 }

@@ -39,40 +39,42 @@ export default function ProductHero({
           { label: name, href: path },
         ]}
       />
-      <div className="mx-auto mt-8 max-w-5xl text-center">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="display-lg mt-5">
-          {title}
-          <span className="mt-2 block text-accent">{accent}</span>
-        </h1>
-        <p className="lead-copy mx-auto mt-6 max-w-3xl">{text}</p>
-        <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button href={primary.href} theme="light">
-            {primary.label}
-          </Button>
-          <Button href={secondary.href} theme="light" variant="secondary">
-            {secondary.label}
-          </Button>
+      <div className="marketing-hero-grid mt-8">
+        <div className="marketing-hero-copy">
+          <p className="eyebrow">{eyebrow}</p>
+          <h1 className="marketing-hero-title mt-4">
+            {title}
+            <span className="mt-2 block text-accent">{accent}</span>
+          </h1>
+          <p className="marketing-hero-lead mt-5">{text}</p>
+          <div className="marketing-hero-actions">
+            <Button href={primary.href} theme="light">
+              {primary.label}
+            </Button>
+            <Button href={secondary.href} theme="light" variant="secondary">
+              {secondary.label}
+            </Button>
+          </div>
+          {note ? (
+            <p className="mt-4 text-sm leading-relaxed text-text-muted-light">
+              {note}
+            </p>
+          ) : null}
         </div>
-        {note ? (
-          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-text-muted-light">
-            {note}
-          </p>
-        ) : null}
-        {links?.length ? (
-          <nav
-            className="product-section-nav"
-            aria-label={`${name}: Seitenabschnitte`}
-          >
-            {links.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        ) : null}
+        <div className="marketing-hero-media">{children}</div>
       </div>
-      <div className="mx-auto mt-10 max-w-6xl">{children}</div>
+      {links?.length ? (
+        <nav
+          className="product-section-nav"
+          aria-label={`${name}: Seitenabschnitte`}
+        >
+          {links.map((link) => (
+            <a key={link.href} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      ) : null}
     </Region>
   );
 }

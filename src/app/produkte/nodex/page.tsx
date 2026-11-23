@@ -155,7 +155,7 @@ export default function NodeXPage() {
         ]}
       >
         <div id="produktvideo" className="scroll-mt-24">
-          <NodeXPreview autoPlay />
+          <NodeXPreview compact autoPlay />
         </div>
       </ProductHero>
 
@@ -191,7 +191,7 @@ export default function NodeXPage() {
         <div className="grid gap-12 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
           <figure className="media-stage bg-white p-4 sm:p-8">
             <GovernanceControlLayerDiagram className="h-auto w-full" />
-            <figcaption className="border-t border-black/[0.07] px-3 pt-4 text-xs leading-relaxed text-text-muted-light">
+            <figcaption className="border-t border-black/[0.07] px-3 pt-4 text-sm leading-relaxed text-text-muted-light">
               Funktionsmodell der Kontrollschicht. Konkrete Anbindungen richten
               sich nach der jeweiligen Systemumgebung.
             </figcaption>

@@ -65,7 +65,7 @@ export default function MobileNav({
         link.items.some((item) => pathname === item.href);
       const groupIsOpen =
         openGroup === link.href || (openGroup === null && isActive);
-      const panelId = `mobile-nav-${link.label.toLowerCase()}`;
+      const panelId = `mobile-nav-${link.href.replace(/[^a-z0-9]+/gi, "-")}`;
 
       return (
         <div className="border-b border-border-subtle-light/15">
@@ -75,7 +75,9 @@ export default function MobileNav({
             aria-controls={panelId}
             onClick={() =>
               setOpenGroup((current) =>
-                current === link.href ? null : link.href,
+                current === link.href || (current === null && isActive)
+                  ? ""
+                  : link.href,
               )
             }
             className={`flex min-h-12 w-full items-center justify-between gap-4 px-1 py-4 text-left text-[17px] font-medium transition ${
@@ -266,7 +268,7 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-x-0 bottom-0 top-14 z-[999] overflow-hidden lg:hidden"
+      className="fixed inset-0 z-[999] overflow-hidden lg:hidden"
       onClick={handleClose}
     >
       <div className="absolute inset-0 bg-white/80 backdrop-blur-xl" />
@@ -277,7 +279,7 @@ export default function MobileNav({
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex max-h-[calc(100dvh-3.5rem)] flex-col overflow-y-auto px-5 pb-6 pt-4">
+        <div className="flex max-h-[100dvh] flex-col overflow-y-auto px-5 pb-6 pt-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image

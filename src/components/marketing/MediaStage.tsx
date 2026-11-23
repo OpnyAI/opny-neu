@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImageZoom from "./ImageZoom";
 
 type MediaStageProps = {
   src: string;
@@ -60,22 +61,23 @@ export default function MediaStage({
         </div>
       ) : null}
       {zoom ? (
-        <a
-          href={src}
-          target="_blank"
-          rel="noreferrer"
-          className="block"
-          aria-label={`${alt} – in voller Größe öffnen (neuer Tab)`}
+        <ImageZoom
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          label={label}
+          status={status}
+          caption={caption}
         >
           {picture}
-        </a>
+        </ImageZoom>
       ) : (
         picture
       )}
       {caption ? (
         <figcaption className="media-caption">
           {caption}
-          {zoom ? " Zum Vergrößern auswählen." : ""}
         </figcaption>
       ) : null}
     </figure>

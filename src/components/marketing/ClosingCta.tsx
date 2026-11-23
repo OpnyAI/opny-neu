@@ -14,14 +14,12 @@ export default function ClosingCta({
   label: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-card bg-[rgb(var(--accent-deep))] px-6 py-12 text-white sm:px-10 md:py-16">
-      <div className="grid gap-9 lg:grid-cols-[1fr_auto] lg:items-end">
+    <div className="closing-cta">
+      <div className="closing-cta-layout">
         <div>
-          <p className="text-sm font-semibold text-blue-100">{eyebrow}</p>
-          <h2 className="section-title mt-4 max-w-4xl">{title}</h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-blue-100 md:text-lg">
-            {text}
-          </p>
+          <p className="closing-cta-eyebrow">{eyebrow}</p>
+          <h2 className="section-title mt-4">{title}</h2>
+          <p className="closing-cta-copy">{text}</p>
         </div>
         <Button href={href} theme="dark">
           {label}

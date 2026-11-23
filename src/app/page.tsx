@@ -3,6 +3,7 @@ import MediaStage from "@/components/marketing/MediaStage";
 import Link from "next/link";
 import Region from "@/components/Region";
 import JsonLd from "@/components/marketing/JsonLd";
+import ClosingCta from "@/components/marketing/ClosingCta";
 import StandardsOverview from "@/components/marketing/StandardsOverview";
 import FaqList from "@/components/marketing/FaqList";
 import { companyCtas } from "@/config/site";
@@ -380,25 +381,15 @@ export default function Home() {
         </div>
       </Region>
 
-      <section className="at-final" aria-labelledby="final-heading">
-        <div className="at-container">
-          <p className="at-eyebrow">AuthenticTrust von Opny</p>
-          <h2 id="final-heading">
-            Weniger Dateien suchen.
-            <br />
-            Die Vorbereitung im Blick behalten.
-          </h2>
-          <p>
-            Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust
-            zusammenkommen. Wir klären mit Ihnen, was zu Ihrem Unternehmen
-            passt.
-          </p>
-          <DemoLink dark />
-          <p className="at-microcopy">
-            Persönliche Demo anfragen und nächsten Schritt klären.
-          </p>
-        </div>
-      </section>
+      <Region spacing="compact">
+        <ClosingCta
+          eyebrow="AuthenticTrust von Opny"
+          title="Weniger Dateien suchen. Die Vorbereitung im Blick behalten."
+          text="Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust zusammenkommen. Wir klären mit Ihnen, was zu Ihrem Unternehmen passt."
+          href={companyCtas.authentictrustDemo}
+          label="AuthenticTrust-Demo anfragen"
+        />
+      </Region>
 
       <Region tone="alt" spacing="compact">
         <div className="at-opny-more">

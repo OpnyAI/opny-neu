@@ -10,6 +10,8 @@ Fachprüfungen vor Umsetzung: UI/UX, Frontend/Media und SEO/AEO/LLMO eigenständ
 
 ## Gestaltungsentscheidung
 
+Nachtrag: Der Nutzer hat die nachfolgend historisch dokumentierte Blaupalette später ausdrücklich durch dunkles Petrol mit warmem Weiß ersetzt. Die aktuelle Umsetzung und Bedienungskorrekturen sind in [interaction-design-petrol-release-2026-11-23.md](interaction-design-petrol-release-2026-11-23.md) dokumentiert.
+
 Das vorhandene Blau #2454c6 wird verbindlicher gemeinsamer Akzent; Navy #15243a für Überschriften, #15377e für Abschlussflächen, Lesetext #43546c/#536178, helle weiße/blaue Flächen und #d9e1ee als Randfarbe. Zentrale CSS-Tokens steuern Home und alle Templates. Gemeinsame Button-, Hero-, Karten-, Medien-, Typografie- und Abstandsregeln; keine zweite Palette nur für die Homepage. Rechtliche Texte bleiben sachliche Dokumente mit demselben Farbsystem.
 
 Navigation: AuthenticTrust, NodeX, Beratung & Schulung, Über Opny und passender Anfrage-CTA. Produktvergleich und Wissen im Footer. Homepage = Nutzen und Entscheidung; AuthenticTrust = konkrete Funktionen und Arbeitsweg; NodeX = eigener Produktkontext; Leistungen = Vorgehen und Eignung.
