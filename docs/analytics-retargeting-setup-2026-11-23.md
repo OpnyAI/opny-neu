@@ -44,6 +44,12 @@ Google Ads einschließlich YouTube und Meta/Facebook/Instagram sind beauftragt v
 
 ## Veröffentlichung
 
-Website-Veröffentlichung folgt nach dem hier dokumentierten erfolgreichen Vorabcheck. Deployment-ID, öffentliche Nachprüfung und tatsächlicher Empfangstest werden anschließend ergänzt.
+Freigegebener Quellstand646540ce9f864517f1688df3ca2cf07918da8ae7 als Produktionsdeployment dpl_7h57MnjSdQ9Xv4Lhb59UB78jiAYC veröffentlicht. Status READY, Aliase www.opny.ai und opny.ai, aliasError=null. Build auf Vercel erfolgreich.
+
+Öffentliche Nachprüfung auf https://www.opny.ai: alle15 Seiten in30 Mobil-/Desktopansichten plus320/768/1024px und200%-Schrift bestanden; Canonicals/FAQ/Anfragewege/Bildladung/Petrol konsistent, keine beobachteten JavaScriptfehler. Original-Google-SDK auf echter Domain bestätigt einmalige Seiten-/Produkterfassung, keine Ladung vor Zustimmung und keine Hits nach Widerruf. Separater Original-SDK-Formulartest mit abgefangener API/Collect ebenfalls bestanden; kein Testlead und keine E-Mail versandt. Öffentlicher Bilddialogcheck bestätigt Vergrößern/Anpassen/Schließen/Fokus/Scroll und mobile Bedienung. Vercel-Runtimefehlerprüfung seit10Minuten: keine error/fatal-Einträge für dieses Deployment.
+
+Tatsächlicher Empfang separat geprüft: ein kontrollierter isolierter Seitenaufruf nach Statistik-Zustimmung erhielt HTTP204 vom Google-Analytics-Collect-Endpunkt für G-KVP1KD6SQ5 und https://www.opny.ai/. Die normale Chrome-Kontrollvisite erscheint zusätzlich im richtigen GA4-Echtzeitbericht mit1aktivem Nutzer,1page_view,1session_start und1first_visit; Seitentitel Opny | Compliance-Software. Kein generate_lead dafür erzeugt. Damit ist auch ein realer GA4-Berichtseintrag unabhängig von den abgefangenen Tests bestätigt. Die vorherige Statistik-Ablehnung im Nutzerbrowser wurde nach dem temporären Kontrolltest wiederhergestellt und der gespeicherte ausgeschaltete Schalter sichtbar kontrolliert.
+
+Die Prüfung der Analytics-Datenfilter blieb lesend: nur vorhandener Internal-Traffic-Filter im Teststatus, kein aktiver Ausschluss verändert. Produktionsfreigabe abgeschlossen; Werbekonten/Marketing-IDs und deren spätere Aktivierung bleiben wie oben beschrieben offen.
 
 Primärquellen für Umsetzung: https://developers.google.com/tag-platform/security/guides/consent ; https://developers.google.com/analytics/devguides/collection/ga4/views ; https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead ; https://support.google.com/analytics/answer/6366371 ; https://support.google.com/analytics/answer/9313634 .
