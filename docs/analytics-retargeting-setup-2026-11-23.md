@@ -49,3 +49,13 @@ Die endgültige Testfassung besteht Build, ESLint und17 isolierte Tests. Browser
 Die neue Messfassung wird vorläufig nur im lokalen Repository gesichert, ausdrücklich noch nicht als Produktion veröffentlicht. Grund ist die reproduzierbare automatische/manuelle Doppelzählung bei noch aktiver Kontoeinstellung. Die bestehende produktive Website bleibt erhalten. Die einzige bereits abgeschlossene externe Änderung ist die bestätigte Opny-GA4-Verknüpfung in OpenSEO. Es wurden keine Kampagnen, Budgets oder Retargeting-Zielgruppen angelegt und keine fremden Konten geändert.
 
 Primärquellen: https://developers.google.com/tag-platform/security/guides/consent ; https://developers.google.com/analytics/devguides/collection/ga4/views ; https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead ; https://support.google.com/analytics/answer/6366371 ; https://support.google.com/analytics/answer/9313634 .
+
+## Erneuter Vorabcheck nach weiterem Nutzerauftrag
+
+Nutzer hat Korrektur aller offenen Punkte und einen Check vor Veröffentlichung ausdrücklich beauftragt. Aktueller Stand c7232c0:17 isolierte Tests und ESLint erneut bestanden. Vollständiger Browsercheck aller15 Website-Seiten ebenfalls erneut erfolgreich:30 Desktop-/Mobilansichten, zusätzliche320/768/1024px und200%-Schrift, Canonicals/FAQ/Anfragewege/Bilder konsistent und keine beobachteten JavaScriptfehler.
+
+Opny-GA4-Konfiguration erneut über die Google-Admin-Leseschnittstelle geprüft: gleicher richtiger Stream, automatische erweiterte Messung einschließlich History/Form/Outbound/Suche weiterhin aktiv; generate_lead noch kein Schlüsselereignis. Keine Kontoeinstellung wurde bisher verändert.
+
+Technischer Browserbefund präzisiert: Die native Browsersteuerung scheitert an einem als symbolischem Link registrierten schreibbaren Workspace. Apple-Events-JavaScript bleibt deaktiviert. Über native macOS-Fensteransicht kann das richtige Analytics-Fenster gelesen werden; macOS-Bedienungshilfen und Eventberechtigung sind vorhanden. Die aktive Oberfläche ist jedoch com.apple.loginwindow, die Chrome-Aktivierung bleibt deshalb gesperrt. Der Nutzer wurde gebeten, den Mac selbst zu entsperren und den Analytics-Tab offen zu lassen. Es werden weder Anmeldedaten angefordert noch Sperrbildschirm/Sicherheitsoptionen umgangen. Sobald die Oberfläche verfügbar ist, kann die vorhandene native Bedienung für die GA4-Korrektur genutzt werden.
+
+Veröffentlichung weiterhin zurückgestellt bis nach Kontokorrektur und erneutem realen Google-SDK-Netzwerktest ohne doppelte Ereignisse. Der eigene lokale Prüfserver auf3099 wurde nach Abschluss der unabhängigen Prüfungen beendet; keine anderen Benutzerprozesse wurden beendet.
