@@ -42,7 +42,9 @@ export default function MobileNav({
   const [animateIn, setAnimateIn] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
-  const hasSecondaryInLinks = links.some((link) => link.href === secondaryCta.href);
+  const hasSecondaryInLinks = links.some(
+    (link) => link.href === secondaryCta.href,
+  );
   const secondaryIsExternal =
     secondaryCta.href.startsWith("mailto:") ||
     secondaryCta.href.startsWith("tel:") ||
@@ -103,13 +105,12 @@ export default function MobileNav({
                       href={item.href}
                       onClick={handleClose}
                       aria-current={itemIsActive ? "page" : undefined}
-                      className={`block min-h-11 rounded-2xl px-4 py-3 text-[15px] transition ${
+                      className={`block min-h-11 rounded-card px-4 py-3 text-[15px] transition ${
                         itemIsActive
                           ? "bg-black/[0.04] text-text-primary-light"
                           : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
                       }`}
                     >
-                      <span className="mr-2 text-text-secondary-light">→</span>
                       {item.label}
                     </Link>
                   );
@@ -313,15 +314,16 @@ export default function MobileNav({
               <a
                 href={cta.href}
                 onClick={handleClose}
-                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+                className="button button-primary w-full"
               >
                 {cta.label}
               </a>
             ) : (
               <Link
                 href={cta.href}
+                prefetch={false}
                 onClick={handleClose}
-                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+                className="button button-primary w-full"
               >
                 {cta.label}
               </Link>
@@ -332,7 +334,7 @@ export default function MobileNav({
                 <a
                   href={secondaryCta.href}
                   onClick={handleClose}
-                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                  className="button button-secondary w-full"
                 >
                   {secondaryCta.label}
                 </a>
@@ -340,7 +342,7 @@ export default function MobileNav({
                 <Link
                   href={secondaryCta.href}
                   onClick={handleClose}
-                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                  className="button button-secondary w-full"
                 >
                   {secondaryCta.label}
                 </Link>

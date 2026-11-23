@@ -88,3 +88,8 @@ Geltungsbereich und den nötigen Prüfstatus. Es ist keine Rechtsbewertung.
 Der Website-Verantwortliche hat ausdrücklich die Umbenennung von TrustArch zu **AuthenticTrust** und die Öffnung der Website über Automotive-Zulieferer hinaus beauftragt. Opny bleibt Dachmarke, NodeX ein separates Produkt. Die allgemeine Ansprache umfasst Unternehmen aus Industrie, Technologie und Dienstleistungen mit Anforderungen an Managementsysteme, Compliance und kontrollierte KI-Nutzung. Automotive bleibt ein branchenspezifischer Einstieg und Erfahrungsschwerpunkt.
 
 Diese Freigabe ändert keine Funktions- oder Wirkungszusagen: Die folgenden historischen Produktbelege unter dem Namen TrustArch gelten für das umbenannte Produkt. TISAX ist abgebildet, weitere ISO-Standards werden schrittweise ergänzt; Fachprüfung und Freigaben bleiben bei zuständigen Personen. Der frühere 38-Sekunden-Rundgang wird wegen der alten sichtbaren Marke nicht mehr verlinkt. Neu erstellte Produktansichten stammen aus der vorhandenen Demo mit fiktiven Beispieldaten und aktualisierter Produktbezeichnung.
+
+
+## Präzisierung des Arbeitswegs · 23. November 2026
+
+Die aktuelle fachliche Prüfung und begrenzte Product-Owner-Freigabe sind in `docs/authentictrust-product-evidence-2026-11-23.md` dokumentiert. Intern erstellte Dokumente, PDF-Nachweise, regelbasierte Bewertungen, KI-Textunterstützung und menschliche Freigaben werden getrennt beschrieben. Diese Präzisierung erweitert keine Integrations-, Sicherheits-, Normabdeckungs- oder Zertifizierungszusagen.

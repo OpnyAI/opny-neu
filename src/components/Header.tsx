@@ -11,12 +11,19 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-  const isAuthenticTrustPath = pathname === "/" || pathname === "/produkte/authentictrust";
-  const primaryCta = pathname === "/kontakt"
-    ? { href: "#anfrage", label: "Zur Anfrage" }
-    : isAuthenticTrustPath
-      ? { href: companyCtas.authentictrustDemo, label: "Demo anfragen" }
-      : { href: companyCtas.generalInquiry, label: "Erstgespräch anfragen" };
+  const isAuthenticTrustPath =
+    pathname === "/" || pathname === "/produkte/authentictrust";
+  const primaryCta =
+    pathname === "/kontakt"
+      ? { href: "#anfrage", label: "Zur Anfrage" }
+      : pathname === "/produkte/nodex"
+        ? { href: companyCtas.nodexInquiry, label: "NodeX besprechen" }
+        : isAuthenticTrustPath
+          ? { href: companyCtas.authentictrustDemo, label: "Demo anfragen" }
+          : {
+              href: companyCtas.generalInquiry,
+              label: "Erstgespräch anfragen",
+            };
   const navRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const activeDropdownTriggerRef = useRef<HTMLButtonElement>(null);
@@ -49,7 +56,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-[rgba(250,250,250,0.82)] backdrop-blur-2xl">
+      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/95 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
           <Link
             href="/"
@@ -159,7 +166,12 @@ export default function Header() {
                         isOpen ? "rotate-180" : ""
                       }`}
                     >
-                      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                      <path
+                        d="M1 1l4 4 4-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      />
                     </svg>
                   </button>
 
@@ -173,7 +185,7 @@ export default function Header() {
                         : "invisible -translate-y-1 pointer-events-none opacity-0"
                     }`}
                   >
-                    <div className="min-w-[320px] rounded-3xl border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
+                    <div className="min-w-[320px] rounded-card border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
                       {n.items.map((item) => {
                         const itemIsActive = pathname === item.href;
 
@@ -183,7 +195,7 @@ export default function Header() {
                             href={item.href}
                             tabIndex={isOpen ? undefined : -1}
                             aria-current={itemIsActive ? "page" : undefined}
-                            className={`block rounded-2xl px-4 py-3 text-sm transition ${
+                            className={`block rounded-card px-4 py-3 text-sm transition ${
                               itemIsActive
                                 ? "bg-black/[0.04] text-text-primary-light"
                                 : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
@@ -203,15 +215,20 @@ export default function Header() {
 
           <div className="relative z-[60] hidden items-center gap-4 lg:flex">
             <Link
-              href="/kontakt"
+              href={
+                isAuthenticTrustPath
+                  ? companyCtas.authentictrustLogin
+                  : "/kontakt"
+              }
               className="text-sm text-text-muted-light hover:text-text-primary-light"
               aria-current={pathname === "/kontakt" ? "page" : undefined}
             >
-              Kontakt
+              {isAuthenticTrustPath ? "Anmelden" : "Kontakt"}
             </Link>
             <Link
               href={primaryCta.href}
-              className="rounded-full bg-[#2454c6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1943aa]"
+              prefetch={false}
+              className="button button-primary button-small"
             >
               {primaryCta.label}
             </Link>
@@ -220,7 +237,8 @@ export default function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <Link
               href={primaryCta.href}
-              className="inline-flex min-h-11 items-center rounded-full bg-[#2454c6] px-3 py-2.5 text-sm font-semibold text-white"
+              prefetch={false}
+              className="button button-primary button-small"
             >
               {primaryCta.label}
             </Link>
@@ -230,7 +248,7 @@ export default function Header() {
                 setActiveDropdown(null);
                 setMobileOpen(true);
               }}
-              className="flex min-h-11 items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
+              className="flex min-h-11 items-center gap-2 rounded-button border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
               aria-label="Menü öffnen"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
@@ -250,7 +268,11 @@ export default function Header() {
         onClose={() => setMobileOpen(false)}
         links={[...primaryNavigationLinks]}
         cta={primaryCta}
-        secondaryCta={{ label: "Kontakt", href: "/kontakt" }}
+        secondaryCta={
+          isAuthenticTrustPath
+            ? { label: "Anmelden", href: companyCtas.authentictrustLogin }
+            : { label: "Kontakt", href: "/kontakt" }
+        }
         returnFocusRef={menuButtonRef}
       />
     </>

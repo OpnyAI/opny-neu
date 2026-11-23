@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = "https://www.opny.ai";
 const relaunchDate = "2026-07-29";
-const authenticTrustContentDate = "2026-11-16";
+const authenticTrustContentDate = "2026-11-23";
 const pages = [
   {
     path: "/",
@@ -44,12 +44,13 @@ const pages = [
     ],
   },
   { path: "/loesungen", lastModified: authenticTrustContentDate },
-  { path: "/loesungen/ki-beratung-automotive" },
-  { path: "/loesungen/ki-schulungen-automotive" },
+  { path: "/loesungen/ki-beratung-automotive", lastModified: authenticTrustContentDate },
+  { path: "/loesungen/ki-schulungen-automotive", lastModified: authenticTrustContentDate },
   { path: "/ki-governance-automotive", lastModified: authenticTrustContentDate },
-  { path: "/wissen/ki-im-unternehmen-einfuehren" },
+  { path: "/wissen/ki-im-unternehmen-einfuehren", lastModified: authenticTrustContentDate },
   {
     path: "/ueber-opny",
+    lastModified: authenticTrustContentDate,
     images: [`${baseUrl}/media/opny/mehmet-catalsakal-founder-about-web.jpg`],
   },
   { path: "/kontakt", lastModified: "2026-11-23" },

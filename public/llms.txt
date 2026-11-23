@@ -2,13 +2,13 @@
 
 > Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen im DACH-Raum bei Managementsystemen, Compliance und kontrollierter KI-Nutzung.
 
-Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Software, um TISAX-Dokumente, Freigaben und Nachweise zentral zu verwalten und offene Maßnahmen nachzuvollziehen. TISAX ist ein Prüf- und Austauschmechanismus für Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
+Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Software für Managementsysteme. Sie verbindet Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. TISAX ist ein konkreter Anwendungsfall für die Prüfung der Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
 
 AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung und Schulung ergänzen das Angebot.
 
 ## Zentrale Seiten
 
-- [Startseite](https://www.opny.ai/): AuthenticTrust: TISAX-Dokumente und Nachweise zentral verwalten, Produktansichten, Ablauf, Fragen und Demo-Anfrage
+- [Startseite](https://www.opny.ai/): AuthenticTrust: Dokumente und Nachweise im Griff, Aufgaben klar verteilt; Produktansichten, Ablauf und Demo-Anfrage
 - [Automotive-Branchenlösung](https://www.opny.ai/automotive): Kontrollierte KI-Einführung für Automobilzulieferer und Automotive-Lieferanten
 - [KI-Governance Automotive](https://www.opny.ai/ki-governance-automotive): Inventar, Rollen, Richtlinien, Freigaben, technische Kontrollen und Nachweise
 - [Leitfaden: KI im Unternehmen einführen](https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren): Sieben Schritte von der Use-Case-Auswahl über Daten, Governance und Pilot bis zu Schulung und kontrolliertem Betrieb
@@ -28,10 +28,17 @@ AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung un
 - [KI-Beratung für Automotive-Zulieferer](https://www.opny.ai/loesungen/ki-beratung-automotive): KI-Strategie, Use-Case-Auswahl, Governance, Datenklassen und kontrollierte Pilotplanung
 - [KI-, ChatGPT- und Gemini-Schulungen für Automotive](https://www.opny.ai/loesungen/ki-schulungen-automotive): Inhouse-Workshops, Online-Schulungen und KI-Coaching für ChatGPT, Google Gemini, Microsoft Copilot und interne KI-Zugänge
 
+## Arbeitsweise von AuthenticTrust
+
+- Intern erstellte Dokumente können mit Versionen, Zuständigkeiten und fachlicher Freigabe bearbeitet werden.
+- PDF-Nachweise werden mit Anforderungen und Gültigkeit verbunden; sie haben nicht denselben Freigabeablauf wie intern erstellte Dokumente.
+- Bewertungen, offene Punkte, Risiken und Maßnahmen werden nachvollziehbar zusammengeführt. Fachpersonen prüfen Ergebnisse und entscheiden.
+- Demo-Oberflächen und sichtbare Integrationssymbole sind kein Nachweis produktiver Anbindungen. Es wird keine vollständige Abdeckung aller Normen, eigenständige KI-Freigabe oder garantierte Zertifizierung zugesagt.
+
 ## Wichtige Einordnung
 
 - AuthenticTrust ist ein verfügbares Opny-Produkt. Es ist normenübergreifend angelegt: TISAX ist abgebildet, weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Aktuelle Standards und Versionen werden vor dem Einsatz geklärt.
-- Die veröffentlichten AuthenticTrust-Ansichten verwenden fiktive Beispieldaten. Die KI-Unterstützung bereitet Strukturierung und nächste Schritte vor; Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. AuthenticTrust ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
+- Die veröffentlichten AuthenticTrust-Ansichten verwenden fiktive Beispieldaten. Regelbasierte Bewertung, KI-Textunterstützung und fachliche Entscheidungen sind getrennt. Regeln unterstützen die Einordnung des Bearbeitungsstands; KI kann bei Textformulierungen helfen. Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. AuthenticTrust ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
 - NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
 - Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.
 

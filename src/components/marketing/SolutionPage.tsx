@@ -159,9 +159,9 @@ export default function SolutionPage({
                 href={evidence.sourceHref}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
+                className="mt-5 inline-flex text-sm font-semibold text-accent hover:underline"
               >
-                Quelle: {evidence.sourceLabel} ↗
+                Quelle: {evidence.sourceLabel}
               </a>
             </div>
             <dl className="grid gap-px overflow-hidden rounded-card border border-black/[0.08] bg-black/[0.08] sm:grid-cols-3">
@@ -222,8 +222,8 @@ export default function SolutionPage({
               <li key={step.title} className="grid grid-cols-[44px_1fr] gap-4 border-t border-black/[0.10] py-6">
                 <span className="text-sm font-semibold text-text-muted-light">0{index + 1}</span>
                 <div>
-                  <h3 className="font-semibold text-slate-950">{step.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-600">{step.text}</p>
+                  <h3 className="font-semibold text-text-primary-light">{step.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-text-muted-light">{step.text}</p>
                 </div>
               </li>
             ))}
@@ -248,7 +248,7 @@ export default function SolutionPage({
           <SectionIntro eyebrow="Zielgruppen" title={audienceTitle} />
           <div className="flex flex-wrap gap-3">
             {audiences.map((audience) => (
-              <span key={audience} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700">
+              <span key={audience} className="rounded-full border border-border-subtle-light bg-white px-4 py-2 text-sm font-medium text-text-secondary-light">
                 {audience}
               </span>
             ))}
@@ -276,9 +276,9 @@ export default function SolutionPage({
                     href={source.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-semibold text-[#0066cc] hover:underline"
+                    className="font-semibold text-accent hover:underline"
                   >
-                    {source.label} ↗
+                    {source.label}
                   </a>
                   <p className="mt-2 text-sm leading-relaxed text-text-muted-light">
                     {source.note}

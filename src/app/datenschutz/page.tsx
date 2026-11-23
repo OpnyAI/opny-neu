@@ -4,7 +4,7 @@ const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
 
 export default function DatenschutzPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+    <main className="legal-document mx-auto w-full max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
       <div className="space-y-8">
         <div className="space-y-3">
           <div className="text-sm font-semibold uppercase tracking-[0.25em] text-text-secondary-light">

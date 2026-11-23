@@ -125,7 +125,7 @@ export default function AutomotivePage() {
             <div className="eyebrow">Automotive-Zulieferer · Tier-1 bis Tier-3</div>
             <h1 className="display-lg mt-5 text-text-primary-light">
               KI für Automotive-Zulieferer.
-              <span className="mt-2 block text-[#86868b]">
+              <span className="mt-2 block text-accent">
                 Kontrolliert eingeführt.
               </span>
             </h1>
@@ -183,7 +183,7 @@ export default function AutomotivePage() {
         />
         <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {pressures.map((pressure) => (
-            <div key={pressure} className="rounded-2xl border border-slate-200 bg-white p-5 leading-relaxed text-slate-700">
+            <div key={pressure} className="rounded-card border border-border-subtle-light bg-white p-5 leading-relaxed text-text-secondary-light">
               {pressure}
             </div>
           ))}
@@ -205,11 +205,11 @@ export default function AutomotivePage() {
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-5 text-sm font-semibold">
-          <Link href="/loesungen/ki-beratung-automotive" className="text-[#0066cc] hover:underline">
-            KI-Beratung für Automotive →
+          <Link href="/loesungen/ki-beratung-automotive" className="text-accent hover:underline">
+            KI-Beratung für Automotive
           </Link>
-          <Link href="/loesungen/ki-schulungen-automotive" className="text-[#0066cc] hover:underline">
-            KI-, ChatGPT- und Gemini-Schulungen →
+          <Link href="/loesungen/ki-schulungen-automotive" className="text-accent hover:underline">
+            KI-, ChatGPT- und Gemini-Schulungen
           </Link>
         </div>
       </Region>
@@ -244,7 +244,7 @@ export default function AutomotivePage() {
             <Card key={item.title} theme="light" className="flex h-full flex-col p-6">
               <h2 className="text-2xl font-semibold text-text-primary-light">{item.title}</h2>
               <p className="mt-4 leading-relaxed text-text-muted-light">{item.text}</p>
-              <Link href={item.href} className="mt-auto pt-7 text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4">
+              <Link href={item.href} className="mt-auto pt-7 text-sm font-semibold text-text-primary-light underline decoration-slate-300 underline-offset-4">
                 {item.cta}
               </Link>
             </Card>
@@ -281,11 +281,11 @@ export default function AutomotivePage() {
               "Eine kleine Aufgabe, eine verantwortliche Person und klare Abbruchkriterien festlegen.",
               "Ergebnis, Risiken und nächste Entscheidung nachvollziehbar dokumentieren.",
             ].map((step, index) => (
-              <li key={step} className="grid grid-cols-[42px_1fr] items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+              <li key={step} className="grid grid-cols-[42px_1fr] items-center gap-4 rounded-card border border-border-subtle-light bg-white p-4">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-sm font-semibold text-white">
                   {index + 1}
                 </span>
-                <span className="leading-relaxed text-slate-700">{step}</span>
+                <span className="leading-relaxed text-text-secondary-light">{step}</span>
               </li>
             ))}
           </ol>

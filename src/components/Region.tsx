@@ -54,15 +54,11 @@ export default function Region({
     textClass,
     themeClass,
     dividerClass,
+    spacing === "hero" ? "region-hero" : "",
     className,
   );
 
-  const spacingClass =
-    spacing === "compact"
-      ? "py-12 md:py-16"
-      : spacing === "hero"
-        ? "py-16 md:py-24 lg:py-28"
-        : "py-20 md:py-28 lg:py-32";
+  const spacingClass = `region-spacing-${spacing}`;
 
   const container = cn(
     "relative z-10 mx-auto w-full min-w-0 max-w-7xl px-5 sm:px-8 lg:px-10",

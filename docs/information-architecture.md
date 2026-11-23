@@ -1,41 +1,44 @@
-# Informationsarchitektur und Redirect-Plan
+# Opny: aktuelle Informationsarchitektur
 
-Stand: 28. Juli 2026
+Stand: 23. November 2026. Ersetzt die ursprüngliche Automotive-/TrustArch-Map. Opny bleibt Dachmarke; AuthenticTrust und NodeX sind getrennte Produkte.
 
-## Zielseiten und primäre Suchintention
-
-| Pfad | Primäre Suchintention |
+| Pfad | Aufgabe und nächster Schritt |
 | --- | --- |
-| `/` | Opny als Partner für kontrollierte KI-Einführung bei Automotive-Zulieferern verstehen |
-| `/automotive` | Branchenlösung für Tier-1- bis Tier-3-Zulieferer bewerten |
-| `/produkte` | TrustArch und NodeX vergleichen |
-| `/produkte/trustarch` | TrustArch-Demo und belegten Funktionsumfang prüfen |
-| `/produkte/nodex` | Technische KI-Kontrollschicht und Automotive-Anwendungsfälle prüfen |
-| `/loesungen/ki-beratung-automotive` | KI-Beratung für Automotive-Zulieferer anfragen |
-| `/loesungen/ki-schulungen-automotive` | KI-Schulungen für Automotive-Zulieferer anfragen |
-| `/ki-governance-automotive` | KI-Governance-Modell im Automotive-Umfeld verstehen |
-| `/wissen/ki-im-unternehmen-einfuehren` | Praxisleitfaden zur KI-Implementierung im Unternehmen lesen |
-| `/ueber-opny` | Gründer- und Automotive-Expertise prüfen |
-| `/kontakt` | Demo oder Erstgespräch anfragen |
+| `/` | AuthenticTrust anhand Problem, Nutzen und Produktbeispielen verstehen; persönliche Demo anfragen |
+| `/produkte/authentictrust` | Arbeitsweise vertiefen: Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen; Demo |
+| `/produkte/nodex` | Kontrollierten KI-Zugang, Datenwege und Nutzung verstehen; Einsatz besprechen |
+| `/produkte` | Beide Produkte nach Nutzeraufgabe vergleichen; passendes Produkt öffnen |
+| `/loesungen` | Allgemeine KI-Beratung, Schulung und Regeln zur KI-Nutzung; Erstgespräch |
+| `/automotive` | Branchenspezifischer Einstieg für Automotive-Zulieferer |
+| `/loesungen/ki-beratung-automotive` | Branchenspezifische KI-Beratung |
+| `/loesungen/ki-schulungen-automotive` | Branchenspezifische KI-Schulung |
+| `/ki-governance-automotive` | Branchenspezifische Regeln, Rollen und Nachweise für KI-Nutzung |
+| `/wissen/ki-im-unternehmen-einfuehren` | Allgemeiner Leitfaden mit sieben nachvollziehbaren Schritten |
+| `/ueber-opny` | Dachmarke, beide Produkte und Gründererfahrung einordnen |
+| `/kontakt` | Kontextbezogene Demo oder Anfrage; bestehende Interessen bleiben vorausgewählt |
+| `/impressum`, `/datenschutz` | Pflichtinformationen im gemeinsamen Gestaltungsrahmen |
 
-## Permanente Weiterleitungen
+## Navigation und Gestaltung
+
+Primärnavigation: AuthenticTrust, NodeX, Beratung & Schulung, Über Opny; passender Anfrage-CTA. Produktvergleich, Wissenseinstieg, Branchenlösung und Rechtliches bleiben im Footer erreichbar. Die Hauptnavigation zeigt AuthenticTrust nicht mehr parallel als Direktlink und als Duplikat im Produkte-Menü.
+
+Alle Seiten verwenden gemeinsame Farben, Typografie, Abstände, Buttons, Karten und Medienrahmen. Home hat eine verkaufsorientierte Reihenfolge; Produktseiten verwenden denselben ProductHero und vertiefen unterschiedliche Produktfunktionen. Services verwenden ein gemeinsames Template. Wissens-/Rechtstexte behalten ihre Lesestruktur.
+
+## Erhaltene permanente Weiterleitungen
 
 | Alter Pfad | Ziel |
 | --- | --- |
-| `/leistungen` | `/automotive` |
-| `/loesungen` | `/automotive` |
-| `/leistungen/nodex` | `/produkte/nodex` |
-| `/ai-gateway` | `/produkte/nodex` |
-| `/leistungen/ki-beratung` | `/loesungen/ki-beratung-automotive` |
-| `/loesungen/ki-beratung` | `/loesungen/ki-beratung-automotive` |
-| `/leistungen/ki-trainings` | `/loesungen/ki-schulungen-automotive` |
-| `/loesungen/ki-trainings` | `/loesungen/ki-schulungen-automotive` |
-| `/ki-governance` | `/ki-governance-automotive` |
+| `/produkte/trustarch` | `/produkte/authentictrust` |
+| `/leistungen/nodex`, `/ai-gateway` | `/produkte/nodex` |
+| `/leistungen` | `/loesungen` |
+| `/leistungen/ki-beratung`, `/loesungen/ki-beratung` | `/loesungen#beratung` |
+| `/leistungen/ki-trainings`, `/loesungen/ki-trainings` | `/loesungen#schulungen` |
+| `/ki-governance` | `/loesungen#governance` |
 
-## Vertrauenssignale
+Historische URLs werden nicht aus optischen Gründen gelöscht. Die aktuelle technische Weiterleitungsquelle ist `next.config.ts`.
 
-- Die zehnjährige Bosch-Erfahrung zeigt die persönliche Automotive-Expertise
-  des Gründers.
-- Bestehende Technologie- und Standardlogos werden nicht als Kundenreferenzen ausgespielt.
-- Nicht eindeutig freigegebene Testimonials werden nicht auf den neuen Seiten verwendet.
-- Demo-Beispieldaten sind keine Kunden-, Zertifizierungs- oder Integrationsnachweise.
+## Produkt- und Beleggrenzen
+
+AuthenticTrust: Anforderungen, Dokumente, Nachweise, Bewertungen, Risiken und Maßnahmen. Intern erstellte Dokumente und PDF-Nachweise haben unterschiedliche Bearbeitungswege. Regelbasierte Bewertungen, Textunterstützung und menschliche Freigaben werden getrennt erklärt. Keine pauschalen Integrations-, Normabdeckungs-, Konformitäts- oder Zertifizierungsversprechen.
+
+NodeX: technischer KI-Zugang und Konfiguration passend zur Systemumgebung. Seine freigegebenen Kundenstimmen erscheinen ausschließlich im NodeX-Kontext. Technologie-/Standardlogos werden nicht als Kundenreferenzen genutzt.

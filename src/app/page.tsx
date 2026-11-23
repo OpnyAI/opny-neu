@@ -1,16 +1,19 @@
-import Image from "next/image";
+import Button from "@/components/ui/Button";
+import MediaStage from "@/components/marketing/MediaStage";
 import Link from "next/link";
 import Region from "@/components/Region";
 import JsonLd from "@/components/marketing/JsonLd";
 import FaqList from "@/components/marketing/FaqList";
 import { companyCtas } from "@/config/site";
+import { authenticTrustHomeFaqs as faqs } from "@/content/authentictrust";
 import { createMetadata } from "@/lib/metadata";
 
-const title = "TISAX-Dokumente und Nachweise verwalten | Opny";
-const description = "AuthenticTrust von Opny bündelt TISAX-Dokumente, Freigaben und Nachweise. Offene Aufgaben erkennen, Prüfungen vorbereiten und persönliche Demo anfragen.";
+const title = "Dokumente und Nachweise für Managementsysteme | Opny";
+const description =
+  "AuthenticTrust von Opny verbindet Anforderungen, Dokumente, Nachweise und Maßnahmen. Offene Punkte erkennen, Aufgaben bearbeiten und persönliche Demo anfragen.";
 export const metadata = {
   ...createMetadata({
-    title: "TISAX-Dokumente und Nachweise verwalten",
+    title: "Dokumente und Nachweise für Managementsysteme",
     description,
     path: "/",
     image: {
@@ -23,138 +26,434 @@ export const metadata = {
   title: { absolute: title },
 };
 
-const faqs = [
-  {
-    question: "Was ist AuthenticTrust?",
-    answer: "AuthenticTrust ist die Software von Opny für Managementsysteme und Compliance, also die Einhaltung von Vorgaben. Sie bündelt Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. So können Verantwortliche ihre Unterlagen und offenen Aufgaben nachvollziehbar organisieren.",
-  },
-  {
-    question: "Wie hilft AuthenticTrust bei der TISAX-Vorbereitung?",
-    answer: "TISAX ist ein Prüf- und Austauschmechanismus für Informationssicherheit, insbesondere in der Automobilindustrie. AuthenticTrust hilft, Anforderungen mit Dokumenten und Nachweisen zu verbinden, Freigaben nachzuvollziehen und offene Maßnahmen zu bearbeiten. Die fachliche Bewertung und die eigentliche Prüfung bleiben bei den zuständigen Personen und Prüfstellen.",
-  },
-  {
-    question: "Für welche Unternehmen ist AuthenticTrust gedacht?",
-    answer: "AuthenticTrust richtet sich an Unternehmen in Industrie, Technologie und Dienstleistungen. Es passt besonders zu Teams, deren Dokumente, Freigaben und Nachweise über verschiedene Ablagen verteilt sind. Im Gespräch klären wir, welche Standards und Abläufe Sie benötigen und welcher Produktumfang dazu passt.",
-  },
-  {
-    question: "Unterstützt AuthenticTrust auch ISO-Standards?",
-    answer: "AuthenticTrust ist normenübergreifend angelegt. TISAX ist abgebildet; weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Welche Standards, Versionen und Themenbereiche für Ihren Einsatz aktuell verfügbar sind, klären wir vorab. Die gezeigten Beispieldaten sind keine Zusage einer vollständigen Normabdeckung.",
-  },
-  {
-    question: "Was übernimmt die KI – und was bleibt beim Menschen?",
-    answer: "Die KI-Unterstützung kann Informationen strukturieren, Einordnungen vorbereiten und nächste Arbeitsschritte vorschlagen. Fachpersonen prüfen die Ergebnisse und geben sie frei. AuthenticTrust ersetzt weder verantwortliche Fachrollen noch Rechtsberatung oder eine Zertifizierungsstelle und garantiert kein bestimmtes Prüfergebnis.",
-  },
-  {
-    question: "Wie läuft eine AuthenticTrust-Demo ab?",
-    answer: "Sie fragen eine Demo an und beschreiben auf Wunsch Ihre Ausgangslage. Im Gespräch sehen Sie, wie Dokumente, Freigaben, Nachweise und Maßnahmen in AuthenticTrust zusammenhängen. Anschließend klären wir den passenden Umfang, Ihre Anforderungen und einen möglichen nächsten Schritt. Mit der Anfrage buchen Sie kein Software-Abonnement.",
-  },
-  {
-    question: "Was kostet AuthenticTrust?",
-    answer: "Die Konditionen klären wir im Gespräch passend zum benötigten Umfang und Ihrer Ausgangslage. Vor einer Entscheidung erhalten Sie ein konkretes Angebot. Die Demo-Anfrage selbst ist keine Bestellung.",
-  },
-];
-
 const problems = [
-  ["Die richtige Datei suchen.", "Dokumente liegen in Ordnern, E-Mails und einzelnen Teams. Welche Fassung aktuell ist, muss erst jemand klären."],
-  ["Freigaben hinterherlaufen.", "Wer prüft noch? Was ist bereits freigegeben? Ohne gemeinsamen Überblick wird jede Rückfrage zur nächsten Aufgabe."],
-  ["Nachweise zusammensuchen.", "Vor der Prüfung werden Belege und offene Maßnahmen zusammengetragen. Der Bezug zur Anforderung fehlt oft in der Ablage."],
+  [
+    "Die richtige Datei suchen.",
+    "Dokumente liegen in Ordnern, E-Mails und einzelnen Teams. Welche Fassung aktuell ist, muss erst jemand klären.",
+  ],
+  [
+    "Freigaben hinterherlaufen.",
+    "Wer prüft noch? Was ist bereits freigegeben? Ohne gemeinsamen Überblick wird jede Rückfrage zur nächsten Aufgabe.",
+  ],
+  [
+    "Nachweise zusammensuchen.",
+    "Vor der Prüfung werden Belege und offene Maßnahmen zusammengetragen. Der Bezug zur Anforderung fehlt oft in der Ablage.",
+  ],
 ];
 const benefits = [
-  ["Aktuelle Dokumente finden", "Version, Zuständigkeit und Freigabestatus gemeinsam im Blick."],
-  ["Nachweise zuordnen", "Belege direkt mit den passenden Anforderungen verbinden."],
-  ["Offene Aufgaben verfolgen", "Maßnahmen, Verantwortliche und Fristen nachvollziehbar bearbeiten."],
+  [
+    "Aktuelle Dokumente finden",
+    "Eigene Dokumente mit Versionen, Zuständigkeit und fachlicher Freigabe bearbeiten.",
+  ],
+  [
+    "Nachweise zuordnen",
+    "PDF-Nachweise mit passenden Anforderungen und Gültigkeit verbinden.",
+  ],
+  [
+    "Offene Aufgaben verfolgen",
+    "Maßnahmen, Verantwortliche und Fristen nachvollziehbar bearbeiten.",
+  ],
 ];
 const steps = [
-  ["Ausgangslage besprechen", "Welche Unterlagen sind verteilt? Welche Prüfung steht an? Sie beschreiben kurz, wo es heute hakt."],
-  ["AuthenticTrust live ansehen", "Wir zeigen Ihnen den Weg von der Anforderung über Dokumente und Freigaben bis zum zugeordneten Nachweis."],
-  ["Passenden Einsatz klären", "Gemeinsam klären wir Standards, Abläufe und Umfang. Sie entscheiden anhand Ihrer Anforderungen über den nächsten Schritt."],
+  [
+    "Ausgangslage besprechen",
+    "Welche Unterlagen sind verteilt? Welche Prüfung steht an? Sie beschreiben kurz, wo es heute hakt.",
+  ],
+  [
+    "AuthenticTrust live ansehen",
+    "Wir zeigen Ihnen den Weg von der Anforderung über Dokumente und Freigaben bis zum zugeordneten Nachweis.",
+  ],
+  [
+    "Passenden Einsatz klären",
+    "Gemeinsam klären wir Standards, Abläufe und Umfang. Sie entscheiden anhand Ihrer Anforderungen über den nächsten Schritt.",
+  ],
 ];
 
-function DemoLink({ children = "AuthenticTrust-Demo anfragen", dark = false }: { children?: React.ReactNode; dark?: boolean }) {
-  return <Link href={companyCtas.authentictrustDemo} className={`at-button ${dark ? "at-button-white" : "at-button-primary"}`}>{children}</Link>;
+function DemoLink({
+  children = "AuthenticTrust-Demo anfragen",
+  dark = false,
+}: {
+  children?: React.ReactNode;
+  dark?: boolean;
+}) {
+  return (
+    <Button
+      href={companyCtas.authentictrustDemo}
+      theme={dark ? "dark" : "light"}
+    >
+      {children}
+    </Button>
+  );
 }
 function Check() {
-  return <svg className="at-check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-}
-function ProductImage({ kind, alt, priority = false }: { kind: "documents-evidence" | "risks-actions"; alt: string; priority?: boolean }) {
   return (
-    <figure className="at-product-image">
-      <div className="at-image-label"><span>AuthenticTrust <span className="font-normal">von Opny</span></span><span className="at-demo-label">Beispieldaten</span></div>
-      <a href={`/media/authentictrust/authentictrust-${kind}-1600x1000.jpg`} target="_blank" rel="noreferrer" aria-label={`${alt} – in voller Größe öffnen (neuer Tab)`}>
-        <Image src={`/media/authentictrust/authentictrust-${kind}-1600x1000.jpg`} alt={alt} width={1600} height={1000} priority={priority} sizes="(min-width: 1280px) 720px, (min-width: 1024px) 60vw, 100vw" className="h-auto w-full" />
-      </a>
-      <figcaption>Produktansicht mit fiktiven Beispieldaten. Zum Vergrößern auswählen.</figcaption>
-    </figure>
+    <svg
+      className="at-check"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="m5 12 4 4L19 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function ProductImage({
+  kind,
+  alt,
+  priority = false,
+}: {
+  kind: "documents-evidence" | "risks-actions";
+  alt: string;
+  priority?: boolean;
+}) {
+  return (
+    <MediaStage
+      src={`/media/authentictrust/authentictrust-${kind}-1600x1000.jpg`}
+      alt={alt}
+      width={1600}
+      height={1000}
+      priority={priority}
+      zoom
+      label="AuthenticTrust von Opny"
+      status="Beispieldaten"
+      caption="Produktansicht mit fiktiven Beispieldaten."
+      sizes="(min-width: 1280px) 720px, (min-width: 1024px) 60vw, 100vw"
+    />
   );
 }
 
 export default function Home() {
   return (
     <main className="at-home">
-      <JsonLd data={{ "@context": "https://schema.org", "@graph": [
-        { "@type": "WebPage", "@id": "https://www.opny.ai/#webpage", url: "https://www.opny.ai/", name: title, description, inLanguage: "de-DE", isPartOf: { "@id": "https://www.opny.ai/#website" }, about: { "@id": "https://www.opny.ai/produkte/authentictrust#software" }, primaryImageOfPage: { "@type": "ImageObject", url: "https://www.opny.ai/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg" } },
-        { "@type": "FAQPage", "@id": "https://www.opny.ai/#faq", isPartOf: { "@id": "https://www.opny.ai/#webpage" }, mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
-      ] }} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://www.opny.ai/#webpage",
+              url: "https://www.opny.ai/",
+              name: title,
+              description,
+              inLanguage: "de-DE",
+              isPartOf: { "@id": "https://www.opny.ai/#website" },
+              about: {
+                "@id": "https://www.opny.ai/produkte/authentictrust#software",
+              },
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: "https://www.opny.ai/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg",
+              },
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://www.opny.ai/#faq",
+              isPartOf: { "@id": "https://www.opny.ai/#webpage" },
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: { "@type": "Answer", text: faq.answer },
+              })),
+            },
+          ],
+        }}
+      />
 
       <section className="at-hero" aria-labelledby="hero-heading">
         <div className="at-container">
           <div className="at-hero-intro">
-            <p className="at-eyebrow">Für Verantwortliche für Informationssicherheit, Qualität und interne Vorgaben</p>
-            <p className="at-product-name">AuthenticTrust <span>von Opny</span></p>
-            <h1 id="hero-heading">TISAX-Dokumente und Nachweise.<br className="hidden sm:block" /> <span>Endlich an einem Ort.</span></h1>
-            <p className="at-hero-copy">AuthenticTrust bündelt Dokumente, Freigaben und Nachweise in einer Software. Damit Sie sehen, was aktuell ist, was fehlt und wer sich darum kümmert.</p>
-            <p className="at-definition">Für die Vorbereitung auf TISAX – eine Prüfung der Informationssicherheit im Unternehmen.</p>
-            <div className="at-actions"><DemoLink /><a href="#produkteinblick" className="at-text-link">Produkt ansehen</a></div>
-            <p className="at-microcopy">Persönlicher Produkteinblick. Passend zu Ihrer Ausgangslage.</p>
+            <p className="at-eyebrow">
+              Für Teams in Informationssicherheit, Qualität und
+              Unternehmensführung
+            </p>
+            <p className="at-product-name">
+              AuthenticTrust <span>von Opny</span>
+            </p>
+            <h1 id="hero-heading">
+              Dokumente und Nachweise im Griff.
+              <br className="hidden sm:block" />{" "}
+              <span>Aufgaben klar verteilt.</span>
+            </h1>
+            <p className="at-hero-copy">
+              AuthenticTrust verbindet Anforderungen, Dokumente, Nachweise und
+              Maßnahmen in einer Software. Damit Ihr Team weiß, was erledigt
+              ist, was fehlt und wer den nächsten Schritt übernimmt.
+            </p>
+            <p className="at-definition">
+              Ihr Managementsystem: die Abläufe, mit denen Ihr Unternehmen
+              Vorgaben im Alltag umsetzt.
+            </p>
+            <div className="at-actions">
+              <DemoLink />
+              <a href="#produkteinblick" className="at-text-link">
+                Produkt ansehen
+              </a>
+            </div>
+            <p className="at-microcopy">
+              Persönlicher Produkteinblick. Passend zu Ihrer Ausgangslage.
+            </p>
           </div>
           <div id="produkteinblick" className="at-hero-product">
-            <ProductImage kind="documents-evidence" priority alt="AuthenticTrust-Dokumentenübersicht mit Versionen, Freigabestatus und zugeordneten Nachweisen" />
+            <ProductImage
+              kind="documents-evidence"
+              priority
+              alt="AuthenticTrust-Dokumentenübersicht mit Versionen, Freigabestatus und zugeordneten Nachweisen"
+            />
             <div className="at-benefits">
               <p className="at-eyebrow">Weniger Suchen. Mehr Überblick.</p>
-              <h2>Wissen, wo Sie stehen.<br />Und was noch fehlt.</h2>
-              <ul>{benefits.map(([heading, text]) => <li key={heading}><Check /><div><h3>{heading}</h3><p>{text}</p></div></li>)}</ul>
+              <h2>
+                Wissen, wo Sie stehen.
+                <br />
+                Und was noch fehlt.
+              </h2>
+              <ul>
+                {benefits.map(([heading, text]) => (
+                  <li key={heading}>
+                    <Check />
+                    <div>
+                      <h3>{heading}</h3>
+                      <p>{text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
               <DemoLink>Demo für Ihr Unternehmen anfragen</DemoLink>
-              <p className="at-microcopy">Sie sehen die Software. Danach klären wir, ob sie zu Ihren Abläufen passt.</p>
+              <p className="at-microcopy">
+                Sie sehen die Software. Danach klären wir, ob sie zu Ihren
+                Abläufen passt.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="at-orientation"><div className="at-container"><span>Dokumente & Versionen</span><span>Freigaben & Zuständigkeiten</span><span>Nachweise & Anforderungen</span><span>Risiken & Maßnahmen</span></div></div>
-
-      <Region id="ausgangslage" tone="surface" containerClassName="!py-16 md:!py-24">
-        <div className="at-section-intro"><p className="at-eyebrow">Kommt Ihnen das bekannt vor?</p><h2>Die Prüfung rückt näher.<br />Die Unterlagen sind noch verteilt.</h2><p>Das Problem liegt oft im Alltag: Informationen sind vorhanden, aber der gemeinsame Überblick fehlt.</p></div>
-        <div className="at-problem-grid">{problems.map(([heading, text]) => <article key={heading}><span className="at-problem-mark" aria-hidden="true">×</span><h3>{heading}</h3><p>{text}</p></article>)}</div>
-        <p className="at-takeaway">AuthenticTrust bringt zusammen, was für die Vorbereitung zusammengehört.</p>
-      </Region>
-
-      <Region id="so-hilft-authentictrust" tone="alt" containerClassName="!py-16 md:!py-24">
-        <div className="at-section-intro"><p className="at-eyebrow">Von verteilten Dateien zu klaren Abläufen</p><h2>Ein Arbeitsraum.<br />Vom Dokument bis zur Maßnahme.</h2><p>AuthenticTrust ist die Software von Opny für Managementsysteme und Compliance – also die Einhaltung von Vorgaben.</p></div>
-        <div className="at-solution-grid">
-          <div className="at-solution-copy"><h3>Dokumente mit ihrer Aufgabe verbinden.</h3><p>Welche Anforderung gehört zu welchem Dokument? Welche Fassung ist freigegeben? Und welcher Nachweis fehlt noch? Diese Zusammenhänge werden in einem gemeinsamen Arbeitsraum nachvollziehbar.</p><div className="at-small-benefit"><Check /><p><strong>Freigaben nachvollziehen.</strong> Versionen, Zuständigkeiten und Bearbeitungsstand zusammenführen.</p></div><div className="at-small-benefit"><Check /><p><strong>Maßnahmen bearbeiten.</strong> Feststellungen mit Verantwortlichen, Fristen und dem nächsten Schritt verbinden.</p></div><Link className="at-text-link" href="/produkte/authentictrust">Alle Funktionen und Produktdetails ansehen</Link></div>
-          <ProductImage kind="risks-actions" alt="AuthenticTrust-Maßnahmenübersicht mit Verantwortlichen, Fristen und Bearbeitungsstatus" />
+      <div className="at-orientation">
+        <div className="at-container">
+          <span>Dokumente & Versionen</span>
+          <span>Freigaben & Zuständigkeiten</span>
+          <span>Nachweise & Anforderungen</span>
+          <span>Risiken & Maßnahmen</span>
         </div>
-        <div className="at-ai-note"><div><p className="at-eyebrow">KI unterstützt. Ihr Team entscheidet.</p><p>Die KI kann Informationen strukturieren und nächste Schritte vorbereiten. Fachpersonen prüfen die Ergebnisse und geben sie frei.</p></div><p>TISAX ist abgebildet. Weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Den aktuell passenden Umfang klären wir mit Ihnen.</p></div>
+      </div>
+
+      <Region id="ausgangslage" tone="surface">
+        <div className="at-section-intro">
+          <p className="at-eyebrow">Kommt Ihnen das bekannt vor?</p>
+          <h2>
+            Die Prüfung rückt näher.
+            <br />
+            Die Unterlagen sind noch verteilt.
+          </h2>
+          <p>
+            Das Problem liegt oft im Alltag: Informationen sind vorhanden, aber
+            der gemeinsame Überblick fehlt.
+          </p>
+        </div>
+        <div className="at-problem-grid">
+          {problems.map(([heading, text]) => (
+            <article key={heading}>
+              <span className="at-problem-mark" aria-hidden="true">
+                ×
+              </span>
+              <h3>{heading}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+        <p className="at-takeaway">
+          AuthenticTrust bringt zusammen, was für die Vorbereitung
+          zusammengehört.
+        </p>
       </Region>
 
-      <Region id="ablauf" tone="surface" containerClassName="!py-16 md:!py-24">
-        <div className="at-section-intro"><p className="at-eyebrow">Ihr nächster Schritt</p><h2>Erst ansehen.<br />Dann fundiert entscheiden.</h2><p>In der Demo geht es um Ihre Dokumente, Ihre Abläufe und die Frage, ob AuthenticTrust dazu passt.</p></div>
-        <ol className="at-step-grid">{steps.map(([heading, text], i) => <li key={heading}><span className="at-step-number">{i + 1}</span><h3>{heading}</h3><p>{text}</p></li>)}</ol>
-        <div className="at-centered-cta"><DemoLink /><p className="at-microcopy">Die Anfrage ist keine Bestellung und kein Software-Abonnement.</p></div>
+      <Region id="so-hilft-authentictrust" tone="alt">
+        <div className="at-section-intro">
+          <p className="at-eyebrow">
+            Von verteilten Dateien zu klaren Abläufen
+          </p>
+          <h2>
+            Ein Arbeitsraum.
+            <br />
+            Vom Dokument bis zur Maßnahme.
+          </h2>
+          <p>
+            AuthenticTrust ist die Software von Opny für Managementsysteme und
+            Compliance – also die Einhaltung von Vorgaben.
+          </p>
+        </div>
+        <div className="at-solution-grid">
+          <div className="at-solution-copy">
+            <h3>Dokumente mit ihrer Aufgabe verbinden.</h3>
+            <p>
+              Welche Anforderung gehört zu welchem Dokument? Welche Fassung ist
+              freigegeben? Und welcher Nachweis fehlt noch? Diese Zusammenhänge
+              werden in einem gemeinsamen Arbeitsraum nachvollziehbar.
+            </p>
+            <div className="at-small-benefit">
+              <Check />
+              <p>
+                <strong>Freigaben nachvollziehen.</strong> Versionen,
+                Zuständigkeiten und Bearbeitungsstand zusammenführen.
+              </p>
+            </div>
+            <div className="at-small-benefit">
+              <Check />
+              <p>
+                <strong>Maßnahmen bearbeiten.</strong> Feststellungen mit
+                Verantwortlichen, Fristen und dem nächsten Schritt verbinden.
+              </p>
+            </div>
+            <Link className="at-text-link" href="/produkte/authentictrust">
+              Alle Funktionen und Produktdetails ansehen
+            </Link>
+          </div>
+          <ProductImage
+            kind="risks-actions"
+            alt="AuthenticTrust-Maßnahmenübersicht mit Verantwortlichen, Fristen und Bearbeitungsstatus"
+          />
+        </div>
+        <div className="at-ai-note">
+          <div>
+            <p className="at-eyebrow">KI unterstützt. Ihr Team entscheidet.</p>
+            <p>
+              Regeln unterstützen die Einordnung des Bearbeitungsstands. KI kann
+              bei Textformulierungen helfen. Ihr Team prüft Bewertungen, trifft
+              Entscheidungen und erteilt Freigaben.
+            </p>
+          </div>
+          <p>
+            TISAX ist abgebildet. Weitere ISO-Managementsystemstandards werden
+            schrittweise ergänzt. Den aktuell passenden Umfang klären wir mit
+            Ihnen.
+          </p>
+        </div>
       </Region>
 
-      <Region id="fuer-wen" tone="alt" containerClassName="!py-16 md:!py-24">
-        <div className="at-fit-grid"><div><p className="at-eyebrow">Passt AuthenticTrust zu Ihnen?</p><h2>Für Teams, die ihre Nachweise im Griff haben wollen.</h2><p>In Industrie, Technologie und Dienstleistungen. Besonders dann, wenn mehrere Personen Dokumente pflegen, Freigaben erteilen oder Prüfungen vorbereiten.</p></div><ul>{["Sie bereiten eine TISAX-Prüfung vor und möchten Unterlagen strukturiert organisieren.", "Sie möchten aktuelle Dokumentversionen und Freigaben nachvollziehen können.", "Sie brauchen einen gemeinsamen Überblick über Nachweise und offene Maßnahmen."].map(item => <li key={item}><Check /><span>{item}</span></li>)}</ul></div>
-        <p className="at-boundary">AuthenticTrust unterstützt die Vorbereitung. Fachliche Bewertungen und Prüfentscheidungen bleiben bei Ihren Verantwortlichen und Prüfstellen. <a href="https://portal.enx.com/en-US/TISAX/" target="_blank" rel="noreferrer" className="underline underline-offset-4">Mehr zu TISAX bei ENX</a>.</p>
+      <Region id="ablauf" tone="surface">
+        <div className="at-section-intro">
+          <p className="at-eyebrow">Ihr nächster Schritt</p>
+          <h2>
+            Erst ansehen.
+            <br />
+            Dann fundiert entscheiden.
+          </h2>
+          <p>
+            In der Demo geht es um Ihre Dokumente, Ihre Abläufe und die Frage,
+            ob AuthenticTrust dazu passt.
+          </p>
+        </div>
+        <ol className="at-step-grid">
+          {steps.map(([heading, text], i) => (
+            <li key={heading}>
+              <span className="at-step-number">{i + 1}</span>
+              <h3>{heading}</h3>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="at-centered-cta">
+          <DemoLink />
+          <p className="at-microcopy">
+            Die Anfrage ist keine Bestellung und kein Software-Abonnement.
+          </p>
+        </div>
       </Region>
 
-      <Region id="fragen" tone="surface" containerClassName="!py-16 md:!py-24">
-        <div className="max-w-4xl mx-auto"><div className="at-section-intro"><p className="at-eyebrow">Kurz beantwortet</p><h2>Ihre Fragen vor der Demo.</h2></div><FaqList items={faqs} /></div>
+      <Region id="fuer-wen" tone="alt">
+        <div className="at-fit-grid">
+          <div>
+            <p className="at-eyebrow">Passt AuthenticTrust zu Ihnen?</p>
+            <h2>Für Teams, die ihre Nachweise im Griff haben wollen.</h2>
+            <p>
+              In Industrie, Technologie und Dienstleistungen. Besonders dann,
+              wenn mehrere Personen Dokumente pflegen, Freigaben erteilen oder
+              Prüfungen vorbereiten.
+            </p>
+          </div>
+          <ul>
+            {[
+              "Sie möchten ein Managementsystem aufbauen, pflegen oder eine Prüfung wie TISAX vorbereiten.",
+              "Sie möchten aktuelle Dokumentversionen und Freigaben nachvollziehen können.",
+              "Sie brauchen einen gemeinsamen Überblick über Nachweise und offene Maßnahmen.",
+            ].map((item) => (
+              <li key={item}>
+                <Check />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p className="at-boundary">
+          AuthenticTrust unterstützt die Bearbeitung und Vorbereitung. TISAX ist
+          ein Prüf- und Austauschmechanismus für Informationssicherheit.
+          Fachliche Bewertungen und Prüfentscheidungen bleiben bei Ihren
+          Verantwortlichen und Prüfstellen.{" "}
+          <a
+            href="https://portal.enx.com/en-US/TISAX/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4"
+          >
+            Mehr zu TISAX bei ENX
+          </a>
+          .
+        </p>
       </Region>
 
-      <section className="at-final" aria-labelledby="final-heading"><div className="at-container"><p className="at-eyebrow">AuthenticTrust von Opny</p><h2 id="final-heading">Weniger Dateien suchen.<br />Die Vorbereitung im Blick behalten.</h2><p>Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust zusammenkommen. Wir klären mit Ihnen, was zu Ihrem Unternehmen passt.</p><DemoLink dark /><p className="at-microcopy">Persönliche Demo anfragen und nächsten Schritt klären.</p></div></section>
+      <Region id="fragen" tone="surface">
+        <div className="max-w-4xl mx-auto">
+          <div className="at-section-intro">
+            <p className="at-eyebrow">Kurz beantwortet</p>
+            <h2>Ihre Fragen vor der Demo.</h2>
+          </div>
+          <FaqList items={faqs} />
+        </div>
+      </Region>
 
-      <Region tone="alt" containerClassName="!py-12 md:!py-16"><div className="at-opny-more"><div><p className="at-eyebrow">Die Dachmarke dahinter</p><h2>AuthenticTrust ist ein Produkt von Opny.</h2><p>Opny unterstützt Unternehmen außerdem bei der kontrollierten KI-Nutzung. NodeX ist dafür ein eigenständiges Produkt; Beratung und Schulung ergänzen das Angebot.</p></div><div className="at-more-links"><Link href="/ueber-opny">Über Opny</Link><Link href="/produkte/nodex">NodeX: KI-Zugänge kontrollieren</Link><Link href="/loesungen">KI-Beratung und Schulungen</Link></div></div></Region>
+      <section className="at-final" aria-labelledby="final-heading">
+        <div className="at-container">
+          <p className="at-eyebrow">AuthenticTrust von Opny</p>
+          <h2 id="final-heading">
+            Weniger Dateien suchen.
+            <br />
+            Die Vorbereitung im Blick behalten.
+          </h2>
+          <p>
+            Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust
+            zusammenkommen. Wir klären mit Ihnen, was zu Ihrem Unternehmen
+            passt.
+          </p>
+          <DemoLink dark />
+          <p className="at-microcopy">
+            Persönliche Demo anfragen und nächsten Schritt klären.
+          </p>
+        </div>
+      </section>
+
+      <Region tone="alt" spacing="compact">
+        <div className="at-opny-more">
+          <div>
+            <p className="at-eyebrow">Die Dachmarke dahinter</p>
+            <h2>AuthenticTrust ist ein Produkt von Opny.</h2>
+            <p>
+              Opny unterstützt Unternehmen außerdem bei der kontrollierten
+              KI-Nutzung. NodeX ist dafür ein eigenständiges Produkt; Beratung
+              und Schulung ergänzen das Angebot.
+            </p>
+          </div>
+          <div className="at-more-links">
+            <Link href="/ueber-opny">Über Opny</Link>
+            <Link href="/produkte/nodex">NodeX: KI-Zugänge kontrollieren</Link>
+            <Link href="/loesungen">KI-Beratung und Schulungen</Link>
+          </div>
+        </div>
+      </Region>
     </main>
   );
 }

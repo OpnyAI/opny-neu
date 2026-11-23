@@ -24,6 +24,7 @@ export const companyCtas = {
   nodexInquiry: "/kontakt?interesse=NodeX%20Einsatz#anfrage",
   consultingInquiry: "/kontakt?interesse=KI-Beratung#anfrage",
   trainingInquiry: "/kontakt?interesse=KI-Schulung#anfrage",
+  authentictrustLogin: "https://authentictrust.app/login",
   contact: `mailto:${companyEmail}`,
 } as const;
 
@@ -37,7 +38,7 @@ export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
     href: "/loesungen#schulungen",
   },
   {
-    label: "KI-Governance für Unternehmen",
+    label: "Regeln für KI-Nutzung",
     href: "/loesungen#governance",
   },
 ];
@@ -56,11 +57,7 @@ export const productNavigationLinks: readonly ServiceNavigationItem[] = [
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
   { label: "AuthenticTrust", href: "/produkte/authentictrust" },
-  {
-    label: "Produkte",
-    href: "/produkte",
-    items: productNavigationLinks,
-  },
+  { label: "NodeX", href: "/produkte/nodex" },
   {
     label: "Beratung & Schulung",
     href: "/loesungen",
@@ -75,6 +72,7 @@ export const footerLinks = {
   company: [
     { label: "Startseite", href: "/" },
     { label: "Für Unternehmen", href: "/loesungen#zielgruppen" },
+    { label: "Automotive-Zulieferer", href: "/automotive" },
     {
       label: "Leitfaden: KI im Unternehmen einführen",
       href: "/wissen/ki-im-unternehmen-einfuehren",

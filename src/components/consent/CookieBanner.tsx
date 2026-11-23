@@ -235,7 +235,7 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={handleAccept}
-                className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
               >
                 Akzeptieren
               </button>
@@ -312,7 +312,7 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={handleSaveSettings}
-                className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
               >
                 Speichern
               </button>
