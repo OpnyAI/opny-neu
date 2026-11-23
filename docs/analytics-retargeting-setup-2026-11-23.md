@@ -1,61 +1,49 @@
 # Opny: Analytics und Retargeting-Vorbereitung · 23.11.2026
 
-## Product-Owner-Brief vor Umsetzung
+## Product-Owner-Brief und Freigabe
 
-Zielgruppe: Websitebesucher und das Opny-Team, das Besuche, Produktinteresse und erfolgreiche Anfragen nachvollziehen möchte. Nutzerziel: GA4 nach dem funktionalen Codavo-Vorbild einrichten und später Google Ads/YouTube sowie Meta/Facebook/Instagram zur Wiederansprache einsetzen. Keine Anzeigenkampagne oder Budgetänderung beauftragt.
+Zielgruppe: Websitebesucher und das Opny-Team. Nutzerproblem: Besuche, Produktinteresse und erfolgreiche Anfragen waren nicht verlässlich messbar. Gewünschte Entscheidung: Interessenten verstehen das Angebot und können eine passende Demo anfragen; Opny kann diesen Ablauf mit Einwilligung nachvollziehen. Opny bleibt Dachmarke, AuthenticTrust und NodeX getrennte Produkte. Keine neuen Kunden-, Zertifizierungs- oder Integrationsbehauptungen und keine Kundenstimmen hinzugefügt.
 
-Fachprüfungen Frontend/Tracking, UI/UX und SEO/Datenschutz-Semantik wurden vor Umsetzung beauftragt. Priorität: verlässliche einmalige Messung, nachvollziehbare getrennte Einwilligungen, keine Formularwerte/PII in Ereignissen und keine fremden Codavo-Kennungen.
+Vor Umsetzung wurden Fachprüfungen Frontend/Tracking, UI/UX und SEO/AEO/LLMO beauftragt. Prioritäten: einmalige Messung, getrennte Einwilligungen, keine Kontaktwerte in Messereignissen, keine Codavo-Kennungen übernehmen. Nach Source-Gate folgten Build und Browserprüfungen. Abschließende Freigabe für den aktiven GA4-Pfad durch Frontend und SEO; Consent-UX einschließlich320px/200% freigegeben. Der Product Owner gibt den geprüften Website-Stand zur Veröffentlichung frei. Ads/Meta-Aktivierung bleibt davon ausgenommen, bis echte IDs und Kontozuordnung vorliegen.
 
-## Verifizierter Ausgangsstand
+## Verifiziertes Konto und externe Korrekturen
 
-Opny-Property properties/524086891, Webstream13588166206 für https://www.opny.ai, Mess-ID G-KVP1KD6SQ5. Über vorhandenes OpenSEO-Google-Konto verifiziert und mit Opny-Projekt verknüpft. Produktionsvariable NEXT_PUBLIC_GA_ID stimmt bereits; keine neue Property oder Mess-ID nötig. Zweite gleichnamige Property bleibt unverändert. Keine fremden Tokens/Passwörter benötigt.
+- Opny-Property properties/524086891, Webstream13588166206, https://www.opny.ai, Mess-ID G-KVP1KD6SQ5. Produktionsvariable stimmt. OpenSEO-Projekt3fc1064a-9004-46c9-ab64-4815a958813f ist mit dieser Property verbunden. Keine neue Property angelegt.
+- Automatische erweiterte Messung für diesen Stream deaktiviert; unabhängig über Google-Admin-Leseschnittstelle bestätigt: enhancedMeasurement.streamEnabled=false. Die generischen Hinweise von OpenSEO zu deaktivierter Messung/SiteSearch sind hier beabsichtigt: der eigene Ereignispfad zählt Seiten und Anfragen, eine interne Website-Suche existiert nicht.
+- generate_lead als Schlüsselereignis ONCE_PER_EVENT eingerichtet, ohne monetären Standardwert. Bestehende purchase/close_convert_lead/qualify_lead unverändert.
+- Echter Google-SDK-Test fand einen zusätzlichen Empfänger G-0L5ZRHZZ86 im bestehenden Opny-Google-Container. Nur dessen Analytics-Tag wurde reversibel pausiert und als Container-Version2 veröffentlicht. Zweite Property, historische Daten und Kontozugriffe nicht gelöscht. Öffentlich ausgelieferte Konfiguration enthält dafür __paused statt aktivem Analytics-Ziel.
+- Im bestehenden Container war automatische Erkennung von E-Mail, Telefonnummer, Name/Adresse aktiviert. Hauptschalter für von Nutzern bereitgestellte Daten ausgeschaltet und einzelne Einstellungsänderung als Version3 veröffentlicht. Öffentliches Google-SDK bestätigt __ogt_1p_data_v2 mit vtp_isEnabled=false.
+- Zugriff nach Entsperren durch den Nutzer über vorhandene native macOS-Bedienung. Keine Browser-Cookies, Anmeldedaten oder Tokens gelesen; keine Sicherheitsoptionen geändert.
 
-Erweiterte Messung ist derzeit inklusive History-Seitenwechseln, Formularaktionen, ausgehenden Links und SiteSearch aktiv. Für die neue zentrale manuelle Messung sind automatische History-/Formularmessungen zu deaktivieren. Der vorhandene Code verwendet Array-Einträge statt der kanonischen gtag-Arguments-Einträge und hat im kontrollierten Live-Test trotz Zustimmung keine collect-Anfrage erzeugt. Der gezielte Kontrolltest mit kanonischer Queue wird getrennt dokumentiert.
+Codavo-Vorbild aus dessen Tracking-Dokumentation und Quellcode: getrennte Zustimmung, feste Ereignisse, Lead erst nach bestätigtem Erfolg, keine Duplikate. Keine GA/GTM/Ads/Pixel-ID von Codavo übernommen und Codavo selbst nicht geändert.
 
-Native Browsersteuerung startet nicht; Chrome erlaubt derzeit auch kein JavaScript über Apple Events. Nutzer wurde um Aktivierung des sichtbaren Browserzugriffs gebeten. OpenSEO erlaubt Lesen der Messkonfiguration, nicht deren Bearbeitung. Opny-Google-Ads-/Meta-Zuordnungen wurden angefragt. Bis echte Opny-IDs und Kontoverknüpfungen vorhanden sind, bleiben Werbetags inaktiv.
+## Implementierte Messung
 
-Codavo-Vorbild aus dessen Tracking-Dokumentation und Quellcode gelesen: Consenttrennung, feste Ereignisse, Lead erst nach bestätigtem Erfolg, keine Duplikate. Codavo-Konto-/Pixel-/GTM-IDs werden nicht übernommen; Codavo selbst wird nicht verändert.
+Basic Consent Mode: externe Tags erst nach passender Zustimmung. Versionierte Einstellungen opny_consent_v3 trennen Statistik und Marketing. Frühere accepted-Zustimmung bedeutet ausschließlich Statistik. Ablehnung, dauerhafte Einstellungen, tabübergreifender Widerruf, Cookiebereinigung und vier Google-Signale standardmäßig denied.
 
-## Umsetzung und Abnahmeplan
+Zentrale kanonische gtag-Arguments-Queue mit send_page_view:false. Feste Ereignisse: page_view, view_product, cta_contact_click, form_start, form_validation_error, form_submit_error, generate_lead. Ereigniskontext enthält bekannte Seitenpfade/Titel, URLs ohne Query/Hash, Referrer nur als Ursprung und feste Produkt-/Platzierungs-/Fehlerkategorien. Keine Namen, Unternehmen, E-Mail, Telefonnummer, Nachricht oder daraus erzeugte Hashes als Ereignisparameter.
 
-Basic Consent Mode: externe Tags erst nach passender Einwilligung. Alte accepted-Zustimmung bedeutet ausschließlich Statistik; niemals Marketing. Versionierte getrennte Einstellungen, dauerhaft erreichbare Auswahl, Default alle vier Google-Signale denied. Zentrale page_view-/Produkt-/CTA-/Formularmessung mit festen Enum-Parametern; URLs ohne Query/Hash, Referrer begrenzt, keine Namen, Unternehmen, E-Mail, Telefonnummer, Nachricht oder daraus erzeugte Hashes. generate_lead ausschließlich nach neuem eindeutigem Servermarker leadAccepted, nicht nach Honeypot-ok.
+generate_lead nur nach explizitem API-Marker leadAccepted:true für intern angenommene Anfrage. Honeypot-ok, Validierungsfehler und Versandfehler erzeugen keinen Lead; optionale Bestätigungsfehler machen eine intern angenommene Anfrage nicht rückgängig. Schutz gegen Doppelabsendung und gegen Einfluss von Telemetriefehlern auf den Formularerfolg.
 
-Codegate vor Build, dann isolierte Consent-/Mess-/API-Tests, Produktionsbuild, visuelle Desktop/Mobil-Abnahme und Live-Nachprüfung. Messung/Retargeting-Kontostatus werden am Ende ausdrücklich getrennt berichtet.
+Marketing ist derzeit inaktiv. NEXT_PUBLIC_GOOGLE_ADS_ID und NEXT_PUBLIC_META_PIXEL_ID fehlen. Deshalb werden keine Werbetags geladen und keine aktive Werbemessung behauptet. Vorbereitete Pfade trennen Werbeeinwilligung, Meta-Bereitschaft und zulässige URL-Kontexte. Vor echter Aktivierung müssen jeweilige Anbieterbibliothek, Kontozuordnung und Zielgruppenexport separat geprüft werden.
 
-## Codegate und erste isolierte Prüfungen
+## Check vor Veröffentlichung
 
-UI/UX, Frontend und SEO/Tracking haben den aktiven GA4-Pfad für Build und Tests freigegeben. Dies ist ausdrücklich keine Produktivfreigabe bei weiterhin aktivem automatischem Enhanced Measurement.17 isolierte Tests bestanden:5 Kontakt-API-Fälle inklusive Honeypot/Bestätigungsfehler sowie12 Tracking-/Einwilligungsfälle. Meta-init wird zusätzlich bis zur tatsächlichen Scriptbereitschaft und erneut bestätigter Marketingwahl zurückgehalten. Werbe-IDs bleiben derzeit leer und Tags inaktiv.
+- Produktionsbuild erfolgreich; ESLint und17 isolierte Tests bestanden (5Kontakt-API,12Tracking/Consent).
+- Alle15 Seiten auf390/1440px geprüft; zusätzlich320/768/1024px und200%-Schrift. Einheitliches Petrol/warmes Weiß, Metadaten/Canonicals, interne Anfragewege, FAQ-Schema und Bilder geprüft; keine beobachteten JavaScriptfehler.
+- Bilddialog erneut auf Mobil/Desktop geprüft: Vergrößern, an Fenster anpassen, Schließen per Button/Escape/Hintergrund, Fokusfalle sowie Wiederherstellung von Fokus und Scrollposition bestanden.
+- Consent-Browserprüfung mit abgefangener Bibliothek/API: einmalige eigene Seitenereignisse, feste Formularereignisse, Lead ausschließlich bei Marker, Honeypot ohne Lead, Doppelabsendung verhindert, tabübergreifender Widerruf,320px/200%-Bedienung bestanden. Keine echten E-Mails versandt.
+- Originales Google-SDK mit tatsächlich veröffentlichter Kontokonfiguration: vor Zustimmung0Tag-Ladungen/0Hits; Home→AuthenticTrust→NodeX genau ein page_view pro Seite und je ein view_product; ausschließlich G-KVP1KD6SQ5. Nach Widerruf keine weiteren Hits. Canary-Query/Hash nicht in Payloads. Keine Browserfehler.
+- Separater Original-SDK-Formulartest nach Container-Version3: Home→AuthenticTrust→Kontakt je ein page_view; cta_contact_click, form_start und generate_lead je einmal; Doppelclick erzeugt nur eine simulierte API-Anfrage. Kein automatisches zusätzliches Formularereignis und keine Kontaktwerte in geprüften Collect-Payloads.
 
-## Browser- und Netzprüfung
+QA-Artefakte lokal unter docs/qa/ (Git-ignoriert), Original-SDK-Protokolle zusätzlich /private/tmp/opny-real-sdk-results.json und /private/tmp/opny-real-form-results.json. Collect wurde dabei vor Zustellung mit204 abgefangen: diese Prüfungen belegen SDK-Requestverhalten, keinen bereits eingetragenen Analytics-Bericht. Auch die Formular-API wurde simuliert; kein Testlead oder E-Mailversand in Produktion.
 
-Build erfolgreich, ESLint und17 Tests grün. Browserprüfung mit abgefangener Google-Bibliothek/Kontakt-API bestätigt initialen und SPA-Seitenaufruf genau einmal im eigenen Sender, feste CTA-/Formularereignisse, generate_lead ausschließlich bei leadAccepted, keinen Versand von Formularwerten als Ereignisparameter, tabübergreifenden Widerruf und mobile Bedienung. Zwei simulierte Formanfragen, kein echter E-Mailversand.
+## Noch offen für echtes Retargeting
 
-Test mit der originalen Google-Bibliothek erzeugt in der neuen Fassung einen page_view für G-KVP1KD6SQ5 mit bereinigter URL; collect wurde vor Zustellung abgefangen. Die bisherige Live-Fassung erzeugte im kontrollierten Test trotz Zustimmung keinen collect. Ursache nicht allein aus dieser Stichprobe ableiten.
+Google Ads einschließlich YouTube und Meta/Facebook/Instagram sind beauftragt vorbereitet, aber noch nicht aktiv. Benötigt werden die tatsächliche Opny-Google-Ads-Kundennummer/Tag-ID und Opny-Meta-Pixel-/Datensatz-ID beziehungsweise Zugriff auf die richtigen Werbekonten. Anschließend Kontoverknüpfungen, Einwilligung, echte Anbieterrequests und Zielgruppenexport prüfen. Keine Kampagnen, Budgets oder Retargeting-Zielgruppen angelegt. Keine Rankings oder KI-Empfehlungen garantiert.
 
-Wichtiger echter Netzwerkbefund: Beim SPA-Wechsel zu AuthenticTrust erzeugt die unveränderte GA4-Streamkonfiguration neben dem manuellen page_view einen zusätzlichen automatischen page_view. Die Dopplung ist damit tatsächlich nachgewiesen. Vor Veröffentlichung der neuen Messung müssen automatische History-/Formular-/Outbound-/SiteSearch-Messungen in dieser Property deaktiviert und die neue Fassung erneut geprüft werden. Sonst würden auch automatische Ereignisse die eigene Parameterbegrenzung umgehen. Kein produktiver Trackingfreigabebericht und keine Behauptung bereits empfangener GA-Daten.
+## Veröffentlichung
 
-UI-Prüfung fand bei320px/200% einen inneren Überlauf der Schalterzeile. Kategoriezeilen können nun umbrechen; Labels und Switches bleiben innerhalb ihrer Karte. Erneute visuelle Abnahme folgt.
+Website-Veröffentlichung folgt nach dem hier dokumentierten erfolgreichen Vorabcheck. Deployment-ID, öffentliche Nachprüfung und tatsächlicher Empfangstest werden anschließend ergänzt.
 
-## Abschluss des unabhängig möglichen Teils
-
-Die endgültige Testfassung besteht Build, ESLint und17 isolierte Tests. Browserfälle für Seitenwechsel, Formular-/Leadlogik, Datenbegrenzung, Zustimmung und tabübergreifenden Widerruf erneut grün; visuelle GA-only-Consent-Abnahme einschließlich320px/200% erteilt. QA-Protokolle/Screenshots liegen Git-ignoriert unter docs/qa/analytics-20261123/.
-
-### Noch benötigter Zugriff / Angaben
-
-1. Chrome: Ansicht → Entwickler → JavaScript von Apple Events erlauben. Der erneut geprüfte Zugriff ist weiterhin deaktiviert; native Browsersteuerung startet nicht. Es wurden keine Browser-Sicherheitsoptionen eigenständig geändert. Ein bestehender alternativer Remote-Debugging-Zugang ist nicht aktiv. OpenSEO-Messkonfiguration ist nur lesbar.
-2. GA4-Property524086891 / Webstream13588166206: automatische erweiterte Messung deaktivieren, damit nur der eigene Ereignispfad zuständig ist; generate_lead als Schlüsselereignis einrichten und Datenempfang nach Veröffentlichung kontrollieren. Diese Kontoeinstellungen wurden noch nicht verändert.
-3. Echte Opny-Google-Ads-Kundennummer/Google-Tag-ID und Opny-Meta-Pixel-/Datensatz-ID bzw. Zugriff auf die richtigen Werbekonten. Kennungen aus Codavo werden nicht wiederverwendet. In der Vorbereitung sind NEXT_PUBLIC_GOOGLE_ADS_ID und NEXT_PUBLIC_META_PIXEL_ID optional; aktuell fehlen beide und bleiben inaktiv. Vor Aktivierung der jeweiligen Anbieter sind Kontozuordnung, Einwilligung, tatsächliche Netzwerkdaten und Zielgruppenexport separat abzunehmen.
-
-Die neue Messfassung wird vorläufig nur im lokalen Repository gesichert, ausdrücklich noch nicht als Produktion veröffentlicht. Grund ist die reproduzierbare automatische/manuelle Doppelzählung bei noch aktiver Kontoeinstellung. Die bestehende produktive Website bleibt erhalten. Die einzige bereits abgeschlossene externe Änderung ist die bestätigte Opny-GA4-Verknüpfung in OpenSEO. Es wurden keine Kampagnen, Budgets oder Retargeting-Zielgruppen angelegt und keine fremden Konten geändert.
-
-Primärquellen: https://developers.google.com/tag-platform/security/guides/consent ; https://developers.google.com/analytics/devguides/collection/ga4/views ; https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead ; https://support.google.com/analytics/answer/6366371 ; https://support.google.com/analytics/answer/9313634 .
-
-## Erneuter Vorabcheck nach weiterem Nutzerauftrag
-
-Nutzer hat Korrektur aller offenen Punkte und einen Check vor Veröffentlichung ausdrücklich beauftragt. Aktueller Stand c7232c0:17 isolierte Tests und ESLint erneut bestanden. Vollständiger Browsercheck aller15 Website-Seiten ebenfalls erneut erfolgreich:30 Desktop-/Mobilansichten, zusätzliche320/768/1024px und200%-Schrift, Canonicals/FAQ/Anfragewege/Bilder konsistent und keine beobachteten JavaScriptfehler.
-
-Opny-GA4-Konfiguration erneut über die Google-Admin-Leseschnittstelle geprüft: gleicher richtiger Stream, automatische erweiterte Messung einschließlich History/Form/Outbound/Suche weiterhin aktiv; generate_lead noch kein Schlüsselereignis. Keine Kontoeinstellung wurde bisher verändert.
-
-Technischer Browserbefund präzisiert: Die native Browsersteuerung scheitert an einem als symbolischem Link registrierten schreibbaren Workspace. Apple-Events-JavaScript bleibt deaktiviert. Über native macOS-Fensteransicht kann das richtige Analytics-Fenster gelesen werden; macOS-Bedienungshilfen und Eventberechtigung sind vorhanden. Die aktive Oberfläche ist jedoch com.apple.loginwindow, die Chrome-Aktivierung bleibt deshalb gesperrt. Der Nutzer wurde gebeten, den Mac selbst zu entsperren und den Analytics-Tab offen zu lassen. Es werden weder Anmeldedaten angefordert noch Sperrbildschirm/Sicherheitsoptionen umgangen. Sobald die Oberfläche verfügbar ist, kann die vorhandene native Bedienung für die GA4-Korrektur genutzt werden.
-
-Veröffentlichung weiterhin zurückgestellt bis nach Kontokorrektur und erneutem realen Google-SDK-Netzwerktest ohne doppelte Ereignisse. Der eigene lokale Prüfserver auf3099 wurde nach Abschluss der unabhängigen Prüfungen beendet; keine anderen Benutzerprozesse wurden beendet.
+Primärquellen für Umsetzung: https://developers.google.com/tag-platform/security/guides/consent ; https://developers.google.com/analytics/devguides/collection/ga4/views ; https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead ; https://support.google.com/analytics/answer/6366371 ; https://support.google.com/analytics/answer/9313634 .
