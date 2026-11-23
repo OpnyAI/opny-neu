@@ -157,7 +157,11 @@ export default function CookieBanner() {
           <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-neutral-800">
               {HAS_MARKETING
-                ? "Mit Ihrer Einwilligung messen wir die Nutzung unserer Website und ermöglichen Werbung und Wiederansprache."
+                ? `Mit Ihrer Einwilligung nutzen wir ${[
+                    GA_ID ? "Google Analytics für Nutzungsstatistiken" : "",
+                    GOOGLE_ADS_ID ? "Google Ads für Werbung auf Google und YouTube" : "",
+                    META_PIXEL_ID ? "Meta für Werbung auf Facebook und Instagram" : "",
+                  ].filter(Boolean).join(" sowie ")}.`
                 : "Mit Ihrer Einwilligung messen wir mit Google Analytics Seitenaufrufe, Produktinteresse und erfolgreiche Anfragen."}{" "}
               Mehr in der{" "}
               <Link
@@ -217,7 +221,7 @@ export default function CookieBanner() {
 
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-[12px] sm:p-4"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeSettings();
           }}
@@ -228,7 +232,7 @@ export default function CookieBanner() {
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
             aria-describedby="cookie-settings-description"
-            className="cookie-settings-panel w-full max-w-lg rounded-card bg-white p-5 shadow-xl"
+            className="cookie-settings-panel w-full max-w-lg rounded-card bg-white p-[12px] shadow-xl sm:p-5"
           >
             <h2
               ref={dialogTitleRef}
@@ -252,7 +256,7 @@ export default function CookieBanner() {
             </p>
 
             {GA_ID ? (
-              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-3">
+              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-[12px] sm:p-3">
                 <span
                   id="analytics-consent-label"
                   className="text-sm text-neutral-800"
@@ -273,7 +277,7 @@ export default function CookieBanner() {
               </div>
             ) : null}
             {HAS_MARKETING ? (
-              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-3">
+              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-[12px] sm:p-3">
                 <span
                   id="marketing-consent-label"
                   className="text-sm text-text-primary-light"

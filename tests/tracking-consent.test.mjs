@@ -47,11 +47,135 @@ test('marketing withdrawal clears ad cookies while retaining Analytics cookies',
   const s=setup({ads:'AW-123456',meta:'123456789'});s.consent.saveConsent('statistics');s.tracking.syncTrackingConsent();assert.ok(s.deletions.some(x=>x.startsWith('_fbp=')));assert.ok(s.deletions.some(x=>x.startsWith('_gcl_aw=')));assert.equal(s.deletions.some(x=>x.startsWith('_ga=')),false);
 });
 test('Meta events are not queued before readiness or replayed after withdrawal',()=>{
-  const s=setup({meta:'123456789'});s.document.referrer='';s.consent.saveConsent('marketing');s.tracking.syncTrackingConsent();s.tracking.trackCurrentPage();s.tracking.trackLead('AuthenticTrust Demo');assert.equal(s.window.fbq.queue.some(x=>x[0]==='track'),false);s.consent.saveConsent('declined');s.tracking.syncTrackingConsent();s.tracking.markMetaReady();assert.equal(s.window.fbq.queue.some(x=>x[0]==='track'),false);
+  const s=setup({meta:'123456789'});s.document.referrer='';s.consent.saveConsent('marketing');s.tracking.syncTrackingConsent();s.tracking.trackCurrentPage();s.tracking.trackLead('AuthenticTrust Demo');assert.equal(s.window.fbq.queue.some(x=>['track','trackSingle'].includes(x[0])),false);s.consent.saveConsent('declined');s.tracking.syncTrackingConsent();s.tracking.markMetaReady();assert.equal(s.window.fbq.queue.some(x=>['track','trackSingle'].includes(x[0])),false);
 });
 test('Meta skips pages with unrecognized query or referrer contents',()=>{
   const s=setup({meta:'123456789',path:'/kontakt?email=person@example.org'});s.consent.saveConsent('marketing');assert.equal(s.tracking.safeMetaLocation(),false);s.tracking.markMetaReady();s.tracking.trackLead('AuthenticTrust Demo');assert.equal(s.window.fbq,undefined);
 });
 test('a telemetry exception cannot turn a delivered contact request into failure',()=>{
   const s=setup({stored:{cookie_consent_v2:'accepted'}});s.tracking.syncTrackingConsent();s.window.gtag=()=>{throw Error('telemetry')};assert.doesNotThrow(()=>s.tracking.trackLead('AuthenticTrust Demo'));
+});
+
+test('a loaded Meta Pixel revokes on unsafe navigation and resumes only on a safe location', () => {
+  const s = setup({ meta: '123456789' });
+  s.document.referrer = '';
+  s.consent.saveConsent('all');
+  s.tracking.syncTrackingConsent();
+  const metaCommands = [];
+  s.window.fbq.callMethod = (...args) => metaCommands.push(args);
+  s.tracking.markMetaReady();
+  assert.equal(metaCommands.filter(c => c[0] === 'trackSingle' && c[1] === '123456789' && c[2] === 'PageView').length, 1);
+  s.navigate('/produkte/authentictrust?email=person@example.org#private-name');
+  s.tracking.syncTrackingConsent();
+  s.tracking.trackCurrentPage();
+  s.tracking.trackLead('AuthenticTrust Demo');
+  assert.equal(metaCommands.at(-1)[1], 'revoke');
+  assert.equal(metaCommands.filter(c => c[0] === 'trackSingle').length, 1);
+  assert.equal(s.consent.readConsent(), 'all');
+  // The independently consented GA4 stream still receives a sanitized route.
+  assert.equal(s.events().filter(e => e[1] === 'page_view').length, 2);
+  assert.doesNotMatch(JSON.stringify(s.events()), /person@|private-name/);
+  s.navigate('/produkte/authentictrust');
+  s.tracking.syncTrackingConsent();
+  s.tracking.trackCurrentPage();
+  s.tracking.trackCurrentPage();
+  assert.equal(metaCommands.filter(c => c[0] === 'init').length, 1);
+  assert.equal(metaCommands.filter(c => c[0] === 'trackSingle' && c[1] === '123456789' && c[2] === 'PageView').length, 2);
+  assert.equal(s.events().filter(e => e[1] === 'page_view').length, 2);
+});
+
+test('same-path unsafe hash and unknown routes revoke a loaded Pixel before any event', () => {
+  const s = setup({ meta: '123456789' });
+  s.document.referrer = '';
+  s.consent.saveConsent('marketing');
+  s.tracking.syncTrackingConsent();
+  const metaCommands = [];
+  s.window.fbq.callMethod = (...args) => metaCommands.push(args);
+  s.tracking.markMetaReady();
+  for (const path of ['/#private-name', '/private/person@example.org']) {
+    s.navigate(path);
+    s.tracking.trackCurrentPage();
+    assert.equal(metaCommands.at(-1)[1], 'revoke');
+    assert.equal(metaCommands.filter(c => c[0] === 'trackSingle').length, 1);
+  }
+  s.navigate('/#standards');
+  s.tracking.trackCurrentPage();
+  assert.equal(metaCommands.filter(c => c[0] === 'trackSingle' && c[1] === '123456789' && c[2] === 'PageView').length, 2);
+  assert.equal(s.events().length, 0);
+});
+
+test('an initially unsafe URL never initializes Meta and a later safe URL honors the stored choice', () => {
+  const s = setup({ meta: '123456789', path: '/kontakt?email=person@example.org' });
+  s.document.referrer = '';
+  s.consent.saveConsent('marketing');
+  s.tracking.syncTrackingConsent();
+  s.tracking.trackCurrentPage();
+  assert.equal(s.window.fbq, undefined);
+  s.navigate('/kontakt?interesse=AuthenticTrust%20Demo#anfrage');
+  s.tracking.syncTrackingConsent();
+  s.tracking.trackCurrentPage();
+  assert.equal(s.window.fbq.queue.length, 0);
+  s.tracking.markMetaReady();
+  assert.equal(s.window.fbq.queue.filter(c => c[0] === 'init').length, 1);
+  assert.equal(s.window.fbq.queue.filter(c => c[0] === 'trackSingle' && c[1] === '123456789' && c[2] === 'PageView').length, 1);
+});
+
+test('unsafe navigation during Meta loading cannot replay earlier consent or events', () => {
+  const s = setup({ meta: '123456789' });
+  s.document.referrer = '';
+  s.consent.saveConsent('marketing');
+  s.tracking.syncTrackingConsent();
+  assert.equal(s.window.fbq.queue.length, 0);
+  s.navigate('/?email=person@example.org');
+  s.tracking.syncTrackingConsent();
+  s.tracking.markMetaReady();
+  assert.equal(s.window.fbq.queue.some(c => c[0] === 'init' || ['track','trackSingle'].includes(c[0])), false);
+  assert.equal(s.window.fbq.queue.at(-1)[1], 'revoke');
+  s.consent.saveConsent('declined');
+  s.navigate('/');
+  s.tracking.syncTrackingConsent();
+  s.tracking.trackCurrentPage();
+  assert.equal(s.window.fbq.queue.some(c => c[0] === 'init' || ['track','trackSingle'].includes(c[0])), false);
+});
+
+
+test('Meta disables SDK SPA hooks before readiness and sends only to the configured pixel', () => {
+  const s = setup({ meta: '123456789' });
+  s.document.referrer = '';
+  s.consent.saveConsent('marketing');
+  s.tracking.syncTrackingConsent();
+  assert.equal(s.window.fbq.disablePushState, true);
+  assert.equal(s.window.fbq.queue.length, 0);
+  const commands = [];
+  s.window.fbq.callMethod = (...args) => commands.push(args);
+  s.tracking.markMetaReady();
+  s.tracking.trackCurrentPage();
+  s.navigate('/produkte/authentictrust');
+  s.tracking.trackCurrentPage();
+  s.tracking.trackCurrentPage();
+  s.tracking.trackLead('AuthenticTrust Demo');
+  const hits = commands.filter(c => ['track', 'trackSingle'].includes(c[0]));
+  assert.deepEqual(hits.map(c => c.slice(0, 3)), [
+    ['trackSingle', '123456789', 'PageView'],
+    ['trackSingle', '123456789', 'PageView'],
+    ['trackSingle', '123456789', 'Lead'],
+  ]);
+  assert.equal(hits[2][3].content_category, 'authentictrust');
+});
+
+
+test('Meta withdrawal discards recipient-specific pending events before regrant', () => {
+  const s = setup({ meta: '123456789' });
+  s.document.referrer = '';
+  s.consent.saveConsent('marketing');
+  s.tracking.syncTrackingConsent();
+  s.window.fbq.queue.push(
+    ['trackSingle', '123456789', 'Lead'],
+    ['trackSingleCustom', '123456789', 'PrivateEvent'],
+    ['consent', 'grant'],
+  );
+  s.consent.saveConsent('declined');
+  s.tracking.syncTrackingConsent();
+  assert.equal(s.window.fbq.queue.length, 1);
+  assert.deepEqual(Array.from(s.window.fbq.queue[0]), ['consent', 'revoke']);
 });

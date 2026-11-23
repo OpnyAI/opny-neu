@@ -222,6 +222,26 @@ export default function DatenschutzPage() {
                 Pixel-Ereignisparameter übertragen; automatisches erweitertes
                 Matching wird durch unsere Website nicht aktiviert.
               </p>
+              {META_PIXEL_ID ? (
+                <p>
+                  Empfänger der Meta-Pixel-Daten ist Meta Platforms Ireland
+                  Limited. Eine Verarbeitung durch Meta in den USA ist möglich.
+                  Der Pixel kann die Browserkennung im Cookie _fbp speichern und
+                  Besuche einem Meta-Konto zuordnen. Grundlage ist Ihre
+                  Einwilligung; Sie können diese jederzeit in unseren
+                  Cookie-Einstellungen widerrufen. Weitere Informationen zur
+                  Verarbeitung und zu Ihren Rechten finden Sie in der{" "}
+                  <a
+                    href="https://www.facebook.com/privacy/policy/"
+                    className="underline underline-offset-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Datenschutzrichtlinie von Meta
+                  </a>
+                  .
+                </p>
+              ) : null}
             </>
           ) : (
             <p>

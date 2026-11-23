@@ -35,6 +35,7 @@ type MetaFn = {
   push?: MetaFn;
   loaded?: boolean;
   version?: string;
+  disablePushState?: boolean;
 };
 declare global {
   interface Window {
@@ -168,21 +169,7 @@ export function syncTrackingConsent() {
     }
   }
   deleteMeasurementCookies(choice.statistics, marketing);
-  if (!marketing && window.fbq?.queue)
-    window.fbq.queue = window.fbq.queue.filter((entry) => {
-      const command = (entry as unknown[])[0];
-      return (
-        command !== "track" &&
-        command !== "trackCustom" &&
-        command !== "consent"
-      );
-    });
-  if (window.fbq)
-    window.fbq(
-      "consent",
-      choice.marketing && META_PIXEL_ID ? "grant" : "revoke",
-    );
-  if (choice.marketing && META_PIXEL_ID) initializeMeta();
+  syncMetaConsent();
 }
 export function safeMetaLocation(): boolean {
   if (typeof window === "undefined" || !titles[location.pathname]) return false;
@@ -236,12 +223,39 @@ export function safeMetaLocation(): boolean {
   }
   return true;
 }
+// A loaded Pixel survives client navigation. Revoke it on an unsafe URL even
+// when the visitor's saved marketing preference remains enabled.
+function syncMetaConsent(): boolean {
+  try {
+    const allowed =
+      Boolean(META_PIXEL_ID) &&
+      preferences(readConsent()).marketing &&
+      safeMetaLocation();
+    if (!allowed) {
+      lastMarketingPath = "";
+      if (window.fbq?.queue)
+        window.fbq.queue = window.fbq.queue.filter((entry) => {
+          const command = (entry as unknown[])[0];
+          return ![
+            "track",
+            "trackCustom",
+            "trackSingle",
+            "trackSingleCustom",
+            "consent",
+          ].includes(command as string);
+        });
+      window.fbq?.("consent", "revoke");
+      return false;
+    }
+    initializeMeta();
+    return metaReady && Boolean(window.fbq);
+  } catch {
+    return false;
+  }
+}
 export function markMetaReady() {
   metaReady = true;
-  if (preferences(readConsent()).marketing && safeMetaLocation()) {
-    initializeMeta();
-    trackCurrentPage();
-  } else window.fbq?.("consent", "revoke");
+  trackCurrentPage();
 }
 export function initializeMeta() {
   if (
@@ -259,12 +273,16 @@ export function initializeMeta() {
     fn.push = fn;
     fn.loaded = true;
     fn.version = "2.0";
+    // Original Meta SDK 2.9.441 checks this before installing automatic SPA
+    // hooks. Keep page views manual so URL changes cannot bypass our safety gate.
+    fn.disablePushState = true;
     window.fbq = fn;
     window._fbq = fn;
   }
   // No init or event is queued while the remote library is still loading.
-  if (!metaReady || metaConfigured) return;
+  if (!metaReady) return;
   window.fbq("consent", "grant");
+  if (metaConfigured) return;
   window.fbq("set", "autoConfig", false, META_PIXEL_ID);
   window.fbq("init", META_PIXEL_ID);
   metaConfigured = true;
@@ -288,6 +306,7 @@ export function trackEvent(name: EventName, params: Params = {}) {
 }
 export function trackCurrentPage() {
   if (typeof window === "undefined") return;
+  const metaAllowed = syncMetaConsent();
   if (!titles[location.pathname]) return;
   const path = safePath();
   const choice = preferences(readConsent());
@@ -308,15 +327,8 @@ export function trackCurrentPage() {
         product: path.endsWith("nodex") ? "nodex" : "authentictrust",
       });
   }
-  if (
-    choice.marketing &&
-    META_PIXEL_ID &&
-    metaReady &&
-    safeMetaLocation() &&
-    path !== lastMarketingPath
-  ) {
-    initializeMeta();
-    window.fbq?.("track", "PageView");
+  if (metaAllowed && path !== lastMarketingPath) {
+    window.fbq?.("trackSingle", META_PIXEL_ID, "PageView");
     lastMarketingPath = path;
   }
 }
@@ -326,20 +338,13 @@ export function trackLead(interest: string) {
     product: productForInterest(interest),
     lead_source: "website",
   });
-  if (
-    META_PIXEL_ID &&
-    metaReady &&
-    preferences(readConsent()).marketing &&
-    safeMetaLocation()
-  ) {
-    try {
-      initializeMeta();
-      window.fbq?.("track", "Lead", {
+  try {
+    if (syncMetaConsent())
+      window.fbq?.("trackSingle", META_PIXEL_ID, "Lead", {
         content_category: productForInterest(interest),
       });
-    } catch {
-      /* Best-effort telemetry never affects delivery. */
-    }
+  } catch {
+    /* Best-effort telemetry never affects delivery. */
   }
 }
 export function trackContactClick(event: MouseEvent) {
