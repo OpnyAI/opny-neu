@@ -35,3 +35,11 @@ Die elf gezielten Browser-Szenarien des finalen Builds sind bestanden: alle vier
 Neun weitere Consent-/Tracking-Browser-Szenarien sind bestanden: ohne Zustimmung/bei Statistik-only kein Marketing, eigene LinkedIn-ID mit origin-only-Referer, keine Zusatz-SDKs, v3-Migration mit beiden früheren Statistikentscheidungen und erneuter Marketingwahl, erhaltene Ablehnung, zwei Tabs, Widerruf und Reload. Die Trackinglogik selbst ist unverändert.
 
 Die UI/UX-Fachprüfung hat die finalen Screenshots nach dem letzten Build erneut angesehen und zur Veröffentlichung freigegeben. Der Product Owner übernimmt die Freigabe für diese Text-/Designänderung nach bestandenen Prüfungen. Eine höhere Zustimmungsquote oder eine vollständige Werbezielgruppe wird nicht behauptet. Screenshots und Browser-Ergebnisdateien werden lokal unter docs/qa/consent-design-20261123 und docs/qa/consent-redesign-20261123 gespeichert (Git-ignoriert). Prüfungen fangen Marketing-Requests ab; sie erzeugen keine echten Anfragen oder Werbekampagnen.
+
+## Veröffentlichung und Live-Nachprüfung
+
+Freigegebener Quellstand c0f9cfbac6712b8c49f7bb1de03004fff28810ee wurde als Produktionsdeployment dpl_2aCSw6sxmNUEQHeBzRARXLTaNVFL veröffentlicht: https://opny-d4aivfbnn-opny-ais-projects.vercel.app. Vercel READY; Aliase www.opny.ai und opny.ai aktiv, aliasError=null; githubCommitSha entspricht dem freigegebenen Commit.
+
+Auf https://www.opny.ai sind alle elf Design-/Bedienungsszenarien und neun Consent-/Tracking-Szenarien erneut bestanden. Auch die vollständige Prüfung aller 15 öffentlichen Seiten einschließlich Metadaten, sichtbarer FAQ/strukturierter Daten, Medien und zusätzlicher Bildschirmbreiten ist live bestanden. Keine beobachteten JavaScriptfehler. Live-Screenshots für normale Mobilansicht und 320px/200%-Dialog zusätzlich visuell kontrolliert. Vercel-Runtimeabfrage für dieses Deployment seit zehn Minuten ohne error-/fatal-Einträge.
+
+Bestehende Besucher werden wegen der Gestaltung nicht erneut gefragt; der dauerhafte Link „Cookie-Einstellungen“ öffnet die neue Auswahl. Es wurden keine Tracking-Kennungen oder Anbieter aktiviert und keine Anzeige, Zahlung oder echte Testanfrage ausgelöst. Product-Owner-Abschlussfreigabe für die veröffentlichte Cookie-/Datenschutzüberarbeitung erteilt.
