@@ -80,3 +80,17 @@ Elf Cookie-Design-/Bedienungsszenarien und zwei neue Routen-Tracking-Szenarien s
 UI/UX hat die finalen Screenshots einschließlich320px/200%-Header sowie der offenen Menüs bei1024/1440px erneut angesehen und visuell freigegeben. Frontend hat die finalen Ergebnisdateien und die zuvor behobenen Blocker unabhängig gegengeprüft und empfiehlt die Veröffentlichung. Der Product Owner übernimmt die fachliche und technische Freigabe für diesen begrenzten Stand. Keine Ranking-, Indexierungs- oder KI-Empfehlungsgarantie.
 
 Interner OpenSEO-Bericht zur Suchbegriffszuordnung: https://app.openseo.so/p/3fc1064a-9004-46c9-ab64-4815a958813f/reports/86527e4a-fc8a-471c-8787-57be5b900f85 (nicht öffentlich geteilt).
+
+## Veröffentlichung und Live-Abnahme
+
+Freigegebener Quellstand42f11ee7b0c2c91dcd6cb452a24eb5ed227cdf8d wurde als Produktionsdeployment dpl_HxcVCF8kXZvji2q5uBmKcHJcVMeX veröffentlicht: https://opny-32d2j0cu5-opny-ais-projects.vercel.app. Vercel READY; Aliase www.opny.ai und opny.ai aktiv, aliasError=null; githubCommitSha entspricht dem freigegebenen Commit.
+
+Auf https://www.opny.ai bestanden erneut alle sechs Normeneinstiege mit48 Layoutfällen, Metadaten-/FAQ-/Breadcrumb-Abgleich, Sitemap/llms, Querverweisen, Bilddialogen, Menüs bei großer Schrift und Demo-Vorauswahl. Auch alle15 bisherigen öffentlichen Seiten bestehen die verschärfte Live-Regression einschließlich Footer und geladener Schriften. Zwei Live-Tracking-Szenarien bestanden mit abgefangenen Empfängerrequests. Keine beobachteten JavaScriptfehler. Live-Screenshots für ISO27001 auf390px sowie den korrigierten Header auf320px/200% zusätzlich visuell geprüft. Vercel-Runtimeabfrage seit zehn Minuten ohne error-/fatal-Einträge.
+
+Separater HTTP-/Crawlercheck: alle fünf neuen URLs antworten mit200; H1 und FAQ-Daten sind direkt im Server-HTML vorhanden. Keine noindex-Anweisung in Header oder Metadaten festgestellt. robots.txt erlaubt öffentliche Seiten und nennt die aktualisierte Sitemap. Dies belegt technische Abrufbarkeit, keine erfolgte Google-Indexierung.
+
+Google-Search-Console-URL-Inspection unmittelbar nach Veröffentlichung: alle fünf neuen URLs mit Status „URL ist Google nicht bekannt“. Die API liest vorhandene Indexdaten und führt keinen Live-Crawl aus. Deshalb wird weder Indexierung noch ein Ranking behauptet. Die Seiten sind in Sitemap und interner Navigation enthalten; es wurde kein manueller Indexierungsantrag über die ausschließlich lesende Schnittstelle gestellt.
+
+OpenSEO-Projektkontext und Recherchelog enthalten die fünf veröffentlichten Seiten und die Produktgrenzen. Der bestehende interne Bericht wurde um Live-Prüfung und Indexstatus aktualisiert, nicht öffentlich geteilt. Keine Keyword-Tags, Anzeigen oder laufenden Automationen angelegt.
+
+Product-Owner-Abschlussfreigabe für die veröffentlichten Normen-/Vorgabenseiten und die geprüften gemeinsamen Layoutkorrekturen erteilt.
