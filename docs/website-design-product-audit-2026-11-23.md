@@ -51,3 +51,17 @@ Visuelle Prüfung aller14 Seitentypen bestätigt den gemeinsamen Auftritt. Ein Q
 ## Veröffentlichung
 
 Veröffentlichung aus dem bestehenden Repository `OpnyAI/opny-neu` im bestehenden Vercel-Projekt `opny-neu`, Team `team_UtjNWaK9236evD0ZEc8tA64R`, Projekt `prj_qf1EMRUTNJqRZquQnP3yf1c2Edxq`. Öffentliche Nachprüfung und Deployment-ID folgen nach erfolgreicher Veröffentlichung. Die technischen Maßnahmen sind keine Garantie für Ranking, Indexierung der neuen Fassung oder KI-Zitate.
+
+## Verifiziertes Produktionsergebnis
+
+Am23.11.2026 auf **https://www.opny.ai/** veröffentlicht (auch`opny.ai`):
+
+- Status READY, Production, Next.js16.2.12.
+- Release-Commit `43b698f66572298380567fd2f1a28e02c75e7402`.
+- Deployment `dpl_CduPpJHYE49BmhLdKS4Kirq8agK6`, Domains zugeordnet, kein Aliasfehler. Vercel-Buildphase etwa22Sekunden.
+- Öffentliche Browserprüfung aller14Seitentypen bei390/1440px erfolgreich; acht Hauptseiten zusätzlich320/768/1024 und200%Schrift. Keine JavaScript-Fehler; Metadaten, Canonicals, FAQ-Daten, Produktbilder, konsistente Buttonfarben/Radien und kontextbezogene Anfragewege geprüft.
+- Öffentliche Cookie-/Hydration-Prüfung mit neuen, ablehnenden und zustimmenden Besuchern erfolgreich. Nach Ablehnung keine Analyticsanfragen, Zustimmungspfad mit simulierten Analyticsanfragen geprüft. Kein echter E-Mailversand.
+- Vercel-Abfrage für error/fatal-Protokolle dieses Deployments im abgefragten10-Minutenfenster lieferte keine Einträge; das ist kein Nachweis dauerhafter Fehlerfreiheit.
+- Öffentliches Prüfprotokoll und Screenshots: `docs/qa/website-unification-20261123/live/` (Git-ignoriert). Search-Console-Detaildaten bleiben ebenfalls nur im ignorierten QA-Verzeichnis.
+
+Zusätzlicher nativer SSR-SEO-Crawl der Endfassung abgeschlossen:20/20URLs (14Seiten und6Kontaktparameter), alleHTTP200 mit erfolgreichem Abruf, jeweils eineH1 und keine fehlenden Bildalternativtexte. Keine kritischen Fehler oder Warnungen. Sieben reine Informationshinweise: sechs gewollte kanonische Kontaktparameter und eine kurze sachliche Impressumsbeschreibung. Keine Crawlfehler, kein Crawlstopp. Kein Lighthouse-Labortest in diesem Crawl. Native Prüfung verbrauchte keine zusätzlichen Credits; keine wiederkehrende Überwachung oder automatische Kostenplanung eingerichtet. Details liegen ausschließlich im ignorierten `public-seo-audit.md` neben dem privaten GSC-Bericht.
