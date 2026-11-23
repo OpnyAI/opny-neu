@@ -2,11 +2,13 @@
 
 > Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen im DACH-Raum bei Managementsystemen, Compliance und kontrollierter KI-Nutzung.
 
-Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische Kontrolle der tatsächlichen KI-Nutzung sowie Beratung und Schulung für Prozesse und Teams.
+Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Software, um TISAX-Dokumente, Freigaben und Nachweise zentral zu verwalten und offene Maßnahmen nachzuvollziehen. TISAX ist ein Prüf- und Austauschmechanismus für Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
+
+AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung und Schulung ergänzen das Angebot.
 
 ## Zentrale Seiten
 
-- [Startseite](https://www.opny.ai/): Positionierung und vollständiger Opny-Ansatz
+- [Startseite](https://www.opny.ai/): AuthenticTrust: TISAX-Dokumente und Nachweise zentral verwalten, Produktansichten, Ablauf, Fragen und Demo-Anfrage
 - [Automotive-Branchenlösung](https://www.opny.ai/automotive): Kontrollierte KI-Einführung für Automobilzulieferer und Automotive-Lieferanten
 - [KI-Governance Automotive](https://www.opny.ai/ki-governance-automotive): Inventar, Rollen, Richtlinien, Freigaben, technische Kontrollen und Nachweise
 - [Leitfaden: KI im Unternehmen einführen](https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren): Sieben Schritte von der Use-Case-Auswahl über Daten, Governance und Pilot bis zu Schulung und kontrolliertem Betrieb

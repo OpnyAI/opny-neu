@@ -1,3 +1,4 @@
+import { normalizeContactInterest } from "@/lib/contact-interest";
 import Region from "@/components/Region";
 import Card from "@/components/ui/Card";
 import Breadcrumbs from "@/components/marketing/Breadcrumbs";
@@ -26,6 +27,8 @@ export default async function KontaktPage({
   const initialInterest =
     typeof params.interesse === "string" ? params.interesse : undefined;
 
+  const isDemo = normalizeContactInterest(initialInterest ?? "") === "AuthenticTrust Demo";
+
   return (
     <main>
       <JsonLd
@@ -48,13 +51,14 @@ export default async function KontaktPage({
           ]}
         />
         <div className="mt-8 max-w-4xl">
-          <div className="eyebrow">Kontakt</div>
+          <div className="eyebrow">{isDemo ? "AuthenticTrust von Opny" : "Kontakt"}</div>
           <h1 className="display-lg mt-5 text-text-primary-light">
-            Demo oder Erstgespräch anfragen
+            {isDemo ? "AuthenticTrust-Demo anfragen" : "Demo oder Erstgespräch anfragen"}
           </h1>
           <p className="lead-copy mt-6 max-w-[68ch]">
-            Beschreiben Sie kurz Ausgangslage und Interesse. Wir ordnen ein, ob
-            AuthenticTrust, NodeX, Beratung oder Schulung der passende nächste Schritt ist.
+            {isDemo
+              ? "Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust zusammenkommen. Gemeinsam klären wir, ob die Software zu Ihren Anforderungen passt."
+              : "Beschreiben Sie kurz Ausgangslage und Interesse. Wir ordnen ein, ob AuthenticTrust, NodeX, Beratung oder Schulung der passende nächste Schritt ist."}
           </p>
         </div>
       </Region>
@@ -87,20 +91,27 @@ export default async function KontaktPage({
           <div>
             <div className="eyebrow">Anfrage</div>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary-light md:text-4xl">
-              Worum geht es bei Ihnen?
+              {isDemo ? "Ihr Weg zur persönlichen Demo." : "Worum geht es bei Ihnen?"}
             </h2>
             <p className="mt-4 leading-relaxed text-text-muted-light">
-              Hilfreich sind Standards, Auditdruck, betroffene Prozesse,
-              vorhandene KI-Tools, Datenklassen und die verantwortlichen Bereiche.
+              {isDemo ? "Ein paar Kontaktdaten reichen für die Anfrage. Wenn Sie möchten, beschreiben Sie kurz Ihre aktuelle Ablage oder eine anstehende Prüfung." : "Hilfreich sind Ihre Ausgangslage, betroffene Prozesse und die verantwortlichen Bereiche."}
             </p>
-            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-text-muted-light">
-              <li>AuthenticTrust: Demo für Managementsysteme, Dokumente, Freigaben und Compliance-Arbeit</li>
-              <li>NodeX: technischer KI-Zugang und kontrollierter Pilot</li>
-              <li>Beratung: Use Cases, Governance und Einführungsplan</li>
-              <li>Schulung: Rollen, Tools, Daten und Beispiele aus Ihrem Arbeitsalltag</li>
-            </ul>
+            {isDemo ? (
+              <ol className="mt-6 list-decimal space-y-4 pl-5 leading-relaxed text-text-muted-light">
+                <li>Demo mit Ihren Kontaktdaten anfragen.</li>
+                <li>Dokumente, Freigaben und Nachweise im Produkt kennenlernen.</li>
+                <li>Passende Standards, Abläufe und Konditionen besprechen.</li>
+              </ol>
+            ) : (
+              <ul className="mt-6 space-y-3 leading-relaxed text-text-muted-light">
+                <li>AuthenticTrust: Dokumente, Freigaben und Nachweise</li>
+                <li>NodeX: kontrollierter KI-Zugang</li>
+                <li>Beratung und Schulung: KI im Arbeitsalltag einsetzen</li>
+              </ul>
+            )}
+            {isDemo ? <p className="mt-6 text-sm leading-relaxed text-text-muted-light">Mit der Anfrage bestellen Sie keine Software. Den konkreten Einsatz und die Konditionen klären wir gemeinsam.</p> : null}
           </div>
-          <ContactForm initialInterest={initialInterest} />
+          <ContactForm key={initialInterest ?? "general"} initialInterest={initialInterest} />
         </div>
       </Region>
     </main>

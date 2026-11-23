@@ -6,10 +6,10 @@ const authenticTrustContentDate = "2026-11-16";
 const pages = [
   {
     path: "/",
-    lastModified: authenticTrustContentDate,
+    lastModified: "2026-11-23",
     images: [
-      `${baseUrl}/opny-brand-icon-1024.png`,
-      `${baseUrl}/media/opny/automotive-quality-inspection-v2.jpg`,
+      `${baseUrl}/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg`,
+      `${baseUrl}/media/authentictrust/authentictrust-risks-actions-1600x1000.jpg`,
     ],
   },
   {
@@ -52,7 +52,7 @@ const pages = [
     path: "/ueber-opny",
     images: [`${baseUrl}/media/opny/mehmet-catalsakal-founder-about-web.jpg`],
   },
-  { path: "/kontakt", lastModified: authenticTrustContentDate },
+  { path: "/kontakt", lastModified: "2026-11-23" },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

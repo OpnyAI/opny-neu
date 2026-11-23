@@ -86,9 +86,14 @@ export default function ContactForm({
         body: JSON.stringify({ ...form, renderedAt }),
       });
       const result = (await response.json().catch(() => null)) as
-        | { ok?: boolean }
+        | { ok?: boolean; error?: string }
         | null;
 
+      if (result?.error === "too_fast") {
+        setStatus("error");
+        setError("Bitte warten Sie einen kurzen Moment und senden Sie Ihre Anfrage erneut.");
+        return;
+      }
       if (!response.ok || result?.ok !== true) {
         throw new Error("request_failed");
       }
@@ -226,7 +231,7 @@ export default function ContactForm({
             value={form.message}
             onChange={(event) => update("message", event.target.value)}
             className="field-input resize-y"
-            placeholder="Zum Beispiel: Auditdruck, Schatten-KI, parallele Standards oder geplanter KI-Einsatz."
+            placeholder={form.interest === "AuthenticTrust Demo" ? "Zum Beispiel: Unsere TISAX-Dokumente liegen in mehreren Ordnern. Wir möchten aktuelle Versionen und Freigaben gemeinsam verwalten." : "Beschreiben Sie kurz Ihre Ausgangslage und den gewünschten nächsten Schritt."}
           />
         </Field>
 
@@ -258,7 +263,7 @@ export default function ContactForm({
           disabled={status === "submitting"}
           className="inline-flex w-full items-center justify-center rounded-button bg-text-primary-light px-5 py-3 text-sm font-semibold text-white shadow-card-light transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
-          {status === "submitting" ? "Wird gesendet …" : "Anfrage senden"}
+          {status === "submitting" ? "Wird gesendet …" : form.interest === "AuthenticTrust Demo" ? "AuthenticTrust-Demo anfragen" : "Anfrage senden"}
         </button>
       </form>
     </div>

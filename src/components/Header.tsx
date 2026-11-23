@@ -11,6 +11,12 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const isAuthenticTrustPath = pathname === "/" || pathname === "/produkte/authentictrust";
+  const primaryCta = pathname === "/kontakt"
+    ? { href: "#anfrage", label: "Zur Anfrage" }
+    : isAuthenticTrustPath
+      ? { href: companyCtas.authentictrustDemo, label: "Demo anfragen" }
+      : { href: companyCtas.generalInquiry, label: "Erstgespräch anfragen" };
   const navRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const activeDropdownTriggerRef = useRef<HTMLButtonElement>(null);
@@ -204,19 +210,19 @@ export default function Header() {
               Kontakt
             </Link>
             <Link
-              href={companyCtas.generalInquiry}
-              className="rounded-full bg-[#1d1d1f] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black"
+              href={primaryCta.href}
+              className="rounded-full bg-[#2454c6] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1943aa]"
             >
-              Erstgespräch anfragen
+              {primaryCta.label}
             </Link>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <Link
-              href={companyCtas.generalInquiry}
-              className="inline-flex min-h-11 items-center rounded-full bg-[#0b1220] px-3 py-2.5 text-xs font-semibold text-white"
+              href={primaryCta.href}
+              className="inline-flex min-h-11 items-center rounded-full bg-[#2454c6] px-3 py-2.5 text-sm font-semibold text-white"
             >
-              Erstgespräch anfragen
+              {primaryCta.label}
             </Link>
             <button
               ref={menuButtonRef}
@@ -243,10 +249,7 @@ export default function Header() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         links={[...primaryNavigationLinks]}
-        cta={{
-          label: "Erstgespräch anfragen",
-          href: companyCtas.generalInquiry,
-        }}
+        cta={primaryCta}
         secondaryCta={{ label: "Kontakt", href: "/kontakt" }}
         returnFocusRef={menuButtonRef}
       />

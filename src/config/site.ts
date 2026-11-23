@@ -55,7 +55,7 @@ export const productNavigationLinks: readonly ServiceNavigationItem[] = [
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
-  { label: "Für Unternehmen", href: "/loesungen#zielgruppen" },
+  { label: "AuthenticTrust", href: "/produkte/authentictrust" },
   {
     label: "Produkte",
     href: "/produkte",

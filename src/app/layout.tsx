@@ -106,6 +106,9 @@ export default function RootLayout({
                 ],
                 areaServed: ["DE", "AT", "CH"],
                 knowsAbout: [
+                  "Dokumentenmanagement für TISAX",
+                  "Managementsysteme und Compliance",
+                  "Dokumentversionen und Freigaben",
                   "KI-Governance",
                   "KI-Compliance",
                   "Automotive-Zulieferindustrie",

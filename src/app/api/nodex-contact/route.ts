@@ -99,7 +99,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (!Number.isFinite(renderedAt) || Date.now() - renderedAt < MIN_SUBMIT_TIME_MS) {
-      return NextResponse.json({ ok: true });
+      // A real visitor must never see a success message for an unsent request.
+      return NextResponse.json({ ok: false, error: "too_fast" }, { status: 429 });
     }
 
     const name = trim(body.name);

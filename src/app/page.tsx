@@ -1,365 +1,160 @@
+import Image from "next/image";
 import Link from "next/link";
 import Region from "@/components/Region";
-import Button from "@/components/ui/Button";
-import SectionIntro from "@/components/marketing/SectionIntro";
 import JsonLd from "@/components/marketing/JsonLd";
-import MediaStage from "@/components/marketing/MediaStage";
-import NodeXPreview from "@/components/marketing/NodeXPreview";
-import OpnyProductStage from "@/components/marketing/OpnyProductStage";
-import ClosingCta from "@/components/marketing/ClosingCta";
 import FaqList from "@/components/marketing/FaqList";
-import CustomerVoice from "@/components/marketing/CustomerVoice";
 import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
-const homeMetadata = createMetadata({
-  title: "Opny: Compliance steuern und KI kontrolliert einsetzen",
-  description:
-    "Opny unterstützt Unternehmen mit AuthenticTrust für Managementsysteme und Compliance, NodeX für kontrollierte KI-Nutzung sowie Beratung und Schulungen.",
-  path: "/",
-  image: {
-    url: "/opny-brand-icon-1024.png",
-    width: 1024,
-    height: 1024,
-    alt: "Opny Logo",
-  },
-});
-
+const title = "TISAX-Dokumente und Nachweise verwalten | Opny";
+const description = "AuthenticTrust von Opny bündelt TISAX-Dokumente, Freigaben und Nachweise. Offene Aufgaben erkennen, Prüfungen vorbereiten und persönliche Demo anfragen.";
 export const metadata = {
-  ...homeMetadata,
-  title: {
-    absolute: "Opny: Compliance steuern und KI kontrolliert einsetzen",
-  },
-  twitter: {
-    ...homeMetadata.twitter,
-    card: "summary" as const,
-  },
+  ...createMetadata({
+    title: "TISAX-Dokumente und Nachweise verwalten",
+    description,
+    path: "/",
+    image: {
+      url: "/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg",
+      width: 1600,
+      height: 1000,
+      alt: "AuthenticTrust von Opny: Dokumentversionen, Freigaben und Nachweise in einer Übersicht",
+    },
+  }),
+  title: { absolute: title },
 };
 
-const decisionQuestions = [
+const faqs = [
   {
-    number: "01",
-    question: "Sind Managementsysteme, Freigaben und Nachweise verteilt?",
-    answer:
-      "AuthenticTrust verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem Arbeitsraum.",
-    href: "/produkte/authentictrust",
+    question: "Was ist AuthenticTrust?",
+    answer: "AuthenticTrust ist die Software von Opny für Managementsysteme und Compliance, also die Einhaltung von Vorgaben. Sie bündelt Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. So können Verantwortliche ihre Unterlagen und offenen Aufgaben nachvollziehbar organisieren.",
   },
   {
-    number: "02",
-    question: "Nutzen Mitarbeitende ChatGPT & Co. ohne klare Regeln?",
-    answer:
-      "NodeX schafft einen zentralen Zugang: mit freigegebenen KI-Modellen, passenden Rechten und einem Überblick über Nutzung und Kosten.",
-    href: "/produkte/nodex",
+    question: "Wie hilft AuthenticTrust bei der TISAX-Vorbereitung?",
+    answer: "TISAX ist ein Prüf- und Austauschmechanismus für Informationssicherheit, insbesondere in der Automobilindustrie. AuthenticTrust hilft, Anforderungen mit Dokumenten und Nachweisen zu verbinden, Freigaben nachzuvollziehen und offene Maßnahmen zu bearbeiten. Die fachliche Bewertung und die eigentliche Prüfung bleiben bei den zuständigen Personen und Prüfstellen.",
   },
   {
-    number: "03",
-    question: "Gibt es Regeln, die im Arbeitsalltag niemand sicher anwenden kann?",
-    answer:
-      "Beratung und Schulung machen aus Vorgaben verständliche Entscheidungen, Übungen und feste Arbeitsabläufe.",
-    href: "/loesungen",
+    question: "Für welche Unternehmen ist AuthenticTrust gedacht?",
+    answer: "AuthenticTrust richtet sich an Unternehmen in Industrie, Technologie und Dienstleistungen. Es passt besonders zu Teams, deren Dokumente, Freigaben und Nachweise über verschiedene Ablagen verteilt sind. Im Gespräch klären wir, welche Standards und Abläufe Sie benötigen und welcher Produktumfang dazu passt.",
+  },
+  {
+    question: "Unterstützt AuthenticTrust auch ISO-Standards?",
+    answer: "AuthenticTrust ist normenübergreifend angelegt. TISAX ist abgebildet; weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Welche Standards, Versionen und Themenbereiche für Ihren Einsatz aktuell verfügbar sind, klären wir vorab. Die gezeigten Beispieldaten sind keine Zusage einer vollständigen Normabdeckung.",
+  },
+  {
+    question: "Was übernimmt die KI – und was bleibt beim Menschen?",
+    answer: "Die KI-Unterstützung kann Informationen strukturieren, Einordnungen vorbereiten und nächste Arbeitsschritte vorschlagen. Fachpersonen prüfen die Ergebnisse und geben sie frei. AuthenticTrust ersetzt weder verantwortliche Fachrollen noch Rechtsberatung oder eine Zertifizierungsstelle und garantiert kein bestimmtes Prüfergebnis.",
+  },
+  {
+    question: "Wie läuft eine AuthenticTrust-Demo ab?",
+    answer: "Sie fragen eine Demo an und beschreiben auf Wunsch Ihre Ausgangslage. Im Gespräch sehen Sie, wie Dokumente, Freigaben, Nachweise und Maßnahmen in AuthenticTrust zusammenhängen. Anschließend klären wir den passenden Umfang, Ihre Anforderungen und einen möglichen nächsten Schritt. Mit der Anfrage buchen Sie kein Software-Abonnement.",
+  },
+  {
+    question: "Was kostet AuthenticTrust?",
+    answer: "Die Konditionen klären wir im Gespräch passend zum benötigten Umfang und Ihrer Ausgangslage. Vor einer Entscheidung erhalten Sie ein konkretes Angebot. Die Demo-Anfrage selbst ist keine Bestellung.",
   },
 ];
 
-const homepageFaqs = [
-  {
-    question: "Was ist Opny?",
-    answer:
-      "Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen dabei, KI kontrolliert einzuführen. Beratung und Schulungen begleiten Strategie und Umsetzung; AuthenticTrust steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge technisch und wird passend zur jeweiligen Systemumgebung konfiguriert.",
-  },
-  {
-    question: "Welcher Opny-Baustein passt zu welcher Ausgangslage?",
-    answer:
-      "Der passende Opny-Baustein richtet sich nach dem konkreten Problem. AuthenticTrust steuert Managementsystem- und Compliance-Arbeit, NodeX kontrolliert KI-Zugänge, Beratung bereitet Entscheidungen und Pilotierung vor, und Schulungen übersetzen Regeln und Tools in den Arbeitsalltag.",
-  },
-  {
-    question: "Welche Unterstützung bietet Opny bei KI-Beratung und KI-Schulungen?",
-    answer:
-      "Opny unterstützt bei der Auswahl sinnvoller Anwendungen, Datenregeln, Zuständigkeiten und einem begrenzten Praxistest. Schulungen und Coaching können auf ChatGPT, Google Gemini, Microsoft Copilot oder interne KI-Zugänge abgestimmt werden.",
-  },
-  {
-    question: "Braucht jedes Unternehmen AuthenticTrust und NodeX?",
-    answer:
-      "Nein. AuthenticTrust verbindet Managementsysteme, Dokumente, Freigaben und Nachweise. NodeX macht die tatsächliche KI-Nutzung technisch kontrollierbar. Welcher Baustein passt, hängt von der konkreten Ausgangslage ab.",
-  },
-  {
-    question: "Ersetzt Opny Rechtsberatung oder eine Zertifizierungsstelle?",
-    answer:
-      "Nein. Opny hilft bei Regeln, Zuständigkeiten, technischer Kontrolle und Umsetzung. Rechtliche Bewertungen und Zertifizierungsentscheidungen bleiben bei den zuständigen Fachstellen.",
-  },
+const problems = [
+  ["Die richtige Datei suchen.", "Dokumente liegen in Ordnern, E-Mails und einzelnen Teams. Welche Fassung aktuell ist, muss erst jemand klären."],
+  ["Freigaben hinterherlaufen.", "Wer prüft noch? Was ist bereits freigegeben? Ohne gemeinsamen Überblick wird jede Rückfrage zur nächsten Aufgabe."],
+  ["Nachweise zusammensuchen.", "Vor der Prüfung werden Belege und offene Maßnahmen zusammengetragen. Der Bezug zur Anforderung fehlt oft in der Ablage."],
 ];
+const benefits = [
+  ["Aktuelle Dokumente finden", "Version, Zuständigkeit und Freigabestatus gemeinsam im Blick."],
+  ["Nachweise zuordnen", "Belege direkt mit den passenden Anforderungen verbinden."],
+  ["Offene Aufgaben verfolgen", "Maßnahmen, Verantwortliche und Fristen nachvollziehbar bearbeiten."],
+];
+const steps = [
+  ["Ausgangslage besprechen", "Welche Unterlagen sind verteilt? Welche Prüfung steht an? Sie beschreiben kurz, wo es heute hakt."],
+  ["AuthenticTrust live ansehen", "Wir zeigen Ihnen den Weg von der Anforderung über Dokumente und Freigaben bis zum zugeordneten Nachweis."],
+  ["Passenden Einsatz klären", "Gemeinsam klären wir Standards, Abläufe und Umfang. Sie entscheiden anhand Ihrer Anforderungen über den nächsten Schritt."],
+];
+
+function DemoLink({ children = "AuthenticTrust-Demo anfragen", dark = false }: { children?: React.ReactNode; dark?: boolean }) {
+  return <Link href={companyCtas.authentictrustDemo} className={`at-button ${dark ? "at-button-white" : "at-button-primary"}`}>{children}</Link>;
+}
+function Check() {
+  return <svg className="at-check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
+function ProductImage({ kind, alt, priority = false }: { kind: "documents-evidence" | "risks-actions"; alt: string; priority?: boolean }) {
+  return (
+    <figure className="at-product-image">
+      <div className="at-image-label"><span>AuthenticTrust <span className="font-normal">von Opny</span></span><span className="at-demo-label">Beispieldaten</span></div>
+      <a href={`/media/authentictrust/authentictrust-${kind}-1600x1000.jpg`} target="_blank" rel="noreferrer" aria-label={`${alt} – in voller Größe öffnen (neuer Tab)`}>
+        <Image src={`/media/authentictrust/authentictrust-${kind}-1600x1000.jpg`} alt={alt} width={1600} height={1000} priority={priority} sizes="(min-width: 1280px) 720px, (min-width: 1024px) 60vw, 100vw" className="h-auto w-full" />
+      </a>
+      <figcaption>Produktansicht mit fiktiven Beispieldaten. Zum Vergrößern auswählen.</figcaption>
+    </figure>
+  );
+}
 
 export default function Home() {
   return (
-    <main>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "WebPage",
-              "@id": "https://www.opny.ai/#webpage",
-              url: "https://www.opny.ai/",
-              name: "Compliance steuern und KI kontrolliert einsetzen",
-              isPartOf: { "@id": "https://www.opny.ai/#website" },
-              primaryImageOfPage: {
-                "@type": "ImageObject",
-                url: "https://www.opny.ai/media/authentictrust/authentictrust-dashboard-1600x1000.jpg",
-              },
-              inLanguage: "de-DE",
-            },
-            {
-              "@type": "FAQPage",
-              "@id": "https://www.opny.ai/#faq",
-              isPartOf: { "@id": "https://www.opny.ai/#webpage" },
-              mainEntity: homepageFaqs.map((faq) => ({
-                "@type": "Question",
-                name: faq.question,
-                acceptedAnswer: { "@type": "Answer", text: faq.answer },
-              })),
-            },
-          ],
-        }}
-      />
+    <main className="at-home">
+      <JsonLd data={{ "@context": "https://schema.org", "@graph": [
+        { "@type": "WebPage", "@id": "https://www.opny.ai/#webpage", url: "https://www.opny.ai/", name: title, description, inLanguage: "de-DE", isPartOf: { "@id": "https://www.opny.ai/#website" }, about: { "@id": "https://www.opny.ai/produkte/authentictrust#software" }, primaryImageOfPage: { "@type": "ImageObject", url: "https://www.opny.ai/media/authentictrust/authentictrust-documents-evidence-1600x1000.jpg" } },
+        { "@type": "FAQPage", "@id": "https://www.opny.ai/#faq", isPartOf: { "@id": "https://www.opny.ai/#webpage" }, mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
+      ] }} />
 
-      <Region
-        tone="base"
-        spacing="hero"
-        containerClassName="2xl:!max-w-[1500px]"
-      >
-        <div className="mx-auto max-w-6xl text-center">
-          <div className="eyebrow">Software, Beratung und Schulung · DACH</div>
-          <h1 className="display-xl mt-7 text-text-primary-light">
-            KI kontrolliert einführen.
-            <span className="block text-[#86868b]">
-              Compliance übersichtlich steuern.
-            </span>
-          </h1>
-          <p className="lead-copy mx-auto mt-8 max-w-3xl">
-            Opny unterstützt Unternehmen dabei, Managementsysteme und Compliance
-            nachvollziehbar zu organisieren und KI kontrolliert einzusetzen.
-            Mit AuthenticTrust, NodeX, Beratung und Schulungen – passend
-            zu Ihren Abläufen.
-          </p>
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href={companyCtas.generalInquiry} variant="primary" theme="light">
-              Erstgespräch anfragen
-            </Button>
-            <Button href="/wissen/ki-im-unternehmen-einfuehren" variant="secondary" theme="light">
-              Leitfaden ansehen
-            </Button>
+      <section className="at-hero" aria-labelledby="hero-heading">
+        <div className="at-container">
+          <div className="at-hero-intro">
+            <p className="at-eyebrow">Für Verantwortliche für Informationssicherheit, Qualität und interne Vorgaben</p>
+            <p className="at-product-name">AuthenticTrust <span>von Opny</span></p>
+            <h1 id="hero-heading">TISAX-Dokumente und Nachweise.<br className="hidden sm:block" /> <span>Endlich an einem Ort.</span></h1>
+            <p className="at-hero-copy">AuthenticTrust bündelt Dokumente, Freigaben und Nachweise in einer Software. Damit Sie sehen, was aktuell ist, was fehlt und wer sich darum kümmert.</p>
+            <p className="at-definition">Für die Vorbereitung auf TISAX – eine Prüfung der Informationssicherheit im Unternehmen.</p>
+            <div className="at-actions"><DemoLink /><a href="#produkteinblick" className="at-text-link">Produkt ansehen</a></div>
+            <p className="at-microcopy">Persönlicher Produkteinblick. Passend zu Ihrer Ausgangslage.</p>
           </div>
-          <p className="mt-5 text-sm text-text-muted-light">
-            Sie müssen nicht sofort ein Produkt kaufen. Wir klären zuerst, was Sie wirklich brauchen.
-          </p>
-        </div>
-        <OpnyProductStage />
-      </Region>
-
-      <Region tone="surface" spacing="compact">
-        <div className="grid gap-5 md:grid-cols-[0.35fr_1fr] md:items-center">
-          <div className="eyebrow">Warum Opny</div>
-          <p className="max-w-4xl text-xl font-medium leading-relaxed tracking-[-0.02em] text-text-primary-light md:text-2xl">
-            Regeln helfen nur, wenn sie verständlich sind, technisch
-            eingehalten werden können und im Arbeitsalltag funktionieren.
-          </p>
-        </div>
-      </Region>
-
-      <Region tone="base" spacing="compact">
-        <div className="grid gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
-          <div>
-            <div className="eyebrow">Aktuelle Unternehmensrealität</div>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-text-primary-light md:text-4xl">
-              KI wird oft schneller genutzt, als Unternehmen Regeln und Wissen aufbauen.
-            </h2>
-            <p className="mt-4 leading-relaxed text-text-muted-light">
-              Opny schließt diese Lücke: von der ersten sinnvollen Anwendung
-              über klare Datenregeln bis zur sicheren Nutzung im Team.
-            </p>
-            <Link
-              href="/wissen/ki-im-unternehmen-einfuehren"
-              className="mt-6 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
-            >
-              Leitfaden zur KI-Einführung →
-            </Link>
-          </div>
-          <div>
-            <dl className="grid gap-px overflow-hidden rounded-card border border-black/[0.08] bg-black/[0.08] sm:grid-cols-3">
-              {[
-                ["48 %", "der Berufstätigen nutzen KI zumindest gelegentlich bei der Arbeit", "Bitkom 2026"],
-                ["12 %", "der beruflichen KI-Nutzer tun dies ohne Wissen des Arbeitgebers", "Bitkom 2026"],
-                ["50 %", "der Unternehmen sehen hohen KI-Weiterbildungsbedarf", "TÜV 2026"],
-              ].map(([value, label, source]) => (
-                <div key={value} className="bg-white p-6">
-                  <dt className="text-sm leading-relaxed text-text-muted-light">{label}</dt>
-                  <dd className="mt-4 text-4xl font-semibold tracking-[-0.055em]">{value}</dd>
-                  <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-text-secondary-light">
-                    {source}
-                  </div>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-3 text-xs leading-relaxed text-text-secondary-light">
-              Quellen:{" "}
-              <a
-                href="https://www.bitkom.org/sites/main/files/2026-06/bitkom-studienbericht-ki-bevoelkerung.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                Bitkom KI-Studie 2026
-              </a>
-              {" · "}
-              <a
-                href="https://www.tuev-verband.de/fileadmin/user_upload/Content_local/Studien_local/2026_TUEV-Verband_Weiterbildungsstudie_2026_Studienbericht.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                TÜV Weiterbildungsstudie 2026
-              </a>
-            </p>
-          </div>
-        </div>
-      </Region>
-
-      <Region tone="base">
-        <SectionIntro
-          eyebrow="Managementsysteme gemeinsam steuern"
-          title="AuthenticTrust verbindet Compliance-Arbeit in einem System."
-          text="Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen werden in einem gemeinsamen Arbeitsraum bearbeitet."
-        />
-        <div className="mt-12 grid gap-8 lg:grid-cols-[0.36fr_0.64fr] lg:items-end">
-          <div>
-            <p className="leading-relaxed text-text-muted-light">
-              AuthenticTrust führt bisher verteilte Inhalte in einem Arbeitsraum
-              zusammen und kann Doppelpflege verringern. KI-Unterstützung
-              bereitet wiederkehrende Einordnungen und nächste Schritte vor;
-              Fachpersonen prüfen und geben Ergebnisse frei.
-            </p>
-            <Link
-              href="/produkte/authentictrust"
-              className="mt-6 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
-            >
-              AuthenticTrust Compliance-Software ansehen →
-            </Link>
-          </div>
-          <MediaStage
-            src="/media/authentictrust/authentictrust-review-results-1600x1000.jpg"
-            alt="AuthenticTrust-Review mit bewerteten Beispielanforderungen und der Möglichkeit, Maßnahmen anzulegen"
-            width={1600}
-            height={1000}
-            sizes="(min-width: 1024px) 62vw, 100vw"
-            label="Simulierter Compliance Review"
-            status="Beispieldaten"
-            caption="Simuliertes Review mit fiktiven Beispieldaten; keine Zertifizierungs- oder Rechtsbewertung."
-            imageClassName="aspect-[16/10] bg-[#f5f5f7] object-contain"
-          />
-        </div>
-      </Region>
-
-      <Region tone="alt">
-        <div className="grid gap-12 lg:grid-cols-[0.43fr_0.57fr] lg:items-center">
-          <div>
-            <div className="eyebrow">KI-Zugänge kontrollieren</div>
-            <h2 className="section-title mt-5">NodeX wendet Regeln direkt beim KI-Zugriff an.</h2>
-            <p className="lead-copy mt-6">
-              Mitarbeitende greifen über einen zentralen Zugang auf
-              freigegebene KI-Modelle zu. Rechte, der Umgang mit Daten, Nutzung und Kosten
-              bleiben dabei nachvollziehbar.
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-text-muted-light">
-              Zwei freigegebene Kundenstimmen dokumentieren abgegrenzte
-              Einsatzkontexte. Modelle, Datenwege und Betriebsform werden
-              passend zur jeweiligen Kundenumgebung festgelegt.
-            </p>
-            <Link
-              href="/produkte/nodex"
-              className="mt-7 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
-            >
-              NodeX für kontrollierte KI-Nutzung ansehen →
-            </Link>
-          </div>
-          <NodeXPreview compact autoPlay />
-        </div>
-      </Region>
-
-      <CustomerVoice />
-
-      <Region tone="base">
-        <div className="grid gap-12 lg:grid-cols-[0.58fr_0.42fr] lg:items-center">
-          <MediaStage
-            src="/media/opny/mehmet-catalsakal-founder-home-web.jpg"
-            alt="Mehmet Catalsakal, Gründer von Opny"
-            width={4000}
-            height={2667}
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            caption="Mehmet Catalsakal, Gründer von Opny"
-            imageClassName="aspect-[4/3] object-cover object-[50%_35%] sm:aspect-[3/2]"
-          />
-          <div>
-            <div className="eyebrow">Gründergeführt</div>
-            <h2 className="section-title mt-5">
-              Mit zehn Jahren Erfahrung in Automotive-Projekten.
-            </h2>
-            <p className="lead-copy mt-6">
-              Die Erfahrung von Mehmet Catalsakal aus komplexen
-              Automotive-Projekten prägt Opnys Anspruch: KI verständlich,
-              sicher und im Arbeitsalltag umsetzbar machen.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">
-              <Link href="/loesungen#beratung" className="text-[#0066cc] hover:underline">
-                KI-Beratung ansehen →
-              </Link>
-              <Link href="/ueber-opny" className="text-[#0066cc] hover:underline">
-                Mehr über Opny →
-              </Link>
+          <div id="produkteinblick" className="at-hero-product">
+            <ProductImage kind="documents-evidence" priority alt="AuthenticTrust-Dokumentenübersicht mit Versionen, Freigabestatus und zugeordneten Nachweisen" />
+            <div className="at-benefits">
+              <p className="at-eyebrow">Weniger Suchen. Mehr Überblick.</p>
+              <h2>Wissen, wo Sie stehen.<br />Und was noch fehlt.</h2>
+              <ul>{benefits.map(([heading, text]) => <li key={heading}><Check /><div><h3>{heading}</h3><p>{text}</p></div></li>)}</ul>
+              <DemoLink>Demo für Ihr Unternehmen anfragen</DemoLink>
+              <p className="at-microcopy">Sie sehen die Software. Danach klären wir, ob sie zu Ihren Abläufen passt.</p>
             </div>
           </div>
         </div>
+      </section>
+
+      <div className="at-orientation"><div className="at-container"><span>Dokumente & Versionen</span><span>Freigaben & Zuständigkeiten</span><span>Nachweise & Anforderungen</span><span>Risiken & Maßnahmen</span></div></div>
+
+      <Region id="ausgangslage" tone="surface" containerClassName="!py-16 md:!py-24">
+        <div className="at-section-intro"><p className="at-eyebrow">Kommt Ihnen das bekannt vor?</p><h2>Die Prüfung rückt näher.<br />Die Unterlagen sind noch verteilt.</h2><p>Das Problem liegt oft im Alltag: Informationen sind vorhanden, aber der gemeinsame Überblick fehlt.</p></div>
+        <div className="at-problem-grid">{problems.map(([heading, text]) => <article key={heading}><span className="at-problem-mark" aria-hidden="true">×</span><h3>{heading}</h3><p>{text}</p></article>)}</div>
+        <p className="at-takeaway">AuthenticTrust bringt zusammen, was für die Vorbereitung zusammengehört.</p>
       </Region>
 
-      <Region tone="surface">
-        <SectionIntro
-          eyebrow="Entscheidungshilfe"
-          title="Wo sollte Ihr Unternehmen beginnen?"
-          text="Nicht beim nächsten Tool, sondern bei dem Problem, das heute am meisten Zeit, Sicherheit oder Überblick kostet."
-        />
-        <div className="editorial-rule mt-12">
-          {decisionQuestions.map((item) => (
-            <Link
-              key={item.number}
-              href={item.href}
-              className="group grid gap-4 border-b border-black/[0.10] py-7 md:grid-cols-[70px_0.7fr_1fr_auto] md:items-start"
-            >
-              <span className="text-sm font-semibold text-text-muted-light">{item.number}</span>
-              <h3 className="text-xl font-semibold tracking-[-0.025em] md:text-2xl">
-                {item.question}
-              </h3>
-              <p className="leading-relaxed text-text-muted-light">{item.answer}</p>
-              <span aria-hidden="true" className="text-xl transition group-hover:translate-x-1">→</span>
-            </Link>
-          ))}
+      <Region id="so-hilft-authentictrust" tone="alt" containerClassName="!py-16 md:!py-24">
+        <div className="at-section-intro"><p className="at-eyebrow">Von verteilten Dateien zu klaren Abläufen</p><h2>Ein Arbeitsraum.<br />Vom Dokument bis zur Maßnahme.</h2><p>AuthenticTrust ist die Software von Opny für Managementsysteme und Compliance – also die Einhaltung von Vorgaben.</p></div>
+        <div className="at-solution-grid">
+          <div className="at-solution-copy"><h3>Dokumente mit ihrer Aufgabe verbinden.</h3><p>Welche Anforderung gehört zu welchem Dokument? Welche Fassung ist freigegeben? Und welcher Nachweis fehlt noch? Diese Zusammenhänge werden in einem gemeinsamen Arbeitsraum nachvollziehbar.</p><div className="at-small-benefit"><Check /><p><strong>Freigaben nachvollziehen.</strong> Versionen, Zuständigkeiten und Bearbeitungsstand zusammenführen.</p></div><div className="at-small-benefit"><Check /><p><strong>Maßnahmen bearbeiten.</strong> Feststellungen mit Verantwortlichen, Fristen und dem nächsten Schritt verbinden.</p></div><Link className="at-text-link" href="/produkte/authentictrust">Alle Funktionen und Produktdetails ansehen</Link></div>
+          <ProductImage kind="risks-actions" alt="AuthenticTrust-Maßnahmenübersicht mit Verantwortlichen, Fristen und Bearbeitungsstatus" />
         </div>
+        <div className="at-ai-note"><div><p className="at-eyebrow">KI unterstützt. Ihr Team entscheidet.</p><p>Die KI kann Informationen strukturieren und nächste Schritte vorbereiten. Fachpersonen prüfen die Ergebnisse und geben sie frei.</p></div><p>TISAX ist abgebildet. Weitere ISO-Managementsystemstandards werden schrittweise ergänzt. Den aktuell passenden Umfang klären wir mit Ihnen.</p></div>
       </Region>
 
-      <Region tone="base">
-        <SectionIntro
-          eyebrow="Kurz beantwortet"
-          title="Was Entscheider über Opny wissen sollten"
-        />
-        <FaqList items={homepageFaqs} />
+      <Region id="ablauf" tone="surface" containerClassName="!py-16 md:!py-24">
+        <div className="at-section-intro"><p className="at-eyebrow">Ihr nächster Schritt</p><h2>Erst ansehen.<br />Dann fundiert entscheiden.</h2><p>In der Demo geht es um Ihre Dokumente, Ihre Abläufe und die Frage, ob AuthenticTrust dazu passt.</p></div>
+        <ol className="at-step-grid">{steps.map(([heading, text], i) => <li key={heading}><span className="at-step-number">{i + 1}</span><h3>{heading}</h3><p>{text}</p></li>)}</ol>
+        <div className="at-centered-cta"><DemoLink /><p className="at-microcopy">Die Anfrage ist keine Bestellung und kein Software-Abonnement.</p></div>
       </Region>
 
-      <Region tone="base" spacing="compact">
-        <ClosingCta
-          eyebrow="Passender Einstieg"
-          title="Was ist bei Ihrer KI-Nutzung heute noch unklar?"
-          text="Wir betrachten Ihre Ausgangslage, Daten und Zuständigkeiten und sagen offen, welcher nächste Schritt sinnvoll ist."
-          href={companyCtas.generalInquiry}
-          label="Erstgespräch anfragen"
-        />
+      <Region id="fuer-wen" tone="alt" containerClassName="!py-16 md:!py-24">
+        <div className="at-fit-grid"><div><p className="at-eyebrow">Passt AuthenticTrust zu Ihnen?</p><h2>Für Teams, die ihre Nachweise im Griff haben wollen.</h2><p>In Industrie, Technologie und Dienstleistungen. Besonders dann, wenn mehrere Personen Dokumente pflegen, Freigaben erteilen oder Prüfungen vorbereiten.</p></div><ul>{["Sie bereiten eine TISAX-Prüfung vor und möchten Unterlagen strukturiert organisieren.", "Sie möchten aktuelle Dokumentversionen und Freigaben nachvollziehen können.", "Sie brauchen einen gemeinsamen Überblick über Nachweise und offene Maßnahmen."].map(item => <li key={item}><Check /><span>{item}</span></li>)}</ul></div>
+        <p className="at-boundary">AuthenticTrust unterstützt die Vorbereitung. Fachliche Bewertungen und Prüfentscheidungen bleiben bei Ihren Verantwortlichen und Prüfstellen. <a href="https://portal.enx.com/en-US/TISAX/" target="_blank" rel="noreferrer" className="underline underline-offset-4">Mehr zu TISAX bei ENX</a>.</p>
       </Region>
+
+      <Region id="fragen" tone="surface" containerClassName="!py-16 md:!py-24">
+        <div className="max-w-4xl mx-auto"><div className="at-section-intro"><p className="at-eyebrow">Kurz beantwortet</p><h2>Ihre Fragen vor der Demo.</h2></div><FaqList items={faqs} /></div>
+      </Region>
+
+      <section className="at-final" aria-labelledby="final-heading"><div className="at-container"><p className="at-eyebrow">AuthenticTrust von Opny</p><h2 id="final-heading">Weniger Dateien suchen.<br />Die Vorbereitung im Blick behalten.</h2><p>Sehen Sie, wie Dokumente, Freigaben und Nachweise in AuthenticTrust zusammenkommen. Wir klären mit Ihnen, was zu Ihrem Unternehmen passt.</p><DemoLink dark /><p className="at-microcopy">Persönliche Demo anfragen und nächsten Schritt klären.</p></div></section>
+
+      <Region tone="alt" containerClassName="!py-12 md:!py-16"><div className="at-opny-more"><div><p className="at-eyebrow">Die Dachmarke dahinter</p><h2>AuthenticTrust ist ein Produkt von Opny.</h2><p>Opny unterstützt Unternehmen außerdem bei der kontrollierten KI-Nutzung. NodeX ist dafür ein eigenständiges Produkt; Beratung und Schulung ergänzen das Angebot.</p></div><div className="at-more-links"><Link href="/ueber-opny">Über Opny</Link><Link href="/produkte/nodex">NodeX: KI-Zugänge kontrollieren</Link><Link href="/loesungen">KI-Beratung und Schulungen</Link></div></div></Region>
     </main>
   );
 }
