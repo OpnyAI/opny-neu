@@ -25,6 +25,7 @@ export const companyCtas = {
   consultingInquiry: "/kontakt?interesse=KI-Beratung#anfrage",
   trainingInquiry: "/kontakt?interesse=KI-Schulung#anfrage",
   authentictrustLogin: "https://authentictrust.app/login",
+  crmLogin: "https://crm.opny.ai/login",
   contact: `mailto:${companyEmail}`,
 } as const;
 
@@ -65,6 +66,7 @@ export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
     items: serviceNavigationLinks,
   },
   { label: "Über Opny", href: "/ueber-opny" },
+  { label: "CRM-Login", href: companyCtas.crmLogin },
 ];
 
 export const footerLinks = {
