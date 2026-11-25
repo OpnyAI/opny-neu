@@ -1264,7 +1264,8 @@ pre {
 @media (prefers-reduced-motion: reduce) { .consent-switch-track::after { transition: none; } }
 @media (max-width: 639px) {
   .cookie-banner { inset-inline: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: calc(100% - 24px); padding: 16px 12px; }
-  .cookie-banner-actions { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; gap: 8px; margin-top: 16px; }
+  .cookie-banner-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+  .cookie-banner-settings { grid-column: 1 / -1; }
   .consent-settings-actions { flex-direction: column; }
   .consent-settings-actions .button { width: 100%; overflow-wrap: anywhere; }
   .consent-essential { grid-template-columns: minmax(0, 1fr); }

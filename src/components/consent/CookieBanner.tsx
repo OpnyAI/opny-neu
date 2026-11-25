@@ -185,38 +185,28 @@ export default function CookieBanner() {
                   <path d="m8 12 3 3 5-6" />
                 </svg>
               </span>
-              <h2>{marketingReview ? "Ihre Marketing-Auswahl aktualisieren" : "Sie entscheiden, was wir messen."}</h2>
+              <h2>{marketingReview ? "Ihre Marketing-Auswahl aktualisieren" : "Optionale Cookies"}</h2>
             </div>
             <p className="consent-intro">
               {marketingReview ? (
                 <>Die eingerichteten Marketing-Dienste haben sich geändert. Mit Ihrer Zustimmung erfassen wir Besuche für Anzeigenmessung und mögliche spätere Werbung über {marketingProviders}. Ihre Statistik-Auswahl bleibt unverändert. Marketing bleibt bis zu Ihrer Zustimmung aus.</>
               ) : (
                 <>
-                  {GA_ID ? "Statistik mit Google Analytics zeigt uns, welche Seiten und Produktinformationen genutzt werden. " : ""}
-                  {HAS_MARKETING ? `Marketing mit ${marketingProviders} ermöglicht Anzeigenmessung und mögliche spätere Werbung für Websitebesucher. ` : ""}
-                  Diese Dienste sind freiwillig und starten erst nach Ihrer Zustimmung.
+                  {GA_ID ? "Mit Google Analytics messen wir, welche Seiten genutzt werden. " : ""}
+                  {HAS_MARKETING ? `Für Anzeigenmessung und spätere Werbung nutzen wir ${marketingProviders}. ` : ""}
+                  Daten können in den USA verarbeitet werden.
                 </>
               )}
             </p>
             <p className="consent-note">
-              Ihre Auswahl können Sie jederzeit ändern. Weitere Informationen unter{" "}
-              <Link href="/datenschutz">Datenschutz</Link>.
+              Auswahl jederzeit änderbar. <Link href="/datenschutz">Datenschutz</Link>
             </p>
 
-            <div className="cookie-banner-actions flex flex-wrap items-center gap-2">
-              <button
-                ref={bannerSettingsRef}
-                type="button"
-                onClick={openSettings}
-                className="button button-secondary button-small"
-              >
-                Einstellungen
-              </button>
-
+            <div className="cookie-banner-actions">
               <button
                 type="button"
                 onClick={() => persist(marketingReview && savedStatistics ? "statistics" : "declined")}
-                className="button button-primary button-small consent-decision"
+                className="button button-secondary button-small"
               >
                 {marketingReview ? "Ohne Marketing fortfahren" : "Ablehnen"}
               </button>
@@ -234,9 +224,17 @@ export default function CookieBanner() {
                       : "statistics",
                   )
                 }
-                className="button button-primary button-small consent-decision"
+                className="button button-secondary button-small"
               >
                 {marketingReview ? "Marketing erlauben" : HAS_MARKETING ? "Alle akzeptieren" : "Statistik erlauben"}
+              </button>
+              <button
+                ref={bannerSettingsRef}
+                type="button"
+                onClick={openSettings}
+                className="button button-secondary button-small cookie-banner-settings"
+              >
+                Einstellungen
               </button>
             </div>
           </div>
