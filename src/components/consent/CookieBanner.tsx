@@ -224,7 +224,7 @@ export default function CookieBanner() {
                       : "statistics",
                   )
                 }
-                className="button button-secondary button-small"
+                className={`button button-small ${!marketingReview && HAS_MARKETING ? "button-primary" : "button-secondary"}`}
               >
                 {marketingReview ? "Marketing erlauben" : HAS_MARKETING ? "Alle akzeptieren" : "Statistik erlauben"}
               </button>
