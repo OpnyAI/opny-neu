@@ -20,53 +20,61 @@ export const companyPhoneHref = "tel:+4915111956479";
 
 export const companyCtas = {
   generalInquiry: "/kontakt?interesse=Allgemeine%20Anfrage#anfrage",
-  trustarchDemo: "/kontakt?interesse=TrustArch%20Demo#anfrage",
+  authentictrustDemo: "/kontakt?interesse=AuthenticTrust%20Demo#anfrage",
   nodexInquiry: "/kontakt?interesse=NodeX%20Einsatz#anfrage",
-  consultingInquiry: "/kontakt?interesse=KI-Beratung%20Automotive#anfrage",
-  trainingInquiry: "/kontakt?interesse=KI-Schulung%20Automotive#anfrage",
+  consultingInquiry: "/kontakt?interesse=KI-Beratung#anfrage",
+  trainingInquiry: "/kontakt?interesse=KI-Schulung#anfrage",
+  authentictrustLogin: "https://authentictrust.app/login",
+  crmLogin: "https://crm.opny.ai/login",
   contact: `mailto:${companyEmail}`,
 } as const;
 
 export const serviceNavigationLinks: readonly ServiceNavigationItem[] = [
   {
-    label: "KI-Beratung für Automotive",
-    href: "/loesungen/ki-beratung-automotive",
+    label: "KI-Beratung für Unternehmen",
+    href: "/loesungen#beratung",
   },
   {
-    label: "KI-Schulungen & Coaching",
-    href: "/loesungen/ki-schulungen-automotive",
+    label: "KI-Schulungen für Teams",
+    href: "/loesungen#schulungen",
   },
-  { label: "KI-Governance Automotive", href: "/ki-governance-automotive" },
+  {
+    label: "Regeln für KI-Nutzung",
+    href: "/loesungen#governance",
+  },
 ];
 
 export const productNavigationLinks: readonly ServiceNavigationItem[] = [
-  { label: "Produktübersicht", href: "/produkte" },
-  { label: "TrustArch", href: "/produkte/trustarch" },
-  { label: "NodeX", href: "/produkte/nodex" },
+  {
+    label: "AuthenticTrust · Compliance-Software",
+    href: "/produkte/authentictrust",
+  },
+  {
+    label: "NodeX · kontrollierte KI-Nutzung",
+    href: "/produkte/nodex",
+  },
+  { label: "Alle Opny-Produkte", href: "/produkte" },
+  { label: "Normen und Vorgaben", href: "/produkte/authentictrust#standards" },
 ];
 
 export const primaryNavigationLinks: readonly PrimaryNavigationLink[] = [
-  { label: "Automotive", href: "/automotive" },
+  { label: "AuthenticTrust", href: "/produkte/authentictrust" },
+  { label: "NodeX", href: "/produkte/nodex" },
   {
-    label: "Produkte",
-    href: "/produkte",
-    items: productNavigationLinks,
-  },
-  {
-    label: "Lösungen",
+    label: "Beratung & Schulung",
     href: "/loesungen",
     items: serviceNavigationLinks,
   },
   { label: "Über Opny", href: "/ueber-opny" },
+  { label: "CRM-Login", href: companyCtas.crmLogin },
 ];
 
 export const footerLinks = {
-  services: [
-    ...productNavigationLinks,
-    ...serviceNavigationLinks,
-  ],
+  products: productNavigationLinks,
+  solutions: serviceNavigationLinks,
   company: [
     { label: "Startseite", href: "/" },
+    { label: "Für Unternehmen", href: "/loesungen#zielgruppen" },
     { label: "Automotive-Zulieferer", href: "/automotive" },
     {
       label: "Leitfaden: KI im Unternehmen einführen",

@@ -11,6 +11,26 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const isAuthenticTrustPath =
+    pathname === "/" ||
+    pathname === "/produkte/authentictrust" ||
+    pathname === "/tisax-software" ||
+    pathname === "/iso-27001-software" ||
+    pathname === "/iso-9001-software" ||
+    pathname === "/nis2-software" ||
+    pathname === "/soc-2-software" ||
+    pathname === "/dsgvo-software";
+  const primaryCta =
+    pathname === "/kontakt"
+      ? { href: "#anfrage", label: "Zur Anfrage" }
+      : pathname === "/produkte/nodex"
+        ? { href: companyCtas.nodexInquiry, label: "NodeX besprechen" }
+        : isAuthenticTrustPath
+          ? { href: companyCtas.authentictrustDemo, label: "Demo anfragen" }
+          : {
+              href: companyCtas.generalInquiry,
+              label: "Erstgespräch anfragen",
+            };
   const navRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const activeDropdownTriggerRef = useRef<HTMLButtonElement>(null);
@@ -43,11 +63,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-[rgba(250,250,250,0.82)] backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
+      <header className="site-header sticky top-0 z-50 border-b border-black/[0.06] bg-white/95 backdrop-blur-2xl">
+        <div className="site-header-layout mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
           <Link
             href="/"
-            className="flex min-h-11 items-center gap-2 py-1"
+            className="site-header-brand flex min-h-11 items-center gap-2 py-1"
             aria-label="Zur Startseite"
             aria-current={pathname === "/" ? "page" : undefined}
             onClick={(event) => {
@@ -68,7 +88,7 @@ export default function Header() {
             <span className="sr-only">opny.ai</span>
           </Link>
 
-          <nav ref={navRef} className="hidden items-center gap-7 lg:flex">
+          <nav ref={navRef} className="site-header-desktop-nav hidden items-center gap-7 lg:flex">
             {primaryNavigationLinks.map((n) => {
               const hasItems = "items" in n;
 
@@ -153,62 +173,81 @@ export default function Header() {
                         isOpen ? "rotate-180" : ""
                       }`}
                     >
-                      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                      <path
+                        d="M1 1l4 4 4-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      />
                     </svg>
                   </button>
 
-                  {isOpen ? (
-                    <div id={`nav-${n.label.toLowerCase().replaceAll(" ", "-")}`} className="absolute left-0 top-full pt-4">
-                      <div className="min-w-[320px] rounded-3xl border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
-                        {n.items.map((item) => {
-                          const itemIsActive = pathname === item.href;
+                  <div
+                    id={`nav-${n.label.toLowerCase().replaceAll(" ", "-")}`}
+                    aria-hidden={!isOpen}
+                    inert={!isOpen}
+                    className={`absolute left-0 top-full pt-4 transition duration-150 ${
+                      isOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-1 pointer-events-none opacity-0"
+                    }`}
+                  >
+                    <div className="min-w-[320px] rounded-card border border-black/[0.08] bg-white p-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.45)]">
+                      {n.items.map((item) => {
+                        const itemIsActive = pathname === item.href;
 
-                          return (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              aria-current={itemIsActive ? "page" : undefined}
-                              className={`block rounded-2xl px-4 py-3 text-sm transition ${
-                                itemIsActive
-                                  ? "bg-black/[0.04] text-text-primary-light"
-                                  : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
-                              }`}
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {item.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            tabIndex={isOpen ? undefined : -1}
+                            aria-current={itemIsActive ? "page" : undefined}
+                            className={`block rounded-card px-4 py-3 text-sm transition ${
+                              itemIsActive
+                                ? "bg-black/[0.04] text-text-primary-light"
+                                : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
+                            }`}
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
                     </div>
-                  ) : null}
+                  </div>
                 </div>
               );
             })}
           </nav>
 
-          <div className="relative z-[60] hidden items-center gap-4 lg:flex">
+          <div className="site-header-desktop-actions relative z-[60] hidden items-center gap-4 lg:flex">
             <Link
-              href="/kontakt"
+              href={
+                isAuthenticTrustPath
+                  ? companyCtas.authentictrustLogin
+                  : "/kontakt"
+              }
               className="text-sm text-text-muted-light hover:text-text-primary-light"
               aria-current={pathname === "/kontakt" ? "page" : undefined}
             >
-              Kontakt
+              {isAuthenticTrustPath ? "Anmelden" : "Kontakt"}
             </Link>
             <Link
-              href={companyCtas.generalInquiry}
-              className="rounded-full bg-[#1d1d1f] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black"
+              href={primaryCta.href}
+              prefetch={false}
+              className="button button-primary button-small"
             >
-              Erstgespräch anfragen
+              {primaryCta.label}
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="site-header-mobile-actions flex items-center gap-2 lg:hidden">
             <Link
-              href={companyCtas.generalInquiry}
-              className="inline-flex min-h-11 items-center rounded-full bg-[#0b1220] px-3 py-2.5 text-xs font-semibold text-white"
+              href={primaryCta.href}
+              prefetch={false}
+              className="site-header-mobile-cta button button-primary button-small"
             >
-              Erstgespräch anfragen
+              {primaryCta.label}
             </Link>
             <button
               ref={menuButtonRef}
@@ -216,7 +255,7 @@ export default function Header() {
                 setActiveDropdown(null);
                 setMobileOpen(true);
               }}
-              className="flex min-h-11 items-center gap-2 rounded-full border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
+              className="site-header-menu flex min-h-11 items-center gap-2 rounded-button border border-border-subtle-light/20 bg-white px-3.5 py-2.5 text-sm font-semibold text-text-primary-light shadow-card-light"
               aria-label="Menü öffnen"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
@@ -235,11 +274,12 @@ export default function Header() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         links={[...primaryNavigationLinks]}
-        cta={{
-          label: "Erstgespräch anfragen",
-          href: companyCtas.generalInquiry,
-        }}
-        secondaryCta={{ label: "Kontakt", href: "/kontakt" }}
+        cta={primaryCta}
+        secondaryCta={
+          isAuthenticTrustPath
+            ? { label: "Anmelden", href: companyCtas.authentictrustLogin }
+            : { label: "Kontakt", href: "/kontakt" }
+        }
         returnFocusRef={menuButtonRef}
       />
     </>

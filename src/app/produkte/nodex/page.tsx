@@ -1,9 +1,9 @@
 import Region from "@/components/Region";
-import Button from "@/components/ui/Button";
-import Breadcrumbs from "@/components/marketing/Breadcrumbs";
+import ProductHero from "@/components/marketing/ProductHero";
 import SectionIntro from "@/components/marketing/SectionIntro";
 import JsonLd from "@/components/marketing/JsonLd";
 import NodeXPreview from "@/components/marketing/NodeXPreview";
+import CustomerVoice from "@/components/marketing/CustomerVoice";
 import ClosingCta from "@/components/marketing/ClosingCta";
 import FaqList from "@/components/marketing/FaqList";
 import { GovernanceControlLayerDiagram } from "@/components/diagrams/GovernanceControlLayerDiagram";
@@ -11,23 +11,35 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "NodeX: kontrollierte KI-Nutzung für Automotive-Zulieferer",
+  title: "NodeX: Plattform für kontrollierte KI-Nutzung",
   description:
-    "NodeX bündelt freigegebene KI-Zugänge, Rechte, Datenregeln sowie den Überblick über Nutzung und Kosten an einer zentralen Stelle.",
+    "NodeX ist Opnys Plattform für kontrollierte KI-Nutzung. Sie bündelt freigegebene KI-Modelle, Rechte, Datenregeln sowie Nutzung und Kosten.",
   path: "/produkte/nodex",
   image: {
-    url: "/media/opny/automotive-quality-inspection-v2.jpg",
-    width: 1672,
-    height: 941,
-    alt: "Qualitätsprüfung eines bearbeiteten Aluminiumgehäuses bei einem Automotive-Zulieferer",
+    url: "/media/nodex/marketing-opny-nodex-poster.jpg",
+    width: 440,
+    height: 744,
+    alt: "NodeX: Produkteinblick in den kontrollierten KI-Zugang",
   },
 });
 
 const capabilities = [
-  ["Freigegebene KI-Modelle", "Teams erhalten einen zentralen Zugang statt beliebiger privater Konten."],
-  ["Passende Rechte und Regeln", "Je nach Team, Aufgabe und Schutzbedarf gelten unterschiedliche Vorgaben."],
-  ["Klarer Weg für Daten", "NodeX steuert, welche Anfragen und Dateien an welchen Dienst gesendet werden dürfen."],
-  ["Überblick über Nutzung und Kosten", "IT, Management und Fachbereiche sehen dieselben Informationen."],
+  [
+    "Freigegebene KI-Modelle",
+    "Teams erhalten einen zentralen Zugang statt beliebiger privater Konten.",
+  ],
+  [
+    "Passende Rechte und Regeln",
+    "Je nach Team, Aufgabe und Schutzbedarf gelten unterschiedliche Vorgaben.",
+  ],
+  [
+    "Klarer Weg für Daten",
+    "NodeX steuert, welche Anfragen und Dateien an welchen Dienst gesendet werden dürfen.",
+  ],
+  [
+    "Überblick über Nutzung und Kosten",
+    "IT, Management und Fachbereiche sehen dieselben Informationen.",
+  ],
 ];
 
 const faqs = [
@@ -37,9 +49,9 @@ const faqs = [
       "NodeX ist Opnys Plattform für kontrollierte KI-Nutzung. Sie bündelt freigegebene KI-Zugänge, Rechte, Datenregeln sowie den Überblick über Nutzung und Kosten an einer zentralen Stelle. Modelle, Datenwege und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.",
   },
   {
-    question: "Ersetzt NodeX TrustArch?",
+    question: "Ersetzt NodeX AuthenticTrust?",
     answer:
-      "Nein. TrustArch ordnet Anforderungen, Risiken, Nachweise und Aufgaben. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
+      "Nein. AuthenticTrust verbindet Managementsysteme, Anforderungen, Dokumente, Freigaben, Nachweise, Risiken und Maßnahmen. NodeX macht die tatsächliche Nutzung von KI technisch kontrollierbar.",
   },
   {
     question: "Ist NodeX für vertrauliche Automotive-Daten geeignet?",
@@ -64,10 +76,12 @@ export default function NodeXPage() {
               "@type": "WebPage",
               "@id": "https://www.opny.ai/produkte/nodex#webpage",
               url: "https://www.opny.ai/produkte/nodex",
-              name: "NodeX: kontrollierte KI-Nutzung für Automotive-Zulieferer",
+              name: "NodeX: Plattform für kontrollierte KI-Nutzung",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               about: { "@id": "https://www.opny.ai/produkte/nodex#software" },
-              video: { "@id": "https://www.opny.ai/produkte/nodex#produktvideo" },
+              video: {
+                "@id": "https://www.opny.ai/produkte/nodex#produktvideo",
+              },
               inLanguage: "de-DE",
             },
             {
@@ -82,7 +96,8 @@ export default function NodeXPage() {
               isPartOf: { "@id": "https://www.opny.ai/produkte/nodex#webpage" },
               audience: {
                 "@type": "BusinessAudience",
-                audienceType: "Automotive-Zulieferer Tier-1 bis Tier-3",
+                audienceType:
+                  "Unternehmen mit vertraulichen Daten und Anforderungen an kontrollierte KI-Nutzung",
               },
               additionalProperty: {
                 "@type": "PropertyValue",
@@ -101,7 +116,7 @@ export default function NodeXPage() {
                 "https://www.opny.ai/media/nodex/marketing-opny-nodex-poster.jpg",
               contentUrl:
                 "https://www.opny.ai/media/nodex/marketing-opny-nodex.MP4",
-              uploadDate: "2026-07-29",
+              uploadDate: "2026-07-29T16:50:10+02:00",
               duration: "PT21.55S",
               isPartOf: { "@id": "https://www.opny.ai/produkte/nodex#webpage" },
             },
@@ -121,43 +136,28 @@ export default function NodeXPage() {
         }}
       />
 
-      <Region spacing="hero">
-        <Breadcrumbs
-          items={[
-            { label: "Startseite", href: "/" },
-            { label: "Produkte", href: "/produkte" },
-            { label: "NodeX", href: "/produkte/nodex" },
-          ]}
-        />
-        <div className="mx-auto mt-10 max-w-5xl text-center">
-          <div className="eyebrow">NodeX · Kontrollierter Zugang zu KI</div>
-          <h1 className="display-lg mt-6">
-            KI nutzen.
-            <span className="block text-[#86868b]">Modelle, Daten und Kosten kontrollieren.</span>
-          </h1>
-          <p className="lead-copy mx-auto mt-7 max-w-3xl">
-            NodeX gibt Mitarbeitenden einen zentralen Zugang zu freigegebenen
-            KI-Modellen. Unternehmensregeln, Rechte, Datennutzung und Kosten
-            werden dabei an einer Stelle zusammengeführt.
-          </p>
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href={companyCtas.nodexInquiry} variant="primary" theme="light">
-              NodeX-Einsatz besprechen
-            </Button>
-            <Button href="#kontrollmodell" variant="secondary" theme="light">
-              Kontrollmodell ansehen
-            </Button>
-          </div>
-          <p className="mt-5 text-sm text-text-muted-light">
-            Zwei freigegebene Kundenstimmen dokumentieren den Einsatz in
-            abgegrenzten Kundenkontexten. Das Produktvideo zeigt einen
-            freigegebenen Beispielablauf zum Schutz sensibler Begriffe.
-          </p>
+      <ProductHero
+        name="NodeX"
+        path="/produkte/nodex"
+        eyebrow="NodeX von Opny · Kontrollierter Zugang zu KI"
+        title="KI im Team nutzen."
+        accent="Zugänge, Daten und Kosten kontrollieren."
+        text="NodeX gibt Mitarbeitenden einen zentralen Zugang zu freigegebenen KI-Modellen. Unternehmensregeln, Rechte, Datennutzung und Kosten werden dabei an einer Stelle zusammengeführt."
+        primary={{
+          href: companyCtas.nodexInquiry,
+          label: "NodeX-Einsatz besprechen",
+        }}
+        secondary={{ href: "#kontrollmodell", label: "Arbeitsweise ansehen" }}
+        note="Modelle, Datenwege und Betriebsform werden passend zu Ihrer Systemumgebung festgelegt."
+        links={[
+          { href: "#produktvideo", label: "Produkteinblick" },
+          { href: "#kontrollmodell", label: "Funktionsweise" },
+        ]}
+      >
+        <div id="produktvideo" className="scroll-mt-24">
+          <NodeXPreview compact autoPlay />
         </div>
-        <div id="produktvideo" className="mx-auto mt-14 max-w-6xl scroll-mt-24">
-          <NodeXPreview autoPlay />
-        </div>
-      </Region>
+      </ProductHero>
 
       <Region id="kontrollmodell" tone="surface">
         <SectionIntro
@@ -173,9 +173,15 @@ export default function NodeXPage() {
                 index % 2 === 0 ? "md:border-r" : ""
               }`}
             >
-              <span className="text-sm font-semibold text-text-muted-light">0{index + 1}</span>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">{title}</h2>
-              <p className="mt-3 leading-relaxed text-text-muted-light">{text}</p>
+              <span className="text-sm font-semibold text-text-muted-light">
+                0{index + 1}
+              </span>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
+                {title}
+              </h2>
+              <p className="mt-3 leading-relaxed text-text-muted-light">
+                {text}
+              </p>
             </article>
           ))}
         </div>
@@ -185,14 +191,16 @@ export default function NodeXPage() {
         <div className="grid gap-12 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
           <figure className="media-stage bg-white p-4 sm:p-8">
             <GovernanceControlLayerDiagram className="h-auto w-full" />
-            <figcaption className="border-t border-black/[0.07] px-3 pt-4 text-xs leading-relaxed text-text-muted-light">
+            <figcaption className="border-t border-black/[0.07] px-3 pt-4 text-sm leading-relaxed text-text-muted-light">
               Funktionsmodell der Kontrollschicht. Konkrete Anbindungen richten
               sich nach der jeweiligen Systemumgebung.
             </figcaption>
           </figure>
           <div>
             <div className="eyebrow">Ein zentraler Zugang</div>
-            <h2 className="section-title mt-5">Zwischen Mitarbeitenden und KI-Modellen.</h2>
+            <h2 className="section-title mt-5">
+              Zwischen Mitarbeitenden und KI-Modellen.
+            </h2>
             <ol className="mt-8 space-y-5">
               {[
                 "Mitarbeitende erhalten passend zu ihrer Aufgabe einen freigegebenen Arbeitsbereich.",
@@ -200,9 +208,16 @@ export default function NodeXPage() {
                 "Der Schutzbedarf der Daten bestimmt, was eingegeben oder hochgeladen werden darf.",
                 "Nutzung und Kosten bleiben für die Verantwortlichen nachvollziehbar.",
               ].map((step, index) => (
-                <li key={step} className="grid grid-cols-[36px_1fr] gap-4 border-t border-black/[0.10] pt-5">
-                  <span className="text-sm font-semibold text-text-muted-light">0{index + 1}</span>
-                  <span className="leading-relaxed text-text-secondary-light">{step}</span>
+                <li
+                  key={step}
+                  className="grid grid-cols-[36px_1fr] gap-4 border-t border-black/[0.10] pt-5"
+                >
+                  <span className="text-sm font-semibold text-text-muted-light">
+                    0{index + 1}
+                  </span>
+                  <span className="leading-relaxed text-text-secondary-light">
+                    {step}
+                  </span>
                 </li>
               ))}
             </ol>
@@ -218,18 +233,41 @@ export default function NodeXPage() {
         />
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
-            ["01", "Erkennen", "Eine sensible Projektbezeichnung wird in der Anfrage erkannt."],
-            ["02", "Ersetzen", "NodeX ersetzt den Begriff vor der Übergabe an das externe KI-Modell durch ein Referenztoken."],
-            ["03", "Wiederherstellen", "Nach der Antwort stellt NodeX den ursprünglichen Kontext aus dem lokalen Vault wieder her."],
+            [
+              "01",
+              "Erkennen",
+              "Eine sensible Projektbezeichnung wird in der Anfrage erkannt.",
+            ],
+            [
+              "02",
+              "Ersetzen",
+              "NodeX ersetzt den Begriff vor der Übergabe an das externe KI-Modell durch ein Referenztoken.",
+            ],
+            [
+              "03",
+              "Wiederherstellen",
+              "Nach der Antwort stellt NodeX den ursprünglichen Kontext aus dem lokalen Vault wieder her.",
+            ],
           ].map(([number, title, text]) => (
-            <article key={number} className="rounded-3xl border border-black/[0.08] bg-white p-6 sm:p-7">
-              <span className="text-sm font-semibold text-text-muted-light">{number}</span>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">{title}</h2>
-              <p className="mt-3 leading-relaxed text-text-muted-light">{text}</p>
+            <article
+              key={number}
+              className="rounded-card border border-black/[0.08] bg-white p-6 sm:p-7"
+            >
+              <span className="text-sm font-semibold text-text-muted-light">
+                {number}
+              </span>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">
+                {title}
+              </h2>
+              <p className="mt-3 leading-relaxed text-text-muted-light">
+                {text}
+              </p>
             </article>
           ))}
         </div>
       </Region>
+
+      <CustomerVoice />
 
       <Region>
         <SectionIntro eyebrow="FAQ" title="Entscheidungsfragen zu NodeX" />

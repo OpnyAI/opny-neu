@@ -17,7 +17,7 @@ beantwortet sind.
 
 - Eine fachfremde Person versteht innerhalb weniger Sekunden, was Opny anbietet.
 - Fachbegriffe werden vermieden oder beim ersten Auftreten in Alltagssprache erklärt.
-- Opny bleibt die Dachmarke; TrustArch und NodeX sind klar abgegrenzte Produkte.
+- Opny bleibt die Dachmarke; AuthenticTrust und NodeX sind klar abgegrenzte Produkte.
 - Aussagen zu Kunden, Partnerschaften, Produktstatus, Zertifizierung und Integrationen
   benötigen einen belastbaren Nachweis und eine dokumentierte Freigabe.
 - Technologie-, Plattform- und Standardlogos werden nie als Kundenreferenzen gezeigt.

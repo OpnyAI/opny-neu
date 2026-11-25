@@ -45,7 +45,7 @@ export default function CustomerVoice() {
               className="h-full overflow-hidden rounded-card border border-black/[0.08] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.07)]"
             >
               <div className="grid h-full md:grid-cols-[0.37fr_0.63fr]">
-                <div className="relative hidden min-h-[420px] bg-[#e8eef5] md:block">
+                <div className="relative hidden min-h-[420px] bg-surface-light md:block">
                   <Image
                     src={testimonial.image}
                     alt={`Porträt von ${testimonial.name}`}
@@ -62,7 +62,7 @@ export default function CustomerVoice() {
 
                   <footer className="mt-10 border-t border-black/[0.09] pt-5">
                     <div className="flex items-center gap-4">
-                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-[#e8eef5] md:hidden">
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-surface-light md:hidden">
                         <Image
                           src={testimonial.image}
                           alt={`Porträt von ${testimonial.name}`}

@@ -42,7 +42,9 @@ export default function MobileNav({
   const [animateIn, setAnimateIn] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
-  const hasSecondaryInLinks = links.some((link) => link.href === secondaryCta.href);
+  const hasSecondaryInLinks = links.some(
+    (link) => link.href === secondaryCta.href,
+  );
   const secondaryIsExternal =
     secondaryCta.href.startsWith("mailto:") ||
     secondaryCta.href.startsWith("tel:") ||
@@ -50,7 +52,13 @@ export default function MobileNav({
   const handleClose = useCallback(() => {
     setOpenGroup(null);
     onClose();
-    window.requestAnimationFrame(() => returnFocusRef?.current?.focus());
+    window.requestAnimationFrame(() => {
+      const trigger = returnFocusRef?.current;
+      const target = trigger?.getClientRects().length
+        ? trigger
+        : document.querySelector<HTMLElement>(".site-header-brand");
+      target?.focus({ preventScroll: true });
+    });
   }, [onClose, returnFocusRef]);
 
   const renderNavLink = (link: MobileNavLink) => {
@@ -63,7 +71,7 @@ export default function MobileNav({
         link.items.some((item) => pathname === item.href);
       const groupIsOpen =
         openGroup === link.href || (openGroup === null && isActive);
-      const panelId = `mobile-nav-${link.label.toLowerCase()}`;
+      const panelId = `mobile-nav-${link.href.replace(/[^a-z0-9]+/gi, "-")}`;
 
       return (
         <div className="border-b border-border-subtle-light/15">
@@ -73,7 +81,9 @@ export default function MobileNav({
             aria-controls={panelId}
             onClick={() =>
               setOpenGroup((current) =>
-                current === link.href ? null : link.href,
+                current === link.href || (current === null && isActive)
+                  ? ""
+                  : link.href,
               )
             }
             className={`flex min-h-12 w-full items-center justify-between gap-4 px-1 py-4 text-left text-[17px] font-medium transition ${
@@ -103,13 +113,12 @@ export default function MobileNav({
                       href={item.href}
                       onClick={handleClose}
                       aria-current={itemIsActive ? "page" : undefined}
-                      className={`block min-h-11 rounded-2xl px-4 py-3 text-[15px] transition ${
+                      className={`block min-h-11 rounded-card px-4 py-3 text-[15px] transition ${
                         itemIsActive
                           ? "bg-black/[0.04] text-text-primary-light"
                           : "text-text-muted-light hover:bg-black/[0.03] hover:text-text-primary-light"
                       }`}
                     >
-                      <span className="mr-2 text-text-secondary-light">→</span>
                       {item.label}
                     </Link>
                   );
@@ -225,25 +234,25 @@ export default function MobileNav({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, handleClose]);
 
-  // 3) Initial focus + close on lg+
+  // The effective header layout depends on both space and text size.
   useEffect(() => {
     if (!open) return;
 
     closeButtonRef.current?.focus();
-
-    const mq = window.matchMedia("(min-width: 1024px)");
-    if (mq.matches) {
-      onClose();
-      return;
-    }
-
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) handleClose();
+    const trigger = returnFocusRef?.current;
+    const closeWhenTriggerHidden = () => {
+      if (trigger && trigger.getClientRects().length === 0) handleClose();
     };
+    closeWhenTriggerHidden();
 
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, [open, handleClose, onClose]);
+    const observer = new ResizeObserver(closeWhenTriggerHidden);
+    if (trigger) observer.observe(trigger);
+    window.addEventListener("resize", closeWhenTriggerHidden);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", closeWhenTriggerHidden);
+    };
+  }, [open, handleClose, returnFocusRef]);
 
   // 4) Drawer animation
   useEffect(() => {
@@ -265,7 +274,7 @@ export default function MobileNav({
       role="dialog"
       aria-modal="true"
       aria-label="Menü"
-      className="fixed inset-x-0 bottom-0 top-14 z-[999] overflow-hidden lg:hidden"
+      className="fixed inset-0 z-[999] overflow-hidden"
       onClick={handleClose}
     >
       <div className="absolute inset-0 bg-white/80 backdrop-blur-xl" />
@@ -276,7 +285,7 @@ export default function MobileNav({
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex max-h-[calc(100dvh-3.5rem)] flex-col overflow-y-auto px-5 pb-6 pt-4">
+        <div className="flex max-h-[100dvh] flex-col overflow-y-auto px-5 pb-6 pt-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image
@@ -313,15 +322,16 @@ export default function MobileNav({
               <a
                 href={cta.href}
                 onClick={handleClose}
-                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+                className="button button-primary w-full"
               >
                 {cta.label}
               </a>
             ) : (
               <Link
                 href={cta.href}
+                prefetch={false}
                 onClick={handleClose}
-                className="flex w-full items-center justify-center rounded-full bg-text-primary-light px-5 py-4 text-base font-semibold text-white shadow-card-light"
+                className="button button-primary w-full"
               >
                 {cta.label}
               </Link>
@@ -332,7 +342,7 @@ export default function MobileNav({
                 <a
                   href={secondaryCta.href}
                   onClick={handleClose}
-                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                  className="button button-secondary w-full"
                 >
                   {secondaryCta.label}
                 </a>
@@ -340,7 +350,7 @@ export default function MobileNav({
                 <Link
                   href={secondaryCta.href}
                   onClick={handleClose}
-                  className="flex w-full items-center justify-center rounded-full border border-border-subtle-light/25 bg-white px-5 py-4 text-base font-semibold text-text-primary-light shadow-card-light"
+                  className="button button-secondary w-full"
                 >
                   {secondaryCta.label}
                 </Link>

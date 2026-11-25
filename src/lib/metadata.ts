@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const siteUrl = "https://www.opny.ai";
 const socialImage = {
-  url: `${siteUrl}/media/opny/automotive-quality-inspection-v2.jpg`,
-  width: 1672,
-  height: 941,
-  alt: "Qualitätsprüfung eines bearbeiteten Aluminiumgehäuses bei einem Automotive-Zulieferer",
+  url: `${siteUrl}/opny-brand-icon-1024.png`,
+  width: 1024,
+  height: 1024,
+  alt: "Opny – AuthenticTrust, NodeX, Beratung und Schulung",
 };
 
 export function createMetadata({

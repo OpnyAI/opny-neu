@@ -2,16 +2,15 @@
 
 import type React from "react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  contactInterests,
+  normalizeContactInterest,
+} from "@/lib/contact-interest";
 
-export const interests = [
-  "TrustArch Demo",
-  "NodeX Einsatz",
-  "KI-Beratung Automotive",
-  "KI-Schulung Automotive",
-  "KI-Governance-Check",
-  "Allgemeine Anfrage",
-] as const;
+import { trackEvent, trackLead, productForInterest } from "@/lib/tracking";
+
+export const interests = contactInterests;
 
 const companySizes = [
   "1-50 Mitarbeitende",
@@ -51,19 +50,24 @@ export default function ContactForm({
 }: {
   initialInterest?: string;
 }) {
-  const selectedInterest =
-    initialInterest && interests.includes(initialInterest as Interest)
-      ? (initialInterest as Interest)
-      : initialState.interest;
+  const normalizedInterest = normalizeContactInterest(initialInterest ?? "");
+  const selectedInterest = interests.includes(normalizedInterest as Interest)
+    ? (normalizedInterest as Interest)
+    : initialState.interest;
   const [form, setForm] = useState<FormState>(() => ({
     ...initialState,
     interest: selectedInterest,
   }));
+  const startedRef = useRef(false);
+  const submittingRef = useRef(false);
   const [renderedAt, setRenderedAt] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<"name" | "company", string>>
+  >({});
 
   useEffect(() => {
     setRenderedAt(String(Date.now()));
@@ -77,27 +81,73 @@ export default function ContactForm({
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
+    if (key === "name" || key === "company")
+      setFieldErrors((current) => ({ ...current, [key]: undefined }));
   }
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("submitting");
+    if (submittingRef.current) return;
     setError("");
+    const cleaned = {
+      ...form,
+      name: form.name.trim(),
+      company: form.company.trim(),
+      email: form.email.trim(),
+    };
+    const invalid: Partial<Record<"name" | "company", string>> = {};
+    if (cleaned.name.length < 2)
+      invalid.name =
+        "Bitte geben Sie Ihren Namen mit mindestens zwei Zeichen ein.";
+    if (cleaned.company.length < 2)
+      invalid.company =
+        "Bitte geben Sie Ihr Unternehmen mit mindestens zwei Zeichen ein.";
+    setFieldErrors(invalid);
+    const firstInvalid = invalid.name
+      ? "name"
+      : invalid.company
+        ? "company"
+        : null;
+    if (firstInvalid) {
+      trackEvent("form_validation_error", {
+        form_id: "opny_contact",
+        field_name: firstInvalid,
+        error_type: "invalid",
+      });
+      setStatus("error");
+      setError(invalid[firstInvalid]!);
+      event.currentTarget
+        .querySelector<HTMLInputElement>(`#${firstInvalid}`)
+        ?.focus();
+      return;
+    }
+    submittingRef.current = true;
+    setStatus("submitting");
 
     try {
       const response = await fetch("/api/nodex-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, renderedAt }),
+        body: JSON.stringify({ ...cleaned, renderedAt }),
       });
-      const result = (await response.json().catch(() => null)) as
-        | { ok?: boolean }
-        | null;
+      const result = (await response.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+        leadAccepted?: boolean;
+      } | null;
 
+      if (result?.error === "too_fast") {
+        setStatus("error");
+        setError(
+          "Bitte warten Sie einen kurzen Moment und senden Sie Ihre Anfrage erneut.",
+        );
+        return;
+      }
       if (!response.ok || result?.ok !== true) {
         throw new Error("request_failed");
       }
 
+      if (result.leadAccepted === true) trackLead(form.interest);
       setStatus("success");
       setForm({ ...initialState, interest: form.interest });
       setRenderedAt(String(Date.now()));
@@ -106,6 +156,12 @@ export default function ContactForm({
       setError(
         "Die Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@opny.ai.",
       );
+      trackEvent("form_submit_error", {
+        form_id: "opny_contact",
+        error_type: "request_failed",
+      });
+    } finally {
+      submittingRef.current = false;
     }
   }
 
@@ -120,7 +176,35 @@ export default function ContactForm({
         </div>
       ) : null}
 
-      <form className="space-y-5" onSubmit={onSubmit}>
+      <form
+        className="space-y-5"
+        onSubmit={onSubmit}
+        onChangeCapture={() => {
+          if (!startedRef.current)
+            startedRef.current = trackEvent("form_start", {
+              form_id: "opny_contact",
+              product: productForInterest(form.interest),
+            });
+        }}
+        onInvalidCapture={(event) => {
+          const name = (event.target as HTMLInputElement).name;
+          if (
+            ["name", "company", "email", "companySize", "privacy"].includes(
+              name,
+            )
+          )
+            trackEvent("form_validation_error", {
+              form_id: "opny_contact",
+              field_name: name as
+                | "name"
+                | "company"
+                | "email"
+                | "companySize"
+                | "privacy",
+              error_type: "invalid",
+            });
+        }}
+      >
         <div className="hidden" aria-hidden="true">
           <label htmlFor="website">Website</label>
           <input
@@ -140,23 +224,41 @@ export default function ContactForm({
             <input
               id="name"
               name="name"
+              minLength={2}
+              aria-invalid={Boolean(fieldErrors.name)}
+              aria-describedby={fieldErrors.name ? "name-error" : undefined}
               required
               autoComplete="name"
               value={form.name}
               onChange={(event) => update("name", event.target.value)}
               className="field-input"
             />
+            {fieldErrors.name ? (
+              <p id="name-error" className="mt-2 text-sm text-red-900">
+                {fieldErrors.name}
+              </p>
+            ) : null}
           </Field>
           <Field label="Unternehmen" htmlFor="company" required>
             <input
               id="company"
               name="company"
+              minLength={2}
+              aria-invalid={Boolean(fieldErrors.company)}
+              aria-describedby={
+                fieldErrors.company ? "company-error" : undefined
+              }
               required
               autoComplete="organization"
               value={form.company}
               onChange={(event) => update("company", event.target.value)}
               className="field-input"
             />
+            {fieldErrors.company ? (
+              <p id="company-error" className="mt-2 text-sm text-red-900">
+                {fieldErrors.company}
+              </p>
+            ) : null}
           </Field>
         </div>
 
@@ -210,7 +312,9 @@ export default function ContactForm({
               name="interest"
               required
               value={form.interest}
-              onChange={(event) => update("interest", event.target.value as Interest)}
+              onChange={(event) =>
+                update("interest", event.target.value as Interest)
+              }
               className="field-input"
             >
               {interests.map((interest) => (
@@ -231,13 +335,18 @@ export default function ContactForm({
             value={form.message}
             onChange={(event) => update("message", event.target.value)}
             className="field-input resize-y"
-            placeholder="Zum Beispiel: Auditdruck, Schatten-KI, parallele Standards oder geplanter KI-Einsatz."
+            placeholder={
+              form.interest === "AuthenticTrust Demo"
+                ? "Zum Beispiel: Unsere Dokumente und Nachweise liegen in mehreren Ordnern. Wir möchten aktuelle Fassungen, offene Punkte und Zuständigkeiten gemeinsam bearbeiten."
+                : "Beschreiben Sie kurz Ihre Ausgangslage und den gewünschten nächsten Schritt."
+            }
           />
         </Field>
 
         <label className="flex items-start gap-3 text-sm leading-relaxed text-text-muted-light">
           <input
             type="checkbox"
+            name="privacy"
             required
             checked={form.privacy}
             onChange={(event) => update("privacy", event.target.checked)}
@@ -245,7 +354,10 @@ export default function ContactForm({
           />
           <span>
             Ich habe die{" "}
-            <Link href="/datenschutz" className="font-semibold text-text-primary-light underline">
+            <Link
+              href="/datenschutz"
+              className="font-semibold text-text-primary-light underline"
+            >
               Datenschutzhinweise
             </Link>{" "}
             gelesen und stimme der Verarbeitung zur Kontaktaufnahme zu.
@@ -253,7 +365,10 @@ export default function ContactForm({
         </label>
 
         {status === "error" ? (
-          <p className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900" role="alert">
+          <p
+            className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+            role="alert"
+          >
             {error}
           </p>
         ) : null}
@@ -261,9 +376,13 @@ export default function ContactForm({
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex w-full items-center justify-center rounded-button bg-text-primary-light px-5 py-3 text-sm font-semibold text-white shadow-card-light transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="button button-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
-          {status === "submitting" ? "Wird gesendet …" : "Anfrage senden"}
+          {status === "submitting"
+            ? "Wird gesendet …"
+            : form.interest === "AuthenticTrust Demo"
+              ? "AuthenticTrust-Demo anfragen"
+              : "Anfrage senden"}
         </button>
       </form>
     </div>
@@ -282,7 +401,10 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block space-y-2 text-sm font-medium text-text-primary-light">
+    <label
+      htmlFor={htmlFor}
+      className="block space-y-2 text-sm font-medium text-text-primary-light"
+    >
       <span>
         {label}
         {required ? <span aria-hidden="true"> *</span> : null}

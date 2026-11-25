@@ -27,7 +27,7 @@ export default function FaqList({
               aria-controls={`${faqId}-answer`}
               className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-lg font-semibold tracking-[-0.02em] text-text-primary-light marker:content-none md:text-xl"
             >
-              {faq.question}
+              <span className="min-w-0 break-words">{faq.question}</span>
               <span
                 aria-hidden="true"
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black/[0.04] text-xl font-light transition group-open:rotate-45"
@@ -37,7 +37,7 @@ export default function FaqList({
             </summary>
             <p
               id={`${faqId}-answer`}
-              className="max-w-3xl pb-7 pr-12 leading-relaxed text-text-muted-light"
+              className="max-w-3xl break-words pb-7 leading-relaxed text-text-muted-light sm:pr-12"
             >
               {faq.answer}
             </p>

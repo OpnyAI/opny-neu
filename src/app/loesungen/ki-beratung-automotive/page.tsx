@@ -13,8 +13,8 @@ export default function KiBeratungAutomotivePage() {
   return (
     <SolutionPage
       path="/loesungen/ki-beratung-automotive"
-      eyebrow="KI-Beratung Automotive"
-      title="KI-Beratung für Automotive. Vom Use Case zum Pilotplan."
+      eyebrow="KI-Beratung für Automotive-Zulieferer"
+      title="KI-Beratung für Automotive-Zulieferer. Vom konkreten Problem zum Praxistest."
       intro="Opny hilft Automobilzulieferern, eine konkrete KI-Anwendung zu bewerten und einen begrenzten Praxistest vorzubereiten: mit klaren Datenregeln, Verantwortlichen und Erfolgskriterien."
       primaryCta={{ label: "Erstgespräch anfragen", href: companyCtas.consultingInquiry }}
       secondaryCta={{ label: "Automotive-Lösung ansehen", href: "/automotive" }}

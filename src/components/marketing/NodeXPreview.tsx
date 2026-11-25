@@ -43,8 +43,8 @@ export default function NodeXPreview({
   }, [autoPlay]);
 
   return (
-    <figure className="media-stage overflow-hidden bg-[#080b10] text-white">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4 text-xs font-semibold text-white/65 sm:px-7">
+    <figure className="media-stage overflow-hidden bg-[rgb(var(--accent-deep))] text-white">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4 text-sm font-semibold text-white/65 sm:px-7">
         <span>NodeX · Produkteinblick</span>
         <span className="rounded-full border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-1.5 text-emerald-100/80">
           Geschützter Datenfluss
@@ -66,8 +66,8 @@ export default function NodeXPreview({
               Sensible Begriffe werden vor der Modellanfrage ersetzt.
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-white/60">
-              Der gezeigte Ablauf maskiert eine Projektbezeichnung, übergibt
-              nur das Referenztoken an das externe KI-Modell und stellt den
+              Der gezeigte Ablauf maskiert eine Projektbezeichnung, übergibt nur
+              das Referenztoken an das externe KI-Modell und stellt den
               ursprünglichen Kontext anschließend lokal wieder her.
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function NodeXPreview({
           poster={posterPath}
           aria-label="NodeX-Produkteinblick zum Schutz einer sensiblen Projektbezeichnung"
           aria-describedby="nodex-product-video-description"
-          className="mx-auto h-auto w-full max-w-[440px] rounded-[1.6rem] border border-white/10 bg-black shadow-[0_28px_90px_-42px_rgba(20,184,166,0.45)]"
+          className="mx-auto h-auto w-full max-w-[440px] rounded-card border border-white/10 bg-black shadow-xl"
         >
           <source src={videoPath} type="video/mp4" />
           <a href={videoPath}>NodeX-Produktvideo öffnen</a>
@@ -90,7 +90,7 @@ export default function NodeXPreview({
       </div>
       <figcaption
         id="nodex-product-video-description"
-        className="border-t border-white/10 px-5 py-4 text-xs leading-relaxed text-white/65 sm:px-7"
+        className="border-t border-white/10 px-5 py-4 text-sm leading-relaxed text-white/65 sm:px-7"
       >
         Der 22-sekündige Produkteinblick zeigt einen freigegebenen
         Beispielablauf: NodeX ersetzt eine sensible Projektbezeichnung vor der

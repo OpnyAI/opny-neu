@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImageZoom from "./ImageZoom";
 
 type MediaStageProps = {
   src: string;
@@ -6,6 +7,7 @@ type MediaStageProps = {
   width: number;
   height: number;
   mobileSrc?: string;
+  zoom?: boolean;
   label?: string;
   status?: string;
   caption?: string;
@@ -25,6 +27,7 @@ export default function MediaStage({
   width,
   height,
   mobileSrc,
+  zoom = false,
   label,
   status,
   caption,
@@ -33,32 +36,47 @@ export default function MediaStage({
   className,
   imageClassName,
 }: MediaStageProps) {
+  const picture = (
+    <picture>
+      {mobileSrc ? (
+        <source media="(max-width: 639px)" srcSet={mobileSrc} />
+      ) : null}
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={priority}
+        sizes={sizes}
+        className={cn("h-auto w-full", imageClassName)}
+      />
+    </picture>
+  );
   return (
     <figure className={cn("media-stage", className)}>
       {label || status ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/[0.07] px-5 py-4 text-xs font-semibold text-text-muted-light sm:px-7">
+        <div className="media-label">
           <span>{label}</span>
-          {status ? (
-            <span className="rounded-full border border-black/[0.08] bg-black/[0.03] px-3 py-1.5">
-              {status}
-            </span>
-          ) : null}
+          {status ? <span className="media-status">{status}</span> : null}
         </div>
       ) : null}
-      <picture>
-        {mobileSrc ? <source media="(max-width: 639px)" srcSet={mobileSrc} /> : null}
-        <Image
+      {zoom ? (
+        <ImageZoom
           src={src}
           alt={alt}
           width={width}
           height={height}
-          priority={priority}
-          sizes={sizes}
-          className={cn("h-auto w-full", imageClassName)}
-        />
-      </picture>
+          label={label}
+          status={status}
+          caption={caption}
+        >
+          {picture}
+        </ImageZoom>
+      ) : (
+        picture
+      )}
       {caption ? (
-        <figcaption className="border-t border-black/[0.07] px-5 py-4 text-xs leading-relaxed text-text-muted-light sm:px-7">
+        <figcaption className="media-caption">
           {caption}
         </figcaption>
       ) : null}

@@ -1,32 +1,50 @@
 # Opny
 
-> Opny unterstützt Automotive-Zulieferer vom Tier-1 bis Tier-3 im DACH-Raum dabei, KI kontrolliert einzuführen und nachweisbar zu steuern.
+> Opny unterstützt Unternehmen in Industrie, Technologie und Dienstleistungen im DACH-Raum bei Managementsystemen, Compliance und kontrollierter KI-Nutzung.
 
-Opny verbindet drei Ebenen: organisatorische Kontrolle und Nachweise, technische Kontrolle der tatsächlichen KI-Nutzung sowie Beratung und Schulung für Prozesse und Teams.
+Der Schwerpunkt der Startseite ist AuthenticTrust: Opnys Compliance-Software für TISAX-Vorbereitung und Managementsysteme. Sie verbindet Anforderungen, eigene Dokumente, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen in einem gemeinsamen Arbeitsraum. TISAX ist ein konkreter Anwendungsfall für die Prüfung der Informationssicherheit. Der nächste Schritt ist eine persönliche Produktdemo.
+
+AuthenticTrust und NodeX sind getrennte Produkte der Dachmarke Opny. Beratung und Schulung ergänzen das Angebot.
 
 ## Zentrale Seiten
 
-- [Startseite](https://www.opny.ai/): Positionierung und vollständiger Opny-Ansatz
+- [Startseite](https://www.opny.ai/): AuthenticTrust: Dokumente und Nachweise im Griff, Aufgaben klar verteilt; Produktansichten, Ablauf und Demo-Anfrage
 - [Automotive-Branchenlösung](https://www.opny.ai/automotive): Kontrollierte KI-Einführung für Automobilzulieferer und Automotive-Lieferanten
 - [KI-Governance Automotive](https://www.opny.ai/ki-governance-automotive): Inventar, Rollen, Richtlinien, Freigaben, technische Kontrollen und Nachweise
 - [Leitfaden: KI im Unternehmen einführen](https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren): Sieben Schritte von der Use-Case-Auswahl über Daten, Governance und Pilot bis zu Schulung und kontrolliertem Betrieb
-- [Produktübersicht](https://www.opny.ai/produkte): Abgrenzung zwischen TrustArch und NodeX
+- [Produktübersicht](https://www.opny.ai/produkte): Abgrenzung zwischen AuthenticTrust und NodeX
 - [Über Opny](https://www.opny.ai/ueber-opny): Gründer- und Automotive-Erfahrung
 - [Kontakt](https://www.opny.ai/kontakt): Demo oder Erstgespräch anfragen
 
 ## Produkte
 
-- [TrustArch](https://www.opny.ai/produkte/trustarch): Verfügbares Opny-Produkt für Anforderungen, Nachweise, Risiken, Maßnahmen und Auditvorbereitung
+- [TISAX-Software](https://www.opny.ai/tisax-software): Anforderungen, Dokumente, Nachweise und Maßnahmen für die TISAX-Vorbereitung organisieren; Software unterstützt, externe Prüfstellen bewerten
+- [ISO 27001-Software](https://www.opny.ai/iso-27001-software): Informationssicherheitsanforderungen, Richtlinien, Nachweise und Maßnahmen gemeinsam bearbeiten; verfügbare Normausgabe vorab klären
+- [ISO 9001-Software](https://www.opny.ai/iso-9001-software): Qualitätsanforderungen, Prozessdokumente, Versionen, Freigaben und Maßnahmen organisieren; verfügbare Normausgabe vorab klären
+- [NIS2-Software](https://www.opny.ai/nis2-software): Ausgewählte Cybersicherheitsanforderungen mit Unterlagen und Maßnahmen verbinden; kein vollständiges NIS2-Fachmodul oder Meldeportal
+- [SOC 2-Software](https://www.opny.ai/soc-2-software): Nachweise und Aufgaben zu ausgewählten Kriterien strukturieren; kein vollständiges SOC-2-Fachmodul oder ausgestellter Prüfbericht
+- [DSGVO-Software](https://www.opny.ai/dsgvo-software): Unterlagen und Maßnahmen zu ausgewählten Datenschutzanforderungen organisieren; kein vollständiges Datenschutz-Fachmodul oder Einwilligungsmanagement
+- [AuthenticTrust](https://www.opny.ai/produkte/authentictrust): KI-gestützte Software für Managementsysteme und Compliance; verbindet Anforderungen, Dokumentversionen, Freigaben, Nachweise, Risiken und Maßnahmen
 - [NodeX](https://www.opny.ai/produkte/nodex): Fertiges Opny-Produkt für kontrollierte KI-Nutzung mit freigegebenen Zugängen, Rechten, Datenregeln sowie Überblick über Nutzung und Kosten
 
 ## Leistungen
 
+- [Beratung, Schulung und Governance für Unternehmen](https://www.opny.ai/loesungen): Branchenübergreifender Einstieg nach Anforderungen und Ausgangslage
+
 - [KI-Beratung für Automotive-Zulieferer](https://www.opny.ai/loesungen/ki-beratung-automotive): KI-Strategie, Use-Case-Auswahl, Governance, Datenklassen und kontrollierte Pilotplanung
 - [KI-, ChatGPT- und Gemini-Schulungen für Automotive](https://www.opny.ai/loesungen/ki-schulungen-automotive): Inhouse-Workshops, Online-Schulungen und KI-Coaching für ChatGPT, Google Gemini, Microsoft Copilot und interne KI-Zugänge
 
+## Arbeitsweise von AuthenticTrust
+
+- Intern erstellte Dokumente können mit Versionen, Zuständigkeiten und fachlicher Freigabe bearbeitet werden.
+- PDF-Nachweise werden mit Anforderungen und Gültigkeit verbunden; sie haben nicht denselben Freigabeablauf wie intern erstellte Dokumente.
+- Bewertungen, offene Punkte, Risiken und Maßnahmen werden nachvollziehbar zusammengeführt. Fachpersonen prüfen Ergebnisse und entscheiden.
+- Demo-Oberflächen und sichtbare Integrationssymbole sind kein Nachweis produktiver Anbindungen. Es wird keine vollständige Abdeckung aller Normen, eigenständige KI-Freigabe oder garantierte Zertifizierung zugesagt.
+
 ## Wichtige Einordnung
 
-- TrustArch ist ein verfügbares Opny-Produkt. Die veröffentlichten Ansichten und der Produktrundgang verwenden fiktive Beispieldaten. Einsatzumfang und konkrete Integrationen werden individuell geklärt; TrustArch ersetzt weder Rechtsberatung noch eine Zertifizierungsstelle.
+- AuthenticTrust ist ein verfügbares Opny-Produkt. Als Anforderungskataloge sind TISAX, ISO/IEC 27001 für Informationssicherheit und ISO 9001 für Qualitätsmanagement beschrieben. Für NIS2, SOC 2 und DSGVO gibt es ausgewählte Anforderungen; diese sind keine vollständigen eigenständigen Fachmodule. Verfügbare Kataloge, Normausgaben und Funktionen werden vor dem Einsatz geklärt.
+- Die veröffentlichten AuthenticTrust-Ansichten verwenden fiktive Beispieldaten. Regelbasierte Bewertung, KI-Textunterstützung und fachliche Entscheidungen sind getrennt. Regeln unterstützen die Einordnung des Bearbeitungsstands; KI kann bei Textformulierungen helfen. Fachprüfung, Freigabe und Verantwortung bleiben beim Menschen. AuthenticTrust ersetzt weder Fachbeauftragte, Auditoren, Rechtsberatung noch eine Zertifizierungsstelle.
 - NodeX ist ein fertig entwickeltes Opny-Produkt. Ein freigegebenes Produktvideo und zwei Kundenstimmen dokumentieren den Einsatz. Modelle, Datenpfade, Regeln und Betriebsform werden passend zur jeweiligen Kundenumgebung festgelegt.
 - Opny ersetzt weder Rechtsberatung noch Zertifizierungsstellen.
 

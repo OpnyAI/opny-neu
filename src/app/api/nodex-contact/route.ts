@@ -1,20 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createHash } from "node:crypto";
 import {
-  readContactEmailConfig,
-  sendResendEmail,
-} from "@/lib/contact-email";
+  contactInterests,
+  normalizeContactInterest,
+} from "@/lib/contact-interest";
+import { readContactEmailConfig, sendResendEmail } from "@/lib/contact-email";
 
 export const runtime = "nodejs";
 
-const interests = new Set([
-  "TrustArch Demo",
-  "NodeX Einsatz",
-  "KI-Beratung Automotive",
-  "KI-Schulung Automotive",
-  "KI-Governance-Check",
-  "Allgemeine Anfrage",
-]);
+const interests = new Set<string>(contactInterests);
 
 const companySizes = new Set([
   "1-50 Mitarbeitende",
@@ -104,8 +98,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
-    if (!Number.isFinite(renderedAt) || Date.now() - renderedAt < MIN_SUBMIT_TIME_MS) {
-      return NextResponse.json({ ok: true });
+    if (
+      !Number.isFinite(renderedAt) ||
+      Date.now() - renderedAt < MIN_SUBMIT_TIME_MS
+    ) {
+      // A real visitor must never see a success message for an unsent request.
+      return NextResponse.json(
+        { ok: false, error: "too_fast" },
+        { status: 429 },
+      );
     }
 
     const name = trim(body.name);
@@ -113,7 +114,7 @@ export async function POST(request: NextRequest) {
     const email = trim(body.email).toLowerCase();
     const phone = trim(body.phone);
     const companySize = trim(body.companySize);
-    const interest = trim(body.interest);
+    const interest = normalizeContactInterest(trim(body.interest));
     const message = trim(body.message).slice(0, 1500);
     const privacy = body.privacy === true;
     const submittedAt = new Date().toISOString();
@@ -172,7 +173,7 @@ export async function POST(request: NextRequest) {
     const confirmationHtml = `
       <p>Hallo ${escapeHtml(name)},</p>
       <p>vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und melden uns bei Ihnen zurück.</p>
-      <p>Je nach Anliegen prüfen wir vorab, ob es um TrustArch, NodeX, KI-Beratung, KI-Schulung oder KI-Governance geht, damit wir das Gespräch sinnvoll vorbereiten können.</p>
+      <p>Je nach Anliegen prüfen wir vorab, ob es um AuthenticTrust, NodeX, KI-Beratung, KI-Schulung oder KI-Governance geht, damit wir das Gespräch sinnvoll vorbereiten können.</p>
       <p>Viele Grüße<br />Opny</p>
     `;
 
@@ -210,7 +211,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, leadAccepted: true });
   } catch (error) {
     console.error("Opny contact request failed.", error);
     return NextResponse.json({ ok: false }, { status: 500 });

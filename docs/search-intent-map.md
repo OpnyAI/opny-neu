@@ -1,230 +1,45 @@
-# Opny Search-Intent-Map
+# Opny: Suchintention und interne Verlinkung
 
-Stand: 29. Juli 2026
+Stand: 23. November 2026. Aktualisiert auf AuthenticTrust, branchenoffene Ansprache und ein gemeinsames Webdesign. Diese Zuordnung ist eine inhaltliche Planung, kein Nachweis bestimmter Suchvolumina oder Rankings.
 
-Markt: Deutschland und DACH
+| Seite | Primäre Frage / Suchintention | Inhalt und Verlinkung |
+| --- | --- | --- |
+| Startseite | Wie bekomme ich Dokumente, Nachweise und offene Aufgaben für mein Managementsystem gemeinsam in den Blick? | Konkreter Nutzen, Produkteinblicke, Problem/Lösung, Eignung, FAQ, Demo; Link zur Produktvertiefung |
+| TISAX-Software | Welche Software unterstützt die Vorbereitung einer TISAX-Prüfung? | Eigener Anwendungsfall unter `/tisax-software`, Arbeitsweg, Produktbeispiel, Grenzen und Demo |
+| AuthenticTrust | Wie funktioniert AuthenticTrust als Software für Managementsysteme? | Anforderungen, eigene Dokumente/Freigaben, PDF-Nachweise, Bewertungen, Risiken/Maßnahmen; Regeln vs KI vs menschliche Entscheidung |
+| NodeX | Wie kontrolliert ein Unternehmen KI-Zugänge, Daten und Kosten? | Eigene Produktseite mit passender Demo, Funktionsmodell und belegten NodeX-Stimmen |
+| Produktvergleich | Welches Opny-Produkt passt zu meiner Aufgabe? | Kurzer Zweiproduktvergleich, direkte Produktlinks |
+| Leistungen | Welche KI-Beratung oder Schulung passt zu meinem Unternehmen? | Allgemeiner Hub und branchenspezifische Vertiefung |
+| Automotive | Welche Unterstützung passt zu Automotive-Zulieferern? | Konkreter Branchenkontext mit Links zu Produkten und spezialisierten Leistungen |
+| Leitfaden | Wie führt man KI im Unternehmen schrittweise ein? | Allgemeiner Ratgeber mit sieben Schritten, Quellen und Beratungseinstieg |
+| Über Opny | Wer steht hinter Opny, AuthenticTrust und NodeX? | Dachmarke, Produktabgrenzung, Gründererfahrung |
+| Kontakt | Wie frage ich eine AuthenticTrust-Demo oder ein Gespräch an? | Passende Vorauswahl und nachvollziehbare Anfrage |
 
-Zielgruppe: Automotive-Zulieferer, Automobilzulieferer und industrielle Mittelständler
+## Natürliche Begriffe
 
-## Methodik und Grenzen
+AuthenticTrust, Opny, Software für Managementsysteme, Anforderungen, Dokumente, Freigaben, PDF-Nachweise, Bewertungen, Risiken und Maßnahmen. TISAX ist ein konkreter Anwendungsfall für Informationssicherheit und wird in Alltagssprache erklärt. Die Plattform wird nicht auf TISAX-Ablage reduziert. Begriffe werden für die Nutzerfrage eingesetzt, nicht zu Keywordlisten auf öffentlichen Seiten zusammengestellt.
 
-Die Seitenstruktur folgt den aktuellen offiziellen Google-Empfehlungen für hilfreiche, verlässliche und nutzerorientierte Inhalte. Für AI Overviews und AI Mode sind keine besonderen KI-Tags erforderlich. Entscheidend bleiben zugänglicher Text, klare interne Verlinkung, passende Medien, belegbare Aussagen und strukturierte Daten, die mit dem sichtbaren Inhalt übereinstimmen.
+## Technische Grundlage und AEO/LLMO
 
-Google hat die Darstellung von FAQ-Rich-Results am 7. Mai 2026 eingestellt.
-Die bestehenden `FAQPage`-Daten bleiben deshalb nur als deckungsgleiche
-schema.org-Semantik bestehen; sie werden nicht als besonderer Google-, AEO-
-oder Rankinghebel bewertet. Maßgeblich sind die sichtbaren, eigenständig
-verständlichen Antworten. Ohne Search-Console- oder Keyword-Planner-Daten
-werden Fragen als aktuelle Such- und Formulierungssignale priorisiert, nicht
-als numerisch „meistgesuchte Fragen“ bezeichnet.
+Serverseitig lesbarer Text, eindeutige Canonicals, passende Titel/Beschreibungen und Produktbilder, interne Links, Sitemap und crawlbare Seiten bleiben die Basis. FAQs und ihr Markup stammen aus derselben Inhaltsquelle. AuthenticTrust verwendet eine stabile Software-Entität; Opny bleibt die übergeordnete Marke/Organisation. llms.txt spiegelt die sichtbare Website, ist aber keine Voraussetzung oder Garantie für KI-Sichtbarkeit.
 
-Die aktuellen Suchergebnisse wurden am 28. Juli 2026 erneut für folgende Muster geprüft:
+## Messung
 
-- KI-Beratung Automotive und KI-Strategie Automotive-Zulieferer
-- KI im Unternehmen einführen und KI-Implementierung Mittelstand
-- KI-Schulung Unternehmen, KI-Schulung Inhouse und KI-Workshop Unternehmen
-- ChatGPT-Schulung Unternehmen und ChatGPT-Workshop Inhouse
-- Google-Gemini-Schulung Unternehmen
-- Microsoft-Copilot-Schulung Unternehmen
-- AI-Act-Schulung und KI-Kompetenz nach Artikel 4
-- KI-Governance Automotive und Schatten-KI Unternehmen
+Search Console ist für opny.ai verbunden. Vorhandene Indexzustände, Google-Canonicals und Leistungsdaten wurden geprüft. Private Messwerte und Suchanfragen liegen ausschließlich im ignorierten lokalen QA-Bericht; sie werden nicht im öffentlichen Quellrepository veröffentlicht. Letzte Crawls vor einer Veröffentlichung belegen nicht den Indexstand der neuen Fassung. Öffentliche SERP-Stichproben sind zeit-/marktgebundene Beobachtungen und ersetzen keine Search-Console-Auswertung.
 
-Die Ergebniszusammensetzung zeigt zwei klar unterschiedliche Intentionen:
+Primärquellen: [Google SEO-Leitfaden](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [Google KI-Suchergebnisse](https://developers.google.com/search/docs/appearance/ai-features), [Search-Console-Leistungsbericht](https://support.google.com/webmasters/answer/7576553).
 
-1. Einführungs- und Beratungssuchen sind problemorientiert. Interessenten suchen einen Fahrplan, Use-Case-Auswahl, Strategie, Implementierung, Governance, Datenschutz, Pilotierung und messbare Ergebnisse.
-2. Schulungssuchen sind stärker transaktional. Erwartet werden konkrete Inhouse-, Online-, Workshop- und Coaching-Formate, toolbezogene Inhalte, Rollenbezug, Praxisübungen und die Einordnung von Artikel 4.
 
-Automotive-spezifische Suchergebnisse sind deutlich dünner als allgemeine
-Schulungs- und Implementierungssuchen. Das spricht für geringeres Volumen, aber
-eine klarere B2B-Nische. Es wäre methodisch falsch, daraus ohne Search-Console-
-oder Keyword-Planner-Daten eine konkrete Zahl abzuleiten.
+Ergänzung Standards: Die aktuelle sichtbare Zuordnung nennt TISAX, ISO/IEC27001, ISO9001, NIS2, SOC2 und DSGVO mit unterschiedlichen Umfängen. Dies ist keine Aussage zu gemessenen Suchvolumina oder garantierter Seite-eins-Platzierung. Die präzise Produkt-Scopequelle steht in `docs/authentictrust-product-evidence-2026-11-23.md`.
 
-Google Trends war beim erneuten Check am 28. Juli 2026 erreichbar. Für
-Deutschland, Websuche und die letzten zwölf Monate wurden folgende
-Vergleichsgruppen geprüft:
+## Normen- und Vorgabenseiten · 23. November 2026
 
-| Vergleich innerhalb derselben Gruppe | Relativer Durchschnitt |
-| --- | --- |
-| KI Schulung / ChatGPT Schulung | 59 / 1 |
-| KI Schulung / Gemini Schulung / Copilot Schulung / AI Act Schulung | 59 / 0 / 2 / 0 |
-| KI Beratung / KI Implementierung / KI im Unternehmen / KI Automotive | 51 / 3 / 25 / 7 |
-| KI Automotive / KI Automobilindustrie / KI Zulieferer / KI Automotive Zulieferer | 17 / 0 / 0 / 1 |
+| Hauptthema | Eigene Nutzerfrage | Zielseite |
+| --- | --- | --- |
+| ISO 27001-Software, ISMS-Software | Wie bearbeiten IT und Informationssicherheit Anforderungen, Richtlinien und Sicherheitsnachweise gemeinsam? | `/iso-27001-software` |
+| ISO 9001-Software, QM-Software | Wie pflegt ein Qualitätsteam gültige Prozessdokumente und verfolgt notwendige Änderungen? | `/iso-9001-software` |
+| NIS2-Software | Wie lassen sich Unterlagen und Maßnahmen zu ausgewählten Cybersicherheitsanforderungen organisieren? | `/nis2-software` |
+| SOC 2-Software | Wie ordnet ein Dienstleistungsteam Belege und Aufgaben ausgewählten Kontrollkriterien zu? | `/soc-2-software` |
+| DSGVO-Software | Wie bearbeitet eine Organisation Unterlagen und Aufgaben zu ausgewählten Datenschutzanforderungen? | `/dsgvo-software` |
 
-Diese Werte sind normalisierte Google-Trends-Indizes und keine absoluten
-Suchvolumina. Sie dürfen nur innerhalb derselben Vergleichsgruppe interpretiert
-werden. Ein Wert von null kann bedeuten, dass das Volumen für die Darstellung
-zu gering ist; er beweist nicht, dass es überhaupt keine Nachfrage gibt.
-
-Strategische Konsequenz: Seitentitel und Hauptüberschriften priorisieren die
-breiteren Begriffe „KI Beratung“, „KI Schulung“, „KI im Unternehmen“ und „KI
-Automotive“. ChatGPT, Gemini, Copilot, AI Act und Zulieferer-Synonyme werden als
-konkrete Unterintentionen in Leistungsbeschreibung, Formaten, FAQs und
-Fachinhalten abgedeckt.
-
-## Aktuelle Nachfragesignale
-
-- Laut Bitkom-Studie 2026 verwenden 48 Prozent der Berufstätigen KI zumindest gelegentlich bei der Arbeit. 12 Prozent der beruflichen KI-Nutzer tun dies ohne Wissen des Arbeitgebers. Nur 34 Prozent berichten von einem KI-Schulungsangebot ihres Arbeitgebers.
-- ChatGPT wird laut derselben Studie von 71 Prozent der KI-Nutzer verwendet, Google Gemini von 50 Prozent und Microsoft Copilot von 43 Prozent.
-- Laut TÜV-Weiterbildungsstudie 2026 nutzen 56 Prozent der befragten Unternehmen generative KI, im verarbeitenden Gewerbe 47 Prozent.
-- 50 Prozent der Unternehmen sehen einen hohen KI-Weiterbildungsbedarf. Bei den Unternehmen, die Bedarf sehen, stehen praktische Toolkompetenz mit 72 Prozent und KI-Grundlagen mit 67 Prozent an erster Stelle.
-
-Diese Werte zeigen Handlungsdruck bei KI-Nutzung und Kompetenzaufbau. Sie sind
-kein Beleg für Suchvolumen, Zahlungsbereitschaft oder Nachfrage nach Opny und
-keine Rankingprognose.
-
-## Eindeutige Zuordnung der Suchintentionen
-
-### Startseite `/`
-
-Primäre Intention:
-
-- KI kontrolliert einführen
-- KI sicher einführen
-- Opny
-- kontrollierte KI für Automotive-Zulieferer
-- KI-Governance, Produkte und Umsetzung
-
-Aufgabe der Seite: Opny als übergreifenden Partner positionieren. TrustArch, NodeX, Beratung und Schulung werden als Bausteine eingeordnet, nicht als alleinige Unternehmensidentität.
-
-### Leitfaden `/wissen/ki-im-unternehmen-einfuehren`
-
-Primäre Intention:
-
-- KI im Unternehmen einführen
-- KI-Implementierung Unternehmen
-- KI-Implementierung Mittelstand
-- generative KI einführen
-- KI-Einführung Schritte
-- ChatGPT oder Gemini oder Copilot im Unternehmen
-- KI-Pilot Unternehmen
-
-Aufgabe der Seite: die breite informative Suchintention mit einem vollständigen,
-belegten Fahrplan beantworten. Die Seite leitet anschließend gezielt zur
-Automotive-Branchenlösung, Beratung oder Schulung weiter.
-
-### Automotive-Branchenlösung `/automotive`
-
-Primäre Intention:
-
-- KI Automotive
-- KI für Automotive
-- KI für Automotive-Zulieferer
-- KI für Automobilzulieferer
-- KI Automotive-Lieferanten
-- künstliche Intelligenz Automobilindustrie
-- generative KI Automotive
-- KI Use Cases Automotive
-
-Aufgabe der Seite: branchenspezifische Anforderungen, geeignete Anwendungen und den kontrollierten Einführungsweg für Tier-1- bis Tier-3-Zulieferer erklären.
-
-### KI-Beratung `/loesungen/ki-beratung-automotive`
-
-Primäre Intention:
-
-- KI-Beratung Automotive
-- KI-Beratung Automobilindustrie
-- KI-Beratung Automotive-Zulieferer
-- KI-Strategieberatung Automotive
-- KI-Einführung Beratung
-- KI Use Cases Beratung
-- generative KI Beratung Mittelstand
-- KI-Transformation Automotive
-- KI-Implementierung Automotive
-- KI-Readiness Automotive
-
-Aufgabe der Seite: die transaktionale Beratungsabsicht beantworten – von Strategie und Use-Case-Auswahl bis Governance, Pilot und Betriebsübergang.
-
-### KI-Schulung und Coaching `/loesungen/ki-schulungen-automotive`
-
-Primäre Intention:
-
-- KI-Schulung Automotive
-- KI-Schulung Unternehmen
-- KI-Schulung Mitarbeiter
-- KI-Schulung Inhouse
-- KI-Workshop Unternehmen
-- KI-Coaching
-- ChatGPT-Schulung Unternehmen
-- ChatGPT-Workshop Inhouse
-- Gemini-Schulung Unternehmen
-- Google-Gemini-Schulung
-- Microsoft-Copilot-Schulung
-- generative-KI-Schulung
-- AI-Act-Schulung
-- KI-Kompetenz Artikel 4
-- Prompt-Schulung Unternehmen
-- KI-Schulung Kosten
-- KI-Schulung Führungskräfte
-- KI-Schulung Mitarbeitende
-- KI-Lernreise Unternehmen
-
-Aufgabe der Seite: konkrete Schulungs-, Workshop- und Coaching-Formate für Unternehmen erklären und Toolpraxis mit Datenregeln, Ergebnisprüfung, Rollen und AI-Act-Kontext verbinden.
-
-### KI-Governance `/ki-governance-automotive`
-
-Primäre Intention:
-
-- KI-Governance Automotive
-- AI Act Automotive
-- KI-Richtlinie Unternehmen
-- KI-Inventar
-- KI-Risikomanagement
-- TISAX und KI
-- KI Compliance Automotive
-- Schatten-KI verhindern
-
-Aufgabe der Seite: den organisatorischen und technischen Steuerungsrahmen erklären. Die Seite darf nicht mit der allgemeinen Beratung um dieselbe Leistungsintention konkurrieren.
-
-### Produkte `/produkte`, `/produkte/trustarch`, `/produkte/nodex`
-
-Primäre Intention:
-
-- KI Compliance Software
-- Compliance Management Software KI
-- AI Governance Software
-- AI Gateway Unternehmen
-- LLM Gateway Governance
-- KI-Zugriff kontrollieren
-- KI-Nutzung überwachen
-
-Aufgabe der Seiten: Produktkategorie, Funktionsumfang und belegten Produktstatus präzise darstellen. Keine Beratungskeywords als primäre Seitenausrichtung.
-
-## Redaktioneller Ausbau nach realer Nachfrage
-
-Diese Themen eignen sich als spätere Fachbeiträge, wenn ausreichend originäre Erfahrung, Beispiele oder Daten vorliegen:
-
-1. ChatGPT, Gemini oder Copilot: Auswahlkriterien für Automotive-Unternehmen
-2. KI-Kompetenz nach Artikel 4: Was Schulungen und Nachweise praktisch abdecken sollten
-3. Schatten-KI im Zuliefererbetrieb erkennen und kontrolliert ablösen
-4. KI Use Cases in Qualität, Engineering und Projektarbeit bewerten
-5. TISAX, Datenschutz und generative KI gemeinsam in den Arbeitsprozess übersetzen
-
-Der Leitfaden „KI im Unternehmen einführen“ wurde bereits als zentrale
-Cornerstone-Seite umgesetzt. Die übrigen Themen sollten erst entstehen, wenn
-dafür originäre Beispiele, belastbare Fachbeiträge oder wiederkehrende reale
-Kundenfragen vorliegen.
-
-Keine dieser Seiten sollte nur zur Abdeckung eines Keywords angelegt werden. Jeder Beitrag benötigt eine eigenständige Frage, fachliche Substanz, klare Autorenschaft und einen nachvollziehbaren Nutzen.
-
-## Mess- und Lernplan nach Veröffentlichung
-
-1. Google Search Console verifizieren und Sitemap einreichen.
-2. Suchanfragen, Impressionen, Klicks und Zielseiten monatlich nach Intent-Clustern auswerten.
-3. Anfragen nach Beratung, Schulung, TrustArch und NodeX getrennt messen.
-4. Neue Fragen aus Erstgesprächen, Sales und Search Console in bestehende Seiten einarbeiten.
-5. Quellenverweise und Studienzahlen mindestens halbjährlich prüfen.
-6. Sichtbarkeit in KI-Antworten als qualitativen Kanal beobachten; keine nicht belegbaren „LLMO-Scores“ verwenden.
-
-## Primärquellen
-
-- [Google: Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
-- [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
-- [Google: Search-Dokumentationsupdates, Einstellung der FAQ-Rich-Results](https://developers.google.com/search/updates)
-- [Google: AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
-- Google Trends: Related searches und Einordnung der Daten:
-  [Suchanfragen](https://support.google.com/trends/answer/4355000?hl=en) und
-  [Dateneinordnung](https://support.google.com/trends/answer/4365533?hl=en-GB)
-- [Google Trends: Vergleich KI-Schulung](https://trends.google.com/trends/explore?date=today%2012-m&geo=DE&q=KI%20Schulung,ChatGPT%20Schulung)
-- [Google Trends: Vergleich KI-Beratung und KI-Einführung](https://trends.google.com/trends/explore?date=today%2012-m&geo=DE&q=KI%20Beratung,KI%20Implementierung,KI%20im%20Unternehmen,KI%20Automotive)
-- [Bitkom: KI in Deutschland 2026](https://www.bitkom.org/sites/main/files/2026-06/bitkom-studienbericht-ki-bevoelkerung.pdf)
-- [TÜV-Verband: Weiterbildungsstudie 2026](https://www.tuev-verband.de/fileadmin/user_upload/Content_local/Studien_local/2026_TUEV-Verband_Weiterbildungsstudie_2026_Studienbericht.pdf)
+Die vorhandene TISAX-Seite bleibt erhalten. ISMS/QM sind sekundäre Suchbegriffe der jeweiligen ISO-Seite, keine zusätzlichen parallelen Einstiegsseiten. NIS2, SOC 2 und DSGVO werden ausdrücklich als ausgewählte Anforderungen ohne vollständiges eigenständiges Fachmodul beschrieben. Der konkrete Umfang wird nicht aus einem Keywordvolumen abgeleitet.

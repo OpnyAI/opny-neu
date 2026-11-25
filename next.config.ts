@@ -34,43 +34,43 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/produkte/trustarch",
+        destination: "/produkte/authentictrust",
+        permanent: true,
+      },
+      {
         source: "/leistungen/nodex",
         destination: "/produkte/nodex",
         permanent: true,
       },
       {
         source: "/leistungen/ki-beratung",
-        destination: "/loesungen/ki-beratung-automotive",
+        destination: "/loesungen#beratung",
         permanent: true,
       },
       {
         source: "/leistungen/ki-trainings",
-        destination: "/loesungen/ki-schulungen-automotive",
+        destination: "/loesungen#schulungen",
         permanent: true,
       },
       {
         source: "/leistungen",
-        destination: "/automotive",
-        permanent: true,
-      },
-      {
-        source: "/loesungen",
-        destination: "/automotive",
+        destination: "/loesungen",
         permanent: true,
       },
       {
         source: "/loesungen/ki-beratung",
-        destination: "/loesungen/ki-beratung-automotive",
+        destination: "/loesungen#beratung",
         permanent: true,
       },
       {
         source: "/loesungen/ki-trainings",
-        destination: "/loesungen/ki-schulungen-automotive",
+        destination: "/loesungen#schulungen",
         permanent: true,
       },
       {
         source: "/ki-governance",
-        destination: "/ki-governance-automotive",
+        destination: "/loesungen#governance",
         permanent: true,
       },
       {

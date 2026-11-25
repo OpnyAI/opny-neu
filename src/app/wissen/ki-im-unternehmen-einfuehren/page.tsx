@@ -11,9 +11,9 @@ import { companyCtas } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "KI im Unternehmen einführen: 7 Schritte für Automotive",
+  title: "KI im Unternehmen einführen: 7 Schritte für Teams",
   description:
-    "Praxisleitfaden zur KI-Implementierung für Automotive-Zulieferer und Mittelstand: Use Cases, ChatGPT, Gemini, Copilot, Governance und Pilot.",
+    "Praxisleitfaden zur KI-Einführung im Unternehmen: Aufgaben auswählen, Daten und Werkzeuge prüfen, Zuständigkeiten klären, Teams schulen und Praxistest planen.",
   path: "/wissen/ki-im-unternehmen-einfuehren",
   image: {
     url: "/media/opny/mehmet-catalsakal-founder-about-web.jpg",
@@ -125,7 +125,7 @@ export default function KiImUnternehmenEinfuehrenPage() {
                 "https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren#webpage",
               url:
                 "https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren",
-              name: "KI im Unternehmen einführen: 7 Schritte für Automotive",
+              name: "KI im Unternehmen einführen: 7 Schritte für Teams",
               isPartOf: { "@id": "https://www.opny.ai/#website" },
               mainEntity: {
                 "@id":
@@ -139,11 +139,11 @@ export default function KiImUnternehmenEinfuehrenPage() {
                 "https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren#article",
               url:
                 "https://www.opny.ai/wissen/ki-im-unternehmen-einfuehren",
-              headline: "KI im Unternehmen einführen: 7 Schritte für Automotive",
+              headline: "KI im Unternehmen einführen: 7 Schritte für Teams",
               description:
-                "Praxisleitfaden zur kontrollierten Einführung generativer KI in Automotive-Unternehmen und im Mittelstand.",
+                "Praxisleitfaden zur kontrollierten KI-Einführung in Unternehmen: Aufgaben, Daten, Zuständigkeiten, Praxistest und Schulung.",
               datePublished: "2026-07-28",
-              dateModified: "2026-07-28",
+              dateModified: "2026-11-23",
               inLanguage: "de-DE",
               mainEntityOfPage: {
                 "@id":
@@ -185,18 +185,18 @@ export default function KiImUnternehmenEinfuehrenPage() {
         />
         <div className="mt-9 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <div className="eyebrow">Praxisleitfaden · Stand 28. Juli 2026</div>
+            <div className="eyebrow">Praxisleitfaden · Fachstand 28. Juli 2026</div>
             <h1 className="display-lg mt-5 text-text-primary-light">
               KI im Unternehmen einführen.
-              <span className="mt-2 block text-[#86868b]">
+              <span className="mt-2 block text-accent">
                 Vom Tooltest zum kontrollierten Betrieb.
               </span>
             </h1>
             <p className="lead-copy mt-6 max-w-[64ch]">
               Ein belastbarer Einstieg verbindet Geschäftsnutzen, Daten,
               Verantwortung, Technik und Kompetenz. Dieser Leitfaden zeigt den
-              Weg für eine kontrollierte KI-Implementierung bei
-              Automotive-Zulieferern und im industriellen Mittelstand.
+              Weg für eine kontrollierte KI-Einführung in Unternehmen –
+              von der ersten Aufgabe bis zum überprüfbaren Betrieb.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button href={companyCtas.consultingInquiry} variant="primary" theme="light">
@@ -294,9 +294,9 @@ export default function KiImUnternehmenEinfuehrenPage() {
         </div>
         <Link
           href="/loesungen/ki-schulungen-automotive"
-          className="mt-8 inline-flex text-sm font-semibold text-[#0066cc] hover:underline"
+          className="mt-8 inline-flex text-sm font-semibold text-accent hover:underline"
         >
-          KI-, ChatGPT-, Gemini- und Copilot-Schulungen ansehen →
+          KI-, ChatGPT-, Gemini- und Copilot-Schulungen ansehen
         </Link>
       </Region>
 
@@ -345,17 +345,17 @@ export default function KiImUnternehmenEinfuehrenPage() {
             </p>
           </div>
           <div className="grid gap-3 text-sm leading-relaxed">
-            <a className="text-[#0066cc] hover:underline" href="https://www.bitkom.org/sites/main/files/2026-06/bitkom-studienbericht-ki-bevoelkerung.pdf" target="_blank" rel="noreferrer">
-              Bitkom: KI in Deutschland 2026 ↗
+            <a className="text-accent hover:underline" href="https://www.bitkom.org/sites/main/files/2026-06/bitkom-studienbericht-ki-bevoelkerung.pdf" target="_blank" rel="noreferrer">
+              Bitkom: KI in Deutschland 2026
             </a>
-            <a className="text-[#0066cc] hover:underline" href="https://www.tuev-verband.de/fileadmin/user_upload/Content_local/Studien_local/2026_TUEV-Verband_Weiterbildungsstudie_2026_Studienbericht.pdf" target="_blank" rel="noreferrer">
-              TÜV-Verband: Weiterbildungsstudie 2026 ↗
+            <a className="text-accent hover:underline" href="https://www.tuev-verband.de/fileadmin/user_upload/Content_local/Studien_local/2026_TUEV-Verband_Weiterbildungsstudie_2026_Studienbericht.pdf" target="_blank" rel="noreferrer">
+              TÜV-Verband: Weiterbildungsstudie 2026
             </a>
-            <a className="text-[#0066cc] hover:underline" href="https://www.mittelstand-digital.de/MD/Redaktion/DE/Themenhub/2026-01/Artikel/KI-Use-Cases/KI-Use-Cases.html" target="_blank" rel="noreferrer">
-              Mittelstand-Digital: KI-Anwendungen in den Unternehmensalltag integrieren ↗
+            <a className="text-accent hover:underline" href="https://www.mittelstand-digital.de/MD/Redaktion/DE/Themenhub/2026-01/Artikel/KI-Use-Cases/KI-Use-Cases.html" target="_blank" rel="noreferrer">
+              Mittelstand-Digital: KI-Anwendungen in den Unternehmensalltag integrieren
             </a>
-            <a className="text-[#0066cc] hover:underline" href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noreferrer">
-              EUR-Lex: Verordnung (EU) 2024/1689 ↗
+            <a className="text-accent hover:underline" href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noreferrer">
+              EUR-Lex: Verordnung (EU) 2024/1689
             </a>
             <p className="mt-2 text-xs text-text-secondary-light">
               Fachlich geprüft am 28. Juli 2026. Keine Rechtsberatung.

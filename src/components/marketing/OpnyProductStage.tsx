@@ -17,16 +17,16 @@ export default function OpnyProductStage() {
 
       <div className="grid gap-4 p-4 sm:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch lg:p-8">
         <Link
-          href="/produkte/trustarch"
+          href="/produkte/authentictrust"
           className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[1.7rem] border border-black/[0.08] bg-white shadow-[0_24px_70px_-45px_rgba(0,0,0,0.35)]"
         >
           <div className="flex items-center justify-between gap-3 border-b border-black/[0.07] px-5 py-4">
             <div>
               <div className="text-sm font-semibold text-text-primary-light">
-                TrustArch
+                AuthenticTrust
               </div>
               <div className="mt-1 text-xs text-text-muted-light">
-                Compliance und Nachweise organisieren
+                Managementsysteme und Nachweise steuern
               </div>
             </div>
             <span className="rounded-full border border-black/[0.08] bg-black/[0.03] px-3 py-1.5 text-[11px] font-semibold text-text-muted-light">
@@ -34,8 +34,8 @@ export default function OpnyProductStage() {
             </span>
           </div>
           <Image
-            src="/media/trustarch/trustarch-dashboard-1600x1000.jpg"
-            alt="TrustArch-Produktansicht mit Reifegradübersicht und offenen Feststellungen"
+            src="/media/authentictrust/authentictrust-dashboard-1600x1000.jpg"
+            alt="AuthenticTrust-Produktansicht mit Reifegradübersicht und offenen Feststellungen"
             width={1600}
             height={1000}
             priority
@@ -111,13 +111,13 @@ export default function OpnyProductStage() {
 
           <div className="mt-6 flex flex-wrap gap-3 lg:mt-0 lg:justify-end">
             <Link
-              href="/loesungen/ki-beratung-automotive"
+              href="/loesungen#beratung"
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#151517] px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               KI-Beratung
             </Link>
             <Link
-              href="/loesungen/ki-schulungen-automotive"
+              href="/loesungen#schulungen"
               className="inline-flex min-h-11 items-center justify-center rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-xs font-semibold text-text-primary-light transition hover:bg-black/[0.025] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               KI-Schulungen
@@ -127,7 +127,7 @@ export default function OpnyProductStage() {
       </div>
 
       <figcaption className="border-t border-black/[0.07] px-5 py-4 text-xs leading-relaxed text-text-muted-light sm:px-7">
-        TrustArch wird mit freigegebenen Beispieldaten gezeigt. NodeX wird mit
+        AuthenticTrust wird mit freigegebenen Beispieldaten gezeigt. NodeX wird mit
         einem freigegebenen Produkteinblick dargestellt.
       </figcaption>
     </figure>

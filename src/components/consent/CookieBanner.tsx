@@ -1,68 +1,72 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  CONSENT_CHANGE_EVENT,
-  CONSENT_KEY,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import {
   OPEN_COOKIE_SETTINGS_EVENT,
+  preferences,
+  saveConsent,
+  subscribeToConsent,
+  getServerConsent,
+  needsMarketingReview,
+  getServerMarketingReview,
   type ConsentValue,
   readConsent,
 } from "@/lib/consent";
+import {
+  GA_ID,
+  GOOGLE_ADS_ID,
+  META_PIXEL_ID,
+  LINKEDIN_PARTNER_ID,
+  HAS_MARKETING,
+  HAS_TRACKING,
+} from "@/lib/tracking-config";
 
-const HAS_GA_ID = Boolean(process.env.NEXT_PUBLIC_GA_ID);
-
-function setConsentGranted(): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-
-  window.gtag("consent", "update", {
-    analytics_storage: "granted",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-  });
-}
-
-function setConsentDenied(): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-
-  window.gtag("consent", "update", {
-    analytics_storage: "denied",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-  });
-}
+const marketingProviders = [
+  GOOGLE_ADS_ID ? "Google Ads / YouTube" : "",
+  META_PIXEL_ID ? "Meta (Facebook / Instagram)" : "",
+  LINKEDIN_PARTNER_ID ? "LinkedIn" : "",
+].filter(Boolean).join(" und ");
 
 export default function CookieBanner() {
-  const [consent, setConsent] = useState<ConsentValue | null>(() => {
-    if (!HAS_GA_ID) return null;
-    return readConsent();
-  });
+  // Use the same initial snapshot on the server and during hydration. The
+  // persisted browser choice is read after hydration, before future updates.
+  const consent = useSyncExternalStore(
+    subscribeToConsent,
+    readConsent,
+    getServerConsent,
+  );
+
+  const marketingReview = useSyncExternalStore(
+    subscribeToConsent,
+    needsMarketingReview,
+    getServerMarketingReview,
+  );
+  const savedStatistics = preferences(consent).statistics;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
+  const [marketingEnabled, setMarketingEnabled] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const dialogTitleRef = useRef<HTMLHeadingElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
-
-  // Ensure "denied" on first load when no stored consent (but do not store anything).
-  useEffect(() => {
-    if (!HAS_GA_ID || typeof window === "undefined") return;
-
-    const stored = readConsent();
-    if (stored === null) {
-      setConsentDenied();
-      return;
-    }
-
-    if (stored === "accepted") setConsentGranted();
-    if (stored === "declined") setConsentDenied();
-  }, []);
+  const bannerSettingsRef = useRef<HTMLButtonElement>(null);
 
   const closeSettings = useCallback(() => {
     setIsModalOpen(false);
-    window.requestAnimationFrame(() => previousFocusRef.current?.focus());
+    window.requestAnimationFrame(() => {
+      const opener = previousFocusRef.current;
+      const target = opener?.isConnected
+        ? opener
+        : bannerSettingsRef.current ?? document.querySelector<HTMLElement>("[data-cookie-settings-opener]");
+      target?.focus({ preventScroll: true });
+    });
   }, []);
 
   const openSettings = useCallback(() => {
@@ -70,12 +74,14 @@ export default function CookieBanner() {
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
-    setAnalyticsEnabled(readConsent() === "accepted");
+    const choice = preferences(readConsent());
+    setAnalyticsEnabled(choice.statistics);
+    setMarketingEnabled(choice.marketing);
     setIsModalOpen(true);
   }, []);
 
   useEffect(() => {
-    if (!HAS_GA_ID) return;
+    if (!HAS_TRACKING) return;
     window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
     return () =>
       window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
@@ -150,93 +156,96 @@ export default function CookieBanner() {
     };
   }, [closeSettings, isModalOpen]);
 
-  const persistAccepted = () => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(CONSENT_KEY, "accepted");
-    setConsentGranted();
-    setConsent("accepted");
-    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
+  const persist = (value: ConsentValue) => {
+    saveConsent(value);
     closeSettings();
   };
+  const handleSaveSettings = () =>
+    persist(
+      analyticsEnabled && Boolean(GA_ID)
+        ? marketingEnabled && HAS_MARKETING
+          ? "all"
+          : "statistics"
+        : marketingEnabled && HAS_MARKETING
+          ? "marketing"
+          : "declined",
+    );
 
-  const persistDeclined = () => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(CONSENT_KEY, "declined");
-    setConsentDenied();
-    setConsent("declined");
-    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
-    closeSettings();
-  };
-
-  const handleAccept = () => {
-    persistAccepted();
-  };
-
-  const handleDecline = () => {
-    persistDeclined();
-  };
-
-  const handleOpenSettings = () => {
-    openSettings();
-  };
-
-  const handleCancelSettings = () => {
-    closeSettings();
-  };
-
-  const handleSaveSettings = () => {
-    if (analyticsEnabled) persistAccepted();
-    else persistDeclined();
-  };
-
-  if (!HAS_GA_ID) return null;
+  if (!HAS_TRACKING) return null;
 
   return (
     <>
-      {consent === null && !isModalOpen ? (
-        <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white p-4 shadow-[0_-8px_24px_rgba(0,0,0,0.08)]">
-          <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-neutral-800">
-              Mit Ihrer Einwilligung laden wir Google Analytics zur
-              Reichweitenmessung. Mehr in der{" "}
-              <Link href="/datenschutz" className="underline underline-offset-2">
-                Datenschutzerklärung
-              </Link>
-              .
+      {(consent === null || marketingReview) && !isModalOpen ? (
+        <aside className="cookie-banner" aria-label="Cookies und Datenschutz">
+          <div className="cookie-banner-content">
+            <div className="consent-heading">
+              <span className="consent-symbol" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                  <path d="M12 3 4 6v6c0 4 4 7 8 9 4-2 8-5 8-9V6l-8-3Z" />
+                  <path d="m8 12 3 3 5-6" />
+                </svg>
+              </span>
+              <h2>{marketingReview ? "Ihre Marketing-Auswahl aktualisieren" : "Sie entscheiden, was wir messen."}</h2>
+            </div>
+            <p className="consent-intro">
+              {marketingReview ? (
+                <>Die eingerichteten Marketing-Dienste haben sich geändert. Mit Ihrer Zustimmung erfassen wir Besuche für Anzeigenmessung und mögliche spätere Werbung über {marketingProviders}. Ihre Statistik-Auswahl bleibt unverändert. Marketing bleibt bis zu Ihrer Zustimmung aus.</>
+              ) : (
+                <>
+                  {GA_ID ? "Statistik mit Google Analytics zeigt uns, welche Seiten und Produktinformationen genutzt werden. " : ""}
+                  {HAS_MARKETING ? `Marketing mit ${marketingProviders} ermöglicht Anzeigenmessung und mögliche spätere Werbung für Websitebesucher. ` : ""}
+                  Diese Dienste sind freiwillig und starten erst nach Ihrer Zustimmung.
+                </>
+              )}
+            </p>
+            <p className="consent-note">
+              Ihre Auswahl können Sie jederzeit ändern. Weitere Informationen unter{" "}
+              <Link href="/datenschutz">Datenschutz</Link>.
             </p>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="cookie-banner-actions flex flex-wrap items-center gap-2">
               <button
+                ref={bannerSettingsRef}
                 type="button"
-                onClick={handleOpenSettings}
-                className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={openSettings}
+                className="button button-secondary button-small"
               >
                 Einstellungen
               </button>
 
               <button
                 type="button"
-                onClick={handleDecline}
-                className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={() => persist(marketingReview && savedStatistics ? "statistics" : "declined")}
+                className="button button-primary button-small consent-decision"
               >
-                Ablehnen
+                {marketingReview ? "Ohne Marketing fortfahren" : "Ablehnen"}
               </button>
 
               <button
                 type="button"
-                onClick={handleAccept}
-                className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={() =>
+                  persist(
+                    marketingReview
+                      ? savedStatistics ? "all" : "marketing"
+                      : HAS_MARKETING
+                      ? GA_ID
+                        ? "all"
+                        : "marketing"
+                      : "statistics",
+                  )
+                }
+                className="button button-primary button-small consent-decision"
               >
-                Akzeptieren
+                {marketingReview ? "Marketing erlauben" : HAS_MARKETING ? "Alle akzeptieren" : "Statistik erlauben"}
               </button>
             </div>
           </div>
-        </div>
+        </aside>
       ) : null}
 
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-[12px] sm:p-4"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeSettings();
           }}
@@ -247,64 +256,104 @@ export default function CookieBanner() {
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
             aria-describedby="cookie-settings-description"
-            className="w-full max-w-md rounded-lg bg-white p-5 shadow-xl"
+            className="cookie-settings-panel w-full max-w-xl rounded-card p-[12px] shadow-xl sm:p-6"
           >
+            <div className="flex items-start justify-between gap-3">
             <h2
               ref={dialogTitleRef}
               id="cookie-settings-title"
               tabIndex={-1}
               className="text-lg font-semibold text-neutral-900"
             >
-              Cookie-Einstellungen
+              Cookie-Auswahl
             </h2>
+            <button type="button" className="consent-close" aria-label="Cookie-Einstellungen schließen" onClick={closeSettings}>
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+            </div>
             <p
               id="cookie-settings-description"
               className="mt-2 text-sm leading-relaxed text-neutral-600"
             >
-              Sie entscheiden, ob Google Analytics für die Reichweitenmessung
-              geladen werden darf. Ihre Auswahl können Sie jederzeit ändern.
+              {GA_ID && HAS_MARKETING
+                ? "Sie wählen Statistik und Werbung unabhängig voneinander."
+                : GA_ID
+                  ? "Sie entscheiden über Nutzungsstatistiken mit Google Analytics."
+                  : "Sie entscheiden über Werbung und Wiederansprache."}{" "}
+              Die Website ist auch ohne optionale Dienste nutzbar. Sie können Ihre
+              Einwilligung jederzeit hier oder über den Link im Seitenfuß widerrufen.
             </p>
-
-            <div className="mt-4 flex items-center justify-between gap-4 rounded-md border border-neutral-200 p-3">
-              <span
-                id="analytics-consent-label"
-                className="text-sm text-neutral-800"
-              >
-                Analytics (Google Analytics)
-              </span>
-
-              <button
-                type="button"
-                role="switch"
-                aria-labelledby="analytics-consent-label"
-                aria-checked={analyticsEnabled}
-                onClick={() => setAnalyticsEnabled((prev) => !prev)}
-                className={`inline-flex h-6 w-11 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
-                  analyticsEnabled ? "bg-black" : "bg-neutral-300"
-                }`}
-              >
-                <span
-                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
-                    analyticsEnabled ? "translate-x-5" : "translate-x-0.5"
-                  }`}
-                />
-              </button>
+            <div className="consent-essential">
+              <strong>Ihre Auswahl speichern</strong>
+              <span>Immer aktiv</span>
+              <p>Wir speichern Ihre Entscheidung in diesem Browser, damit wir sie beim nächsten Besuch beachten.</p>
             </div>
 
-            <div className="mt-5 flex justify-end gap-2">
+            {GA_ID ? (
+              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-[12px] sm:p-3">
+                <div className="consent-category-copy">
+                <span
+                  id="analytics-consent-label"
+                  className="text-sm text-neutral-800"
+                >
+                  Statistik · Google Analytics
+                </span>
+                <p id="analytics-consent-description">Zeigt uns Seitenaufrufe, Produktinteresse und erfolgreiche Anfragen. Google erhält dabei Nutzungsdaten und technische Kennungen.</p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-labelledby="analytics-consent-label"
+                  aria-describedby="analytics-consent-description"
+                  aria-checked={analyticsEnabled}
+                  onClick={() => setAnalyticsEnabled((prev) => !prev)}
+                  className="consent-switch"
+                >
+                  <span className="consent-switch-track" />
+                </button>
+              </div>
+            ) : null}
+            {HAS_MARKETING ? (
+              <div className="consent-category mt-4 flex items-center justify-between gap-4 rounded-button border border-border-subtle-light p-[12px] sm:p-3">
+                <div className="consent-category-copy">
+                  <span id="marketing-consent-label" className="text-sm text-text-primary-light">
+                    Marketing · {marketingProviders}
+                  </span>
+                  <p id="marketing-consent-description">Ermöglicht Anzeigenmessung und spätere Werbung. Die Anbieter erhalten Besuchsdaten und können diese Ihrem Nutzerkonto zuordnen.{LINKEDIN_PARTNER_ID ? " LinkedIn erfasst nur Besuche." : ""}</p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-labelledby="marketing-consent-label"
+                  aria-describedby="marketing-consent-description"
+                  aria-checked={marketingEnabled}
+                  className="consent-switch"
+                  onClick={() => setMarketingEnabled(!marketingEnabled)}
+                >
+                  <span className="consent-switch-track" />
+                </button>
+              </div>
+            ) : (
+              <p className="mt-4 text-sm leading-relaxed text-text-muted-light">
+                Marketing-Tags sind derzeit nicht eingerichtet und bleiben
+                inaktiv.
+              </p>
+            )}
+            <p className="consent-note mt-4">Daten können auch in den USA verarbeitet werden. Details zu Empfängern, Daten und Ihren Rechten finden Sie unter <Link href="/datenschutz">Datenschutz</Link>.</p>
+            <div className="consent-settings-actions mt-5 flex flex-wrap justify-end gap-2">
               <button
                 type="button"
-                onClick={handleCancelSettings}
-                className="rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={closeSettings}
+                className="button button-secondary button-small"
               >
                 Abbrechen
               </button>
               <button
                 type="button"
                 onClick={handleSaveSettings}
-                className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                className="button button-primary button-small"
               >
-                Speichern
+                Auswahl speichern
               </button>
             </div>
           </div>
